@@ -22,7 +22,21 @@
   <script>
 		$(document).ready(function(){
 		    $("#btnLogin").click(function(){
-		        alert($("#txtEmail").val())
+		    	if($("#txtEmail").val()=!null && $("#txtPassword").val()!=null){
+		    		$.ajax({
+					    type: 'POST',
+					    url: 'https://uzo-web-app.herokuapp.com/check_student_login',
+					    headers: {
+					        "email":$("#txtEmail").val(),
+            				"password":  $("#txtPassword").val()
+					    }
+					   
+					}).done(function(data) { 
+					    alert(data);
+					});
+
+		    	}
+		        
 		    });
 		});
 	</script>
