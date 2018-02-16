@@ -3,11 +3,30 @@
 <head>
 
 	<style>
-	.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	.Aligner {
+  display: flex;
+  align-items: center;
+  min-height: 24em;
+  justify-content: center;
 }
+
+.Aligner-item {
+  flex: 1;
+}
+
+.Aligner-item--top {
+  align-self: flex-start;
+}
+
+.Aligner-item--bottom {
+  align-self: flex-end;
+}
+
+.Aligner-item--fixed {
+  flex: none;
+  max-width: 50%;
+}
+
 
 		body {
 		    background-image: url(whiteting.jpg);
@@ -24,7 +43,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="Aligner">
   
 <div class="jumbotron">
   <h1>Hello, world!</h1>
