@@ -22,7 +22,9 @@
   <script>
 		$(document).ready(function(){
 		    $("#btnLogin").click(function(){
-		    	if($("#txtEmail").val()=!null && $("#txtPassword").val()!=null){
+		    	var email = $("#txtEmail").val();
+		    	var password= $("#txtPassword").val();
+		    	if(email=!null && password!=null){
 		    		$.ajax({
 					    type: 'POST',
 					    url: 'https://uzo-web-app.herokuapp.com/check_student_login',
