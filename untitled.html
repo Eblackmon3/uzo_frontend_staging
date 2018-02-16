@@ -1,20 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $("p").slideToggle();
-    });
-});
-</script>
+
+
+	<style>
+			.container{
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+		  	min-height: 100vh;
+		  	 opacity: 0.9;
+		  	 padding: 5em inherit;
+		}
+
+
+
+
+		body {
+		    background-image: url(whiteting.jpg);
+		}
+		</style>
+  <title>Login</title>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
+
+	<script>
+		$(document).ready(function(){
+		    $("#login").click(function(){
+		        alert("The paragraph was clicked.");
+		    });
+		});
+	</script>
+	
 <body>
 
-<p>This is a paragraph.</p>
+<div class="container">
+  
+<div class="jumbotron">
+  
+  <button type="button" class="tn btn-primary btn-lg btn-block" id="login">Login</button> 
 
-<button>Toggle between slide up and slide down for a p element</button>
+  <a class="btn btn-primary btn-lg btn-block" >Register</a>
+</div>
+
+
+</div>
 
 </body>
 </html>
