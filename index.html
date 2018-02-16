@@ -3,30 +3,17 @@
 <head>
 
 	<style>
-	.Aligner {
-  display: flex;
-  align-items: center;
-  min-height: 24em;
-  justify-content: center;
-}
+	.flexbox-container {
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
 
-.Aligner-item {
-  flex: 1;
-}
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
 
-.Aligner-item--top {
-  align-self: flex-start;
+	align-items: center;
 }
-
-.Aligner-item--bottom {
-  align-self: flex-end;
-}
-
-.Aligner-item--fixed {
-  flex: none;
-  max-width: 50%;
-}
-
 
 		body {
 		    background-image: url(whiteting.jpg);
@@ -43,7 +30,7 @@
 </head>
 <body>
 
-<div class="Aligner">
+<div class="flexbox-container">
   
 <div class="jumbotron">
   <h1>Hello, world!</h1>
