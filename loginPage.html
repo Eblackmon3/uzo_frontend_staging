@@ -2,11 +2,9 @@
 <html lang="en">
 <head>
 	<script>
-		$(document).ready(function(){
-		    $("login").click(function(){
-		        alert("The paragraph was clicked.");
-		    });
-		});
+				function myFunction() {
+		    alert("The paragraph was clicked.");
+		}
 	</script>
 
 	<style>
@@ -42,7 +40,7 @@
   
 <div class="jumbotron">
   
-  <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button" id="login">Login</a></p>
+  <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button" onclick="myFunction()">Login</a></p>
 
   <p><a class="btn btn-primary btn-lg btn-block" href="#" role="button" id="login">Register</a></p>
 </div>
