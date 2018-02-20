@@ -24,15 +24,17 @@
 		    $("#btnLogin").click(function(){
 		    	var email = $("#txtEmail").val();
 		    	var password= $("#txtPassword").val();
+		    	 var loginInfo = {
+			            email: $("#txtEmail").val();
+			            password: $("#txtPassword").val()
+			        }	
+		    	var data = 
 		    	if(email=!null && password!=null){
 		    		$.ajax({
 					    type: 'POST',
 					    contentType: "application/json",
 					    url: 'https://uzo-web-app.herokuapp.com/check_student_login',
-					    headers: {
-					        "email":email,
-            				"password":password
-					    }
+					   data:JSON.stringify(loginInfo)
 					   
 					}).done(function(data) { 
 					    alert(data);
