@@ -22,8 +22,7 @@
   <script>
 		$(document).ready(function(){
 		    $("#btnLogin").click(function(){
-		    	var email = $("#txtEmail").val();
-		    	var password= $("#txtPassword").val();
+		    
 		    	 var loginInfo = {
 			            email: $("#txtEmail").val(),
 			            password: $("#txtPassword").val()
@@ -36,7 +35,14 @@
 					   data:JSON.stringify(loginInfo)
 					   
 					}).done(function(data) { 
-					    alert(data);
+						// Check browser support
+						if (typeof(Storage) !== "undefined") {
+						    // Store
+						    sessionStorage.setItem("lastname", "Smith");
+						    // Retrieve
+						    document.getElementById("result").innerHTML = sessionStorage.getItem("lastname");
+						} 
+											    alert(sessionStorage.getItem("lastname"));
 					});
 
 		    	}
