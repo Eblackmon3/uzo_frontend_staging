@@ -35,106 +35,113 @@
 		<h1>Registration</h1>
 		<p>Please fill out this form correctly.</p>
 	</div>
-	<div class="container">
-		<div class="row main">
-			<div class="panel-heading">
-				<div class="panel-title text-center">
-					<h1 class="title">Step 1: Basic Information</h1>
-					<hr />
+	<div id="login-overlay" class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="container">
+					<div class="row main">
+						<div class="panel-heading">
+							<div class="panel-title text-center">
+								<h1 class="title">Step 1: Basic Information</h1>
+								<hr />
+							</div>
+						</div>
+						<div class="main-login main-center">
+							<form class="form-horizontal" method="post" action="#">
+								<div class="progress">
+									<div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-md-7">
+										<label for="name">Name</label>
+										<div class="input-group">
+											<input type="text" class="form-control" name="name" id="name"  placeholder="As Shown On Driver License"/>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+										</div>
+										<br>
+										<label for="number" >Phone Number</label>
+										<div class="input-group">
+											<input type="text" class="form-control" name="number" id="number" placeholder="Enter Phone Number"/>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+										</div>
+										<br>
+										<label for="number" >Date of Birth</label>
+										<div class="input-group">
+											<input type="text" class="form-control" name="dob" id="dob" placeholder="MM-DD-YYYY"/>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+										</div>
+										<hr>
+									</div>
+								</div>
+
+								<hr>
+
+								<div class="form-group">
+									<div class="col-md-7">
+										<label for="name">Email Address</label>
+										<div class="input-group">
+											<input type="text" class="form-control" name="email" id="email" placeholder="Enter Email Address"/>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+										</div>
+										<br>
+										<label for="number" >Address</label>
+										<div class="input-group">
+											<input type="text" class="form-control" name="address" id="address" placeholder="Street, City, State, Zip"/>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+										</div>
+										<br>
+										<label for="number" >Major</label>
+										<div class="input-group">
+											<input type="text" class="form-control" name="major" id="major" placeholder="Enter Major"/>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+										</div>
+										<hr>
+									</div>
+								</div>
+
+								<hr>
+
+
+								<div class="form-group">
+									<div class="col-md-12">
+										<label for="grade">Grade</label>
+										<div class="radio">
+											<label><input type="radio" name="optradio">Freshman</label>
+										</div>
+										<div class="radio">
+											<label><input type="radio" name="optradio">Sophmore</label>
+										</div>
+										<div class="radio disabled">
+											<label><input type="radio" name="optradio" disabled>Junior</label>
+										</div>
+										<div class="radio disabled">
+											<label><input type="radio" name="optradio" disabled>Senior</label>
+										</div>
+										<div class="radio disabled">
+											<label><input type="radio" name="optradio" disabled>Victory Lap</label>
+										</div>
+
+										<br>
+									</div>
+								</div>
+
+								<br>
+
+								<div class="form-group ">
+									<div class="input-group-addon">
+										<button type="button" class="btn btn-success pull-right">Next</button>
+									</div>
+
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="main-login main-center">
-				<form class="form-horizontal" method="post" action="#">
-					<div class="progress">
-						<div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-md-7">
-							<label for="name">Name</label>
-							<div class="input-group">
-								<input type="text" class="form-control" name="name" id="name"  placeholder="As Shown On Driver License"/>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-							</div>
-							<br>
-							<label for="number" >Phone Number</label>
-							<div class="input-group">
-								<input type="text" class="form-control" name="number" id="number" placeholder="Enter Phone Number"/>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-							</div>
-							<br>
-							<label for="number" >Date of Birth</label>
-							<div class="input-group">
-								<input type="text" class="form-control" name="dob" id="dob" placeholder="MM-DD-YYYY"/>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-							</div>
-							<hr>
-						</div>
-					</div>
-
-					<hr>
-
-					<div class="form-group">
-						<div class="col-md-7">
-							<label for="name">Email Address</label>
-							<div class="input-group">
-								<input type="text" class="form-control" name="email" id="email" placeholder="Enter Email Address"/>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-							</div>
-							<br>
-							<label for="number" >Address</label>
-							<div class="input-group">
-								<input type="text" class="form-control" name="address" id="address" placeholder="Street, City, State, Zip"/>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-							</div>
-							<br>
-							<label for="number" >Major</label>
-							<div class="input-group">
-								<input type="text" class="form-control" name="major" id="major" placeholder="Enter Major"/>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-							</div>
-							<hr>
-						</div>
-					</div>
-
-					<hr>
-
-
-					<div class="form-group">
-						<div class="col-md-12">
-							<label for="grade">Grade</label>
-							<div class="radio">
-								<label><input type="radio" name="optradio">Freshman</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" name="optradio">Sophmore</label>
-							</div>
-							<div class="radio disabled">
-								<label><input type="radio" name="optradio" disabled>Junior</label>
-							</div>
-							<div class="radio disabled">
-								<label><input type="radio" name="optradio" disabled>Senior</label>
-							</div>
-							<div class="radio disabled">
-								<label><input type="radio" name="optradio" disabled>Victory Lap</label>
-							</div>
-
-							<br>
-						</div>
-					</div>
-					
-					<br>
-
-					<div class="form-group ">
-						<div class="input-group-addon">
-							<button type="button" class="btn btn-success pull-right">Next</button>
-						</div>
-
-					</div>
-				</form>
 			</div>
 		</div>
 	</div>
+
 
 </body>
 </html>
