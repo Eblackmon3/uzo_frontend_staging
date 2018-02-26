@@ -142,11 +142,11 @@
 						form_data.append("student_id", sessionStorage.getItem("student_id"));
 
 						$.ajax({
-						type: 'POST',
-				        enctype: 'multipart/form-data',
-				        processData: false,  // Important!
-				        contentType: false,
-				        cache: false,
+						 type: "POST",
+			            enctype: 'multipart/form-data',
+			            processData: false,
+			            contentType: false,
+			            cache: false,
 						url: 'https://uzo-web-app.herokuapp.com/upload_student_resource',
 					   data:form_data,
 						}).done(function(data) {
