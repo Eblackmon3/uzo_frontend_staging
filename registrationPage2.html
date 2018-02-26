@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+	<style>
+	.container{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+		min-height: 100vh;
+		opacity: 0.9;
+		padding: 5em inherit;
+	}
+
+
+
+
+	body {
+	}
+	</style>
+	<title>Registration</title>
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="jumbotron">
+		<h1 align="center">Registration</h1>
+		<p align="center">Please fill out this form correctly.</p>
+	</div>
+	<div class="progress">
+		<div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
+	<div id="login-overlay" class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="panel-title text-center">
+					<h1 class="title">Step 2: Job Preference</h1>
+				</div>
+			</div>
+			<div class="modal-body">
+							<form id="registerForm" method="POST">
+								<div class="form-group">
+									<div class="col-md-6">
+										<label for="name">Name</label>
+										<div class="input-group">
+											<input type="text" class="form-control" name="name" id="name"  placeholder="As Shown On Driver License"/>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+										</div>
+										<br>
+										<label for="number" >Phone Number</label>
+										<div class="input-group">
+											<input type="text" class="form-control" name="number" id="number" placeholder="Enter Phone Number"/>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+										</div>
+										<br>
+										<label for="number" >Date of Birth</label>
+										<div class="input-group">
+											<input type="text" class="form-control" name="dob" id="dob" placeholder="MM-DD-YYYY"/>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+										</div>
+										<hr>
+									</div>
+								</div>
+
+
+								<hr>
+
+
+								<br>
+
+								<div class="form-group ">
+									<div class="input-group-addon">
+										<button type="button" class="btn btn-success pull-right">Next</button>
+										<button type="button" class="btn btn-success pull-left">Back</button>
+									</div>
+
+								</div>
+							</form>
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
