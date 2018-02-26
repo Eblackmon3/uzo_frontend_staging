@@ -99,12 +99,11 @@
 						});
 				}
         
-				if(fname == null || lname ==null ||number == null || dob == null || email == null || address == null || major == null || grade == 0|| id == null){
+				if(!fname || !lname  ||!number  || !dob  || !email || !address  || !major || !grade || !id ){
 						alert("You must fill in required fields!");
 						$("#next").prop("disabled",true);
 					}
 				else{
-					
 					$.when(ajaxFunction()).done(function(a1){
 						   window.location.href='registrationPage2.html';
 						});
