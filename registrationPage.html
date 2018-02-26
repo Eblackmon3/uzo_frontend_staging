@@ -105,8 +105,8 @@
 						 return $.ajax({
 						type: 'POST',
 						enctype: "multipart/form-data",
-					    processData: false,  // Important!
-				        contentType: false,
+					    contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+    					processData: false,
 				        cache: false,
 						url: 'https://uzo-web-app.herokuapp.com/upload_student_resource',
 					   data:formData,
