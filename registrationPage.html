@@ -88,7 +88,7 @@
 				 }
 
 				 var ajaxFunction= function (){
-						$.ajax({
+						 return $.ajax({
 						type: 'POST',
 						contentType: "application/json",
 						url: 'https://uzo-web-app.herokuapp.com/insert_student',
@@ -104,10 +104,10 @@
 						$("#next").prop("disabled",true);
 					}
 				else{
-
-					$.when(ajaxFunction).done(function(){
-					       window.location.href='registrationPage2.html';
-					   });
+					
+					$.when(ajaxFunction()).done(function(a1){
+						   window.location.href='registrationPage2.html';
+						});
 
 				$("#next").prop("disabled",false);
 			}
