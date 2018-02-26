@@ -151,7 +151,14 @@
 						  "processData": false,
 						  "contentType": false,
 						  "mimeType": "multipart/form-data",
-						  "data": form_data
+						  "data": form_data,
+						  	   error: function (e) {
+
+				                $("#result").text(e.responseText);
+				                console.log("ERROR : ", e);
+				          
+
+				            }
 						}
 
 						$.ajax(settings).done(function (response) {
