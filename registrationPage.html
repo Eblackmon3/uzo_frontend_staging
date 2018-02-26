@@ -142,13 +142,20 @@
 						form_data.append("student_id", sessionStorage.getItem("student_id"));
 
 						$.ajax({
-						 type: "POST",
+						type: "POST",
 			            enctype: 'multipart/form-data',
 			            processData: false,
 			            contentType: false,
 			            cache: false,
 						url: 'https://uzo-web-app.herokuapp.com/upload_student_resource',
 					   data:form_data,
+									   error: function (e) {
+
+				                $("#result").text(e.responseText);
+				                console.log("ERROR : ", e);
+				                $("#btnSubmit").prop("disabled", false);
+
+				            }
 						}).done(function(data) {
 						window.location.href='registrationPage2.html';
 		                   
