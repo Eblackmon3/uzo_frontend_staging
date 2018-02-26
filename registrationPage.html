@@ -35,23 +35,19 @@
 		<h1>Registration</h1>
 		<p>Please fill out this form correctly.</p>
 	</div>
+	<div class="progress">
+		<div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
 	<div id="login-overlay" class="modal-dialog">
 		<div class="modal-content">
+			<div class="modal-header">
+				<div class="panel-title text-center">
+					<h1 class="title">Step 1: Basic Information</h1>
+					<hr />
+				</div>
+			</div>
 			<div class="modal-body">
-				<div class="container">
-					<div class="row main">
-						<div class="panel-heading">
-							<div class="panel-title text-center">
-								<h1 class="title">Step 1: Basic Information</h1>
-								<hr />
-							</div>
-						</div>
-						<div class="main-login main-center">
-							<form class="form-horizontal" method="post" action="#">
-								<div class="progress">
-									<div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-
+							<form class="form-group" method="post" action="#">
 								<div class="form-group">
 									<div class="col-md-7">
 										<label for="name">Name</label>
@@ -74,8 +70,6 @@
 										<hr>
 									</div>
 								</div>
-
-								<hr>
 
 								<div class="form-group">
 									<div class="col-md-7">
@@ -135,9 +129,9 @@
 
 								</div>
 							</form>
-						</div>
-					</div>
-				</div>
+
+
+
 			</div>
 		</div>
 	</div>
