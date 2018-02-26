@@ -30,6 +30,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
 	$(document).ready(function(){
+		
                       /*
                        
                        {
@@ -101,7 +102,6 @@
         
 				if(!fname || !lname  ||!number  || !dob  || !email || !address  || !major || !grade || !id ){
 						alert("You must fill in required fields!");
-						$("#next").prop("disabled",true);
 					}
 				else{
 					$.when(ajaxFunction()).done(function(a1){
