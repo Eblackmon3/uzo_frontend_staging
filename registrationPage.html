@@ -48,6 +48,18 @@
                        */
 			$("#next").click(function(){
 				//window.location.href='registrationPage2.html';
+				var ajaxFunction= function (){
+						$.ajax({
+						type: 'POST',
+						contentType: "application/json",
+						url: 'https://uzo-web-app.herokuapp.com/insert_student',
+					 data:JSON.stringify(registrationInfo)
+
+						}).done(function(data) {
+		                    var result= JSON.parse(data);
+		                        alert(result);
+						});
+				}
 				
 				var fname = $("#fname").val().toLowerCase();
 				var lname = $("#lname").val().toLowerCase();
@@ -92,16 +104,11 @@
 						$("#next").prop("disabled",true);
 					}
 				else{
-					$.ajax({
-						type: 'POST',
-						contentType: "application/json",
-						url: 'https://uzo-web-app.herokuapp.com/insert_student',
-					 data:JSON.stringify(registrationInfo)
 
-				}).done(function(data) {
-                    var result= JSON.parse(data);
-                        alert(result);
-				});
+					$.when(ajaxFunction).done(function(){
+					       window.location.href='registrationPage2.html';
+					   });
+
 				$("#next").prop("disabled",false);
 			}
 			});
