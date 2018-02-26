@@ -87,8 +87,7 @@
                      description: description
 				 }
 				
-				if(fname == null || lname ==null ||number == null || dob == null || email == null || address == null || major = null ||
-					grade == null || id == null){
+				if(fname == null || lname ==null ||number == null || dob == null || email == null || address == null || major = null || grade == null || id == null){
 						alert("You must fill in required fields!")
 						$("#next").prop("disabled",true);
 					}
@@ -101,6 +100,7 @@
 
 				}).done(function(data) {
                     var result= JSON.parse(data);
+                        alert(result);
 				}
 				});
 				$("#next").prop("disabled",false);
