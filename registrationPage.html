@@ -73,7 +73,7 @@
                              grade=5;
                              }
 				var id = $("#customFile").val();
-				alert(id);
+				alert(id.files[0]));
 				var formData = new FormData(id.files[0]);
 
 				var registrationInfo = {
