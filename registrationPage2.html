@@ -314,64 +314,50 @@
 
 					</div>
 					<br>
-					<div class="form-group">
-						<div class="col-md-12">
-							<h5 align="center">Are you able to lift at least 50lbs?</h5>
-							<table id="tbl">
-								<thead>
-									<tr>
-										<td>Yes</td>
-										<td>
-											<input type="radio" class = "radiotbl" />
-										</td>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>No</td>
-										<td>
-											<input type="radio" class = "radiotbl" />
-										</td>
-									</tr>
-								</tbody>
-							</table>
-
+					<form id="registerForm" method="POST">
+						<div class="form-group">
+							<div class="col-md-6">
+								<h5 align="left">Are you able to lift at least 50lbs?</h5>
+								<form>
+									<input type="radio" name="lift" value="yes" checked> Yes<br>
+  								<input type="radio" name="lift" value="no"> No<br>
+								</form>
+							</div>
 						</div>
-					</div>
-					<br>
-					<div class="form-group">
-						<div class="col-md-12">
-							<h5 align="center">How do do you get around?</h5>
-							<table id="tbl">
-								<thead>
-									<tr>
-										<td>Car</td>
-										<td>
-											<input type="checkbox" class = "chcktbl" />
-										</td>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Bike</td>
-										<td>
-											<input type="checkbox" class = "chcktbl" />
-										</td>
-									</tr>
-									<tr>
-										<td>Bus</td>
-										<td>
-											<input type="checkbox" class = "chcktbl" />
-										</td>
-									</tr>
+						<hr>
+						div class="form-group">
+							<div class="col-md-6">
+								<h5 align="left">How do do you get around?</h5>
+								<form>
+									<table id="tbl">
+										<thead>
+											<tr>
+												<td>Car</td>
+												<td>
+													<input type="checkbox" class = "chcktbl" />
+												</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Bike</td>
+												<td>
+													<input type="checkbox" class = "chcktbl" />
+												</td>
+											</tr>
+											<tr>
+												<td>Bus</td>
+												<td>
+													<input type="checkbox" class = "chcktbl" />
+												</td>
+											</tr>
 
-								</tbody>
-							</table>
+										</tbody>
+									</table>
+								</form>
+							</div>
 						</div>
-					</div>
-
-
-
+					</form>
 					<br>
 					<div class="form-group ">
 						<div class="input-group-addon">
