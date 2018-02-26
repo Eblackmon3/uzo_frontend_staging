@@ -13,6 +13,21 @@
 		opacity: 0.9;
 		padding: 5em inherit;
 	}
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	td, th {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 8px;
+	}
+
+	tr:nth-child(even) {
+		background-color: #dddddd;
+	}
 
 
 
@@ -30,9 +45,9 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
 	$(document).ready(function(){
-			$("#back").click(function(){
-					window.location.href='registrationPage.html';
-			});
+		$("#back").click(function(){
+			window.location.href='registrationPage.html';
+		});
 	})
 	;</script>
 </head>
@@ -53,187 +68,187 @@
 				</div>
 			</div>
 			<div class="modal-body">
-							<form id="registerForm" method="POST">
-								<div class="form-group">
-										<label for="name">Why do you want to work with UZO?</label>
-										<div class="input-group">
-											<textarea name="paragraph_text" cols="50" rows="5"></textarea>
-										</div>
-								</div>
-								<table id="tbl">
-									<thead>
-										<tr>
-											<td></td>
-											<td>8am-12pm</td>
-											<td>1pm-5pm</td>
-											<td>6pm-10pm</td>
-											<td>11pm-3am</td>
-											<td>Free all day</td>
-											<td>Busy all day</td>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Monday</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-										</tr>
-										<tr>
-											<td>Tuesday</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-										</tr>
-										<tr>
-											<td>Wednesday</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-										</tr>
-										<tr>
-											<td>Thursday</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-										</tr>
-										<tr>
-											<td>Friday</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-										</tr>
-										<tr>
-											<td>Saturday</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-										</tr>
-										<tr>
-											<td>Sunday</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-											<td>
-												<input type="checkbox" class = "chcktbl" />
-											</td>
-										</tr>
+				<form id="registerForm" method="POST">
+					<div class="form-group">
+						<label for="name">Why do you want to work with UZO?</label>
+						<div class="input-group">
+							<textarea name="paragraph_text" cols="50" rows="5"></textarea>
+						</div>
+					</div>
+					<table id="tbl">
+						<thead>
+							<tr>
+								<td></td>
+								<td>8am-12pm</td>
+								<td>1pm-5pm</td>
+								<td>6pm-10pm</td>
+								<td>11pm-3am</td>
+								<td>Free all day</td>
+								<td>Busy all day</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Monday</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+							</tr>
+							<tr>
+								<td>Tuesday</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+							</tr>
+							<tr>
+								<td>Wednesday</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+							</tr>
+							<tr>
+								<td>Thursday</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+							</tr>
+							<tr>
+								<td>Friday</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+							</tr>
+							<tr>
+								<td>Saturday</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+							</tr>
+							<tr>
+								<td>Sunday</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+								<td>
+									<input type="checkbox" class = "chcktbl" />
+								</td>
+							</tr>
 
-									</tbody>
-								</table>
+						</tbody>
+					</table>
 
 
-								<br>
-								<div class="form-group ">
-									<div class="input-group-addon">
-										<button type="button" class="btn btn-success pull-right" id= "next">Next</button>
-										<button type="button" class="btn btn-success pull-left" id= "back">Back</button>
-									</div>
+					<br>
+					<div class="form-group ">
+						<div class="input-group-addon">
+							<button type="button" class="btn btn-success pull-right" id= "next">Next</button>
+							<button type="button" class="btn btn-success pull-left" id= "back">Back</button>
+						</div>
 
-								</div>
-							</form>
+					</div>
+				</form>
 
 
 
