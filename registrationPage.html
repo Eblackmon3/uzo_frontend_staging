@@ -30,7 +30,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
 	$(document).ready(function(){
-		
+
                       /*
                        
                        {
@@ -73,6 +73,7 @@
                              grade=5;
                              }
 				var id = $("#customFile").val();
+				var formData = new FormData(id);
 
 				var registrationInfo = {
 					 first_name: fname,
@@ -99,12 +100,27 @@
 		                        alert(result);
 						});
 				}
+
+				var documentUpload= function (){
+						 return $.ajax({
+						type: 'POST',
+						enctype: "multipart/form-data",
+					    processData: false,  // Important!
+				        contentType: false,
+				        cache: false,
+						url: 'https://uzo-web-app.herokuapp.com/upload_student_resource',
+					   data:formData,
+						}).done(function(data) {
+		                    var result= JSON.parse(data);
+		                        alert(result);
+						});
+				}
         
 				if(!fname || !lname  ||!number  || !dob  || !email || !address  || !major || !grade || !id ){
 						alert("You must fill in required fields!");
 					}
 				else{
-					$.when(ajaxFunction()).done(function(a1){
+					$.when(ajaxFunction(), documentUpload()).done(function(a1, a2){
 						   window.location.href='registrationPage2.html';
 						});
 
