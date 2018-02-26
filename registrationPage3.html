@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+	<style>
+	.container{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+		min-height: 100vh;
+		opacity: 0.9;
+		padding: 5em inherit;
+	}
+
+
+
+
+	body {
+	}
+	</style>
+	<title>Registration</title>
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+			$("#back").click(function(){
+					window.location.href='registrationPage2.html';
+			});
+	})
+	$(document).ready(function(){
+			$("#submit").click(function(){
+					window.location.href='loginPage.html';
+			});
+	})
+	;</script>
+</head>
+
+<body>
+	<div class="jumbotron">
+		<h1 align="center">Registration</h1>
+		<p align="center">Please fill out this form correctly.</p>
+	</div>
+	<div class="progress">
+		<div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
+	<div id="login-overlay" class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="panel-title text-center">
+					<h1 class="title">Step 1: Basic Information</h1>
+				</div>
+			</div>
+			<div class="modal-body">
+							<form id="registerForm" method="POST">
+								<div class="form-group">
+									<div class="col-md-12">
+										<label for="grade">Work Reference 1</label>
+										<input type="text" class="form-control" name="wr1" id="wr1"  placeholder="Company Name, Supervisor Name & Supervisor Email"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label for="grade">Work Reference 2</label>
+										<input type="text" class="form-control" name="wr2" id="wr2"  placeholder="Company Name, Supervisor Name & Supervisor Email"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label for="grade">Work Reference 3</label>
+										<input type="text" class="form-control" name="wr3" id="wr3"  placeholder="Company Name, Supervisor Name & Supervisor Email"/>
+									</div>
+								</div>
+								<br>
+
+
+								<div class="custom-file">
+									<div class="col-md-12">
+										<h5 align="center">Upload Resume</h5>
+										<input type="file" class="custom-file-input" id="customFile">
+
+									</div>
+
+								</div>
+								<br>
+								<form id="registerForm3" method="POST">
+									<div class="form-group">
+										<div class="col-md-6">
+											<h5 align="left">Have you ever been convicted of a crime?</h5>
+											<form>
+												<input type="radio" name="lift" value="yes" checked> Yes<br>
+			  								<input type="radio" name="lift" value="no"> No<br>
+											</form>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-6">
+											<h5 align="left">How did yo hear about us?</h5>
+											<form>
+												<select>
+  												<option value="Word of mouth">Word of mouth</option>
+  												<option value="Social Media">Social Media</option>
+  												<option value="Print">Print</option>
+												</select>
+											</form>
+										</div>
+									</div>
+								</form>
+
+								<div class="form-group ">
+									<div class="input-group-addon">
+										<button type="button" class="btn btn-success pull-right" id="submit">Submit</button>
+										<button type="button" class="btn btn-success pull-left" id= "back">Back</button>
+									</div>
+
+								</div>
+							</form>
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
