@@ -47,16 +47,16 @@
                        }
                        */
 			$("#next").click(function(){
-				window.location.href='registrationPage2.html';
+				//window.location.href='registrationPage2.html';
 				
-				var fname = $("#fname").val();
-				var lname = $("#lname").val();
+				var fname = $("#fname").val().toLowerCase();
+				var lname = $("#lname").val().toLowerCase();
 				var number = $("#number").val();
 				var dob = $("#dob").val();
                 var university= "UGA";
-				var email = $("#email").val();
-				var address = $("#address").val();
-				var major = $("#major").val();
+				var email = $("#email").val().toLowerCase();
+				var address = $("#address").val().toLowerCase();
+				var major = $("#major").val().toLowerCase();
                 var password= " ";
                 var description = " ";
 				var grade = $('input[name=optradio]:checked').val();
