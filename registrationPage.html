@@ -121,7 +121,7 @@
 						 return $.ajax({
 						type:'GET',	
 						contentType: "application/json",				
-						url: 'https://uzo-web-app.herokuapp.com/insert_student',
+						url: 'https://uzo-web-app.herokuapp.com/get_last_inserted_student',
 						}).done(function(data) {
 		                    var result= JSON.parse(data);
 		                        if (typeof(Storage) !== "undefined") {
