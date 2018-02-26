@@ -141,7 +141,7 @@
 					$.when(ajaxFunction(), ajaxFunctionTwo).done(function(a1, a2){
 						form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
 						console.log(typeof(file_data));
-						console.log(typeof(parseInt(sessionStorage.getItem("student_id")))
+						console.log(typeof(parseInt(sessionStorage.getItem("student_id"))))
 
 						$.ajax({
 						type: "POST",
