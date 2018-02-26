@@ -73,7 +73,7 @@
                              grade=5;
                              }
 				var id = $("#customFile");
-				var formData = new FormData(id.files[0]);
+				var formData = new FormData(id.prop("files")[0]);
 
 				var registrationInfo = {
 					 first_name: fname,
