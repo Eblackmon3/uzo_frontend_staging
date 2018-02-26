@@ -31,6 +31,52 @@
 	<script>
 	$(document).ready(function(){
 			$("#next").click(function(){
+				var name = $("#name").val();
+				var number = $("#number").val();
+				var dob = $("#dob").val();
+				var email = $("#email").val();
+				var address = $("#address").val();
+				var major = $("#major").val();
+				var grade = $('input[name=optradio]:checked').val();
+				var id = $("#customFile").val();
+
+				var registrationInfo = {
+					 first_name: $("#name").val();
+					 phone_number:$("#number").val();
+					 date_of_birth: $("#dob").val();
+					 email:$("#email").val();
+					 address:$("#address").val();
+					 major:$("#major").val();
+					 grade:$('input[name=optradio]:checked').val();
+					 //id has to be added to database
+					 id:$("#customFile").val();
+					 }
+
+				if(name == null || number == null || dob == null || email == null || address == null || major = null ||
+					grade == null || id == null){
+						alert("You must fill in required fields!")
+						$("#next").prop("disabled",true);
+					}
+				else{
+					$.ajax({
+						type: 'POST',
+						contentType: "application/json",
+						url: 'https://uzo-web-app.herokuapp.com/update_student_info',
+					 data:JSON.stringify(registrationInfo)
+
+				}).done(function(data) {
+						var result = JSON.parse(data);
+						 if (typeof(Storage) !== "undefined") {
+						// Store
+						sessionStorage.setItem("student_id",result.student_id);
+
+				}
+				});
+				$("#next").prop("disabled",false);
+				}
+;)
+;
+
 					window.location.href='registrationPage2.html';
 			});
 	})
@@ -56,9 +102,9 @@
 							<form id="registerForm" method="POST">
 								<div class="form-group">
 									<div class="col-md-6">
-										<label for="name">Name</label>
+										<label for="name">First Name</label>
 										<div class="input-group">
-											<input type="text" class="form-control" name="name" id="name"  placeholder="As Shown On Driver License"/>
+											<input type="text" class="form-control" name="fname" id="fname"  placeholder="As Shown On Driver License"/>
 											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 										</div>
 										<br>
@@ -79,9 +125,9 @@
 
 								<div class="form-group">
 									<div class="col-md-6">
-										<label for="name">Email Address</label>
+										<label for="name">Last Name</label>
 										<div class="input-group">
-											<input type="text" class="form-control" name="email" id="email" placeholder="Enter Email Address"/>
+											<input type="text" class="form-control" name="lname" id="lname"  placeholder="As Shown On Driver License"/>
 											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 										</div>
 										<br>
@@ -91,9 +137,9 @@
 											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 										</div>
 										<br>
-										<label for="number" >Major</label>
+										<label for="name">Email Address</label>
 										<div class="input-group">
-											<input type="text" class="form-control" name="major" id="major" placeholder="Enter Major"/>
+											<input type="text" class="form-control" name="email" id="email" placeholder="Enter Email Address"/>
 											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 										</div>
 										<hr>
@@ -102,24 +148,33 @@
 
 								<hr>
 
+								<div class="form-group">
+									<div class="col-md-12">
+										<label for="number" >Major</label>
+										<div class="input-group">
+											<input type="text" class="form-control" name="major" id="major" placeholder="Enter Major"/>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+										</div>
+									</div>
+								</div>
 
 								<div class="form-group">
 									<div class="col-md-12">
 										<label for="grade">Grade</label>
 										<div class="radio">
-											<label><input type="radio" name="optradio">Freshman</label>
+											<label><input type="radio" name="optradio" value="Freshman">Freshman</label>
 										</div>
 										<div class="radio">
-											<label><input type="radio" name="optradio">Sophmore</label>
+											<label><input type="radio" name="optradio" value="Sophmore">Sophmore</label>
 										</div>
 										<div class="radio">
-											<label><input type="radio" name="optradio" disabled>Junior</label>
+											<label><input type="radio" name="optradio" value="Junior">Junior</label>
 										</div>
 										<div class="radio">
-											<label><input type="radio" name="optradio" disabled>Senior</label>
+											<label><input type="radio" name="optradio" value="Senior">Senior</label>
 										</div>
 										<div class="radio">
-											<label><input type="radio" name="optradio" disabled>Victory Lap</label>
+											<label><input type="radio" name="optradio" value="Victory Lap">Victory Lap</label>
 										</div>
 
 										<br>
