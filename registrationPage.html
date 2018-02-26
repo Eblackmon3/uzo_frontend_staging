@@ -58,7 +58,7 @@
 				var address = $("#address").val();
 				var major = $("#major").val();
                 var password= " ";
-                var descriptino = " ";
+                var description = " ";
 				var grade = $('input[name=optradio]:checked').val();
                              if(grade=="Freshman"){
                              grade=1;
@@ -86,9 +86,9 @@
                      password: password,
                      description: description
 				 }
-				
-				if(fname == null || lname ==null ||number == null || dob == null || email == null || address == null || major = null || grade == 0|| id == null){
-						alert("You must fill in required fields!")
+        
+				if(fname == null || lname ==null ||number == null || dob == null || email == null || address == null || major == null || grade == 0|| id == null){
+						alert("You must fill in required fields!");
 						$("#next").prop("disabled",true);
 					}
 				else{
