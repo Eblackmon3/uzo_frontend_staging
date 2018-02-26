@@ -143,26 +143,21 @@
 						console.log(file_data.name);
 						console.log(typeof(parseInt(sessionStorage.getItem("student_id"))))
 
-						$.ajax({
-						type: "POST",
-			            enctype: 'multipart/form-data',
-			            processData: false,
-			            contentType: false,
-			            cache: false,
-						url: 'https://uzo-web-app.herokuapp.com/upload_student_resource',
-					   data:form_data,
-									   error: function (e) {
+						var settings = {
+							  "async": true,
+							  "crossDomain": true,
+							  "url": "https://uzo-web-app.herokuapp.com/upload_student_resource",
+							  "method": "POST",
+							  "processData": false,
+							  "contentType": false,
+							  "mimeType": "multipart/form-data",
+							  "data": form_data
+							}
 
-				                $("#result").text(e.responseText);
-				                console.log("ERROR : ", e);
-				                $("#btnSubmit").prop("disabled", false);
-
-				            }
-						}).done(function(data) {
-						window.location.href='registrationPage2.html';
-		                   
-						});
-						});
+							$.ajax(settings).done(function (response) {
+							  console.log(response);
+							  window.location.href='registrationPage2.html';
+							});
 
 				$("#next").prop("disabled",false);
 			}
