@@ -116,12 +116,42 @@
 		                        alert(result);
 						});
 				}
+
+				 var ajaxFunctionTwo= function (){
+						 return $.ajax({
+						type:'GET',	
+						contentType: "application/json",				
+						url: 'https://uzo-web-app.herokuapp.com/insert_student',
+						}).done(function(data) {
+		                    var result= JSON.parse(data);
+		                        if (typeof(Storage) !== "undefined") {
+		                        	alert(result.student_id);
+					    // Store
+					    sessionStorage.setItem("student_id",result.student_id);
+
+					}
+						});
+				}
+
         
 				if(!fname || !lname  ||!number  || !dob  || !email || !address  || !major || !grade || !id ){
 						alert("You must fill in required fields!");
 					}
 				else{
-					$.when(ajaxFunction(), documentUpload()).done(function(a1, a2){
+					$.when(ajaxFunction(), ajaxFunctionTwo).done(function(a1, a2){
+						form_data.append("student_id", sessionStorage.getItem("student_id"));
+
+						$.ajax({
+						type: 'POST',
+				        enctype: 'multipart/form-data',
+				        processData: false,  // Important!
+				        contentType: false,
+				        cache: false,
+						url: 'https://uzo-web-app.herokuapp.com/upload_student_resource',
+					   data:form_data,
+						}).done(function(data) {
+		                   
+						});
 						   window.location.href='registrationPage2.html';
 						});
 
