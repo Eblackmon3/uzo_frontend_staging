@@ -138,7 +138,7 @@
 						alert("You must fill in required fields!");
 					}
 				else{
-					$.when(ajaxFunction(), ajaxFunctionTwo).done(function(a1, a2){
+					$.when(ajaxFunction(), ajaxFunctionTwo()).done(function(a1, a2){
 						form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
 						console.log(file_data.name);
 						console.log(sessionStorage.getItem("student_id"));
