@@ -73,7 +73,7 @@
                              grade=5;
                              }
 				var id = $("#customFile").val();
-				var formData = new FormData(id);
+				var formData = new FormData(id.files[0]);
 
 				var registrationInfo = {
 					 first_name: fname,
@@ -104,9 +104,9 @@
 				var documentUpload= function (){
 						 return $.ajax({
 						type: 'POST',
-						enctype: "multipart/form-data",
-					    contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
-    					processData: false,
+				        enctype: 'multipart/form-data',
+				        processData: false,  // Important!
+				        contentType: false,
 				        cache: false,
 						url: 'https://uzo-web-app.herokuapp.com/upload_student_resource',
 					   data:formData,
