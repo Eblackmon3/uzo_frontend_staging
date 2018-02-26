@@ -32,8 +32,9 @@
 	$(document).ready(function(){
 			$("#next").click(function(){
 				window.location.href='registrationPage2.html';
-				
-				var name = $("#name").val();
+
+				var fname = $("#fname").val();
+				var lname = $("#lname").val();
 				var number = $("#number").val();
 				var dob = $("#dob").val();
 				var email = $("#email").val();
@@ -43,7 +44,8 @@
 				var id = $("#customFile").val();
 
 				var registrationInfo = {
-					 first_name: $("#name").val();
+					 first_name: $("#fname").val();
+					 last_name: $("#lname").val();
 					 phone_number:$("#number").val();
 					 date_of_birth: $("#dob").val();
 					 email:$("#email").val();
@@ -54,10 +56,10 @@
 					 id:$("#customFile").val();
 					 }
 
-				if(name == null || number == null || dob == null || email == null || address == null || major = null ||
+				if(fname == null || lname ==null ||number == null || dob == null || email == null || address == null || major = null ||
 					grade == null || id == null){
 						alert("You must fill in required fields!")
-						//$("#next").prop("disabled",true);
+						$("#next").prop("disabled",true);
 					}
 				else{
 					$.ajax({
@@ -74,7 +76,7 @@
 
 				}
 				});
-				//$("#next").prop("disabled",false);
+				$("#next").prop("disabled",false);
 				}
 ;)
 ;
