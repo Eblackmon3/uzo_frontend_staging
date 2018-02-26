@@ -31,6 +31,8 @@
 	<script>
 	$(document).ready(function(){
 			$("#next").click(function(){
+				window.location.href='registrationPage2.html';
+				
 				var name = $("#name").val();
 				var number = $("#number").val();
 				var dob = $("#dob").val();
@@ -55,7 +57,7 @@
 				if(name == null || number == null || dob == null || email == null || address == null || major = null ||
 					grade == null || id == null){
 						alert("You must fill in required fields!")
-						$("#next").prop("disabled",true);
+						//$("#next").prop("disabled",true);
 					}
 				else{
 					$.ajax({
@@ -72,12 +74,12 @@
 
 				}
 				});
-				$("#next").prop("disabled",false);
+				//$("#next").prop("disabled",false);
 				}
 ;)
 ;
 
-					window.location.href='registrationPage2.html';
+
 			});
 	})
 	;</script>
