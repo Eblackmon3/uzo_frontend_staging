@@ -113,7 +113,7 @@
 					   data:JSON.stringify(registrationInfo)
 						}).done(function(data) {
 		                    var result= JSON.parse(data);
-		                    alert(data.student_id);
+		                    alert(result.student_id);
 		                         // Store
 					    sessionStorage.setItem("student_id",result.student_id);
 		                    
