@@ -33,19 +33,22 @@
 
                       /*
                        
-                       {
-                       "email": "stephenoakala@gmail.com", -
-                       "password": "281330800fB", -
-                       "first_name": "Stephen", -
-                       "last_name":"Okala", -
-                       "university":"Georgia Tech",-
-                       "phone_numnber":"571-344-9998", -
-                       "address": "13464 gray valley ct",
-                       "date_of_birth":"1/27/1993",-
-                       "major":" "Computer Science",-
-                       "year":"1",-
-                       "description":"realest of the real"-
-                       }
+                      {
+			         "email": "stephenoakala@gmail.com",
+			         "password": "281330800fB",
+			         "first_name": "Stephen",
+			         "last_name":"Okala",
+			         "university":"Georgia Tech",
+			         "phone_numnber":"571-344-9998",
+			          "state": "VA",
+			          "street": "hood avenue",
+			          "city": "Chantilly",
+			          "apt": "115",
+			         "date_of_birth":"1/27/1993",
+			         "major":" "Computer Science",
+			         "year":1,
+			         "description":"realest of the real"
+        			}
                        */
 			$("#next").click(function(){
 				
@@ -56,7 +59,16 @@
 				var dob = $("#dob").val();
                 var university= "UGA";
 				var email = $("#email").val().toLowerCase();
-				var address = $("#address").val().toLowerCase();
+				//var state = $("#state").val().toLowerCase();
+				var state = " ";
+				//var city = $("#city").val().toLowerCase();
+				var city = " " ;
+				//var street = $("#street").val().toLowerCase();
+				var street = " ";
+
+				//var apt= $("#apt").val().toLowerCase();
+				var apt= " ";
+
 				var major = $("#major").val().toLowerCase();
                 var password= " ";
                 var description = " ";
@@ -88,6 +100,10 @@
 					 year:grade,
                      password: password,
                      description: description
+                     state:state,
+                     city:city,
+                     street: street,
+                     apt:apt
 				 }
 
 				 var ajaxFunction= function (){
@@ -133,7 +149,7 @@
 						});
 				}
 
-        
+        		//Need to change this when the other adress stuff is put in
 				if(!fname || !lname  ||!number  || !dob  || !email || !address  || !major || !grade || !id ){
 						alert("You must fill in required fields!");
 					}
