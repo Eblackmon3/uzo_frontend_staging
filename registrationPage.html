@@ -129,24 +129,10 @@
 					   data:form_data,
 						}).done(function(data) {
 		                    var result= JSON.parse(data);
-
-		                        
-						});
-				}
-
-				 var ajaxFunctionTwo= function (){
-						 return $.ajax({
-						type:'GET',	
-						contentType: "application/json",				
-						url: 'https://uzo-web-app.herokuapp.com/get_last_inserted_student',
-						}).done(function(data) {
-		                    var result= JSON.parse(data);
-		                        if (typeof(Storage) !== "undefined") {
-		                  
-					    // Store
+		                    // Store
 					    sessionStorage.setItem("student_id",result.student_id);
 
-					}
+		                        
 						});
 				}
 
@@ -155,7 +141,7 @@
 						alert("You must fill in required fields!");
 					}
 				else{
-					$.when(ajaxFunction(), ajaxFunctionTwo()).done(function(a1, a2){
+					$.when(ajaxFunction()).done(function(a1){
 						form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
 						console.log(file_data.name);
 						console.log(sessionStorage.getItem("student_id"));
