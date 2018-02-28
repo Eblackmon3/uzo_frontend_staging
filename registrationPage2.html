@@ -125,9 +125,9 @@
 					   data:JSON.stringify(workAbility)
 						}).done(function(data) {
 		                    var result= JSON.parse(data);
-		                    
+
 						});
-				}	
+				}
 			var ajaxFunctionTwo= function (){
 						 return $.ajax({
 						type: 'POST',
@@ -136,7 +136,7 @@
 					   data:JSON.stringify(studPref)
 						}).done(function(data) {
 		                    var result= JSON.parse(data);
-		                    
+
 						});
 				}
 
@@ -146,16 +146,16 @@
 				else{
 					$.when(ajaxFunction(), ajaxFunctionTwo()).done(function(a1, a2){
 							window.location.href='registrationPage3.html'
-					
+
 						});
 
 				$("#next").prop("disabled",false);
-			}			
+			}
 
 
 		});
 	})
-	
+
 	;</script>
 </head>
 
@@ -183,6 +183,11 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label for="title">When are you most free to pick up gigs?</label>
+						<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+						<div id="slider-range"></div>
+					</div>
+					<!--<div class="form-group">
 						<label for="title">When are you most free to pick up gigs?</label>
 						<table id="tbl">
 							<thead>
@@ -347,7 +352,7 @@
 
 							</tbody>
 						</table>
-					</div>
+					</div>-->
 					<br>
 					<div class="form-group">
 						<label for="title">Work I Can Do (Select all that apply)</label>
