@@ -70,105 +70,105 @@
 			var bus_checked=$("#bus").prop('checked');
 
 			/*
-					{
-		      student_id: 50,
-		        bar:true,
-		       cashier:true,
-		       cleaning:true,
-		       data_entry:true,
-		       desk_assistant:true,
-		        driving_delivery:true,
-		       event_security:true,
-		       setup_breakdown:true,
-		       food_service:true,
-		        moving:true
-		      }
-		      */
-			var workAbility = {
-					 student_id: parseInt(sessionStorage.getItem("student_id")),
-					 bar: bartender_checked,
-					 cashier: cashier_checked,
-                     cleaning: cleaning_checked,
-					 data_entry: data_checked,
-					 desk_assistant: desk_checked,
-					 driving_delivery:driving_checked,
-					 event_security:event_checked,
-                     setup_breakdown: breakdown_checked,
-                     food_service: food_checked,
-                     moving:moving_checked
-				 }
+			{
+			student_id: 50,
+			bar:true,
+			cashier:true,
+			cleaning:true,
+			data_entry:true,
+			desk_assistant:true,
+			driving_delivery:true,
+			event_security:true,
+			setup_breakdown:true,
+			food_service:true,
+			moving:true
+		}
+		*/
+		var workAbility = {
+			student_id: parseInt(sessionStorage.getItem("student_id")),
+			bar: bartender_checked,
+			cashier: cashier_checked,
+			cleaning: cleaning_checked,
+			data_entry: data_checked,
+			desk_assistant: desk_checked,
+			driving_delivery:driving_checked,
+			event_security:event_checked,
+			setup_breakdown: breakdown_checked,
+			food_service: food_checked,
+			moving:moving_checked
+		}
 
-				 /*
-							  {
-			        "student_id": 50,
-			        "uzo_reason": "For the racks",
-			        "lift_ability": true",
-			        "bike":true,
-			        "car":true,
-			        "bus":true
+		/*
+		{
+		"student_id": 50,
+		"uzo_reason": "For the racks",
+		"lift_ability": true",
+		"bike":true,
+		"car":true,
+		"bus":true
 
-			 */
-				 var studPref = {
-					 student_id: parseInt(sessionStorage.getItem("student_id")),
-					 uzo_reason: why_uzo,
-					 lift_ability: lift_checked,
-                     bike: bike_checked,
-                     car: car_checked,
-                     bus: bus_checked
-				 }
+		*/
+		var studPref = {
+			student_id: parseInt(sessionStorage.getItem("student_id")),
+			uzo_reason: why_uzo,
+			lift_ability: lift_checked,
+			bike: bike_checked,
+			car: car_checked,
+			bus: bus_checked
+		}
 
-			var ajaxFunction= function (){
-						 return $.ajax({
-						type: 'POST',
-						contentType: "application/json",
-						url: 'https://uzo-web-app.herokuapp.com/insert_student_work_ability',
-					   data:JSON.stringify(workAbility)
-						}).done(function(data) {
-		                    var result= JSON.parse(data);
+		var ajaxFunction= function (){
+			return $.ajax({
+				type: 'POST',
+				contentType: "application/json",
+				url: 'https://uzo-web-app.herokuapp.com/insert_student_work_ability',
+				data:JSON.stringify(workAbility)
+			}).done(function(data) {
+				var result= JSON.parse(data);
 
-						});
-				}
-			var ajaxFunctionTwo= function (){
-						 return $.ajax({
-						type: 'POST',
-						contentType: "application/json",
-						url: 'https://uzo-web-app.herokuapp.com/insert_student_preferences',
-					   data:JSON.stringify(studPref)
-						}).done(function(data) {
-		                    var result= JSON.parse(data);
+			});
+		}
+		var ajaxFunctionTwo= function (){
+			return $.ajax({
+				type: 'POST',
+				contentType: "application/json",
+				url: 'https://uzo-web-app.herokuapp.com/insert_student_preferences',
+				data:JSON.stringify(studPref)
+			}).done(function(data) {
+				var result= JSON.parse(data);
 
-						});
-				}
+			});
+		}
 
-				if( !why_uzo ){
-						alert("You must fill in reason for UZO appliciation");
-					}
-				else{
-					$.when(ajaxFunction(), ajaxFunctionTwo()).done(function(a1, a2){
-							window.location.href='registrationPage3.html'
+		if( !why_uzo ){
+			alert("You must fill in reason for UZO appliciation");
+		}
+		else{
+			$.when(ajaxFunction(), ajaxFunctionTwo()).done(function(a1, a2){
+				window.location.href='registrationPage3.html'
 
-						});
+			});
 
-				$("#next").prop("disabled",false);
-			}
+			$("#next").prop("disabled",false);
+		}
 
 
-		});
-	})
-	$(function() {
-  $( "#slider-range-max" ).slider({
-    range: "max",
-    min: 1,
-    max: 10,
-    value: 2,
-    slide: function( event, ui ) {
-      $( "#amount" ).val( ui.value );
-    }
-  });
-  $( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
+	});
+})
+$(document).ready(function() {
+	$( "#slider-range-max" ).slider({
+		range: "max",
+		min: 1,
+		max: 10,
+		value: 2,
+		slide: function( event, ui ) {
+			$( "#amount" ).val( ui.value );
+		}
+	});
+	$( "#amount" ).val( $( "#slider-range-max" ).slider( "value" ) );
 });
 
-	;</script>
+;</script>
 </head>
 
 <body>
@@ -200,307 +200,307 @@
 						<div id="slider-range"></div>
 					</div>
 					<!--<div class="form-group">
-						<label for="title">When are you most free to pick up gigs?</label>
-						<table id="tbl">
-							<thead>
-								<tr>
-									<td></td>
-									<td >8am-12pm</td>
-									<td>1pm-5pm</td>
-									<td>6pm-10pm</td>
-									<td>11pm-3am</td>
-									<td>Free all day</td>
-									<td>Busy all day</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Monday</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-								</tr>
-								<tr>
-									<td>Tuesday</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-								</tr>
-								<tr>
-									<td>Wednesday</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-								</tr>
-								<tr>
-									<td>Thursday</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-								</tr>
-								<tr>
-									<td>Friday</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-								</tr>
-								<tr>
-									<td>Saturday</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-								</tr>
-								<tr>
-									<td>Sunday</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" />
-									</td>
-								</tr>
+					<label for="title">When are you most free to pick up gigs?</label>
+					<table id="tbl">
+					<thead>
+					<tr>
+					<td></td>
+					<td >8am-12pm</td>
+					<td>1pm-5pm</td>
+					<td>6pm-10pm</td>
+					<td>11pm-3am</td>
+					<td>Free all day</td>
+					<td>Busy all day</td>
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+			<td>Monday</td>
+			<td>
+			<input type="checkbox" class = "chcktbl" />
+		</td>
+		<td>
+		<input type="checkbox" class = "chcktbl" />
+	</td>
+	<td>
+	<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+</tr>
+<tr>
+<td>Tuesday</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+</tr>
+<tr>
+<td>Wednesday</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+</tr>
+<tr>
+<td>Thursday</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+</tr>
+<tr>
+<td>Friday</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+</tr>
+<tr>
+<td>Saturday</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+</tr>
+<tr>
+<td>Sunday</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+<td>
+<input type="checkbox" class = "chcktbl" />
+</td>
+</tr>
 
-							</tbody>
-						</table>
-					</div>-->
-					<br>
-					<div class="form-group">
-						<label for="title">Work I Can Do (Select all that apply)</label>
-						<table id="tbl">
-							<thead>
-								<tr>
-									<td>Bar Staff & Bartending</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" id="bartender"/>
-									</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Cashier</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" id="cashier"/>
-									</td>
-								</tr>
-								<tr>
-									<td>Cleaning</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" id="cleaning" />
-									</td>
-								</tr>
-								<tr>
-									<td>Data Entry</td>
-									<td>
-										<input type="checkbox" class = "chcktbl" id="data"/>
-									</td>
-								</tr>
-								<tr>
-									<td>Desk Assistant</td>
-									<td>
-										<input type="checkbox" class = "chcktbl"id="desk" />
-									</td>
-								</tr>
-								<tr>
-									<td>Driving & Delivery</td>
-									<td>
-										<input type="checkbox" class = "chcktbl"id="driving" />
-									</td>
-								</tr>
-								<tr>
-									<td>Event Security</td>
-									<td>
-										<input type="checkbox" class = "chcktbl"
-										id="event_security" />
-									</td>
-								</tr>
-								<tr>
-									<td>Event Set-up/ Break-down</td>
-									<td>
-										<input type="checkbox" class = "chcktbl"
-										id="event_breakdown" />
-									</td>
-								</tr>
-								<tr>
-									<td>Food Service</td>
-									<td>
-										<input type="checkbox" class = "chcktbl"id="food_service" />
-									</td>
-								</tr>
-								<tr>
-									<td>Moving</td>
-									<td>
-										<input type="checkbox" class = "chcktbl"
-										id="moving" />
-									</td>
-								</tr>
+</tbody>
+</table>
+</div>-->
+<br>
+<div class="form-group">
+	<label for="title">Work I Can Do (Select all that apply)</label>
+	<table id="tbl">
+		<thead>
+			<tr>
+				<td>Bar Staff & Bartending</td>
+				<td>
+					<input type="checkbox" class = "chcktbl" id="bartender"/>
+				</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cashier</td>
+				<td>
+					<input type="checkbox" class = "chcktbl" id="cashier"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Cleaning</td>
+				<td>
+					<input type="checkbox" class = "chcktbl" id="cleaning" />
+				</td>
+			</tr>
+			<tr>
+				<td>Data Entry</td>
+				<td>
+					<input type="checkbox" class = "chcktbl" id="data"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Desk Assistant</td>
+				<td>
+					<input type="checkbox" class = "chcktbl"id="desk" />
+				</td>
+			</tr>
+			<tr>
+				<td>Driving & Delivery</td>
+				<td>
+					<input type="checkbox" class = "chcktbl"id="driving" />
+				</td>
+			</tr>
+			<tr>
+				<td>Event Security</td>
+				<td>
+					<input type="checkbox" class = "chcktbl"
+					id="event_security" />
+				</td>
+			</tr>
+			<tr>
+				<td>Event Set-up/ Break-down</td>
+				<td>
+					<input type="checkbox" class = "chcktbl"
+					id="event_breakdown" />
+				</td>
+			</tr>
+			<tr>
+				<td>Food Service</td>
+				<td>
+					<input type="checkbox" class = "chcktbl"id="food_service" />
+				</td>
+			</tr>
+			<tr>
+				<td>Moving</td>
+				<td>
+					<input type="checkbox" class = "chcktbl"
+					id="moving" />
+				</td>
+			</tr>
 
-							</tbody>
-						</table>
+		</tbody>
+	</table>
 
-					</div>
-					<hr>
-					<form id="registerForm" method="POST">
-						<div class="form-group">
-							<div class="col-md-6">
-								<h5 align="left">Are you able to lift at least 50lbs?</h5>
-								<form>
-									<input type="radio" name="lift" value="yes" checked id="yes_option"> Yes<br>
-  								<input type="radio" name="lift" value="no" id="no_option"> No<br>
-								</form>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-md-6">
-								<h5 align="left">How do do you get around?</h5>
-								<form>
-									<table id="tbl">
-										<thead>
-											<tr>
-												<td>Car</td>
-												<td>
-													<input type="checkbox" class = "chcktbl" id="car"/>
-												</td>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>Bike</td>
-												<td>
-													<input type="checkbox" class = "chcktbl" id="bike" />
-												</td>
-											</tr>
-											<tr>
-												<td>Bus</td>
-												<td>
-													<input type="checkbox" class = "chcktbl" id="bus"/>
-												</td>
-											</tr>
-
-										</tbody>
-									</table>
-								</form>
-							</div>
-						</div>
-					</form>
-					<br>
-					<hr>
-					<div class="form-group ">
-						<div class="input-group-addon">
-							<button type="button" class="btn btn-success pull-right" id= "next">Next</button>
-							<button type="button" class="btn btn-success pull-left" id= "back">Back</button>
-						</div>
-
-					</div>
-
-				</form>
-
-
-
-			</div>
+</div>
+<hr>
+<form id="registerForm" method="POST">
+	<div class="form-group">
+		<div class="col-md-6">
+			<h5 align="left">Are you able to lift at least 50lbs?</h5>
+			<form>
+				<input type="radio" name="lift" value="yes" checked id="yes_option"> Yes<br>
+				<input type="radio" name="lift" value="no" id="no_option"> No<br>
+			</form>
 		</div>
 	</div>
+	<div class="form-group">
+		<div class="col-md-6">
+			<h5 align="left">How do do you get around?</h5>
+			<form>
+				<table id="tbl">
+					<thead>
+						<tr>
+							<td>Car</td>
+							<td>
+								<input type="checkbox" class = "chcktbl" id="car"/>
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Bike</td>
+							<td>
+								<input type="checkbox" class = "chcktbl" id="bike" />
+							</td>
+						</tr>
+						<tr>
+							<td>Bus</td>
+							<td>
+								<input type="checkbox" class = "chcktbl" id="bus"/>
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+</form>
+<br>
+<hr>
+<div class="form-group ">
+	<div class="input-group-addon">
+		<button type="button" class="btn btn-success pull-right" id= "next">Next</button>
+		<button type="button" class="btn btn-success pull-left" id= "back">Back</button>
+	</div>
+
+</div>
+
+</form>
+
+
+
+</div>
+</div>
+</div>
 
 
 </body>
