@@ -37,7 +37,14 @@
 	})
 	$(document).ready(function(){
 			$("#submit").click(function(){
-					window.location.href='commingSoon.html';
+				var wr1 = $("#wr1").val().toLowerCase();
+				var wr2 = $("#wr2").val().toLowerCase();
+				var wr3 = $("#wr3").val().toLowerCase();
+				var customFile = $("#customFile").val().toLowerCase();
+				var registerForm3 = $("#registerForm3").val().toLowerCase();
+				var yes_checked=$("#yes_checked").prop('checked');
+				alert(yes_checked);
+					//window.location.href='commingSoon.html';
 			});
 	})
 	;</script>
@@ -108,7 +115,7 @@
 										<div class="col-md-6">
 											<h5 align="left">Have you ever been convicted of a crime?</h5>
 											<form>
-												<input type="radio" name="lift" value="yes" checked> Yes<br>
+												<input type="radio" name="lift" value="yes" id="yes_checked" checked> Yes<br>
 			  								<input type="radio" name="lift" value="no"> No<br>
 											</form>
 										</div>
