@@ -48,12 +48,114 @@
 		$("#back").click(function(){
 			window.location.href='registrationPage.html';
 		});
-	})
-	$(document).ready(function(){
+
 		$("#next").click(function(){
-			window.location.href='registrationPage3.html';
+			//window.location.href='registrationPage3.html';
+			var why_uzo=$("#hear_uzo").val();
+			var bartender_checked=$("#bartender").prop('checked');
+			var cashier_checked=$("#cashier").prop('checked');
+			var cleaning_checked=$("#cleaning").prop('checked');
+			var data_checked=$("#data").prop('checked');
+			var desk_checked=$("#desk").prop('checked');
+			var driving_checked=$("#driving").prop('checked');
+			var event_checked=$("#event_security").prop('checked');
+			var breakdown_checked=$("#event_breakdown").prop('checked');
+			var moving_checked=$("#moving").prop('checked');
+			var food_checked=$("#food_service").prop('checked');
+
+			var lift_checked=$("#yes_option").prop('checked');
+
+			var car_checked=$("#car").prop('checked');
+			var bike_checked=$("#bike").prop('checked');
+			var bus_checked=$("#bus").prop('checked');
+
+			/*
+					{
+		      student_id: 50,
+		        bar:true,
+		       cashier:true,
+		       cleaning:true,
+		       data_entry:true,
+		       desk_assistant:true,
+		        driving_delivery:true,
+		       event_security:true,
+		       setup_breakdown:true,
+		       food_service:true,
+		        moving:true
+		      }
+		      */
+			var workAbility = {
+					 student_id: parseInt(sessionStorage.getItem("student_id")),
+					 bar: bartender_checked,
+					 cashier: cashier_checked,
+                     cleaning: cleaning_checked,
+					 data_entry: data_checked,
+					 desk_assistant: desk_checked,
+					 driving_delivery:driving_checked,
+					 event_security:event_checked,
+                     setup_breakdown: breakdown_checked,
+                     food_service: food_checked,
+                     moving:moving_checked
+				 }
+
+				 /*
+							  {
+			        "student_id": 50,
+			        "uzo_reason": "For the racks",
+			        "lift_ability": true",
+			        "bike":true,
+			        "car":true,
+			        "bus":true
+
+			 */
+				 var studPref = {
+					 student_id: parseInt(sessionStorage.getItem("student_id")),
+					 uzo_reason: why_uzo,
+					 lift_ability: lift_checked,
+                     bike: bike_checked,
+                     car: car_checked,
+                     bus: bus_checked
+				 }
+
+			var ajaxFunction= function (){
+						 return $.ajax({
+						type: 'POST',
+						contentType: "application/json",
+						url: 'https://uzo-web-app.herokuapp.com/insert_student_work_ability',
+					   data:JSON.stringify(workAbility)
+						}).done(function(data) {
+		                    var result= JSON.parse(data);
+		                    
+						});
+				}	
+			var ajaxFunctionTwo= function (){
+						 return $.ajax({
+						type: 'POST',
+						contentType: "application/json",
+						url: 'https://uzo-web-app.herokuapp.com/insert_student_preferences',
+					   data:JSON.stringify(studPref)
+						}).done(function(data) {
+		                    var result= JSON.parse(data);
+		                    
+						});
+				}
+
+				if( !why_uzo ){
+						alert("You must fill in reason for UZO appliciation");
+					}
+				else{
+					$.when(ajaxFunction(), ajaxFunctionTwo()).done(function(a1, a2){
+							window.location.href='registrationPage3.html'
+					
+						});
+
+				$("#next").prop("disabled",false);
+			}			
+
+
 		});
 	})
+	
 	;</script>
 </head>
 
@@ -77,7 +179,7 @@
 					<div class="form-group">
 						<label for="name">Why do you want to work with UZO?</label>
 						<div class="input-group">
-							<textarea name="paragraph_text" cols="50" rows="5"></textarea>
+							<textarea name="paragraph_text" cols="50" rows="5" id= "hear_uzo"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -254,7 +356,7 @@
 								<tr>
 									<td>Bar Staff & Bartending</td>
 									<td>
-										<input type="checkbox" class = "chcktbl" />
+										<input type="checkbox" class = "chcktbl" id="bartender"/>
 									</td>
 								</tr>
 							</thead>
@@ -262,55 +364,58 @@
 								<tr>
 									<td>Cashier</td>
 									<td>
-										<input type="checkbox" class = "chcktbl" />
+										<input type="checkbox" class = "chcktbl" id="cashier"/>
 									</td>
 								</tr>
 								<tr>
 									<td>Cleaning</td>
 									<td>
-										<input type="checkbox" class = "chcktbl" />
+										<input type="checkbox" class = "chcktbl" id="cleaning" />
 									</td>
 								</tr>
 								<tr>
 									<td>Data Entry</td>
 									<td>
-										<input type="checkbox" class = "chcktbl" />
+										<input type="checkbox" class = "chcktbl" id="data"/>
 									</td>
 								</tr>
 								<tr>
 									<td>Desk Assistant</td>
 									<td>
-										<input type="checkbox" class = "chcktbl" />
+										<input type="checkbox" class = "chcktbl"id="desk" />
 									</td>
 								</tr>
 								<tr>
 									<td>Driving & Delivery</td>
 									<td>
-										<input type="checkbox" class = "chcktbl" />
+										<input type="checkbox" class = "chcktbl"id="driving" />
 									</td>
 								</tr>
 								<tr>
 									<td>Event Security</td>
 									<td>
-										<input type="checkbox" class = "chcktbl" />
+										<input type="checkbox" class = "chcktbl"
+										id="event_security" />
 									</td>
 								</tr>
 								<tr>
 									<td>Event Set-up/ Break-down</td>
 									<td>
-										<input type="checkbox" class = "chcktbl" />
+										<input type="checkbox" class = "chcktbl"
+										id="event_breakdown" />
 									</td>
 								</tr>
 								<tr>
 									<td>Food Service</td>
 									<td>
-										<input type="checkbox" class = "chcktbl" />
+										<input type="checkbox" class = "chcktbl"id="food_service" />
 									</td>
 								</tr>
 								<tr>
 									<td>Moving</td>
 									<td>
-										<input type="checkbox" class = "chcktbl" />
+										<input type="checkbox" class = "chcktbl"
+										id="moving" />
 									</td>
 								</tr>
 
@@ -324,8 +429,8 @@
 							<div class="col-md-6">
 								<h5 align="left">Are you able to lift at least 50lbs?</h5>
 								<form>
-									<input type="radio" name="lift" value="yes" checked> Yes<br>
-  								<input type="radio" name="lift" value="no"> No<br>
+									<input type="radio" name="lift" value="yes" checked id="yes_option"> Yes<br>
+  								<input type="radio" name="lift" value="no" id="no_option"> No<br>
 								</form>
 							</div>
 						</div>
@@ -338,7 +443,7 @@
 											<tr>
 												<td>Car</td>
 												<td>
-													<input type="checkbox" class = "chcktbl" />
+													<input type="checkbox" class = "chcktbl" id="car"/>
 												</td>
 											</tr>
 										</thead>
@@ -346,13 +451,13 @@
 											<tr>
 												<td>Bike</td>
 												<td>
-													<input type="checkbox" class = "chcktbl" />
+													<input type="checkbox" class = "chcktbl" id="bike" />
 												</td>
 											</tr>
 											<tr>
 												<td>Bus</td>
 												<td>
-													<input type="checkbox" class = "chcktbl" />
+													<input type="checkbox" class = "chcktbl" id="bus"/>
 												</td>
 											</tr>
 

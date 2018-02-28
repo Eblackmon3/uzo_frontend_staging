@@ -30,49 +30,148 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
 	$(document).ready(function(){
+
+                      /*
+                       
+                      {
+			         "email": "stephenoakala@gmail.com",
+			         "password": "281330800fB",
+			         "first_name": "Stephen",
+			         "last_name":"Okala",
+			         "university":"Georgia Tech",
+			         "phone_numnber":"571-344-9998",
+			          "state": "VA",
+			          "street": "hood avenue",
+			          "city": "Chantilly",
+			          "apt": "115",
+			         "date_of_birth":"1/27/1993",
+			         "major":" "Computer Science",
+			         "year":1,
+			         "description":"realest of the real"
+        			}
+                       */
 			$("#next").click(function(){
-				window.location.href='registrationPage2.html';
-				/*
-				var fname = $("#fname").val();
-				var lname = $("#lname").val();
+				
+				
+				var fname = $("#fname").val().toLowerCase();
+				var lname = $("#lname").val().toLowerCase();
 				var number = $("#number").val();
 				var dob = $("#dob").val();
-				var email = $("#email").val();
-				var address = $("#address").val();
-				var major = $("#major").val();
-				var grade = $('input[name=optradio]:checked').val();
-				var id = $("#customFile").val();
+                var university= "UGA";
+				var email = $("#email").val().toLowerCase();
+				//var state = $("#state").val().toLowerCase();
+				var state = " ";
+				//var city = $("#city").val().toLowerCase();
+				var city = " " ;
+				//var street = $("#street").val().toLowerCase();
+				var street = " ";
 
+				//var apt= $("#apt").val().toLowerCase();
+				var apt= " ";
+
+				var major = $("#major").val().toLowerCase();
+                var password= " ";
+                var description = " ";
+				var grade = $('input[name=optradio]:checked').val();
+                             if(grade=="Freshman"){
+                             grade=1;
+                             }else if(grade == "Sophmore"){
+                             grade=2;
+                             }else if(grade == "Junior"){
+                             grade=3;
+                             }else if(grade == "Senior"){
+                             grade=4;
+                             }else{
+                             grade=5;
+                             }
+				var id = $("#customFile");
+				var file_data = id[0].files[0];
+				var form_data = new FormData();
+				form_data.append("file", file_data);
 				var registrationInfo = {
-					 first_name: $("#fname").val();
-					 last_name: $("#lname").val();
-					 phone_number:$("#number").val();
-					 date_of_birth: $("#dob").val();
-					 email:$("#email").val();
-					 address:$("#address").val();
-					 major:$("#major").val();
-					 grade:$('input[name=optradio]:checked').val();
-					 //id has to be added to database
-					 id:$("#customFile").val();
-				 }*/
-				/*
-				if(fname == null || lname ==null ||number == null || dob == null || email == null || address == null || major = null ||
-					grade == null || id == null){
-						alert("You must fill in required fields!")
-						$("#next").prop("disabled",true);
-					}
-				else{
-					$.ajax({
+					 first_name: fname,
+					 last_name: lname,
+					 phone_number: number,
+                     university: university,
+					 date_of_birth: dob,
+					 email: email,
+					 major:major,
+					 year:grade,
+                     password: password,
+                     description: description,
+                     state:state,
+                     city:city,
+                     street: street,
+                     apt:apt
+				 }
+
+				 var ajaxFunction= function (){
+						 return $.ajax({
 						type: 'POST',
 						contentType: "application/json",
-						url: 'https://uzo-web-app.herokuapp.com/update_student_info',
-					 data:JSON.stringify(registrationInfo)
-
-				}).done(function(data) {
-
+						url: 'https://uzo-web-app.herokuapp.com/insert_student',
+					   data:JSON.stringify(registrationInfo)
+						}).done(function(data) {
+		                    var result= JSON.parse(data);
+		                    alert(result.student_id);
+		                         // Store
+					    sessionStorage.setItem("student_id",result.student_id);
+		                    
+						});
 				}
-				});
-				$("#next").prop("disabled",false);*/
+
+				var documentUpload= function (){
+						 return $.ajax({
+						type: 'POST',
+				        enctype: 'multipart/form-data',
+				        processData: false,  // Important!
+				        contentType: false,
+				        cache: false,
+						url: 'https://uzo-web-app.herokuapp.com/upload_student_resource',
+					   data:form_data,
+						}).done(function(data) {
+		                    var result= JSON.parse(data);
+		               
+
+		                        
+						});
+				}
+
+        		//Need to change this when the other adress stuff is put in
+				if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade || !id ){
+						alert("You must fill in required fields!");
+					}
+				else{
+					$.when(ajaxFunction()).done(function(a1){
+						form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
+						console.log(file_data.name);
+						console.log(sessionStorage.getItem("student_id"));
+
+						var settings = {
+						  "url": "https://uzo-web-app.herokuapp.com/upload_student_resource",
+						  "method": "POST",
+						  "processData": false,
+						  "contentType": false,
+						  "mimeType": "multipart/form-data",
+						  "data": form_data,
+						  	   error: function (e) {
+
+				                $("#result").text(e.responseText);
+				                console.log("ERROR : ", e);
+				          
+
+				            }
+						}
+
+						$.ajax(settings).done(function (response) {
+						  console.log(response);
+						  window.location.replace("registrationPage2.html")
+						});
+
+						});
+
+				$("#next").prop("disabled",false);
+			}
 			});
 		});
 	</script>
