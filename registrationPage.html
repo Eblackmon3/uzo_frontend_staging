@@ -30,6 +30,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
 	$(document).ready(function(){
+			$("#next").click(function(){
+					window.location.href='registrationPage2.html';
+			});
+	});
+	/*$(document).ready(function(){
 
                       /*
 
@@ -50,6 +55,7 @@
 			         "description":"realest of the real"
         			}
                        */
+			/*
 			$("#next").click(function(){
 
 
@@ -173,7 +179,7 @@
 				$("#next").prop("disabled",false);
 			}
 			});
-		});
+		});*/
 	</script>
 </head>
 
@@ -249,9 +255,9 @@
 											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 										</div>
 										<br>
-										<label for="name" >Street</label>
+										<label for="number" >Zipcode</label>
 										<div class="input-group">
-											<input type="text" class="form-control" name="street" id="Street" placeholder="Enter The Street"/>
+											<input type="text" class="form-control" name="zipcode" id="zipcode" placeholder="Enter The Zipcode"/>
 											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 										</div>
 										<br>
