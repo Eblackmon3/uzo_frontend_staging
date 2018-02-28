@@ -32,7 +32,7 @@
 	$(document).ready(function(){
 
                       /*
-                       
+
                       {
 			         "email": "stephenoakala@gmail.com",
 			         "password": "281330800fB",
@@ -51,8 +51,8 @@
         			}
                        */
 			$("#next").click(function(){
-				
-				
+
+
 				var fname = $("#fname").val().toLowerCase();
 				var lname = $("#lname").val().toLowerCase();
 				var number = $("#number").val();
@@ -116,7 +116,7 @@
 		                    alert(result.student_id);
 		                         // Store
 					    sessionStorage.setItem("student_id",result.student_id);
-		                    
+
 						});
 				}
 
@@ -131,9 +131,9 @@
 					   data:form_data,
 						}).done(function(data) {
 		                    var result= JSON.parse(data);
-		               
 
-		                        
+
+
 						});
 				}
 
@@ -158,7 +158,7 @@
 
 				                $("#result").text(e.responseText);
 				                console.log("ERROR : ", e);
-				          
+
 
 				            }
 						}
@@ -213,11 +213,13 @@
 											<input type="text" class="form-control" name="number" id="number" placeholder="Enter Apartment Number"/>
 											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 										</div>
+										<br>
 										<label for="name">State</label>
 										<div class="input-group">
 											<input type="text" class="form-control" name="state" id="state"  placeholder="Enter The State"/>
 											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 										</div>
+										<br>
 										<label for="number" >Date of Birth</label>
 										<div class="input-group">
 											<input type="text" class="form-control" name="dob" id="dob" placeholder="MM-DD-YYYY"/>
@@ -252,6 +254,7 @@
 											<input type="text" class="form-control" name="street" id="Street" placeholder="Enter The Street"/>
 											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 										</div>
+										<br>
 										<label for="name">Email Address</label>
 										<div class="input-group">
 											<input type="text" class="form-control" name="email" id="email" placeholder="Enter Email Address"/>
