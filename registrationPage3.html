@@ -44,7 +44,70 @@
 				var hear_uzo = $("#hear_uzo").val().toLowerCase();
 				var yes_checked=$("#yes_checked").prop('checked');
 				alert(hear_uzo);
-					//window.location.href='commingSoon.html';
+				var file_data = customFile[0].files[0];
+				var form_data = new FormData();
+				form_data.append("file", file_data);
+
+				var registrationInfo = {
+					student_id:parseInt(sessionStorage.getItem("student_id")),
+					 work_reference_1: wr1,
+					 work_reference_2: wr2,
+					 work_reference_3: wr3,
+                     hear_uzo: hear_uzo,
+					 crime: yes_checked
+					}
+
+
+				 var ajaxFunction= function (){
+						 return $.ajax({
+						type: 'POST',
+						contentType: "application/json",
+						url: 'https://uzo-web-app.herokuapp.com/insert_student_work_history',
+					   data:JSON.stringify(registrationInfo)
+						}).done(function(data) {
+		                    var result= JSON.parse(data);
+		      
+					    sessionStorage.setItem("student_id",result.student_id);
+
+						});
+				}
+
+		
+
+				if(!customFile){
+					alert("Resume must be upload ")
+				}else{
+					$.when(ajaxFunction()).done(function(a1){
+						form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
+						console.log(file_data.name);
+						console.log(sessionStorage.getItem("student_id"));
+
+						var settings = {
+						  "url": "https://uzo-web-app.herokuapp.com/upload_student_resume",
+						  "method": "POST",
+						  "processData": false,
+						  "contentType": false,
+						  "mimeType": "multipart/form-data",
+						  "data": form_data,
+						  	   error: function (e) {
+
+				                $("#result").text(e.responseText);
+				                console.log("ERROR : ", e);
+
+
+				            }
+						}
+
+						$.ajax(settings).done(function (response) {
+						  console.log(response);
+						  window.location.replace("commingSoon.html.html")
+						});
+
+						});
+
+				$("#next").prop("disabled",false);
+				}
+				
 			});
 	})
 	;</script>
