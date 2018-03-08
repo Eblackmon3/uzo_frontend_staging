@@ -52,7 +52,7 @@
                        */
 			
 			$("#next").click(function(){
-				console.log(id[0]);
+
 
 				var fname = $("#fname").val().toLowerCase();
 				var lname = $("#lname").val().toLowerCase();
@@ -84,8 +84,7 @@
                              	grade=null;
                              }
 				var id = $("#customFile");
-				console.log(id);
-				console.log(grade);
+				console.log(id[0]);
 				var file_data = id[0].files[0];
 				var form_data = new FormData();
 				form_data.append("file", file_data);
