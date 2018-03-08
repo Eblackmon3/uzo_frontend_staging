@@ -73,8 +73,8 @@
 
 		
 
-				if(!customFile){
-					alert("Resume must be upload ")
+				if(!customFile[0].files[0]){
+					alert("Resume must be upload ");
 				}else{
 					$.when(ajaxFunction()).done(function(a1){
 						form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
