@@ -79,6 +79,20 @@
 	$(document).ready(function(){
 		 $("#number").mask('(000) 000-0000');
 		 $("#dob").mask('00-00-0000');
+
+		 $("#apt").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //do nothing 
+    }
+   });
+
+		 $("#zipcode").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //do nothing 
+    }
+   });
                       /*
 
                       {
@@ -102,19 +116,19 @@
 			$("#next").click(function(){
 
 
-				var fname = $("#fname").val().toLowerCase();
-				var lname = $("#lname").val().toLowerCase();
+				var fname = $("#fname").val();
+				var lname = $("#lname").val();
 				var number = $("#number").val();
 				var dob = $("#dob").val();
                 var university= "UGA";
-				var email = $("#email").val().toLowerCase();
-				var state = $("#state").val().toLowerCase();
-				var city = $("#city").val().toLowerCase();
-				var street = $("#street").val().toLowerCase();
-				var apt= $("#apt").val().toLowerCase();
+				var email = $("#email").val();
+				var state = $("#state").val();
+				var city = $("#city").val();
+				var street = $("#street").val();
+				var apt= $("#apt").val();
 				var zipcode= $("#zipcode").val();
 
-				var major = $("#major").val().toLowerCase();
+				var major = $("#major").val();
                 var password= " ";
                 var description = " ";
 				var grade = $('input[name=optradio]:checked').val();
