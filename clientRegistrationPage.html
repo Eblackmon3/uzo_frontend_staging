@@ -30,98 +30,98 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
+	src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	crossorigin="anonymous"></script>
 
 
 	<script
-  src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
-  integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
-  crossorigin="anonymous"></script>
+	src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
+	integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+	crossorigin="anonymous"></script>
 	<script>
 
 
 
 	$(document).ready(function(){
 
-			$("#next").click(function(){
+		$("#next").click(function(){
 
 
-				var cname = $("#cname").val().toLowerCase();
-				var number = $("#number").val();
-				var jtitle = $("#jtitle").val().toLowerCase();
-				var jdescription = $("#jdescription").val().toLowerCase();
-				var hear_uzo = $("#hear_uzo").val().toLowerCase();
+			var cname = $("#cname").val().toLowerCase();
+			var number = $("#number").val();
+			var jtitle = $("#jtitle").val().toLowerCase();
+			var jdescription = $("#jdescription").val().toLowerCase();
+			var hear_uzo = $("#hear_uzo").val().toLowerCase();
 
-				var registrationInfo = {
-					 first_name: fname,
-					 last_name: lname,
-					 phone_number: number,
-                     university: university,
-					 date_of_birth: dob,
-					 email: email,
-					 major:major,
-					 year:grade,
-                     password: password,
-                     description: description,
-                     state:state,
-                     city:city,
-                     street: street,
-                     apt:apt,
-                     zipcode:zipcode
-				 }
+			var registrationInfo = {
+				first_name: fname,
+				last_name: lname,
+				phone_number: number,
+				university: university,
+				date_of_birth: dob,
+				email: email,
+				major:major,
+				year:grade,
+				password: password,
+				description: description,
+				state:state,
+				city:city,
+				street: street,
+				apt:apt,
+				zipcode:zipcode
+			}
 
-				 var ajaxFunction= function (){
-						 return $.ajax({
-						type: 'POST',
-						contentType: "application/json",
-						url: 'https://uzo-web-app.herokuapp.com/insert_student',
-					   data:JSON.stringify(registrationInfo)
-						}).done(function(data) {
-		                    var result= JSON.parse(data);
+			var ajaxFunction= function (){
+				return $.ajax({
+					type: 'POST',
+					contentType: "application/json",
+					url: 'https://uzo-web-app.herokuapp.com/insert_student',
+					data:JSON.stringify(registrationInfo)
+				}).done(function(data) {
+					var result= JSON.parse(data);
 
-					    sessionStorage.setItem("student_id",result.student_id);
+					sessionStorage.setItem("student_id",result.student_id);
 
-						});
-				}
-
-
-				if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade || !id[0].files[0] || !state || !city || !street || !zipcode){
-						alert("You must fill in required fields!");
-					}
-				else{
-					$.when(ajaxFunction()).done(function(a1){
-						form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
-						console.log(sessionStorage.getItem("student_id"));
-
-						var settings = {
-						  "url": "https://uzo-web-app.herokuapp.com/upload_student_resource",
-						  "method": "POST",
-						  "processData": false,
-						  "contentType": false,
-						  "mimeType": "multipart/form-data",
-						  "data": form_data,
-						  	   error: function (e) {
-
-				                $("#result").text(e.responseText);
-				                console.log("ERROR : ", e);
+				});
+			}
 
 
-				            }
+			if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade || !id[0].files[0] || !state || !city || !street || !zipcode){
+				alert("You must fill in required fields!");
+			}
+			else{
+				$.when(ajaxFunction()).done(function(a1){
+					form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
+					console.log(sessionStorage.getItem("student_id"));
+
+					var settings = {
+						"url": "https://uzo-web-app.herokuapp.com/upload_student_resource",
+						"method": "POST",
+						"processData": false,
+						"contentType": false,
+						"mimeType": "multipart/form-data",
+						"data": form_data,
+						error: function (e) {
+
+							$("#result").text(e.responseText);
+							console.log("ERROR : ", e);
+
+
 						}
+					}
 
-						$.ajax(settings).done(function (response) {
-						  console.log(response);
-						  window.location.replace("registrationPage2.html")
-						});
+					$.ajax(settings).done(function (response) {
+						console.log(response);
+						window.location.replace("registrationPage2.html")
+					});
 
-						});
+				});
 
 				$("#next").prop("disabled",false);
 			}
-			});
 		});
+	});
 	</script>
 </head>
 
@@ -141,57 +141,55 @@
 				</div>
 			</div>
 			<div class="modal-body">
-							<form id="registerForm" method="POST">
-								<div class="form-group">
-									<div class="col-md-6">
-										<label for="name">Company Name</label>
-										<div class="input-group">
-											<input type="text" class="form-control" name="cname" id="cname"placeholder="What is your company's name?"/>
-											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-										</div>
-										<br>
-										<label for="number" >Phone Number</label>
-										<div class="input-group">
-											<input type="text" class="form-control" name="number" id="number" placeholder="What is your phone number?"/>
-											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-										</div>
-										<br>
-										<label for="name" >Job Title</label>
-										<div class="input-group">
-											<input type="text" class="form-control" name="jtitle" id="jtitle" placeholder="What is your position in your company?"/>
-											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-										</div>
-										<br>
-										<label for="name" >Job Description</label>
-										<div class="input-group">
-											<input type="text" class="form-control" name="jdescription" id="jdescription" placeholder="In a few sentences, tell us what your position entails?"/>
-											<span class="input-group-addon"></span></span>
-										</div>
-										<br>
-										<label for="name" >How did you hear about us?</label>
-										<div class="input-group">
-											<form>
-												<select  id="hear_uzo">
-  												<option value="Word of mouth">Word of mouth</option>
-  												<option value="Social Media">Social Media</option>
-  												<option value="Email/Newsletter">Email/Newsletter</option>
-													<option value="Advertisement">Advertisement</option>
-													<option value="Other">Other</option>
-												</select>
-											</form>
-										</div>
-										<div class="form-group ">
-											<div class="input-group-addon">
-												<button type="button" class="btn btn-success pull-right" id="next">Next</button>
-											</div>
-
-										</div>
-									</div>
-								</div>
+				<form id="registerForm" method="POST">
+					<div class="form-group">
+						<div class="col-md-6">
+							<label for="name">Company Name</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="cname" id="cname"placeholder="What is your company's name?"/>
+								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+							</div>
+							<br>
+							<label for="number" >Phone Number</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="number" id="number" placeholder="What is your phone number?"/>
+								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+							</div>
+							<br>
+							<label for="name" >Job Title</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="jtitle" id="jtitle" placeholder="What is your position in your company?"/>
+								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+							</div>
+							<br>
+							<label for="name" >Job Description</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="jdescription" id="jdescription" placeholder="In a few sentences, tell us what your position entails?"/>
+								<span class="input-group-addon"></span></span>
+							</div>
+							<br>
+							<label for="name" >How did you hear about us?</label>
+							<div class="input-group">
+								<form>
+									<select  id="hear_uzo">
+										<option value="Word of mouth">Word of mouth</option>
+										<option value="Social Media">Social Media</option>
+										<option value="Email/Newsletter">Email/Newsletter</option>
+										<option value="Advertisement">Advertisement</option>
+										<option value="Other">Other</option>
+									</select>
 								</form>
+							</div>
+						</div>
 
+					</div>
+					<div class="form-group ">
+						<div class="input-group-addon">
+							<button type="button" class="btn btn-success pull-right" id="next">Next</button>
+						</div>
+					</div>
 
-
+				</form>
 			</div>
 		</div>
 	</div>
