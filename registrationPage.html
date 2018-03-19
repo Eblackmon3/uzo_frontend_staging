@@ -21,7 +21,7 @@
     z-index: 1000;
     float: left;
     display: none;
-    min-width: 160px;   
+    min-width: 160px;
     padding: 4px 0;
     margin: 0 0 10px 25px;
     list-style: none;
@@ -71,7 +71,7 @@
   src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
   integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
   crossorigin="anonymous"></script>
-	
+
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
 
@@ -217,7 +217,7 @@
 	"Interdisciplinary Writing Certificate",
 	"Interior Design",
 	"International Affairs",
-	"International Agriculture Certificate", 
+	"International Agriculture Certificate",
 	"International Business",
 	"Italian",
 	"Journalism",
@@ -255,7 +255,7 @@
 	"Personal & Org. Leadership Cert.",
 	"Pharmaceutical Sciences",
 	"Pharmacy",
-	"Pharmacy Entrepreneurship Certificate", 
+	"Pharmacy Entrepreneurship Certificate",
 	"Philosophy",
 	"Physics",
 	"Physics & Astronomy",
@@ -306,7 +306,7 @@
       source: availableTags
     });
   } );
-  
+
 	// Numeric only control handler
 jQuery.fn.ForceNumericOnly =
 function()
@@ -319,7 +319,7 @@ function()
             // allow backspace, tab, delete, enter, arrows, numbers and keypad numbers ONLY
             // home, end, period, and numpad decimal
             return (
-                key == 8 || 
+                key == 8 ||
                 key == 9 ||
                 key == 13 ||
                 key == 46 ||
@@ -335,7 +335,7 @@ function()
 		 $("#number").mask('(000) 000-0000');
 		 $("#dob").mask('00-00-0000');
 
-	
+
 
 
 		 $("#zipcode").ForceNumericOnly();
@@ -359,7 +359,7 @@ function()
 			         "description":"realest of the real"
         			}
                        */
-			
+
 			$("#next").click(function(){
 
 
@@ -423,7 +423,7 @@ function()
 					   data:JSON.stringify(registrationInfo)
 						}).done(function(data) {
 		                    var result= JSON.parse(data);
-		      
+
 					    sessionStorage.setItem("student_id",result.student_id);
 
 						});
@@ -522,7 +522,7 @@ function()
 											<span class="input-group-addon"></span></span>
 										</div>
 										<br>
-										
+
 										<label for="state">State</label>
 										<div >
 											<select class="form-control" id="state" name="state">
@@ -682,9 +682,6 @@ function()
 
 								</div>
 							</form>
-
-
-
 			</div>
 		</div>
 	</div>
