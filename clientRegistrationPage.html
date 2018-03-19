@@ -43,7 +43,7 @@
 
 
 
-	$(document).ready(function(){
+	/*$(document).ready(function(){
 
 		$("#next").click(function(){
 
@@ -121,6 +121,11 @@
 				$("#next").prop("disabled",false);
 			}
 		});
+	});*/
+	$(document).ready(function(){
+			$("#next").click(function(){
+					window.location.href='clientRegistrationPage2.html';
+			});
 	});
 	</script>
 </head>
@@ -149,19 +154,19 @@
 								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 							</div>
 							<br>
-							<label for="name" >(Company)Street</label>
+							<label for="name" >Street</label>
 							<div class="input-group">
 								<input type="text" class="form-control" name="street" id="street" placeholder="Enter The Street"/>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 							</div>
 							<br>
-							<label for="name" >(Compant)City</label>
+							<label for="name" >City</label>
 							<div class="input-group">
 								<input type="text" class="form-control" name= "city" id="city" placeholder="Enter The City"/>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 							</div>
 							<br>
-							<label for="state">(Company)State</label>
+							<label for="state">State</label>
 							<div >
 								<select class="form-control" id="state" name="state">
 									<option value="">N/A</option>
@@ -221,7 +226,7 @@
 							</div>
 							<br>
 
-							<label for="number" >(Company)Zipcode</label>
+							<label for="number" >Zipcode</label>
 							<div class="input-group">
 								<input type="text" class="form-control" name="zipcode" id="zipcode" placeholder="Enter The Zipcode"/>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
