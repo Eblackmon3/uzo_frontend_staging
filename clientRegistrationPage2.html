@@ -43,7 +43,7 @@
 
 
 
-	$(document).ready(function(){
+	/*$(document).ready(function(){
 
 		$("#next").click(function(){
 
@@ -121,6 +121,11 @@
 				$("#next").prop("disabled",false);
 			}
 		});
+	});*/
+	$(document).ready(function(){
+			$("#back").click(function(){
+					window.location.href='clientRegistrationPage.html';
+			});
 	});
 	</script>
 </head>
@@ -189,6 +194,7 @@
 					<div class="form-group ">
 						<div class="input-group-addon">
 							<button type="button" class="btn btn-success pull-right" id="next">Next</button>
+							<button type="button" class="btn btn-success pull-left" id= "back">Back</button>
 						</div>
 					</div>
 
