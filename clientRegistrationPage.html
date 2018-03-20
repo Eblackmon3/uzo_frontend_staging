@@ -97,7 +97,6 @@
 					data:JSON.stringify(registrationInfo)
 				}).done(function(data) {
 					var result= JSON.parse(data);
-
 					sessionStorage.setItem("company_id",result.company_id);
 
 				});
