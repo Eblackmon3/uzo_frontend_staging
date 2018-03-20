@@ -13,6 +13,9 @@
 		opacity: 0.9;
 		padding: 5em inherit;
 	}
+	textarea {
+    resize: none;
+	}
 
 
 
@@ -241,17 +244,17 @@
 							<br>
 							<label for="name" >Company Description</label>
 							<div class="input-group">
-								<textarea rows="4" cols="75" required placeholder="In a few sentences, tell us what your company do?">
+								<textarea rows="4" cols="75" placeholder="In a few sentences, tell us what your company do?" required>
 								</textarea>
 							</div>
 							<br>
 							<label for="name" >Password</label>
 							<div class="input-group">
-								<input type="text" class="form-control" name="password" id="password" placeholder="Password"/>
+								<input type="password" class="form-control" name="password" id="password" placeholder="Password"/>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 							</div>
 							<div class="input-group">
-								<input type="text" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm Password"/>
+								<input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm Password"/>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 							</div>
 							<hr>
