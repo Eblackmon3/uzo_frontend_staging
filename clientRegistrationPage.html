@@ -106,6 +106,9 @@
 
 			if(!cname || !street  ||!city  || !state  || !zipcode  || !website || !cdescription || !cpassword|| !password|| !email){
 				alert("You must fill in required fields!");
+				if(!(cpassword===password)){
+				alert("Passwords must fields must be the same!");
+			}
 			}if else(!(cpassword===password)){
 				alert("Passwords must fields must be the same!");
 			}
