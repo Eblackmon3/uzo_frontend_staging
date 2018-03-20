@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,38 +43,12 @@
 	src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
 	integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
 	crossorigin="anonymous"></script>
-	
 	<script>
-			function checkPass(){
-	    //Store the password field objects into variables ...
-	    var pass1 = $("#password");
-	    var pass2 = $("#cpassword");
-	    //Store the Confimation Message Object ...
-	    var message = document.getElementById('confirmMessage');
-	    //Set the colors we will be using ...
-	    var goodColor = "#66cc66";
-	    var badColor = "#ff6666";
-	    //Compare the values in the password field 
-	    //and the confirmation field
-	    if(pass1.value == pass2.value){
-	        //The passwords match. 
-	        //Set the color to the good color and inform
-	        //the user that they have entered the correct password 
-	        pass2.style.backgroundColor = goodColor;
-	        message.style.color = goodColor;
-	        message.innerHTML = "Passwords Match!"
-	    }else{
-	        //The passwords do not match.
-	        //Set the color to the bad color and
-	        //notify the user.
-	        pass2.style.backgroundColor = badColor;
-	        message.style.color = badColor;
-	        message.innerHTML = "Passwords Do Not Match!"
-	    }
-	}  
+
+
+	
 
 	$(document).ready(function(){
-		
 
 		$("#next").click(function(){
 
@@ -87,7 +62,6 @@
 			var cdescription = $("#cdescription").val();
 			var password = $("#password").val();
 			var cpassword = $("#cpassword").val();
-
 			
 			/*
 						{
@@ -104,7 +78,7 @@
 			*/
 
 			var registrationInfo = {
-				email:email,
+				email, email
 				company_name: cname,
 				street: street,
 				city: city,
@@ -132,7 +106,10 @@
 
 			if(!cname || !street  ||!city  || !state  || !zipcode  || !website || !cdescription || !cpassword|| !password|| !email){
 				alert("You must fill in required fields!");
-			}else{
+			}if else(!(cpassword===password)){
+				alert("Passwords must fields must be the same!");
+			}
+			else{
 				$.when(ajaxFunction()).done(function(a1){
 					console.log(response);
 						window.location.replace("clientegistrationPage2.html")
@@ -272,11 +249,9 @@
 								<input type="password" class="form-control" name="password" id="password" placeholder="Password"/>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 							</div>
-							<div class="input-group" >
-								<input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" onkeyup="checkPass(); return false;" class="form-control btn-danger "/>
-								<span id="confirmMessage" class="confirmMessage"></span>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span> </span>
-							</div>
+							<div class="input-group">
+								<input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm Password"/>
+								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 							</div>
 							<hr>
 					</div>
