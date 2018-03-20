@@ -53,7 +53,7 @@
 	$(document).ready(function(){
 		$("#number").mask('(000) 000-0000');
 
-		$("#next").click(function(){
+		$("#submit").click(function(){
 
 
 			var fname = $("#fname").val();
@@ -64,7 +64,7 @@
 			var hear_uzo = $("#hear_uzo").val();
 			var uzo_help=$("#uzo_help").val();
 			var company_id= sessionStorage.getItem("company_id");
-
+			console.log("here")
 
 			/*
 			{
