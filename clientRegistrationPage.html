@@ -45,92 +45,81 @@
 	<script>
 
 
-	/*
+	
+
 	$(document).ready(function(){
 
 		$("#next").click(function(){
 
-
-			var cname = $("#cname").val().toLowerCase();
-			var number = $("#number").val();
-			var jtitle = $("#jtitle").val().toLowerCase();
-			var jdescription = $("#jdescription").val().toLowerCase();
-			var hear_uzo = $("#hear_uzo").val().toLowerCase();
+			var email== $("#email").val();;
+			var cname = $("#cname").val();
+			var street = $("#street").val();
+			var city = $("#city").val();
+			var state = $("#state").val();
+			var zipcode = $("#zipcode").val();
+			var website = $("#website").val();
+			var cdescription = $("#cdescription").val();
+			var password = $("#password").val();
+			var cpassword = $("#cpassword").val();
+			
+			/*
+						{
+		         "email": "eric.blackmon@uzo.com",
+		         "city": "Chantilly",
+		         "street": "street",
+		         "zip_code": "30763",
+		         "state": "Va",
+		         "website_link": "uzo.com",
+		         "company_name": "UZO",
+		         "password":"281330800fB",
+		         "description": "chillen"
+		        }
+			*/
 
 			var registrationInfo = {
-				first_name: fname,
-				last_name: lname,
-				phone_number: number,
-				university: university,
-				date_of_birth: dob,
-				email: email,
-				major:major,
-				year:grade,
-				password: password,
-				description: description,
-				state:state,
-				city:city,
+				email, email
+				company_name: cname,
 				street: street,
-				apt:apt,
-				zipcode:zipcode
+				city: city,
+				state: state,
+				zip_code: zipcode,
+				website_link: website,
+				description:cdescription,
+				password: password
 			}
 
 			var ajaxFunction= function (){
 				return $.ajax({
 					type: 'POST',
 					contentType: "application/json",
-					url: 'https://uzo-web-app.herokuapp.com/insert_student',
+					url: 'https://uzo-web-app.herokuapp.com/insert_company',
 					data:JSON.stringify(registrationInfo)
 				}).done(function(data) {
 					var result= JSON.parse(data);
 
-					sessionStorage.setItem("student_id",result.student_id);
+					sessionStorage.setItem("company_id",result.company_id);
 
 				});
 			}
 
 
-			if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade || !id[0].files[0] || !state || !city || !street || !zipcode){
+			if(!cname || !street  ||!city  || !state  || !zipcode  || !website || !cdescription || !cpassword|| !password|| !email){
 				alert("You must fill in required fields!");
+			}if else(!(cpassword===password)){
+				alert("Passwords must fields must be the same!");
 			}
 			else{
 				$.when(ajaxFunction()).done(function(a1){
-					form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
-					console.log(sessionStorage.getItem("student_id"));
-
-					var settings = {
-						"url": "https://uzo-web-app.herokuapp.com/upload_student_resource",
-						"method": "POST",
-						"processData": false,
-						"contentType": false,
-						"mimeType": "multipart/form-data",
-						"data": form_data,
-						error: function (e) {
-
-							$("#result").text(e.responseText);
-							console.log("ERROR : ", e);
-
-
-						}
-					}
-
-					$.ajax(settings).done(function (response) {
-						console.log(response);
+					console.log(response);
 						window.location.replace("clientegistrationPage2.html")
-					});
 
 				});
 
 				$("#next").prop("disabled",false);
 			}
 		});
-	});*/
-
-	$(document).ready(function(){
-			$("#next").click(function(){
-					window.location.href='clientRegistrationPage2.html';
-			});
 	});
+	
 	</script>
 </head>
 
