@@ -79,12 +79,12 @@ function()
 		    	if(cpassword===password){
 		    		$( "#errorPassword" ).removeClass( "has-error" ).addClass( "has-success" );
 		    		$( "#errorCpassword" ).removeClass( "has-error" ).addClass( "has-success" );
-		    		( "#errorMessage" ).text("");
+		    		$("#errorMessage").text("");
 
 		    	}else if(!(cpassword===password)){
 		    		$( "#errorPassword" ).removeClass( "has-success" ).addClass( "has-error" );
 		    		$( "#errorCpassword" ).removeClass( "has-success" ).addClass( "has-error" );
-		    		( "#errorMessage" ).text("Passwords must be the same");
+		    		$("#errorMessage").text("Passwords must be the same");
 		    		
 		    	}
 		});
@@ -94,12 +94,12 @@ function()
 		    	if(cpassword===password){
 		    		$( "#errorPassword" ).removeClass( "has-error" ).addClass( "has-success" );
 		    		$( "#errorCpassword" ).removeClass( "has-error" ).addClass( "has-success" );
-		    		( "#errorMessage" ).text("");
+		    		$("#errorMessage" ).text("");
 		    		
 		    	}else if(!(cpassword===password)){
 		    		$( "#errorPassword" ).removeClass( "has-success" ).addClass( "has-error" );
 		    		$( "#errorCpassword" ).removeClass( "has-success" ).addClass( "has-error" );
-		    		( "#errorMessage" ).text("Passwords must be the same");
+		    		$("#errorMessage").text("Passwords must be the same");
 
 		    	}
 		});
