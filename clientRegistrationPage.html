@@ -79,10 +79,12 @@ function()
 		    	if(cpassword===password){
 		    		$( "#errorPassword" ).removeClass( "has-error" ).addClass( "has-success" );
 		    		$( "#errorCpassword" ).removeClass( "has-error" ).addClass( "has-success" );
+		    		( "#errroMessage" ).text("");
 
 		    	}else if(!(cpassword===password)){
 		    		$( "#errorPassword" ).removeClass( "has-success" ).addClass( "has-error" );
 		    		$( "#errorCpassword" ).removeClass( "has-success" ).addClass( "has-error" );
+		    		( "#errroMessage" ).text("Passwords must be the same");
 		    		
 		    	}
 		});
@@ -92,10 +94,12 @@ function()
 		    	if(cpassword===password){
 		    		$( "#errorPassword" ).removeClass( "has-error" ).addClass( "has-success" );
 		    		$( "#errorCpassword" ).removeClass( "has-error" ).addClass( "has-success" );
+		    		( "#errroMessage" ).text("");
 		    		
 		    	}else if(!(cpassword===password)){
 		    		$( "#errorPassword" ).removeClass( "has-success" ).addClass( "has-error" );
 		    		$( "#errorCpassword" ).removeClass( "has-success" ).addClass( "has-error" );
+		    		( "#errroMessage" ).text("Passwords must be the same");
 
 		    	}
 		});
@@ -309,7 +313,7 @@ function()
 								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 							</div>
 						</div>
-						<p align="center">Please fill out this form correctly.</p>
+						<p align="center" id="errroMessage"></p>
 					<div class="form-group ">
 						<div class="input-group-addon">
 							<button type="button" class="btn btn-success pull-right" id="next">Next</button>
