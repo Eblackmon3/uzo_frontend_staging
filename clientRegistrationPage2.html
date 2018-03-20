@@ -46,85 +46,74 @@
 
 
 
-	/*$(document).ready(function(){
+	$(document).ready(function(){
 
 		$("#next").click(function(){
 
 
-			var cname = $("#cname").val().toLowerCase();
+			var fname = $("#fname").val();
+			var lname = $("#lname").val();
 			var number = $("#number").val();
-			var jtitle = $("#jtitle").val().toLowerCase();
-			var jdescription = $("#jdescription").val().toLowerCase();
-			var hear_uzo = $("#hear_uzo").val().toLowerCase();
+			var jtitle = $("#jtitle").val();
+			var jdescription = $("#jdescription").val();
+			var hear_uzo = $("#hear_uzo").val();
+			var uzo_help=$("#uzo_help").val();
+			var company_id= sessionStorage.getItem("company_id");
 
+
+			/*
+			{
+	          "company_id": 6,
+	         "position":"CEO,
+	         "position_details": "get that cheddar",
+	         "found_uzo":"your mom",
+	         "uzo_help": "expand business,
+	         "last_name":"Blackmon",
+	         "first_name":"Eric",
+	         "phone_numner": "571-344-9998"
+	        }
+
+			*/
 			var registrationInfo = {
 				first_name: fname,
 				last_name: lname,
 				phone_number: number,
-				university: university,
-				date_of_birth: dob,
-				email: email,
-				major:major,
-				year:grade,
-				password: password,
-				description: description,
-				state:state,
-				city:city,
-				street: street,
-				apt:apt,
-				zipcode:zipcode
+				uzo_help:uzo_help,
+				found_uzo:hear_uzo,
+				position_details:jdescription,
+				position:jtitle,
+				company_id:company_id
+				
 			}
 
 			var ajaxFunction= function (){
 				return $.ajax({
 					type: 'POST',
 					contentType: "application/json",
-					url: 'https://uzo-web-app.herokuapp.com/insert_student',
+					url: 'https://uzo-web-app.herokuapp.com/insert_company_rep',
 					data:JSON.stringify(registrationInfo)
 				}).done(function(data) {
 					var result= JSON.parse(data);
 
-					sessionStorage.setItem("student_id",result.student_id);
-
 				});
 			}
 
 
-			if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade || !id[0].files[0] || !state || !city || !street || !zipcode){
+			if(!fname || !lname  ||!number  || !uzo_help  || !hear_uzo  || !jdescription || !jtitle || !company_id){
 				alert("You must fill in required fields!");
 			}
 			else{
-				$.when(ajaxFunction()).done(function(a1){
-					form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
-					console.log(sessionStorage.getItem("student_id"));
+				$.when(ajaxFunction()).done(function(response){
+				
+					console.log(response);
+					window.location.replace("commingSoon.html");
 
-					var settings = {
-						"url": "https://uzo-web-app.herokuapp.com/upload_student_resource",
-						"method": "POST",
-						"processData": false,
-						"contentType": false,
-						"mimeType": "multipart/form-data",
-						"data": form_data,
-						error: function (e) {
-
-							$("#result").text(e.responseText);
-							console.log("ERROR : ", e);
-
-
-						}
-					}
-
-					$.ajax(settings).done(function (response) {
-						console.log(response);
-						window.location.replace("registrationPage2.html")
-					});
 
 				});
 
-				$("#next").prop("disabled",false);
 			}
 		});
-	});*/
+	});
 	$(document).ready(function(){
 			$("#back").click(function(){
 					window.location.href='clientRegistrationPage.html';
@@ -151,9 +140,14 @@
 			<div class="modal-body">
 				<form id="registerForm" method="POST">
 					<div class="form-group">
-							<label for="name">Name</label>
+							<label for="name"> First Name</label>
 							<div class="input-group">
-								<input type="text" class="form-control" name="pname" id="pname"placeholder="What is your name?"/>
+								<input type="text" class="form-control" name="fname" id="pname"placeholder="What is your first name?"/>
+								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+							</div>
+							<label for="name"> Last Name</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="lname" id="pname"placeholder="What is your last name?"/>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 							</div>
 							<br>
@@ -171,7 +165,7 @@
 							<br>
 							<label for="name" >Job Description</label>
 							<div class="input-group">
-								<textarea rows="4" cols="75" placeholder="In a few sentences, tell us what your position entails?">
+								<textarea rows="4" cols="75" placeholder="In a few sentences, tell us what your position entails?" id="jdescription">
 								</textarea>
 							</div>
 							<br>
@@ -189,7 +183,7 @@
 							</div>
 							<label for="name" >How can we help?</label>
 							<div class="input-group">
-								<input type="text" class="form-control" name="jdescription" id="jdescription"/>
+								<input type="text" class="form-control" name="jdescription" id="uzo_help"/>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 							</div>
 							<hr>
