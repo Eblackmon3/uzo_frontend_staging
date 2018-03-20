@@ -48,6 +48,12 @@
 	
 
 	$(document).ready(function(){
+		var password = $("#password").val();
+		var cpassword = $("#cpassword").val();
+
+		if (password != cpassword){
+        $("#divCheckPasswordMatch").html("Passwords do not match!");
+    }
 
 		$("#next").click(function(){
 
@@ -61,6 +67,7 @@
 			var cdescription = $("#cdescription").val();
 			var password = $("#password").val();
 			var cpassword = $("#cpassword").val();
+
 			
 			/*
 						{
@@ -105,10 +112,7 @@
 
 			if(!cname || !street  ||!city  || !state  || !zipcode  || !website || !cdescription || !cpassword|| !password|| !email){
 				alert("You must fill in required fields!");
-			}else if(!(cpassword===password)){
-				alert("Passwords must fields must be the same!");
-			}
-			else{
+			}else{
 				$.when(ajaxFunction()).done(function(a1){
 					console.log(response);
 						window.location.replace("clientegistrationPage2.html")
@@ -251,6 +255,9 @@
 							<div class="input-group">
 								<input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm Password"/>
 								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+							</div>
+							</div>
+							    <div class="registrationFormAlert" id="divCheckPasswordMatch">
 							</div>
 							<hr>
 					</div>
