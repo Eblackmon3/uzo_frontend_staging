@@ -42,18 +42,21 @@
 	src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
 	integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
 	crossorigin="anonymous"></script>
-	<script>
-
-
 	
-
-	$(document).ready(function(){
-		var password = $("#password").val();
-		var cpassword = $("#cpassword").val();
+	<script>
+		function checkPasswordMatch() {
+			var password = $("#password").val();
+			var cpassword = $("#cpassword").val();
 
 		if (password != cpassword){
-        $("#divCheckPasswordMatch").html("Passwords do not match!");
-    }
+		        $("#divCheckPasswordMatch").html("Passwords do not match!");
+		    }
+
+		}
+
+	$(document).ready(function(){
+		$("#cpassword").keyup(checkPasswordMatch);
+		
 
 		$("#next").click(function(){
 
