@@ -113,13 +113,13 @@
 				alert("Passwords must fields must be the same!");
 			}
 			else{
+				conso].log("here");
 				$.when(ajaxFunction()).done(function(a1){
 					console.log(response);
 						window.location.replace("clientegistrationPage2.html")
 
 				});
 
-				$("#next").prop("disabled",false);
 			}
 		});
 	});
