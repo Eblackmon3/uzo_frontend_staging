@@ -157,9 +157,6 @@ function()
 
 			if(!cname || !street  ||!city  || !state  || !zipcode  || !website || !cdescription || !cpassword|| !password|| !email){
 				alert("You must fill in required fields!");
-				if(!(cpassword===password)){
-				alert("Passwords must fields must be the same!");
-			}
 			}else if(!(cpassword===password)){
 				alert("Passwords must fields must be the same!");
 			}
@@ -312,7 +309,7 @@ function()
 								<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 							</div>
 						</div>
-						</div>
+						<p align="center">Please fill out this form correctly.</p>
 					<div class="form-group ">
 						<div class="input-group-addon">
 							<button type="button" class="btn btn-success pull-right" id="next">Next</button>
