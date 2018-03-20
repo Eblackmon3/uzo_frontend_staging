@@ -45,9 +45,6 @@
 	crossorigin="anonymous"></script>
 	<script>
 
-
-	
-
 	$(document).ready(function(){
 
 		$("#next").click(function(){
@@ -114,8 +111,8 @@
 			else{
 				console.log("here");
 				$.when(ajaxFunction()).done(function(a1){
-					console.log(response);
-						window.location.replace("clientegistrationPage2.html")
+					console.log(a1);
+						window.location.replace("clientegistrationPage2.html");
 
 				});
 
@@ -124,6 +121,7 @@
 	});
 	
 	</script>
+
 </head>
 
 <body>
