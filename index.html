@@ -151,7 +151,7 @@ background-image: url(whiteting.jpg);
 $(document).ready(function(){
 
   $("#loginBtn").click(function(){
-     var passwordVal = $("#password").val();
+     var passwordVal = $("#password").val().toLowerCase();
     var emailVal = $("#email").val();
     var password = $("#password");
     var email = $("#email");
@@ -170,7 +170,7 @@ $(document).ready(function(){
           data:JSON.stringify(registrationInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
-          if(result.company_login){
+          if(result.company_login==="Does not exist"){
             email.addClass( "has-error" );
             email.addClass( "has-error" );
 
