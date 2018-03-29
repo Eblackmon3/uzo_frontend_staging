@@ -13,6 +13,17 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+
+  <script
+  src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
+  integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+  crossorigin="anonymous"></script>
+
   <style>
 
   @import url(https://fonts.googleapis.com/css?family=Roboto:300);
@@ -136,11 +147,42 @@ background-image: url(whiteting.jpg);
 </style>
 
 <script>
+
 $(document).ready(function(){
-  
+  var passwordVal = $("#password").val();
+  var emailVal = $("#email").val();
+  var password = $("#password");
+  var email = $("#email");
+  var registrationInfo = {
+        email:emailVal,
+        password: passwordVal
+      }  
 
   $("#loginBtn").click(function(){
-    window.location.href='clientRegistrationPage.html';
+
+    var ajaxFunction= function (){
+        return $.ajax({
+          type: 'POST',
+          contentType: "application/json",
+          url: 'https://uzo-web-app.herokuapp.com/check_company_login',
+          data:JSON.stringify(registrationInfo)
+        }).done(function(data) {
+          var result= JSON.parse(data);
+          if(!result.company_login){
+            email.addClass( "has-error" );
+            email.addClass( "has-error" );
+
+          }else{
+            sessionStorage.setItem("company_id",result.company_id);
+            alert("password correct")
+
+          }
+
+        });
+      }
+
+
+    
   });
 
 });
