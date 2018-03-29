@@ -155,10 +155,9 @@ background-image: url(whiteting.jpg);
 $(document).ready(function(){
 
   $("#loginBtn").click(function(){
-     var passwordVal = $("#password").val().toLowerCase();
-    var emailVal = $("#email").val();
+     var passwordVal = $("#password").val();
+    var emailVal = $("#email").val().toLowerCase();
     var password = $("#password");
-    var email = $("#email");
    console.log(emailVal);
    console.log(passwordVal);
     var registrationInfo = {
