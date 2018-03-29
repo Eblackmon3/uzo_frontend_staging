@@ -98,10 +98,11 @@
     //moment().format('MMMM Do YYYY, h:mm:ss a')
 
       $('#calendar').fullCalendar({
-        left: 'month,agendaWeek,agendaDay custom1',
+        header: {
+      left: 'month,agendaWeek,agendaDay custom1',
       center: 'title',
       right: 'custom2 prevYear,prev,next,nextYear'
-    },
+      }
     // put your options and callbacks here
      })
 
