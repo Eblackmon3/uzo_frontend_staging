@@ -195,7 +195,7 @@ $(document).ready(function(){
         $.when(ajaxFunction()).done(function(response){
           console.log(result.company_id);
           console.log(response);
-          if(sessionStorage.getItem("student_id")){
+          if(sessionStorage.getItem("company_id")){
             window.location.replace("schedulePage.html");
           }
 
