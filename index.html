@@ -193,7 +193,6 @@ $(document).ready(function(){
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-          console.log(sessionStorage.getItem("company_id"));
           if(sessionStorage.getItem("company_id")){
             window.location.replace("schedulePage.html");
           }
