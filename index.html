@@ -171,8 +171,8 @@ $(document).ready(function(){
         }).done(function(data) {
           var result= JSON.parse(data);
           if(result.company_login==="Does not exist"){
-            $( "#password" ).removeClass( "has-success" ).addClass( "has-error" );
-            password.addClass( "has-error" );
+            $( "#emailCheck" ).removeClass( "has-success" ).addClass( "has-error" );
+            $( "#passwordCheck" ).removeClass( "has-success" ).addClass( "has-error" );
             console.log("password wrong")
           }else{
             sessionStorage.setItem("company_id",result.company_id);
@@ -212,7 +212,7 @@ $(document).ready(function(){
     </div>
 
 
-    <div id="emailCheck">
+    <div id="passwordCheck">
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
       <input id="password" type="password" class="form-control" name="password" placeholder="Password">
