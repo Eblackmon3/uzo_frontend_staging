@@ -183,7 +183,7 @@ $(document).ready(function(){
             $( "#emailCheck" ).removeClass( "has-error" ).addClass( "has-success" );
             $( "#passwordCheck" ).removeClass( "has-error" ).addClass( "has-success" );
             $("#errorMessage").text("password incorrect");
-            console.log("password wrong")
+            console.log("")
             alert("password correct")
 
           }
@@ -193,7 +193,9 @@ $(document).ready(function(){
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
           console.log(response);
-          //alert("password correct")
+            window.location.replace("clientPage.html");
+
+        });
           
         });
 
