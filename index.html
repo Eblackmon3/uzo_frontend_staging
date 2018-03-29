@@ -158,8 +158,6 @@ $(document).ready(function(){
      var passwordVal = $("#password").val();
     var emailVal = $("#email").val().toLowerCase();
     var password = $("#password");
-   console.log(emailVal);
-   console.log(passwordVal);
     var registrationInfo = {
         email:emailVal,
         password: passwordVal
@@ -182,9 +180,9 @@ $(document).ready(function(){
             sessionStorage.setItem("company_id",result.company_id);
             $( "#emailCheck" ).removeClass( "has-error" ).addClass( "has-success" );
             $( "#passwordCheck" ).removeClass( "has-error" ).addClass( "has-success" );
-            $("#errorMessage").text("password incorrect");
+            $("#errorMessage").text("");
             console.log("")
-            alert("password correct")
+
 
           }
 
