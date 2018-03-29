@@ -159,8 +159,6 @@ $(document).ready(function(){
         email:emailVal,
         password: passwordVal
       }  
-      console.log(passwordVal);
-      console.log(emailVal);
 
     var ajaxFunction= function (){
         return $.ajax({
@@ -172,8 +170,7 @@ $(document).ready(function(){
           var result= JSON.parse(data);
           if(result.company_login==="Does not exist"){
             email.addClass( "has-error" );
-            email.addClass( "has-error" );
-
+            password.addClass( "has-error" );
           }else{
             sessionStorage.setItem("company_id",result.company_id);
             alert("password correct")
@@ -182,11 +179,10 @@ $(document).ready(function(){
 
         });
       }
-
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
           console.log(response);
-          alert("password correct")
+          //alert("password correct")
           
         });
 
@@ -202,15 +198,22 @@ $(document).ready(function(){
 
 <body>
   <div class="login-page">
-  <div class="form">
-    <form class="login-form">
-      <input type="text"  id="email" placeholder="Email Address"/>
-      <input type="password" id="password" placeholder="Password"/>
-      <button type="button" id="loginBtn">login</button>
+
+    <form>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+      <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+    </div>
+    <br>
+    <button type="button" id="loginBtn">login</button>
       <p class="message">Not registered? <a href="https://uzo-frontend.herokuapp.com/clientRegistrationPage.html">Create an account</a></p>
-    </form>
-  </div>
-</div>
+    
+  </form>
+
   <!--
   <div class="container">
 
