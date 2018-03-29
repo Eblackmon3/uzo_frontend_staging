@@ -19,8 +19,22 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+
+
+    <script
+    src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
+    integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+    crossorigin="anonymous"></script>
+    <script>
+
   <script>
 		$(document).ready(function(){
+
+
 		    $("#btnLogin").click(function(){
 		    	var email = $("#txtEmail").val();
 		    	var password= $("#txtPassword").val();
@@ -32,15 +46,21 @@
 		    		$.ajax({
 					    type: 'POST',
 					    contentType: "application/json",
-					    url: 'https://uzo-web-app.herokuapp.com/check_student_login',
+					    url: 'https://uzo-web-app.herokuapp.com//check_company_login',
 					   data:JSON.stringify(loginInfo)
 					   
 					}).done(function(data) { 
 					    var result = JSON.parse(data);
 					     if (typeof(Storage) !== "undefined") {
-					    // Store
-					    sessionStorage.setItem("student_id",result.student_id);
+					    // determine if the login is correct
+                        if(company_login!=null || company_login!="undefined"){
+                            sessionStorage.setItem("company_id",result.student_id);
 
+                        }else{
+                             $("#txtEmail").addClass( "has-error" );
+                             $("#txtEmail").addClass( "has-error" );
+                        }
+					    sessionStorage.setItem("company_id",result.student_id);
 					}
 					});
 
