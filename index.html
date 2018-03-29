@@ -140,11 +140,19 @@ $(document).ready(function(){
   $("#studentRegister").click(function(){
     window.location.href='registrationPage.html';
   });
-});
-$(document).ready(function(){
+
   $("#clientRegister").click(function(){
     window.location.href='clientRegistrationPage.html';
   });
+
+  $("#clientRegister").click(function(){
+    window.location.href='clientRegistrationPage.html';
+  });
+
+  $("#loginBtn").click(function(){
+    window.location.href='clientRegistrationPage.html';
+  });
+
 });
 </script>
 
@@ -155,9 +163,9 @@ $(document).ready(function(){
   <div class="login-page">
   <div class="form">
     <form class="login-form">
-      <input type="text" placeholder="Email Address"/>
-      <input type="password" placeholder="Password"/>
-      <button>login</button>
+      <input type="text"  id="email" placeholder="Email Address"/>
+      <input type="password" id="password" placeholder="Password"/>
+      <button id= "loginBtn">login</button>
       <p class="message">Not registered? <a href="https://uzo-frontend.herokuapp.com/clientRegistrationPage.html">Create an account</a></p>
     </form>
   </div>
