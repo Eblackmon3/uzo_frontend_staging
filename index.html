@@ -174,6 +174,7 @@ $(document).ready(function(){
           console.log(result);
           console.log(result.company_id)
           sessionStorage.setItem("company_id",result.company_id);
+          console.log(sessionStorage.getItem("company_id"));
           if(result.company_login==="Does not exist"){
             $( "#emailCheck" ).removeClass( "has-success" ).addClass( "has-error" );
             $( "#passwordCheck" ).removeClass( "has-success" ).addClass( "has-error" );
