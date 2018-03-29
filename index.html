@@ -191,7 +191,9 @@ $(document).ready(function(){
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
           console.log(response);
+          if(result.company_id){
             window.location.replace("schedulePage.html");
+          }
 
           
         });
