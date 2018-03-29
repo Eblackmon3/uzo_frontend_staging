@@ -171,7 +171,7 @@ $(document).ready(function(){
         }).done(function(data) {
           var result= JSON.parse(data);
           if(result.company_login==="Does not exist"){
-            email.addClass( "has-error" );
+            $( "#password" ).removeClass( "has-success" ).addClass( "has-error" );
             password.addClass( "has-error" );
             console.log("password wrong")
           }else{
