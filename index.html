@@ -180,6 +180,10 @@ $(document).ready(function(){
             console.log("password wrong")
           }else{
             sessionStorage.setItem("company_id",result.company_id);
+            $( "#emailCheck" ).removeClass( "has-error" ).addClass( "has-success" );
+            $( "#passwordCheck" ).removeClass( "has-error" ).addClass( "has-success" );
+            $("#errorMessage").text("password incorrect");
+            console.log("password wrong")
             alert("password correct")
 
           }
