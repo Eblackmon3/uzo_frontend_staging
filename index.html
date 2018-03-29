@@ -181,6 +181,13 @@ $(document).ready(function(){
         });
       }
 
+      console.log("here");
+        $.when(ajaxFunction()).done(function(response){
+          console.log(response);
+          alert("password correct")
+          
+        });
+
 
     
   });
