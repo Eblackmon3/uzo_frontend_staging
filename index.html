@@ -204,22 +204,18 @@ $(document).ready(function(){
   <div class="form">
     <form class="form-group">
 
-      <div id="emailCheck">
-      <div class="input-group">
-      <input id="email" type="text" class="form-control" name="email" placeholder="Email"/>
-      <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-    </div>
-    </div>
-
-  </br>
-
-    <div id="passwordCheck">
-    <div class="input-group">
-      <input id="password" type="password" class="form-control" name="password" placeholder="Password"/>
-      <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-    </div>
-    </div>
-  </br>
+      <div id="errorPassword">
+              <div class="input-group">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password"/>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+              </div>
+            </div>
+              <div id="errorCpassword">
+              <div class="input-group">
+                <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Confirm Password"/>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+              </div>
+            </div>
 
       <button type="button" id="loginBtn">login</button>
       <p class="message">Not registered? <a href="https://uzo-frontend.herokuapp.com/clientRegistrationPage.html">Create an account</a></p>
