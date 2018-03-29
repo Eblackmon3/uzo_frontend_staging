@@ -190,6 +190,7 @@ $(document).ready(function(){
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
+          console.log(result.company_id);
           console.log(response);
           if(result.company_id){
             window.location.replace("schedulePage.html");
