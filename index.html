@@ -171,6 +171,7 @@ $(document).ready(function(){
           data:JSON.stringify(registrationInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
+          sessionStorage.setItem("company_id",result.company_id);
           if(result.company_login==="Does not exist"){
             $( "#emailCheck" ).removeClass( "has-success" ).addClass( "has-error" );
             $( "#passwordCheck" ).removeClass( "has-success" ).addClass( "has-error" );
@@ -192,7 +193,7 @@ $(document).ready(function(){
         $.when(ajaxFunction()).done(function(response){
           console.log(result.company_id);
           console.log(response);
-          if(result.company_id){
+          if(sessionStorage.getItem("student_id")){
             window.location.replace("schedulePage.html");
           }
 
