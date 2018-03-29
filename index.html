@@ -116,6 +116,10 @@
   .container .info span .fa {
     color: #EF3B3A;
   }
+
+  .passError{
+    color: red;
+  }
   body {
     /*background: #76b852; /* fallback for old browsers */
     /*background: -webkit-linear-gradient(right, #76b852, #8DC26F);
@@ -173,6 +177,7 @@ $(document).ready(function(){
           if(result.company_login==="Does not exist"){
             $( "#emailCheck" ).removeClass( "has-success" ).addClass( "has-error" );
             $( "#passwordCheck" ).removeClass( "has-success" ).addClass( "has-error" );
+            $("#errorMessage").text("password incorrect");
             console.log("password wrong")
           }else{
             sessionStorage.setItem("company_id",result.company_id);
@@ -201,6 +206,7 @@ $(document).ready(function(){
 
 <body>
   <div class="login-page">
+  <div class="form">
     <form class="form-group">
 
       <div id="emailCheck">
@@ -210,8 +216,6 @@ $(document).ready(function(){
     </div>
     </div>
 
-
-
     <div id="passwordCheck">
     <div class="input-group">
       <input id="password" type="password" class="form-control" name="password" placeholder="Password"/>
@@ -219,9 +223,12 @@ $(document).ready(function(){
     </div>
     </div>
   </br>
+  <p align="center" id="errorMessage" div class="passError"></p>
+</br>
 
       <button type="button" id="loginBtn">login</button>
       <p class="message">Not registered? <a href="https://uzo-frontend.herokuapp.com/clientRegistrationPage.html">Create an account</a></p>
+    </form>
   </div>
 </div>
   <!--
