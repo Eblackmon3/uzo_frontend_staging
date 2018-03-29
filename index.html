@@ -149,16 +149,18 @@ background-image: url(whiteting.jpg);
 <script>
 
 $(document).ready(function(){
-  var passwordVal = $("#password").val();
-  var emailVal = $("#email").val();
-  var password = $("#password");
-  var email = $("#email");
-  var registrationInfo = {
+
+  $("#loginBtn").click(function(){
+     var passwordVal = $("#password").val();
+    var emailVal = $("#email").val();
+    var password = $("#password");
+    var email = $("#email");
+    var registrationInfo = {
         email:emailVal,
         password: passwordVal
       }  
-
-  $("#loginBtn").click(function(){
+      console.log(passwordVal);
+      console.log(emailVal);
 
     var ajaxFunction= function (){
         return $.ajax({
