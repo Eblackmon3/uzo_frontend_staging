@@ -155,6 +155,8 @@ $(document).ready(function(){
     var emailVal = $("#email").val();
     var password = $("#password");
     var email = $("#email");
+   console.log(emailVal);
+   console.log(passwordVal);
     var registrationInfo = {
         email:emailVal,
         password: passwordVal
@@ -181,6 +183,7 @@ $(document).ready(function(){
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
+          if(sessionStorage.getItem(''))
           console.log(response);
           //alert("password correct")
           
