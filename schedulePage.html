@@ -98,6 +98,10 @@
     //moment().format('MMMM Do YYYY, h:mm:ss a')
 
       $('#calendar').fullCalendar({
+        left: 'month,agendaWeek,agendaDay custom1',
+      center: 'title',
+      right: 'custom2 prevYear,prev,next,nextYear'
+    },
     // put your options and callbacks here
      })
 
@@ -118,7 +122,7 @@
   <header>
     <div class="nav">
       <ul>
-        <li class="schedule"><a class="active" href="#first" data-toggle="tab" id="first_tab">My Schedule</a></li>
+        <li class="schedule"><a class="active" href="#first" data-toggle="tab" id="shedule">My Schedule</a></li>
         <li class="history"><a  href="#second" data-toggle="tab" id="second_tab">Payment History</a></li>
 				<li class="profile"><a  href="#third" data-toggle="tab" id="third_tab">Profile</a></li>
 				<li class="setting"><a  href="#fourth" data-toggle="tab" id="fourth_tab">Setting</a></li>
