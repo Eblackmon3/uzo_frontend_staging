@@ -168,7 +168,7 @@ $(document).ready(function(){
           data:JSON.stringify(registrationInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
-          if(!result.company_login){
+          if(result.company_login){
             email.addClass( "has-error" );
             email.addClass( "has-error" );
 
