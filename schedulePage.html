@@ -117,7 +117,13 @@
 	<script>
 	$(document).ready(function () {
 
-    moment().format('MMMM Do YYYY, h:mm:ss a')
+    //moment().format('MMMM Do YYYY, h:mm:ss a')
+
+      $('#calendar').fullCalendar({
+    // put your options and callbacks here
+     })
+
+
 
     $('.nav a').click(function(e) {
         //Steve you need to change the window here they are totally
@@ -143,7 +149,9 @@
 		<div class="tab-content">
 
     <div id="first" class="tab-pane fade in active">
-        This is the schedule page
+        <div id='calendar'>
+          
+        </div>
     </div>
 
         
