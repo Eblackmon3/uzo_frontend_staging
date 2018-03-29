@@ -173,6 +173,7 @@ $(document).ready(function(){
           if(result.company_login==="Does not exist"){
             email.addClass( "has-error" );
             password.addClass( "has-error" );
+            console.log("password wrong")
           }else{
             sessionStorage.setItem("company_id",result.company_id);
             alert("password correct")
