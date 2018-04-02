@@ -120,9 +120,12 @@
             Once steven has added the add event data I will us that in the add event source 
 
          */
-        var eventData= { title  : 'event3',start: start, end: end  };
-        var local = $.fullCalendar.moment('2014-05-01T12:00:00');
-        local.format("dddd, MMMM Do YYYY, h:mm:ss a");
+
+        var allDay = !start.hasTime() && !end.hasTime();
+         console.log(["Event Start date: " + moment(start).format(),
+                "Event End date: " + moment(end).format(),
+                "AllDay: " + allDay].join("\n"));
+        var eventData= { title  : 'event3',start: start, end: end};
 
             $("#calendar").fullCalendar('addEventSource', [{
                 title  : 'event3',
