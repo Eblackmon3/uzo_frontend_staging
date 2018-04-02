@@ -120,9 +120,9 @@
             Once steven has added the add event data I will us that in the add event source 
 
          */
-        var eventData= { title  : 'event',start: '01-09-2010T12:30:00', end: end  }
+        var eventData= [{ title  : 'event',start: '01-09-2010T12:30:00', end: '01-09-2010T12:30:00' }];
 
-            $("#calendar").fullCalendar('addEventSource', [eventData]);
+            $("#calendar").fullCalendar('addEventSource',eventData);
             $("#calendar").fullCalendar("unselect");
         },
 
