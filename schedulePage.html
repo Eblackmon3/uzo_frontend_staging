@@ -136,8 +136,8 @@
        eventClick: function(calEvent, jsEvent, view) {
 
         console.log('Event: ' + calEvent.title);
-        console.log('Event: ' + calEvent.start);
-        console.log('Event: ' + calEvent.start);
+        console.log('Event: ' + moment(calEvent.start).format('MM/DD/YYYY'));
+        console.log('Event: ' + moment(calEvent.start))..format('MM/DD/YYYY');
         console.log('View: ' + view.name);
 
         // change the border color just for fun
