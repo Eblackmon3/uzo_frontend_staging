@@ -113,6 +113,20 @@
 
       selectable: true,
         select: function (start, end, jsEvent, view) {
+          // contact form animations
+            $('#contact').click(function() {
+              $('#contactForm').fadeToggle();
+            })
+            $(document).mouseup(function (e) {
+              var container = $("#contactForm");
+
+              if (!container.is(e.target) // if the target of the click isn't the container...
+                  && container.has(e.target).length === 0) // ... nor a descendant of the container
+              {
+                  container.fadeOut();
+              }
+            });
+
             $("#calendar").fullCalendar('addEventSource', [{
                 start: start,
                 end: end,
@@ -120,21 +134,7 @@
                 block: true,
             }, ]);
             $("#calendar").fullCalendar("unselect");
-        },
-        unselect: function (start, end, jsEvent, view) {
-            $("#calendar").fullCalendar('removeEventSource', [{
-                start: start,
-                end: end,
-                rendering: 'background',
-                block: true,
-            }, ]);
-            $("#calendar").fullCalendar("unselect");
-        },
-        selectOverlap: function(event) {
-            return ! event.block;
-        },
-
-
+        }
 
      })
 
@@ -174,5 +174,20 @@
     </div>
 </div>
   </header>
+
+  <div id="contactForm">
+
+  <h1>Just an example of Pop up</h1>
+  
+  <form action="#">
+    <input placeholder="Name" type="text" required />
+    <input placeholder="Email" type="email" required />
+    <input placeholder="Subject" type="text" required />
+    <textarea placeholder="Comment"></textarea>
+    <input class="formBtn" type="submit" />
+    <input class="formBtn" type="reset" />
+  </form>
+</div>
+
 </body>
 </html>
