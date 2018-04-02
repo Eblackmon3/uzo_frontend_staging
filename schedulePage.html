@@ -95,7 +95,10 @@
 	<script>
 	$(document).ready(function () {
     if(!sessionStorage.getItem("company_id")){
+
             window.location.replace("index.html");
+          }else{
+            console.log(sessionStorage.getItem("company_id"));
           }
 
     //moment().format('MMMM Do YYYY, h:mm:ss a')
