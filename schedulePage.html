@@ -94,6 +94,9 @@
 
 	<script>
 	$(document).ready(function () {
+    if(!sessionStorage.getItem("company_id")){
+            window.location.replace("index.html");
+          }
 
     //moment().format('MMMM Do YYYY, h:mm:ss a')
 
@@ -104,6 +107,18 @@
       right: 'custom2 prevYear,prev,next,nextYear'
       }
     // put your options and callbacks here
+        dayClick: function(date, jsEvent, view) {
+
+        alert('Clicked on: ' + date.format());
+
+        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+
+        alert('Current view: ' + view.name);
+
+        // change the day's background color just for fun
+        $(this).css('background-color', 'red');
+
+      }
      })
 
 
@@ -113,6 +128,7 @@
         //different pages 
         //e.preventDefault();
     });
+
 });
 
 
