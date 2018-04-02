@@ -122,8 +122,8 @@
          */
 
         var allDay = !start.hasTime() && !end.hasTime();
-         console.log(["Event Start date: " + moment(start).format(),
-                "Event End date: " + moment(end).format(),
+         console.log(["Event Start date: " + moment(start).format('MM/DD/YYYY'),
+                "Event End date: " + moment(end).format('MM/DD/YYYY'),
                 "AllDay: " + allDay].join("\n"));
         var eventData= { title  : 'event3',start: start, end: end};
 
