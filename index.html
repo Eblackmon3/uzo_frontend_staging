@@ -152,6 +152,12 @@ background-image: url(whiteting.jpg);
 
 <script>
 
+  $(document).keypress(function(e) {
+    if(e.which == 13) {
+        alert('You pressed enter!');
+    }
+});
+
 $(document).ready(function(){
 
   $("#loginBtn").click(function(){
