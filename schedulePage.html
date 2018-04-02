@@ -94,6 +94,7 @@
 
 	<script>
 	$(document).ready(function () {
+
     if(!sessionStorage.getItem("company_id")){
 
             window.location.replace("index.html");
@@ -122,14 +123,14 @@
 
          */
 
-        var eventData= { title  : 'event3',start: start, end: end};
+        var eventData= [{ title  : 'event3',start: start, end: end, allDay: false}];
 
             $("#calendar").fullCalendar('addEventSource', [{
                 title  : 'event3',
                 start: start,
                 end: end,
                 allDay : false
-            }, ]);
+            } ]);
             $("#calendar").fullCalendar("unselect");
         },
 
