@@ -123,18 +123,19 @@
 
       },
 
-      select: function(start, end,  jsEvent, view) {
-
-        alert('Clicked on: ' + date.format());
-
-        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-
-        alert('Current view: ' + view.name);
-
-        // change the day's background color just for fun
-        $(this).css('background-color', 'red');
-
-      },
+      selectable: true,
+        select: function (start, end, jsEvent, view) {
+            $("#calendar").fullCalendar('addEventSource', [{
+                start: start,
+                end: end,
+                rendering: 'background',
+                block: true,
+            }, ]);
+            $("#calendar").fullCalendar("unselect");
+        },
+        selectOverlap: function(event) {
+            return ! event.block;
+        }
 
 
      })
