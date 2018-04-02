@@ -104,8 +104,9 @@
     //moment().format('MMMM Do YYYY, h:mm:ss a')
 
       $('#calendar').fullCalendar({
+        //Need to add a create Event Button
         header: {
-      left: 'month,agendaWeek,agendaDay, Add Event',
+      left: 'month,agendaWeek,agendaDay',
       center: 'title',
       right: 'custom2 prevYear,prev,next,nextYear'
       },
@@ -114,12 +115,14 @@
       selectable: true,
         select: function (start, end, jsEvent, view) {
           $("#myModal").modal();
+          //for now I'll just use the an random array 
+          /*
+            Once steven has added the add event data I will us that in the add event source 
 
-            $("#calendar").fullCalendar('addEventSource', [{
-                title  : 'event3',
-                start: start,
-                end: end
-            }, ]);
+         */
+        var eventData= { title  : 'event',start: start, end: end  }
+
+            $("#calendar").fullCalendar('addEventSource', [eventData]);
             $("#calendar").fullCalendar("unselect");
         },
 
