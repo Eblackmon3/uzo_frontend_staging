@@ -120,16 +120,20 @@
             Once steven has added the add event data I will us that in the add event source 
 
          */
-        var eventData= [{ title  : 'event',start: '01-09-2010T12:30:00', end: '01-09-2010T12:30:00' }];
+        var eventData= { title  : 'event3',start: start, end: end  }
 
-            $("#calendar").fullCalendar('addEventSource',eventData);
+            $("#calendar").fullCalendar('addEventSource', [{
+                title  : 'event3',
+                start: start,
+                end: end
+            }, ]);
             $("#calendar").fullCalendar("unselect");
         },
 
        eventClick: function(calEvent, jsEvent, view) {
 
         alert('Event: ' + calEvent.title);
-        alert('Start Time: ' + calEvent.start);
+        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
         alert('View: ' + view.name);
 
         // change the border color just for fun
