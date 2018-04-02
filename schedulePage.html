@@ -125,12 +125,7 @@
 
         var eventData= [{ title  : 'event3',start: start, end: end, allDay: false}];
 
-            $("#calendar").fullCalendar('addEventSource', [{
-                title  : 'event3',
-                start: start,
-                end: end,
-                allDay : false
-            } ]);
+            $("#calendar").fullCalendar('addEventSource', eventData);
             $("#calendar").fullCalendar("unselect");
         },
 
