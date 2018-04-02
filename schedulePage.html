@@ -121,9 +121,6 @@
             }, ]);
             $("#calendar").fullCalendar("unselect");
         },
-        selectOverlap: function(event) {
-            return ! event.block;
-        },
         unselect: function (start, end, jsEvent, view) {
             $("#calendar").fullCalendar('removeEventSource', [{
                 start: start,
