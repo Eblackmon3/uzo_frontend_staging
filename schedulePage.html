@@ -113,15 +113,7 @@
 
       selectable: true,
         select: function (start, end, jsEvent, view) {
-            $(document).mouseup(function (e) {
-              var container = $("#contactForm");
-
-              if (!container.is(e.target) // if the target of the click isn't the container...
-                  && container.has(e.target).length === 0) // ... nor a descendant of the container
-              {
-                  container.fadeOut();
-              }
-            });
+      
 
             $("#calendar").fullCalendar('addEventSource', [{
                 start: start,
@@ -172,20 +164,4 @@
   </header>
 
 </body>
-
-<div id="contact">Contact</div>
-<div id="contactForm">
-
-  <h1>Just an example of Pop up</h1>
-  
-  <form action="#">
-    <input placeholder="Name" type="text" required />
-    <input placeholder="Email" type="email" required />
-    <input placeholder="Subject" type="text" required />
-    <textarea placeholder="Comment"></textarea>
-    <input class="formBtn" type="submit" />
-    <input class="formBtn" type="reset" />
-  </form>
-</div>
-</div>
 </html>
