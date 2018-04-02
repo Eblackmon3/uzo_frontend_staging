@@ -123,6 +123,37 @@
 
          */
 
+         var jobInfo={
+         "date": "2018-06-15",
+         "rate": "40/hr",
+         "dress_code": "Formal",
+         "duration":2.5,
+         "open": true,
+         "job_title": "Janitor",
+         "time":2300,
+         "company_id":1,
+         "description":"chillen"
+          }
+
+         var ajaxFunction= function (){
+        return $.ajax({
+          type: 'POST',
+          contentType: "application/json",
+          url: 'https://uzo-web-app.herokuapp.com/insert_job',
+          data:JSON.stringify(registrationInfo)
+        }).done(function(data) {
+          var result= JSON.parse(data);
+          console.log(result);
+          console.log(result.affected_rows);
+          
+
+        });
+      }
+      console.log("here");
+        $.when(ajaxFunction()).done(function(response){
+            alert("Job Added");  
+        });
+
         var eventData= [{ title  : 'event3',start: start, end: end, allDay: false}];
 
             $("#calendar").fullCalendar('addEventSource', eventData);
