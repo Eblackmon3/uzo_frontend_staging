@@ -147,14 +147,7 @@
           url: 'https://uzo-web-app.herokuapp.com/get_stripe_key'
         }).done(function(data) {
           var result= JSON.parse(data).key;
-
-
-        });
-      }
-
-      $.when(ajaxFunction()).done(function(response){
-        var result= JSON.parse(response);
-            var api_key= results.key;
+            var api_key= results;
             alert(api_key); 
             var stripe = Stripe(api_key);
             var elements = stripe.elements();
@@ -173,6 +166,13 @@
 
             // Add an instance of the card Element into the `card-element` <div>.
             card.mount('#card-element');
+
+
+        });
+      }
+
+      $.when(ajaxFunction()).done(function(response){
+        var result= JSON.parse(response);
              
         });     
 
