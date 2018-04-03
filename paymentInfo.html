@@ -207,26 +207,7 @@
             var api_key= result.key; 
             var stripe = Stripe(api_key);
             var elements = stripe.elements();
-            Skip to content
-This repository
-Search
-Pull requests
-Issues
-Marketplace
-Explore
- @Eblackmon3
-Sign out
-28
-286 128 stripe/elements-examples
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
-elements-examples/js/example5.js
-02a24db  on Nov 8, 2017
-@cweiss-stripe cweiss-stripe collect shipping address with payment request in example 5 (#16)
-@michelle @cweiss-stripe @jez-stripe
-     
-89 lines (81 sloc)  2.06 KB
-(function() {
-  "use strict";
+            "use strict";
 
   var elements = stripe.elements({
     // Stripe's examples are localized to specific languages, but if
@@ -313,19 +294,6 @@ elements-examples/js/example5.js
 
   registerElements([card], "example5");
 })();
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-API
-Training
-Shop
-Blog
-About
-Press h to open a hovercard with more details.
              
         });  
    </script>
