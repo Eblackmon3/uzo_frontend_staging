@@ -147,7 +147,7 @@
           url: 'https://uzo-web-app.herokuapp.com/get_stripe_key'
         }).done(function(data) {
           var result= JSON.parse(data).key;
-            var api_key= results;
+            var api_key= result;
             alert(api_key); 
             var stripe = Stripe(api_key);
             var elements = stripe.elements();
@@ -172,7 +172,7 @@
       }
 
       $.when(ajaxFunction()).done(function(response){
-        var result= JSON.parse(response);
+      
              
         });     
 
