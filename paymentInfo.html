@@ -122,10 +122,13 @@
           var result= JSON.parse(data);
           console.log(result);
           console.log(result.key);
-          
 
         });
-      }     
+      }
+
+      $.when(ajaxFunction()).done(function(response){
+            var api_key= response;  
+        });     
 
 
 
