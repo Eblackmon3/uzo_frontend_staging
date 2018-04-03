@@ -154,10 +154,11 @@
 
       $.when(ajaxFunction()).done(function(response){
         var result= JSON.parse(response);
+        alert(result);
             var api_key= response.key; 
             var stripe = Stripe(api_key);
             var elements = stripe.elements();
-            alert(result);
+            
              // Custom styling can be passed to options when creating an Element.
             var style = {
               base: {
