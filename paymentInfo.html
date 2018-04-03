@@ -23,10 +23,10 @@
     <link rel="stylesheet" type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css"/>
 
 
-	<style>
-	@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+  <style>
+  @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-	body {
+  body {
   margin: 0;
   padding: 0;
   background: #ccc;
@@ -84,40 +84,126 @@
 
 
 
-	body {
-	}
-	</style>
+  body {
+  }
+  </style>
 
-	<meta charset="utf-8">
+  <meta charset="utf-8">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<script>
-	$(document).ready(function () {
-    $("#schedule_tab").click(function(){
+  <script>
+  $(document).ready(function () {
+
+     $("#schedule_tab").click(function(){
        window.location.replace("schedulePage.html");
 
      });
+
+    if(!sessionStorage.getItem("company_id")){
+
+            window.location.replace("index.html");
+          }else{
+            console.log(sessionStorage.getItem("company_id"));
+          }
+
+    //moment().format('MMMM Do YYYY, h:mm:ss a')
+
+      $('#calendar').fullCalendar({
+        //Need to add a create Event Button
+        header: {
+      left: 'month,agendaWeek,agendaDay',
+      center: 'title',
+      right: 'custom2 prevYear,prev,next,nextYear'
+      },
+    // put your options and callbacks here
+
+      selectable: true,
+        select: function (start, end, jsEvent, view) {
+          $("#myModal").modal();
+          //for now I'll just use the an random array 
+          /*
+            Once steven has added the add event data I will us that in the add event source 
+            get the current date using this moment(start).format('MM/DD/YYYY') and the time rotater the n append using T and store in DB
+
+         */
+
+         var jobInfo={
+         "date": moment(start).format(),
+         "rate": "40/hr",
+         "dress_code": "Formal",
+         "duration":2.5,
+         "open": true,
+         "job_title": "Janitor",
+         "time":2300,
+         "company_id":1,
+         "description":"chillen"
+          }
+
+         var ajaxFunction= function (){
+        return $.ajax({
+          type: 'POST',
+          contentType: "application/json",
+          url: 'https://uzo-web-app.herokuapp.com/insert_job',
+          data:JSON.stringify(jobInfo)
+        }).done(function(data) {
+          var result= JSON.parse(data);
+          console.log(result);
+          console.log(result.affected_rows);
+          
+
+        });
+      }
+      console.log("here");
+        $.when(ajaxFunction()).done(function(response){
+            alert("Job Added");  
+        });
+
+        var eventData= [{ title  : 'event3',start: start, end: end, allDay: false}];
+
+            $("#calendar").fullCalendar('addEventSource', eventData);
+            $("#calendar").fullCalendar("unselect");
+        },
+
+       eventClick: function(calEvent, jsEvent, view) {
+
+        console.log('Event: ' + calEvent.title);
+        console.log('Start: ' + moment(calEvent.start).format('MM/DD/YYYY'));
+        console.log('Finish: ' + moment(calEvent.end).format('MM/DD/YYYY'));
+        console.log('View: ' + view.name);
+
+        // change the border color just for fun
+        $(this).css('border-color', 'red');
+
+      }
+
+     })
 
 
 });
 
 
-	</script>
+  </script>
 </head>
 
 <body class="client">
   <header>
     <div class="nav">
       <ul>
-        <li class="schedule"><a  href="#first" data-toggle="tab" id="shedule_tab">My Schedule</a></li>
+        <li class="schedule"><a class="active" href="#first" data-toggle="tab" id="shedule_tab">My Schedule</a></li>
         <li class="history"><a  href="#second" data-toggle="tab" id="history">Payment History</a></li>
-				<li class="profile"><a  href="#third" data-toggle="tab" id="profile">Profile</a></li>
-				<li class="setting"><a  href="#fourth" data-toggle="tab" id="setting">Setting</a></li>
+        <li class="profile"><a  href="#third" data-toggle="tab" id="profile">Profile</a></li>
+        <li class="setting"><a  href="#fourth" data-toggle="tab" id="setting">Setting</a></li>
         <li class="payment_info"><a class="active" href="#fifth" data-toggle="tab" id="payment_info">Payment Info</a></li>
       </ul>
     </div>
-		<div class="tab-content">
+    <div class="tab-content">
+
+    <div id="first" class="tab-pane fade in active">
+        <div id='calendar'>
+          
+        </div>
+    </div>
 
         
     </div>
