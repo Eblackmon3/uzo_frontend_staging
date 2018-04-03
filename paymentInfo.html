@@ -23,6 +23,9 @@
     <link rel="stylesheet" type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css"/>
 
 
+    <script src="https://js.stripe.com/v3/"></script>
+
+
   <style>
   @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
@@ -106,6 +109,23 @@
           }else{
             console.log(sessionStorage.getItem("company_id"));
           }
+
+   var stripe = Stripe('pk_test_wTecz1KR8ZRouaxotnma87OK');
+  var elements = stripe.elements();  
+
+  var ajaxFunction= function (){
+        return $.ajax({
+          type: 'GET',
+          contentType: "application/json",
+          url: 'https://uzo-web-app.herokuapp.com/get_stripe_key'
+        }).done(function(data) {
+          var result= JSON.parse(data);
+          console.log(result);
+          console.log(result.key);
+          
+
+        });
+      }     
 
 
 
