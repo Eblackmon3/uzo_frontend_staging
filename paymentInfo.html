@@ -110,7 +110,7 @@
             console.log(sessionStorage.getItem("company_id"));
           }
 
-   var stripe = Stripe('pk_test_wTecz1KR8ZRouaxotnma87OK');
+  var stripe = Stripe('pk_test_wTecz1KR8ZRouaxotnma87OK');
   var elements = stripe.elements();  
 
   var ajaxFunction= function (){
@@ -185,8 +185,45 @@
   <button>Submit Payment</button>
 </form>
 
+   <script>
+     
+     var stripe = Stripe('pk_test_wTecz1KR8ZRouaxotnma87OK');
+  var elements = stripe.elements();  
 
-   
+  var ajaxFunction= function (){
+        return $.ajax({
+          type: 'GET',
+          contentType: "application/json",
+          url: 'https://uzo-web-app.herokuapp.com/get_stripe_key'
+        }).done(function(data) {
+          var result= JSON.parse(data).key;
+
+
+        });
+      }
+
+      $.when(ajaxFunction()).done(function(response){
+        var result= JSON.parse(response);
+            var api_key= result.key; 
+            var stripe = Stripe(api_key);
+            var elements = stripe.elements();
+             // Custom styling can be passed to options when creating an Element.
+            var style = {
+              base: {
+                // Add your base input styles here. For example:
+                fontSize: '16px',
+                color: "#32325d",
+              }
+            };
+
+            // Create an instance of the card Element.
+            var card = elements.create('card', {style: style});
+
+            // Add an instance of the card Element into the `card-element` <div>.
+            card.mount('#card-element');
+             
+        });  
+   </script>
 
 </body>
 </html>
