@@ -125,9 +125,9 @@
       }
 
       $.when(ajaxFunction()).done(function(response){
-        console.log("here");
-            var api_key= response.key; 
-            console.log(response.key); 
+        var result= JSON.parse(response);
+            var api_key= result.key; 
+            console.log(result.key); 
         });     
 
 
