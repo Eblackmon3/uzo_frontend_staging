@@ -119,7 +119,7 @@
           contentType: "application/json",
           url: 'https://uzo-web-app.herokuapp.com/get_stripe_key'
         }).done(function(data) {
-          var result= JSON.parse(data.key);
+          var result= JSON.parse(data).key;
 
         });
       }
