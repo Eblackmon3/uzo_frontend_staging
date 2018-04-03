@@ -120,16 +120,13 @@
           url: 'https://uzo-web-app.herokuapp.com/get_stripe_key'
         }).done(function(data) {
           var result= JSON.parse(data);
-          console.log(result);
-          console.log(result.key);
-
         });
       }
 
       $.when(ajaxFunction()).done(function(response){
         console.log("here");
-            var api_key= response; 
-            console.log(response); 
+            var api_key= response.key; 
+            console.log(response.key); 
         });     
 
 
