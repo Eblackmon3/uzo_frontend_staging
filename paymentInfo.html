@@ -154,7 +154,6 @@
 
       $.when(ajaxFunction()).done(function(response){
         var result= JSON.parse(response);
-        console.log(result.key);
             var api_key= response.key; 
             var stripe = Stripe(api_key);
             var elements = stripe.elements();
