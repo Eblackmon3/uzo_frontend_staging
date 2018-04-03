@@ -190,6 +190,7 @@
         } else {
           // Send the token to your server.
           console.log(result.token);
+          Customer.create(source:result.token);
           var companyInfo = {
               company_id:sessionStorage.getItem("company_id"),
               company_token:result.token.id
@@ -201,6 +202,7 @@
           data:JSON.stringify(companyInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
+
 
         });
         }
