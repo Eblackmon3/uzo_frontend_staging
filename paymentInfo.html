@@ -189,7 +189,6 @@
           errorElement.textContent = result.error.message;
         } else {
           // Send the token to your server.
-
           var companyInfo = {
               company_id:sessionStorage.getItem("company_id"),
               company_token:result.token
@@ -203,7 +202,6 @@
           var result= JSON.parse(data);
 
         });
-          result.token;
         }
       });
     });
