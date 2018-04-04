@@ -204,6 +204,8 @@
               }).done(function(data) {
                 var result= JSON.parse(data);
 
+              }).fail(function(xhr, status, error) {
+                console.log(error);
               });
          
         }
