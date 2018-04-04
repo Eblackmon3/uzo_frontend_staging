@@ -195,6 +195,16 @@
               company_token:result.token
             } 
             console.log(companyInfo); 
+
+             $.ajax({
+                type: 'POST',
+                contentType: "application/json",
+                url: 'https://uzo-web-app.herokuapp.com/insert_company_card',
+                data:JSON.stringify(companyInfo)
+              }).done(function(data) {
+                var result= JSON.parse(data);
+
+              });
          
         }
       });
