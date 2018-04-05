@@ -120,7 +120,7 @@
 
       selectable: true,
         select: function (start, end, jsEvent, view) {
-          $("#myModal").modal();
+          $("#createJobModal").modal();
           //for now I'll just use the an random array 
           /*
             Once steven has added the add event data I will us that in the add event source 
@@ -156,7 +156,7 @@
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-            alert("Job Added");  
+            //alert("Job Added");  
         });
 
         var eventData= [{ title  : 'event3',start: start, end: end, allDay: false}];
@@ -166,6 +166,7 @@
         },
 
        eventClick: function(calEvent, jsEvent, view) {
+        $("#clickModal").modal();
 
         console.log('Event: ' + calEvent.title);
         console.log('Start: ' + moment(calEvent.start).format('MM/DD/YYYY'));
@@ -211,7 +212,28 @@
   </header>
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="createJobModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Steven Here</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="clickModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
