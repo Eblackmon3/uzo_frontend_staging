@@ -180,7 +180,16 @@ textarea {
 
          var employeeCount = $("#employeeCount").val();
          var preferred_skills = $("#jdescription2").val();
-         var important_quality = $('input[name=radioName]:checked', '#important_quality').val()
+         var important_quality;
+         if($('#industryExp').is(':checked')){
+          important_quality="Industry Experience";
+         }else if($('#profAp').is(':checked')){
+          important_quality="Professional Appearance"
+         }else if($('#profAp').is(':checked')){
+          important_quality="Proximity to Job Location"
+         }else{
+            important_quality="Punctuality";
+         }
          var rate = $("#rate").val();
 
          console.log("Above print outs")
