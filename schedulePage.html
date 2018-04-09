@@ -116,8 +116,10 @@ textarea {
 
 	$(document).ready(function () {
 
-    $('input.timepicker').timepicker({});
-    
+    $('input.timepicker').timepicker({
+      template: 'modal'
+    });
+
 
      $("#payment_info").click(function(){
        window.location.replace("paymentInfo.html");
