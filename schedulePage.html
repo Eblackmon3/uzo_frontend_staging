@@ -180,6 +180,7 @@ textarea {
 
          var employeeCount = $("#employeeCount").val();
          var preferred_skills = $("#jdescription2").val();
+         var preferred_skills = $("#jdescription2").val();
          var important_quality;
          if($('#industryExp').is(':checked')){
           important_quality="Industry Experience";
@@ -208,7 +209,9 @@ textarea {
          "company_id":sessionStorage.getItem("company_id"),
          "description":jdescription,
          "important_quality": important_quality,
-         "preferred_skills": preferred_skills
+         "preferred_skills": preferred_skills,
+          "num_employees": employeeCount
+
           }
 
          var ajaxFunction= function (){
