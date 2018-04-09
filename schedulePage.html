@@ -221,12 +221,12 @@ textarea {
 
           }
 
-    var companyListFunction= function (){
+    var companCojListFunction= function (){
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
           url: 'https://uzo-web-app.herokuapp.com/get_company_job_list',
-          data:JSON.stringify(companyInfo)
+          data:JSON.stringify(jobInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
           console.log(result);
@@ -236,9 +236,12 @@ textarea {
         });
       }
       
+      /*
         $.when(ajaxFunction()).done(function(response){
             //alert("Job Added");
         });
+
+        */
 
     //moment().format('MMMM Do YYYY, h:mm:ss a')
 
