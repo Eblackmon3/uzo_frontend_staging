@@ -121,6 +121,7 @@ textarea {
 
 	$(document).ready(function () {
     var startDate=null;
+    var endDate=null;
 
     $('input.timepicker').timepicker({
       zindex:1151
@@ -189,7 +190,7 @@ textarea {
             //alert("Job Added");
         });
 
-        var eventData= [{ title  : 'event3',start: start, end: end, allDay: false}];
+        var eventData= [{ title  : 'event3',start: startDate, end: end, allDay: false}];
 
             $("#calendar").fullCalendar('addEventSource', eventData);
             $("#calendar").fullCalendar("unselect");
@@ -227,6 +228,7 @@ textarea {
         select: function (start, end, jsEvent, view) {
           $("#createJobModal").modal("show");
           startDate=start;
+          endDate=end;
           //for now I'll just use the an random array
           /*
             Once steven has added the add event data I will us that in the add event source
