@@ -120,14 +120,15 @@ textarea {
       });
 
 	$(document).ready(function () {
-    var start= startDate;
+    var startDate=null;
 
     $('input.timepicker').timepicker({
       zindex:1151
 
     });
 
-    $("#jobSubmit").click(function(){
+
+         $("#jobSubmit").click(function(){
           var jtitle = $("#jtitle").val();
          var jdescription = $("#jdescription").val();
          var startTime = $("#startTime").val();
@@ -154,7 +155,7 @@ textarea {
          console.log(important_quality);
 
          var jobInfo={
-         "date": moment(start).format(),
+         "date": moment(startDate).format(),
          "rate": rate,
          "dress_code": " ",
          "duration":2.5,
@@ -181,7 +182,7 @@ textarea {
           console.log(result.affected_rows);
 
 
-        }
+        });
       }
       
         $.when(ajaxFunction()).done(function(response){
@@ -196,6 +197,7 @@ textarea {
        
 
         });
+
 
 
      $("#payment_info").click(function(){
@@ -224,7 +226,7 @@ textarea {
       selectable: true,
         select: function (start, end, jsEvent, view) {
           $("#createJobModal").modal("show");
-          startdate=start;
+          startDate=start;
           //for now I'll just use the an random array
           /*
             Once steven has added the add event data I will us that in the add event source
@@ -246,7 +248,6 @@ textarea {
 }
 
          */
-
 
         
         },
