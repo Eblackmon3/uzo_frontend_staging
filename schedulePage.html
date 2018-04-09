@@ -135,6 +135,7 @@ textarea {
           var jtitle = $("#jtitle").val();
          var jdescription = $("#jdescription").val();
          var startTime = $("#startTime").val();
+         console.log(start_time);
          var endTime = $("#endTime").val();
 
          var employeeCount = $("#employeeCount").val();
@@ -235,14 +236,14 @@ textarea {
             "title":result[i].job_title,
             "start":result[i].date+"T"+result[i].start_time,
             "end":result[i].date+"T"+result[i].end_time,
-            "allDay": false
+            "allDay": false,
+            "job_id":result[i].job_id 
           });
             console.log(jobs);
             //initial events
             
             $('#calendar').fullCalendar({
 
-              timeFormat: 'hh:mm A',
 
               events: [
                   {
@@ -257,7 +258,7 @@ textarea {
                   },
                   {
                     title  : 'event3',
-                    start  : '2018-04-07T22:30 AM',
+                    start  : '2018-04-07T22:30:00',
                     allDay : false // will make the time show
                   }
                 ],
