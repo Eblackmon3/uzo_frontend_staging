@@ -226,7 +226,7 @@ textarea {
           type: 'POST',
           contentType: "application/json",
           url: 'https://uzo-web-app.herokuapp.com/get_company_job_list',
-          data:JSON.stringify(jobInfo)
+          data:JSON.stringify(companyInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
           console.log(result);
