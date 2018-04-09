@@ -216,12 +216,12 @@ textarea {
             console.log(sessionStorage.getItem("company_id"));
           }
 
-          var companInfo={
+          var companyInfo={
          "company_id": sessionStorage.getItem("company_id")
 
           }
 
-    var ajaxFunction= function (){
+    var companyListFunction= function (){
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
