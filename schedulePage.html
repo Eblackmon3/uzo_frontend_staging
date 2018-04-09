@@ -239,22 +239,7 @@ textarea {
           });
             console.log(jobs);
             $('#calendar').fullCalendar({
-              events: [
-    {
-      title  : 'event1',
-      start  : '2010-01-01'
-    },
-    {
-      title  : 'event2',
-      start  : '2010-01-05',
-      end    : '2010-01-07'
-    },
-    {
-      title  : 'event3',
-      start  : '2010-01-09T12:30AM',
-      allDay : false // will make the time show
-    }
-  ],
+            
         //Need to add a create Event Button
         header: {
       left: 'month,agendaWeek,agendaDay',
@@ -262,6 +247,23 @@ textarea {
       right: 'custom2 prevYear,prev,next,nextYear'
       },
     // put your options and callbacks here
+
+    events: [
+                        {
+                          title  : 'event1',
+                          start  : '2010-01-01'
+                        },
+                        {
+                          title  : 'event2',
+                          start  : '2010-01-05',
+                          end    : '2010-01-07'
+                        },
+                        {
+                          title  : 'event3',
+                          start  : '2010-01-09T12:30AM',
+                          allDay : false // will make the time show
+                        }
+                      ],
 
       selectable: true,
         select: function (start, end, jsEvent, view) {
