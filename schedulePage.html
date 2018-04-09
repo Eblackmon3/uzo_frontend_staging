@@ -115,6 +115,9 @@ textarea {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script>
+    $('body').on('hidden.bs.modal', '.modal', function () {
+        $(this).removeData('bs.modal');
+      });
 
 	$(document).ready(function () {
 
