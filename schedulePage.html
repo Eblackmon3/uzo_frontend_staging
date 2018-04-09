@@ -230,9 +230,9 @@ textarea {
         }).done(function(data) {
           var result= JSON.parse(data);
           console.log(result);
-          var jobs= {events:[]};
+          var jobs= []
           for(i=0;i<result.length;i++){
-            jobs.events.push({
+            jobs.push({
             "title":result[i].job_title,
             "start":result[i].date+"T"+result[i].start_time,
             "end":result[i].date+"T"+result[i].end_time,
