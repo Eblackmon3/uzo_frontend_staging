@@ -233,12 +233,12 @@ textarea {
           var jobs= {events:[]};
           var eventData= [{ title  : 'event3',start: startDate, end: endDate, allDay: false}];
           for(i=0;i<result.length;i++){
-            jobs.event.push{
+            jobs.event.push({
             "title":result.job_title
             "start":result.date+"T"+result.start_time,
             "end":result.date+"T"+result.end_time,
             "allDay": false
-          }
+          });
 
 
           }
