@@ -171,7 +171,9 @@ textarea {
 }
 
          */
-        var jtitle = $("#jtitle").val();
+
+         $("#jobSubmit").click(function(){
+          var jtitle = $("#jtitle").val();
          var jdescription = $("#jdescription").val();
          var startTime = $("#startTime").val();
          var endTime = $("#endTime").val();
@@ -223,6 +225,11 @@ textarea {
 
             $("#calendar").fullCalendar('addEventSource', eventData);
             $("#calendar").fullCalendar("unselect");
+       
+
+        });
+
+        
         },
 
        eventClick: function(calEvent, jsEvent, view) {
@@ -353,7 +360,7 @@ textarea {
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" id = "jobSubmit">Submit</button>
         </div>
       </div>
 
