@@ -160,6 +160,7 @@ textarea {
          var jdescription = $("#jdescription").val();
          var startTime = $("#startTime").val();
          statTime=convertTime(startTime);
+         console.log(startTime)
          var endTime = $("#endTime").val();
   
 
@@ -204,7 +205,6 @@ textarea {
           data:JSON.stringify(jobInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
-          console.log(result);
           console.log(result.affected_rows);
 
 
