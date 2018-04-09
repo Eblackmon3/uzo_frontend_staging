@@ -234,8 +234,8 @@ textarea {
           for(i=0;i<result.length;i++){
             jobs.events.push({
             "title":result[i].job_title,
-            "start":result[i].date+"T"+result.start_time,
-            "end":result[i].date+"T"+result.end_time,
+            "start":result[i].date+"T"+result[i].start_time,
+            "end":result[i].date+"T"+result[i].end_time,
             "allDay": false
           });
 
