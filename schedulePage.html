@@ -126,17 +126,22 @@ textarea {
 
     function convertTime(date){
       var justTime= date.substring(0,5);
-      console.log(justTime)
       var timeArray=justTime.split(":");
-      console.log(timeArray)
       var hours= parseInt(timeArray[0]);
       console.log("hours:"+hours);
-      console.log("minutes:"+minutes);
       var minutes= parseInt(timeArray[1]);
-      if(date.includes("PM")){
+      if(date.includes("PM")&&hours<12){
           hours=hours+12;
+      }else if(hours ===12){
+        hours=0;
       }
-      return hours.toString()+":"+minutes.toString()+":00"
+      if(hours<12){
+        hours= "0"+hours.toString();
+      }
+      if(minutes<10){
+        minutes="0"+minutes.toString();
+      }
+      return hours+":"+minutes+":00"
 
     }
     var startDate=null;
