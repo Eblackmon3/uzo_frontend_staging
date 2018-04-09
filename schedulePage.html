@@ -242,6 +242,8 @@ textarea {
             
             $('#calendar').fullCalendar({
 
+              timeFormat: 'hh:mm A'
+
               events: [
                   {
                     title  : 'event1',
@@ -254,7 +256,7 @@ textarea {
                   },
                   {
                     title  : 'event3',
-                    start  : '2018-04-07T22:30',
+                    start  : '2018-04-07T22:30 AM',
                     allDay : false // will make the time show
                   }
                 ],
