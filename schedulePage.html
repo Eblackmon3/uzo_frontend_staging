@@ -113,13 +113,11 @@ textarea {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script>
-  (function($) {
-    $(function() {
-        $('input.timepicker').timepicker();
-    });
-  })(jQuery);
 
 	$(document).ready(function () {
+
+    $('input.timepicker').timepicker({});
+    
 
      $("#payment_info").click(function(){
        window.location.replace("paymentInfo.html");
