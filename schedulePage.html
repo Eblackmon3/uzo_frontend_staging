@@ -230,6 +230,7 @@ textarea {
         }).done(function(data) {
           var result= JSON.parse(data);
           console.log(result);
+          console.log(result.job_title);
           var jobs= {events:[]};
           for(i=0;i<result.length;i++){
             jobs.events.push({
@@ -239,7 +240,7 @@ textarea {
             "allDay": false
           });
 
-            console.log(jobs)
+            console.log(jobs);
 
 
           }
