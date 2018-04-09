@@ -239,27 +239,8 @@ textarea {
             "allDay": false
           });
 
-            console.log(jobs);
-
-
-          }
-          
-
-
-        });
-      }
-      
-      
-        $.when(companyJobListFunction()).done(function(response){
-            //alert("Job Added");
-
-        });
-
-        
-
-    //moment().format('MMMM Do YYYY, h:mm:ss a')
-
-      $('#calendar').fullCalendar({
+            $('#calendar').fullCalendar({
+              events:jobs
         //Need to add a create Event Button
         header: {
       left: 'month,agendaWeek,agendaDay',
@@ -312,6 +293,28 @@ textarea {
       }
 
      })
+
+            console.log(jobs);
+
+
+          }
+          
+
+
+        });
+      }
+      
+      
+        $.when(companyJobListFunction()).done(function(response){
+            //alert("Job Added");
+
+        });
+
+        
+
+    //moment().format('MMMM Do YYYY, h:mm:ss a')
+
+      
 
 
 });
