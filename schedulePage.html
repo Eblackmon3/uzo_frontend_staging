@@ -126,7 +126,7 @@ textarea {
 
     function convertTime(date){
       var justTime= date.substring(0,4);
-      var timeArray=justTime.split(:);
+      var timeArray=justTime.split(":");
       var hours= paresInt(timeArray[0]);
       var minutes= parseInt(timeArray[1]);
       if(date.includes("PM")){
