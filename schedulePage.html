@@ -180,7 +180,7 @@ textarea {
 
          var employeeCount = $("#employeeCount").val();
          var preferred_skills = $("#jdescription2").val();
-         var important_quality = $('input[name=optradio]:checked').val();
+         var important_quality = $('input[name=radioName]:checked', '#important_quality').val()
          var rate = $("#rate").val();
 
          console.log("Above print outs")
@@ -307,7 +307,7 @@ textarea {
               <br>
               <label for="shitStart">What time does the shift end</label>
               <div>
-                <input type="text" class="timepicker" name="time" id=endTime/>
+                <input type="text" class="timepicker" name="time" id="endTime"/>
               </div>
               <br>
               <div>
@@ -338,7 +338,7 @@ textarea {
               <br>
               <div>
                 <label for="quality">What is the most important quality you're looking for in your workers?</label>
-                <form>
+                <form id="important_quality">
                   <input type="radio" name="option" value="Industry Experience" id= "industryExp"> Industry Experience <br>
                   <input type="radio" name="option" value="Professional Appearance" id= "profAp"> Professional Appearance<br>
                   <input type="radio" name="option" value="Proximity to Job Location" id= "proximity"> Proximity to Job Location<br>
