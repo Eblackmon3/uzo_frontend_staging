@@ -240,7 +240,6 @@ textarea {
             console.log(jobs);
             //initial events
             $('#calendar').fullCalendar({
-              timeFormat: 'hh:mm a',
                 events: [
                   {
                     title  : 'event1',
@@ -256,7 +255,9 @@ textarea {
                     start  : '2018-04-07T12:30:00AM',
                     allDay : false // will make the time show
                   }
-                ]
+                ],
+
+                timeFormat: 'hh:mm a'
               });
             $('#calendar').fullCalendar({
             
