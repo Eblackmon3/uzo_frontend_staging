@@ -126,56 +126,7 @@ textarea {
 
     });
 
-
-     $("#payment_info").click(function(){
-       window.location.replace("paymentInfo.html");
-
-     });
-
-    if(!sessionStorage.getItem("company_id")){
-
-            window.location.replace("index.html");
-          }else{
-            console.log(sessionStorage.getItem("company_id"));
-          }
-
-    //moment().format('MMMM Do YYYY, h:mm:ss a')
-
-      $('#calendar').fullCalendar({
-        //Need to add a create Event Button
-        header: {
-      left: 'month,agendaWeek,agendaDay',
-      center: 'title',
-      right: 'custom2 prevYear,prev,next,nextYear'
-      },
-    // put your options and callbacks here
-
-      selectable: true,
-        select: function (start, end, jsEvent, view) {
-          $("#createJobModal").modal("show");
-          //for now I'll just use the an random array
-          /*
-            Once steven has added the add event data I will us that in the add event source
-            get the current date using this moment(start).format('MM/DD/YYYY') and the time rotater the n append using T and store in DB
-
-            {
-         "date": "2018-06-15",
-         "rate": "40/hr",
-         "dress_code": "Formal",
-         "duration":2.5,
-         "open": true,
-         "job_title": "Janitor",
-         "time":2300,
-         "company_id":1,
-         "description":"chillen"
-         "important_quality": "idk",
-         "preferred_quality": "idk"
-
-}
-
-         */
-
-         $("#jobSubmit").click(function(){
+    $("#jobSubmit").click(function(){
           var jtitle = $("#jtitle").val();
          var jdescription = $("#jdescription").val();
          var startTime = $("#startTime").val();
@@ -244,6 +195,56 @@ textarea {
        
 
         });
+
+
+     $("#payment_info").click(function(){
+       window.location.replace("paymentInfo.html");
+
+     });
+
+    if(!sessionStorage.getItem("company_id")){
+
+            window.location.replace("index.html");
+          }else{
+            console.log(sessionStorage.getItem("company_id"));
+          }
+
+    //moment().format('MMMM Do YYYY, h:mm:ss a')
+
+      $('#calendar').fullCalendar({
+        //Need to add a create Event Button
+        header: {
+      left: 'month,agendaWeek,agendaDay',
+      center: 'title',
+      right: 'custom2 prevYear,prev,next,nextYear'
+      },
+    // put your options and callbacks here
+
+      selectable: true,
+        select: function (start, end, jsEvent, view) {
+          $("#createJobModal").modal("show");
+          //for now I'll just use the an random array
+          /*
+            Once steven has added the add event data I will us that in the add event source
+            get the current date using this moment(start).format('MM/DD/YYYY') and the time rotater the n append using T and store in DB
+
+            {
+         "date": "2018-06-15",
+         "rate": "40/hr",
+         "dress_code": "Formal",
+         "duration":2.5,
+         "open": true,
+         "job_title": "Janitor",
+         "time":2300,
+         "company_id":1,
+         "description":"chillen"
+         "important_quality": "idk",
+         "preferred_quality": "idk"
+
+}
+
+         */
+
 
         
         },
