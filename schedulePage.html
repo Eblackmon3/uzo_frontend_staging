@@ -98,6 +98,8 @@
 textarea {
   resize: none;
 }
+.timepicker{z-index:1151;}
+.timepicker.dropdown-menu {z-index:1151;}
 
 
 
@@ -117,11 +119,7 @@ textarea {
 	$(document).ready(function () {
 
     $('input.timepicker').timepicker({
-      beforeShow: function() {
-        setTimeout(function(){
-            $('.ui-datepicker').css('z-index', 99999999999999);
-        }, 0);
-    }
+
     });
 
 
