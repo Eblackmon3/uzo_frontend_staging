@@ -116,7 +116,13 @@ textarea {
 
 	$(document).ready(function () {
 
-
+    $('input.timepicker').timepicker({
+      beforeShow: function() {
+        setTimeout(function(){
+            $('.ui-datepicker').css('z-index', 99999999999999);
+        }, 0);
+    }
+    });
 
 
      $("#payment_info").click(function(){
@@ -203,9 +209,6 @@ textarea {
       }
 
      })
-     $('input.timepicker').timepicker({
-       template: 'modal'
-     });
 
 
 });
