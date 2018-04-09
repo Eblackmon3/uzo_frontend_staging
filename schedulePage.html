@@ -134,8 +134,8 @@ textarea {
          $("#jobSubmit").click(function(){
           var jtitle = $("#jtitle").val();
          var jdescription = $("#jdescription").val();
-         var startTime = $("#startTime").val();
-         console.log(Date.parse(startTime).getMinutes());
+         var startTime = Date.parse($("#startTime").val());
+         console.log(startTime.getMinutes());
          var endTime = $("#endTime").val();
 
          var employeeCount = $("#employeeCount").val();
