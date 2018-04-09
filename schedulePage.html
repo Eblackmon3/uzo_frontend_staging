@@ -240,22 +240,7 @@ textarea {
             console.log(jobs);
             //initial events
             $('#calendar').fullCalendar({
-                events: [
-                  {
-                    title  : 'event1',
-                    start  : '2018-04-01'
-                  },
-                  {
-                    title  : 'event2',
-                    start  : '2018-04-15',
-                    end    : '2018-04-20'
-                  },
-                  {
-                    title  : 'event3',
-                    start  : '2018-04-07T12:30:00',
-                    allDay : false // will make the time show
-                  }
-                ]
+                events: jobs
               });
             $('#calendar').fullCalendar({
             
