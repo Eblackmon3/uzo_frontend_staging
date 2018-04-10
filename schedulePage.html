@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+
+  <
+
 
 
 
@@ -118,6 +122,7 @@ textarea {
   
 
 	$(document).ready(function () {
+    $('#rate').mask('000,000,000,000,000.00');
 
     //function to convert date to a moment 
     function convertTime(date){
@@ -207,7 +212,6 @@ textarea {
 
          var employeeCount = $("#employeeCount").val();
          var preferred_skills = $("#jdescription2").val();
-         var preferred_skills = $("#jdescription2").val();
          var important_quality;
          if($('#industryExp').is(':checked')){
           important_quality="Industry Experience";
@@ -271,7 +275,12 @@ textarea {
 
             $("#createJobModal").modal("hide");
              $('body').removeClass().removeAttr('style');$('.modal-backdrop').remove();
-             $("#jtitle").val("")
+             $("#jtitle").val("");
+             $("#jdescription").val("");
+            $("#startTime").val("");
+           $("#endTime").val("");
+        $("#jdescription2").val("");
+         var preferred_skills = $("#jdescription2").val();
            }else{
             alert("End Date is greater than start Date")
            }
