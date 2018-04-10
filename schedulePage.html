@@ -143,7 +143,7 @@ textarea {
       }
       return hours+":"+minutes+":00"
 
-    }
+    };
     var startDate=null;
     var endDate=null;
 
@@ -159,9 +159,10 @@ textarea {
           var jtitle = $("#jtitle").val();
          var jdescription = $("#jdescription").val();
          var startTime = $("#startTime").val();
-         statTime=convertTime(startTime);
+         startTime=convertTime(startTime);
          console.log(startTime)
          var endTime = $("#endTime").val();
+         endTime= convertTime(endTime);
   
 
          var employeeCount = $("#employeeCount").val();
@@ -184,7 +185,6 @@ textarea {
          "date": moment(startDate).format(),
          "rate": rate,
          "dress_code": " ",
-         "duration":2.5,
          "open": true,
          "job_title": jtitle,
          "start_time":startTime,
@@ -195,7 +195,7 @@ textarea {
          "preferred_skills": preferred_skills,
           "num_employees": employeeCount
 
-          }
+          };
 
          var ajaxFunction= function (){
         return $.ajax({
@@ -205,7 +205,6 @@ textarea {
           data:JSON.stringify(jobInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
-          console.log(result);
           console.log(result.affected_rows);
 
 
