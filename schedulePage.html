@@ -307,7 +307,7 @@ textarea {
         },
 
        eventClick: function(calEvent, jsEvent, view) {
-        $("#clickModal").modal();
+        $("#showJobModal").modal("show");
 
         console.log('Event: ' + calEvent.title);
         console.log('Start: ' + moment(calEvent.start).format('MM/DD/YYYY'));
@@ -470,7 +470,7 @@ textarea {
 </body>
 
  <!-- Modal -->
-  <div class="modal fade bd-example-modal-lg" id="createJobModal" role="dialog">
+  <div class="modal fade bd-example-modal-lg" id="showJobModal" role="dialog">
     <div class="modal-dialog modal-lg">
 
       <!-- Modal content-->
