@@ -242,6 +242,8 @@ textarea {
           "num_employees": employeeCount
 
           };
+          console.log(Date(moment(endDate).format()+"T"+endTime));
+          console.log(Date(moment(startDate).format()+"T"+startTime));
           if(Date(moment(endDate).format()+"T"+endTime)>Date(moment(startDate).format()+"T"+startTime)){
          var ajaxFunction= function (){
         return $.ajax({
