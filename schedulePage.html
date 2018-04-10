@@ -163,31 +163,31 @@ textarea {
     });
     $( "#jdescription" ).change(function() {
         if(!$("#jdescription").val()){
-          $( "#jdescription" ).removeClass( "has-success" ).addClass( "has-error" );
+          $( "#descriptionError" ).removeClass( "has-success" ).addClass( "has-error" );
           $("#jobSubmit").prop('disabled', true);
 
         }if($("#jdescription").val()){
-          $( "#jdescription" ).removeClass( "has-error" ).addClass( "has-success" );
+          $( "#descriptionError" ).removeClass( "has-error" ).addClass( "has-success" );
           $("#jobSubmit").prop('disabled', false);
         }
     });
     $( "#startTime" ).change(function() {
         if(!$("#startTime").val()){
-          $( "#startTime" ).removeClass( "has-success" ).addClass( "has-error" );
+          $( "#startError" ).removeClass( "has-success" ).addClass( "has-error" );
           $("#jobSubmit").prop('disabled', true);
 
         }if($("#startTime").val()){
-          $( "#jdescription" ).removeClass( "has-error" ).addClass( "has-success" );
+          $( "#startError" ).removeClass( "has-error" ).addClass( "has-success" );
           $("#jobSubmit").prop('disabled', false);
         }
     });
     $( "#endTime" ).change(function() {
         if(!$("#endTime").val()){
-          $( "#endTime" ).removeClass( "has-success" ).addClass( "has-error" );
+          $( "#endError" ).removeClass( "has-success" ).addClass( "has-error" );
           $("#jobSubmit").prop('disabled', true);
 
         }if($("#endTime").val()){
-          $( "#endTime" ).removeClass( "has-error" ).addClass( "has-success" );
+          $( "#endError" ).removeClass( "has-error" ).addClass( "has-success" );
           $("#jobSubmit").prop('disabled', false);
         }
     });
