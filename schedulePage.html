@@ -244,7 +244,7 @@ textarea {
           };
           console.log(moment(moment(endDate).format()+"T"+endTime));
           console.log(moment(moment(startDate).format()+"T"+startTime));
-          if(Date(moment(endDate).format()+"T"+endTime)>Date(moment(startDate).format()+"T"+startTime)){
+          if(moment(moment(endDate).format()+"T"+endTime)>moment(moment(startDate).format()+"T"+startTime)){
          var ajaxFunction= function (){
         return $.ajax({
           type: 'POST',
