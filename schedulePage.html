@@ -115,6 +115,15 @@ textarea {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script>
+    $('body').on('hidden.bs.modal', '.modal', function () {
+        $(this).removeData('bs.modal');
+      });
+
+	$(document).ready(function () {
+
+    //function to convert date to a moment 
+    //12:30 AM
+
     function convertTime(date){
       var justTime= date.substring(0,5);
       var timeArray=justTime.split(":");
@@ -134,14 +143,7 @@ textarea {
       }
       return hours+":"+minutes+":00"
 
-    };
-
-	$(document).ready(function () {
-
-    //function to convert date to a moment 
-    //12:30 AM
-
-    
+    }
     var startDate=null;
     var endDate=null;
 
@@ -151,16 +153,14 @@ textarea {
       zindex:1151
 
     });
-    +dsfsadf
+
 
          $("#jobSubmit").click(function(){
           var jtitle = $("#jtitle").val();
          var jdescription = $("#jdescription").val();
          var startTime = $("#startTime").val();
-         startTime=convertTime(startTime);
-         console.log(startTime)
+         statTime=convertTime(startTime);
          var endTime = $("#endTime").val();
-         endTime= convertTime(endTime);
   
 
          var employeeCount = $("#employeeCount").val();
@@ -183,6 +183,7 @@ textarea {
          "date": moment(startDate).format(),
          "rate": rate,
          "dress_code": " ",
+         "duration":2.5,
          "open": true,
          "job_title": jtitle,
          "start_time":startTime,
@@ -193,7 +194,7 @@ textarea {
          "preferred_skills": preferred_skills,
           "num_employees": employeeCount
 
-          };
+          }
 
          var ajaxFunction= function (){
         return $.ajax({
@@ -203,6 +204,7 @@ textarea {
           data:JSON.stringify(jobInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
+          console.log(result);
           console.log(result.affected_rows);
 
 
@@ -358,7 +360,6 @@ textarea {
 
 
 });
-
 
 
 	</script>
