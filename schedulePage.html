@@ -268,6 +268,8 @@ textarea {
             $("#calendar").fullCalendar('addEventSource', eventData);
             $("#calendar").fullCalendar("unselect");
             //need both of these too kill modals 
+            $("#jobModalBody").html("");
+
             $("#createJobModal").modal("hide");
              $('body').removeClass().removeAttr('style');$('.modal-backdrop').remove();
            }else{
@@ -442,7 +444,7 @@ textarea {
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Add Job</h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="jobModalBody">
         <form class="form-horizontal" role="form">
           <div class="form-group">
             <div class="col-md-6">
