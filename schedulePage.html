@@ -158,7 +158,10 @@ textarea {
 
         }if($("#jtitle").val()){
           $( "#titleError" ).removeClass( "has-error" ).addClass( "has-success" );
-          $("#jobSubmit").prop('disabled', false);
+          if($("#jtitle").val()&&$("#jdescription").val()&&$("#startTime").val()&&$("#endTime").val()){
+            $("#jobSubmit").prop('disabled', false);
+          }
+        
         }
     });
     $( "#jdescription" ).change(function() {
@@ -168,17 +171,22 @@ textarea {
 
         }if($("#jdescription").val()){
           $( "#descriptionError" ).removeClass( "has-error" ).addClass( "has-success" );
-          $("#jobSubmit").prop('disabled', false);
+          if($("#jtitle").val()&&$("#jdescription").val()&&$("#startTime").val()&&$("#endTime").val()){
+            $("#jobSubmit").prop('disabled', false);
+          }
         }
     });
     $( "#startTime" ).change(function() {
+      console.log($("#startTime").val());
         if(!$("#startTime").val()){
           $( "#startError" ).removeClass( "has-success" ).addClass( "has-error" );
           $("#jobSubmit").prop('disabled', true);
 
         }if($("#startTime").val()){
           $( "#startError" ).removeClass( "has-error" ).addClass( "has-success" );
-          $("#jobSubmit").prop('disabled', false);
+          if($("#jtitle").val()&&$("#jdescription").val()&&$("#startTime").val()&&$("#endTime").val()){
+            $("#jobSubmit").prop('disabled', false);
+          }
         }
     });
     $( "#endTime" ).change(function() {
@@ -188,7 +196,9 @@ textarea {
 
         }if($("#endTime").val()){
           $( "#endError" ).removeClass( "has-error" ).addClass( "has-success" );
-          $("#jobSubmit").prop('disabled', false);
+          if($("#jtitle").val()&&$("#jdescription").val()&&$("#startTime").val()&&$("#endTime").val()){
+            $("#jobSubmit").prop('disabled', false);
+          }
         }
     });
 
