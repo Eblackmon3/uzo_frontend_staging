@@ -154,7 +154,7 @@ textarea {
     $( "#jtitle" ).change(function() {
         if(!$("#jtitle").val()){
           $( "#titleError" ).removeClass( "has-success" ).addClass( "has-error" );
-          $("#jobSubmit").prop('disabled', true);
+        
 
         }if($("#jtitle").val()){
           $( "#titleError" ).removeClass( "has-error" ).addClass( "has-success" );
@@ -164,7 +164,7 @@ textarea {
     $( "#jdescription" ).change(function() {
         if(!$("#jdescription").val()){
           $( "#descriptionError" ).removeClass( "has-success" ).addClass( "has-error" );
-          $("#jobSubmit").prop('disabled', true);
+          
 
         }if($("#jdescription").val()){
           $( "#descriptionError" ).removeClass( "has-error" ).addClass( "has-success" );
@@ -175,7 +175,7 @@ textarea {
     $( "#rate" ).change(function() {
         if(!$("#rate").val()){
           $( "#salaryError" ).removeClass( "has-success" ).addClass( "has-error" );
-          $("#jobSubmit").prop('disabled', true);
+          
 
         }if($("#rate").val()){
           $( "#salaryError" ).removeClass( "has-error" ).addClass( "has-success" );
@@ -266,8 +266,10 @@ textarea {
             $("#calendar").fullCalendar('addEventSource', eventData);
             $("#calendar").fullCalendar("unselect");
             $("#createJobModal").modal("hide");
-       }else{
 
+             $('#createJobModal').modal('toggle');
+       }else{
+          alert('fields must be completed')
        }
 
         });
@@ -509,7 +511,7 @@ textarea {
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" id = "jobSubmit" disabled>Submit</button>
+          <button type="button" class="btn btn-default"  id = "jobSubmit" >Submit</button>
         </div>
       </div>
 
