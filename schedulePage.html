@@ -152,7 +152,6 @@ textarea {
 
     //Ensure that the inputs are correct for the jobModal
     $( "#jtitle" ).change(function() {
-      console.log($("#jtitle").val());
         if(!$("#jtitle").val()){
           $( "#titleError" ).removeClass( "has-success" ).addClass( "has-error" );
           $("#jobSubmit").prop('disabled', true);
@@ -162,6 +161,19 @@ textarea {
           $("#jobSubmit").prop('disabled', false);
         }
     });
+    $( "#jdescription" ).change(function() {
+        if(!$("#jdescription").val()){
+          $( "#titleError" ).removeClass( "has-success" ).addClass( "has-error" );
+          $("#jobSubmit").prop('disabled', true);
+
+        }if($("#jdescription").val()){
+          $( "#titleError" ).removeClass( "has-error" ).addClass( "has-success" );
+          $("#jobSubmit").prop('disabled', false);
+        }
+    });
+
+
+
 
 //The function that controls he jobsumbit action, outside as to not add multiple click functions to the dev
          $("#jobSubmit").click(function(){
