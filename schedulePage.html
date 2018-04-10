@@ -253,6 +253,7 @@ textarea {
         }).done(function(data) {
           var result= JSON.parse(data);
           var jobs= []
+          if(!(result==null ||result==undefined ||result=="undefined")){
           for(i=0;i<result.length;i++){
             jobs.push({
             "title":result[i].job_title,
@@ -261,7 +262,8 @@ textarea {
             "allDay": false,
             "job_id":result[i].job_id 
           });
-            console.log("here");
+          }
+            
             //initial events
             
             $('#calendar').fullCalendar({
