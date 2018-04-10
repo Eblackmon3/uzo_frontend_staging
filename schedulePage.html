@@ -371,97 +371,7 @@ textarea {
 
     </div>
   </header>
-   <!-- Modal -->
-  <div class="modal fade bd-example-modal-lg" id="showJobModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add Job</h4>
-        </div>
-        <div class="modal-body">
-        <form class="form-horizontal" role="form">
-          <div class="form-group">
-            <div class="col-md-6">
-            <label for="jtitle">Job Title</label>
-            <div class="input-group">
-              <input type="text" class="form-control" name="jtitle" id="jtitle"/>
-            </div>
-            <br>
-              <label for="jobDesc">Description of Job</label>
-              <div class="input-group">
-                <textarea rows="4" cols="55" placeholder="In a few sentences, tell us what the position entails?" id="jdescription">
-                </textarea>
-              </div>
-              <br>
-              <label for="shitStart">What time does the shift start</label>
-              <div>
-                <input type="text" class="timepicker" name="time" id="startTime"/>
-              </div>
-              <br>
-              <label for="shitStart">What time does the shift end</label>
-              <div>
-                <input type="text" class="timepicker" name="time" id="endTime"/>
-              </div>
-              <br>
-              <div>
-              <label for="ecount">How many employees do you need per shift?</label>
-              <form>
-                <select  id="employeeCount">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </form>
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="jobDesc2">Are their any required or preferred skills, certifications, or education requirements for workers?</label>
-              <div class="input-group">
-                <textarea rows="4" cols="55" id="jdescription2">
-                </textarea>
-              </div>
-              <br>
-              <div>
-                <label for="quality">What is the most important quality you're looking for in your workers?</label>
-                <form id="important_quality">
-                  <input type="radio" name="option" value="Industry Experience" id= "industryExp"> Industry Experience <br>
-                  <input type="radio" name="option" value="Professional Appearance" id= "profAp"> Professional Appearance<br>
-                  <input type="radio" name="option" value="Proximity to Job Location" id= "proximity"> Proximity to Job Location<br>
-                  <input type="radio" name="option" value="Punctuality" id= "punctuality"> Punctuality<br>
-                </form>
-              </div>
-              <br>
-              <div class="form-row">
-                <label for="c2">Hourly Rate</label>
-                <div class="input-group">
-                  <span class="input-group-addon">$</span>
-                  <input type="number" value="15" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="rate" />
-                </div>
-              </div>
-
-
-          </div>
-        </form>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" id = "jobSubmit">Submit</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
+  
 
   <!-- Modal -->
   <div class="modal fade bd-example-modal-lg" id="createJobModal" role="dialog">
@@ -555,7 +465,25 @@ textarea {
     </div>
   </div>
 
-
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   
 
