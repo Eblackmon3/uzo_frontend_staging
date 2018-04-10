@@ -277,10 +277,10 @@ textarea {
       },
     // put your options and callbacks here
       selectable: true,
-        select: function (start, end, jsEvent, view) {
+       dayClick: function(date, jsEvent, view) {
           $("#createJobModal").modal("show");
-          startDate=start;
-          endDate=end;
+          startDate=date;
+          endDate=date;
           //for now I'll just use the an random array
           /*
             Once steven has added the add event data I will us that in the add event source
@@ -371,7 +371,7 @@ textarea {
 
     </div>
   </header>
-  
+
 
   <!-- Modal -->
   <div class="modal fade bd-example-modal-lg" id="createJobModal" role="dialog">
