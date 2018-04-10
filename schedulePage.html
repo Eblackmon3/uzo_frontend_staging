@@ -152,6 +152,7 @@ textarea {
 
     //Ensure that the inputs are correct for the jobModal
     $( "#jtitle" ).change(function() {
+      console.log($("#jtitle").val());
         if(!$("#jtitle").val()){
           $( "#titleError" ).removeClass( "has-success" ).addClass( "has-error" );
           $("#jobSubmit").prop('disabled', true);
@@ -450,10 +451,8 @@ textarea {
 
             <div class="col-md-6">
               <label for="jobDesc2">Are their any required or preferred skills, certifications, or education requirements for workers?</label>
-              <div class="input-group">
-                <textarea rows="4" cols="55" id="jdescription2">
+                <textarea rows="4" cols="55" id="jdescription2" class="form-control">
                 </textarea>
-              </div>
               <br>
               <div>
                 <label for="quality">What is the most important quality you're looking for in your workers?</label>
