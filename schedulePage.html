@@ -152,6 +152,7 @@ textarea {
 
 //The function that controls he jobsumbit action, outside as to not add multiple click functions to the dev
          $("#jobSubmit").click(function(){
+
           var jtitle = $("#jtitle").val();
          var jdescription = $("#jdescription").val();
          var startTime = $("#startTime").val();
@@ -176,6 +177,9 @@ textarea {
          }
          var rate = $("#rate").val();
 
+         if(!jtitle){
+          $("#jtitle").addClass( "has-error" );
+         }
 
          var jobInfo={
          "date": moment(startDate).format(),
@@ -388,9 +392,11 @@ textarea {
           <div class="form-group">
             <div class="col-md-6">
             <label for="jtitle">Job Title</label>
+            <div class="form-group">
             <div class="input-group">
               <input type="text" class="form-control" name="jtitle" id="jtitle"/>
             </div>
+          </div>
             <br>
               <label for="jobDesc">Description of Job</label>
               <div class="input-group">
