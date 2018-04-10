@@ -266,8 +266,7 @@ textarea {
             $("#calendar").fullCalendar('addEventSource', eventData);
             $("#calendar").fullCalendar("unselect");
             $("#createJobModal").modal("hide");
-
-             $('#createJobModal').modal('hides');
+             $('body').removeClass().removeAttr('style');$('.modal-backdrop').remove();
        }else{
           alert('fields must be completed')
        }
