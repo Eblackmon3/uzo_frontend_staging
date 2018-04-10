@@ -162,7 +162,6 @@ textarea {
          startTime=convertTime(startTime);
          console.log(startTime)
          var endTime = $("#endTime").val();
-         endTime= convertTime(endTime);
   
 
          var employeeCount = $("#employeeCount").val();
@@ -185,6 +184,7 @@ textarea {
          "date": moment(startDate).format(),
          "rate": rate,
          "dress_code": " ",
+         "duration":2.5,
          "open": true,
          "job_title": jtitle,
          "start_time":startTime,
