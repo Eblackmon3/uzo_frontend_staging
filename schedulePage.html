@@ -122,7 +122,7 @@ textarea {
   
 
 	$(document).ready(function () {
-    $('#rate').mask('000,000,000,000,000.00', {reverse: true});
+    $('#rate').mask("#.##0,00", {reverse: true});
 
     //function to convert date to a moment 
     function convertTime(date){
