@@ -401,7 +401,7 @@ textarea {
               <label for="shitStart">What time does the shift start</label>
               <div class="has-error">
                 <div class="has-error" id="startError">
-                <input type="text" class="timepicker" name="time" id="startTime"/>
+                <input type="text" class=" form-control timepicker" name="time" id="startTime"/>
               </div>
             </div>
               <br>
@@ -452,7 +452,9 @@ textarea {
                 <label for="c2">Hourly Rate</label>
                 <div class="input-group">
                   <span class="input-group-addon">$</span>
+                   <div class="has-error" id="salaryError">
                   <input type="number" value="15" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="rate" />
+                </div>
                 </div>
               </div>
 
