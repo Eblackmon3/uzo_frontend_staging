@@ -337,6 +337,7 @@ textarea {
       selectable: true,
        dayClick: function(date, jsEvent, view) {
           $("#createJobModal").modal("show");
+
           startDate=date;
           endDate=date;
           //for now I'll just use the an random array
@@ -365,7 +366,7 @@ textarea {
         },
 
        eventClick: function(calEvent, jsEvent, view) {
-        $("#showJobModal").modal("show");
+        $('#showJobModal').appendTo("body").modal('show');
 
         console.log('Event: ' + calEvent.title);
         console.log('Start: ' + moment(calEvent.start).format('MM/DD/YYYY'));
