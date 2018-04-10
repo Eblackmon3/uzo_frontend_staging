@@ -115,15 +115,11 @@ textarea {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script>
-    $('body').on('hidden.bs.modal', '.modal', function () {
-        $(this).removeData('bs.modal');
-      });
+  
 
 	$(document).ready(function () {
 
     //function to convert date to a moment 
-    //12:30 AM
-
     function convertTime(date){
       var justTime= date.substring(0,5);
       var timeArray=justTime.split(":");
@@ -154,7 +150,7 @@ textarea {
 
     });
 
-
+//The function that controls he jobsumbit action, outside as to not add multiple click functions to the dev
          $("#jobSubmit").click(function(){
           var jtitle = $("#jtitle").val();
          var jdescription = $("#jdescription").val();
@@ -216,7 +212,7 @@ textarea {
             //alert("Job Added");
         });
 
-        var eventData= [{ title  : jtitle,start: moment(startDate).format()+"T"+startTime, end:moment(startDate).format()+"T"+endTime, allDay: false}];
+        var eventData= [{ title  : jtitle,start: moment(startDate).format()+"T"+startTime, end:moment(endDate).format()+"T"+endTime, allDay: false}];
 
             $("#calendar").fullCalendar('addEventSource', eventData);
             $("#calendar").fullCalendar("unselect");
@@ -225,7 +221,7 @@ textarea {
 
         });
 
-
+      //Page navigation section 
 
      $("#payment_info").click(function(){
        window.location.replace("paymentInfo.html");
@@ -244,6 +240,7 @@ textarea {
 
           }
 
+//Ensure that jobs are loaded on signin and run the full calendar functions actas a main method 
     var companyJobListFunction= function (){
         return $.ajax({
           type: 'POST',
@@ -400,6 +397,99 @@ textarea {
 								<textarea rows="4" cols="55" placeholder="In a few sentences, tell us what the position entails?" id="jdescription">
 								</textarea>
 							</div>
+              <br>
+              <label for="shitStart">What time does the shift start</label>
+              <div>
+                <input type="text" class="timepicker" name="time" id="startTime"/>
+              </div>
+              <br>
+              <label for="shitStart">What time does the shift end</label>
+              <div>
+                <input type="text" class="timepicker" name="time" id="endTime"/>
+              </div>
+              <br>
+              <div>
+              <label for="ecount">How many employees do you need per shift?</label>
+              <form>
+                <select  id="employeeCount">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </form>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="jobDesc2">Are their any required or preferred skills, certifications, or education requirements for workers?</label>
+              <div class="input-group">
+                <textarea rows="4" cols="55" id="jdescription2">
+                </textarea>
+              </div>
+              <br>
+              <div>
+                <label for="quality">What is the most important quality you're looking for in your workers?</label>
+                <form id="important_quality">
+                  <input type="radio" name="option" value="Industry Experience" id= "industryExp"> Industry Experience <br>
+                  <input type="radio" name="option" value="Professional Appearance" id= "profAp"> Professional Appearance<br>
+                  <input type="radio" name="option" value="Proximity to Job Location" id= "proximity"> Proximity to Job Location<br>
+                  <input type="radio" name="option" value="Punctuality" id= "punctuality"> Punctuality<br>
+                </form>
+              </div>
+              <br>
+              <div class="form-row">
+                <label for="c2">Hourly Rate</label>
+                <div class="input-group">
+                  <span class="input-group-addon">$</span>
+                  <input type="number" value="15" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="rate" />
+                </div>
+              </div>
+
+
+          </div>
+        </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id = "jobSubmit">Submit</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+   <!-- Modal -->
+  <div class="modal fade bd-example-modal-lg" id="clickModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+
+   <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Job</h4>
+        </div>
+        <div class="modal-body">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <div class="col-md-6">
+            <label for="jtitle">Job Title</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="jtitle" id="jtitle"/>
+            </div>
+            <br>
+              <label for="jobDesc">Description of Job</label>
+              <div class="input-group">
+                <textarea rows="4" cols="55" placeholder="In a few sentences, tell us what the position entails?" id="jdescription">
+                </textarea>
+              </div>
               <br>
               <label for="shitStart">What time does the shift start</label>
               <div>
