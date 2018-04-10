@@ -158,9 +158,6 @@ textarea {
 
         }if($("#jtitle").val()){
           $( "#titleError" ).removeClass( "has-error" ).addClass( "has-success" );
-          if($("#jtitle").val()&&$("#jdescription").val()&&$("#startTime").val()&&$("#endTime").val() &&$("#rate").val()){
-            $("#jobSubmit").prop('disabled', false);
-          }
         
         }
     });
@@ -171,9 +168,7 @@ textarea {
 
         }if($("#jdescription").val()){
           $( "#descriptionError" ).removeClass( "has-error" ).addClass( "has-success" );
-          if($("#jtitle").val()&&$("#jdescription").val()&&$("#startTime").val()&&$("#endTime").val()&& $("#rate").val()){
-            $("#jobSubmit").prop('disabled', false);
-          }
+          
         }
     });
 
@@ -184,9 +179,6 @@ textarea {
 
         }if($("#rate").val()){
           $( "#salaryError" ).removeClass( "has-error" ).addClass( "has-success" );
-          if($("#jtitle").val()&&$("#jdescription").val()&&$("#startTime").val()&&$("#endTime").val()&&$("#rate").val()){
-            $("#jobSubmit").prop('disabled', false);
-          }
         }
     });
 
@@ -203,6 +195,7 @@ textarea {
 
 //The function that controls he jobsumbit action, outside as to not add multiple click functions to the dev
          $("#jobSubmit").click(function(){
+          if($("#jtitle").val()&&$("#jdescription").val()&&$("#startTime").val()&&$("#endTime").val()&&$("#rate").val()){
           var jtitle = $("#jtitle").val();
          var jdescription = $("#jdescription").val();
          var startTime = $("#startTime").val();
@@ -273,7 +266,9 @@ textarea {
             $("#calendar").fullCalendar('addEventSource', eventData);
             $("#calendar").fullCalendar("unselect");
             $("#createJobModal").modal("hide");
-       
+       }else{
+
+       }
 
         });
 
