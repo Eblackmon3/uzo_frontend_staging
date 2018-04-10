@@ -395,7 +395,7 @@ textarea {
           </div>
             <br>
               <label for="jobDesc">Description of Job</label>
-              <div class="has-error" id="titleError">
+              <div class="has-error" id="descriptionError">
               <div class="input-group">
 								<textarea rows="4" cols="55" placeholder="In a few sentences, tell us what the position entails?" id="jdescription">
 								</textarea>
@@ -403,14 +403,16 @@ textarea {
             </div>
               <br>
               <label for="shitStart">What time does the shift start</label>
-              <div>
+                <div class="has-error" id="startError">
                 <input type="text" class="timepicker" name="time" id="startTime"/>
               </div>
               <br>
               <label for="shitStart">What time does the shift end</label>
               <div>
+                <div class="has-error" id="endError">
                 <input type="text" class="timepicker" name="time" id="endTime"/>
               </div>
+            </div>
               <br>
               <div>
               <label for="ecount">How many employees do you need per shift?</label>
