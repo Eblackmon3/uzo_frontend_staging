@@ -216,7 +216,7 @@ textarea {
             //alert("Job Added");
         });
 
-        var eventData= [{ title  : 'event3',start: startDate, end: endDate, allDay: false}];
+        var eventData= [{ title  : 'job_title',start:date+"T"+startTime, end:date+"T"+endTime , allDay: false}];
 
             $("#calendar").fullCalendar('addEventSource', eventData);
             $("#calendar").fullCalendar("unselect");
