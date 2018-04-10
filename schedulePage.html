@@ -176,6 +176,20 @@ textarea {
           }
         }
     });
+
+    $("#startTime").datepicker({
+        onSelect: function(dateText) {
+          if(!$("#startTime").val()){
+          $( "#startError" ).removeClass( "has-success" ).addClass( "has-error" );
+          $("#jobSubmit").prop('disabled', true);
+
+        }if($("#startTime").val()){
+          $( "#startError" ).removeClass( "has-error" ).addClass( "has-success" );
+          if($("#jtitle").val()&&$("#jdescription").val()&&$("#startTime").val()&&$("#endTime").val()){
+            $("#jobSubmit").prop('disabled', false);
+          }
+        }
+      });
     $( "#startTime" ).change(function() {
       console.log($("#startTime").val());
         if(!$("#startTime").val()){
