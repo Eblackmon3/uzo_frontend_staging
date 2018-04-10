@@ -149,7 +149,7 @@ textarea {
       zindex:1151
 
     });
-
+/*
     //Ensure that the inputs are correct for the jobModal
     $( "#jtitle" ).change(function() {
         if(!$("#jtitle").val()){
@@ -170,7 +170,7 @@ textarea {
           $( "#descriptionError" ).removeClass( "has-error" ).addClass( "has-success" );
           
         }
-    });
+        */
 
     $( "#rate" ).change(function() {
         if(!$("#rate").val()){
@@ -242,7 +242,7 @@ textarea {
           "num_employees": employeeCount
 
           };
-
+          if((Date(end:moment(endDate).format()+"T"+endTime)>Date(moment(startDate).format()+"T"+startTime))){
          var ajaxFunction= function (){
         return $.ajax({
           type: 'POST',
@@ -265,10 +265,14 @@ textarea {
 
             $("#calendar").fullCalendar('addEventSource', eventData);
             $("#calendar").fullCalendar("unselect");
+            //need both of these too kill modals 
             $("#createJobModal").modal("hide");
              $('body').removeClass().removeAttr('style');$('.modal-backdrop').remove();
+           }else{
+            alert("End Date is greater than startDate")
+           }
        }else{
-          alert('fields must be completed')
+        alert("Please fill in all fields");
        }
 
         });
@@ -445,13 +449,13 @@ textarea {
           </div>
             <br>
               <label for="jobDesc">Description of Job</label>
-              <div class="has-error" id="descriptionError">
+              <div  id="descriptionError">
 								<textarea class= "form-control" rows="4" cols="55" placeholder="In a few sentences, tell us what the position entails?" id="jdescription">
 								</textarea>
             </div>
               <br>
               <label for="shitStart">What time does the shift start</label>
-                <div class="has-error" id="startError">
+                <div id="startError">
                 <input type="text" class=" form-control timepicker" name="time" id="startTime"/>
             </div>
               <br>
