@@ -167,7 +167,27 @@ textarea {
           $("#jobSubmit").prop('disabled', true);
 
         }if($("#jdescription").val()){
-          $( "#titleError" ).removeClass( "has-error" ).addClass( "has-success" );
+          $( "#jdescription" ).removeClass( "has-error" ).addClass( "has-success" );
+          $("#jobSubmit").prop('disabled', false);
+        }
+    });
+    $( "#startTime" ).change(function() {
+        if(!$("#startTime").val()){
+          $( "#startTime" ).removeClass( "has-success" ).addClass( "has-error" );
+          $("#jobSubmit").prop('disabled', true);
+
+        }if($("#startTime").val()){
+          $( "#jdescription" ).removeClass( "has-error" ).addClass( "has-success" );
+          $("#jobSubmit").prop('disabled', false);
+        }
+    });
+    $( "#endTime" ).change(function() {
+        if(!$("#endTime").val()){
+          $( "#endTime" ).removeClass( "has-success" ).addClass( "has-error" );
+          $("#jobSubmit").prop('disabled', true);
+
+        }if($("#endTime").val()){
+          $( "#endTime" ).removeClass( "has-error" ).addClass( "has-success" );
           $("#jobSubmit").prop('disabled', false);
         }
     });
@@ -480,7 +500,7 @@ textarea {
                 <label for="c2">Hourly Rate</label>
                 <div class="input-group">
                   <span class="input-group-addon">$</span>
-                   <div class="has-error" id="salaryError">
+                   <div  id="salaryError">
                   <input type="number" value="15" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="rate" />
                 </div>
                 </div>
