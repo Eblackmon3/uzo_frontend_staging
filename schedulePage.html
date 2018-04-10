@@ -242,7 +242,7 @@ textarea {
           "num_employees": employeeCount
 
           };
-          if(Date(moment(endDate).format()+"T"+endTime)>Date(moment(startDate).format()+"T"+startTime)){
+          if(Date(moment(endDate).format()+"T"+endTime)<Date(moment(startDate).format()+"T"+startTime)){
          var ajaxFunction= function (){
         return $.ajax({
           type: 'POST',
@@ -444,7 +444,7 @@ textarea {
           <div class="form-group">
             <div class="col-md-6">
             <label for="jtitle">Job Title</label>
-            <div id="titleError" class="has-error">
+            <div id="titleError" >
               <input type="text" class="form-control" name="jtitle" id="jtitle"/>
           </div>
             <br>
@@ -460,7 +460,7 @@ textarea {
             </div>
               <br>
               <label for="shitStart">What time does the shift end</label>
-                <div class="has-error" id="endError">
+                <div  id="endError">
                 <input type="text" class="form-control timepicker" name="time" id="endTime"/>
             </div>
               <br>
