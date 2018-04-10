@@ -163,7 +163,7 @@ textarea {
     });
     $( "#jdescription" ).change(function() {
         if(!$("#jdescription").val()){
-          $( "#titleError" ).removeClass( "has-success" ).addClass( "has-error" );
+          $( "#jdescription" ).removeClass( "has-success" ).addClass( "has-error" );
           $("#jobSubmit").prop('disabled', true);
 
         }if($("#jdescription").val()){
