@@ -150,6 +150,18 @@ textarea {
 
     });
 
+    //Ensure that the inputs are correct for the jobModal
+    $( "#jtitle" ).change(function() {
+        if(!$("#jtitle").val()){
+          $( "#titleError" ).removeClass( "has-success" ).addClass( "has-error" );
+          $("#jobSubmit").prop('disabled', true);
+
+        }if($("#jtitle").val()){
+          $( "#titleError" ).removeClass( "has-error" ).addClass( "has-succes" );
+          $("#jobSubmit").prop('disabled', false);
+        }
+    });
+
 //The function that controls he jobsumbit action, outside as to not add multiple click functions to the dev
          $("#jobSubmit").click(function(){
           var jtitle = $("#jtitle").val();
@@ -175,6 +187,11 @@ textarea {
             important_quality="Punctuality";
          }
          var rate = $("#rate").val();
+
+         if(!jtitle){
+
+         }
+
 
 
          var jobInfo={
@@ -388,7 +405,7 @@ textarea {
           <div class="form-group">
             <div class="col-md-6">
             <label for="jtitle">Job Title</label>
-            <div class="has-error" id="titleError">
+            <div id="titleError">
               <input type="text" class="form-control" name="jtitle" id="jtitle"/>
           </div>
             <br>
