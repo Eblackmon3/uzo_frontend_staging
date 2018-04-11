@@ -382,7 +382,7 @@ textarea {
 
        eventClick: function(calEvent, jsEvent, view) {
         $('#showJobModal').appendTo("body").modal('show');
-        console.log(calEvent);
+        console.log(calEvent.job_id);
 
         console.log('Event: ' + calEvent.title);
         console.log('Start: ' + moment(calEvent.start).format('MM/DD/YYYY'));
