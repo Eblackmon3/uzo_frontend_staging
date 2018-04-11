@@ -260,8 +260,8 @@ textarea {
           data:JSON.stringify(jobInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
-          console.log(result);
-           var eventData= [{ title  : jtitle,start: moment(startDate).format()+"T"+startTime, end:moment(endDate).format()+"T"+endTime, allDay: false, job_id:result.job_id}];
+          console.log(result.inserted_job);
+           var eventData= [{ title  : jtitle,start: moment(startDate).format()+"T"+startTime, end:moment(endDate).format()+"T"+endTime, allDay: false, job_id:result.inserted_job}];
            $("#calendar").fullCalendar('addEventSource', eventData);
             $("#calendar").fullCalendar("unselect");
             //need both of these too kill modals
