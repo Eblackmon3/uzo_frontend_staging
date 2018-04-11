@@ -494,7 +494,7 @@ textarea {
                  "student_id":studentBasicInfo[i].student_id
                   };
 
-            $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workAbilityResponse, workHistoryRespose){
+            $.when(studentWorkHistoryRespose(studentIDInfo)).done(function( workHistoryRespose){
               var workHistoryInfo= JSON.parse(workHistoryRespose[0]);
               console.log(workHistoryInfo)
 
