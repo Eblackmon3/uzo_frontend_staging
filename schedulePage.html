@@ -462,8 +462,7 @@ textarea {
           console.log(studentBasicInfo);
           for(i=0;i<studentBasicInfo.length;i++){
             $.when(studentWorkAbilityResponse(studentBasicInfo[i].student_id),studentWorkHistoryRespose(studentBasicInfo[i].student_id)).done(function(workAbilityResponse, workHistoryRespose){
-              console.log(workHistoryRespose);
-              console.log(workAbilityResponse);
+              console.log(studentBasicInfo);
                  /*
                    <div class="panel panel-default">
                                 <div class="panel-heading">
