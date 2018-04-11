@@ -125,6 +125,12 @@ textarea {
 	$(document).ready(function () {
     $('#rate').mask("#.##0,00", {reverse: true});
 
+     $("#dismissShowJob").click(function(){
+      $("insterestStudentList").empty();
+
+
+     });
+
     //function to convert date to a moment
     function convertTime(date){
       var justTime= date.substring(0,5);
@@ -312,6 +318,29 @@ textarea {
           }
 
 //Ensure that jobs are loaded on signin and run the full calendar functions actas a main method
+
+ var jobInfoResponse= function (jobInfo){
+        return $.ajax({
+              type: 'POST',
+              contentType: "application/json",
+              url: 'https://uzo-web-app.herokuapp.com/get_job_by_id',
+             data:JSON.stringify(jobInfo)
+             
+          }).done(function(data) { 
+              var result = JSON.parse(data);
+              console.log(moment(calEvent.end).format("'hh:mm A'"));
+              $("#jobTitleP").text(result.job_title);  
+              $("#jobDescP").text(result.description);  
+              $("#shitStartP").text(moment(calEvent.start).format("'hh:mm A'").toString());
+              $("#shitEndP").text(moment(calEvent.end).format("'hh:mm A'").toString());
+              $("#ecountP").text(result.num_employees); 
+              $("#jobDesc2P").text(result.important_quality); 
+              $("#qualityP").text(result.preferred_skills);
+              $("#rateP").text(result.rate);  
+               
+          });
+        }
+
     var companyJobListFunction= function (){
         return $.ajax({
           type: 'POST',
@@ -381,7 +410,6 @@ textarea {
 
        eventClick: function(calEvent, jsEvent, view) {
         $('#showJobModal').appendTo("body").modal('show');
-        console.log(calEvent.job_id);
         var jobInfo={
          "job_id":calEvent.job_id
           };
@@ -684,7 +712,7 @@ textarea {
 
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close" data-dismiss="modal" id="dismissShowJob">&times;</button>
           <h4 class="modal-title">Job Details</h4>
         </div>
         <div class="modal-body">
