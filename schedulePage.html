@@ -351,6 +351,7 @@ textarea {
       selectable: true,
        dayClick: function(date, jsEvent, view) {
           $("#createJobModal").modal("show");
+          console.log(jsEvent)l;
 
           startDate=date;
           endDate=date;
@@ -618,6 +619,8 @@ textarea {
 
 
 
+
+<!--Other tabs -->
                       </div>
                       <div role="tabpanel" class="tab-pane" id="interestedStudentTab">
                         <h3>Interested students go here</h3>
