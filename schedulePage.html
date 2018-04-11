@@ -385,7 +385,8 @@ textarea {
         var jobInfo={
          "job_id":calEvent.job_id
           };
-        $.ajax({
+        var populateJobInfo= function (){
+        return $.ajax({
               type: 'POST',
               contentType: "application/json",
               url: 'https://uzo-web-app.herokuapp.com/get_job_by_id',
@@ -404,9 +405,15 @@ textarea {
               $("#rateP").text(result.rate);  
                
           });
+        }
 
 
       }
+
+      $.when(populateJobInfo()).done(function(jobResponse){
+          console.log(jobResponse);
+
+        });
 
      })
 
@@ -428,7 +435,7 @@ textarea {
 
 
 
-    //moment().format('MMMM Do YYYY, h:mm:ss a')
+    //
 
 
 
