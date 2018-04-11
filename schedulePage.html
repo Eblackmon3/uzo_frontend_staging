@@ -417,12 +417,10 @@ textarea {
           }).done(function(data) { 
               var result = JSON.parse(data);
               console.log(result) 
-              /*
               for(i=0;i<result.length;i++){
                 //<a href="#" class="list-group-item">First item</a>
                 $("#interestedStudentList").append("<a href='#'class='list-group-item'>"+result[i].first_name+" "+result[i].last_name+"</a>" );
               }
-              */
  
                
           });
@@ -663,18 +661,6 @@ textarea {
                       <div role="tabpanel" class="tab-pane" id="interestedStudentTab">
                         <div class="container">
                           <div class="list-group" id="interestedStudentList">
-                            <li class="dropdown">
-                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                   <li><a href="#">Action</a></li>
-                                   <li><a href="#">Another action</a></li>
-                                   <li><a href="#">Something else here</a></li>
-                                   <li class="divider"></li>
-                                   <li><a href="#">Separated link</a></li>
-                                   <li class="divider"></li>
-                                   <li><a href="#">One more separated link</a></li>
-                                </ul>
-                            </li>
                           
                           </div>
                         </div>
