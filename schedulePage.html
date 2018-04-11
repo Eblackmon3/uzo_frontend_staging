@@ -394,7 +394,7 @@ textarea {
           }).done(function(data) { 
               var result = JSON.parse(data);
               console.log(result.job_title);
-              $("#jobTitleP").val(result.job_title);  
+              $("#jobTitleP").text(result.job_title);  
                
           });
 
