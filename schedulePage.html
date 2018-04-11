@@ -260,7 +260,6 @@ textarea {
           data:JSON.stringify(jobInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
-          console.log(result.inserted_job);
            var eventData= [{ title  : jtitle,start: moment(startDate).format()+"T"+startTime, end:moment(endDate).format()+"T"+endTime, allDay: false, job_id:result.inserted_job}];
            $("#calendar").fullCalendar('addEventSource', eventData);
             $("#calendar").fullCalendar("unselect");
@@ -383,14 +382,23 @@ textarea {
        eventClick: function(calEvent, jsEvent, view) {
         $('#showJobModal').appendTo("body").modal('show');
         console.log(calEvent.job_id);
+        var jobInfo={
+         "job_id":calEvent.job_id
+          };
 
-        console.log('Event: ' + calEvent.title);
-        console.log('Start: ' + moment(calEvent.start).format('MM/DD/YYYY'));
-        console.log('Finish: ' + moment(calEvent.end).format('MM/DD/YYYY'));
-        console.log('View: ' + view.name);
+        $.ajax({
+              type: 'POST',
+              contentType: "application/json",
+              url: 'https://uzo-web-app.herokuapp.com/get_job_by_id',
+             data:JSON.stringify(jobInfo)
+             
+          }).done(function(data) { 
+              var result = JSON.parse(data);
+              $("#jobTitleP").val(result.job_title);
+              
+               
+          });
 
-        // change the border color just for fun
-        $(this).css('border-color', 'red');
 
       }
 
@@ -565,11 +573,11 @@ textarea {
                       <div role="tabpanel" class="tab-pane active" id="jobInfoTab">
                       <div class="row">
                         <div class="col-sm-6">
-                          <div id="titleError" >
+                          <div>
                             <br>
                             <label for="jtitle">Job Title</label>
                             <br>
-                            <label></label>
+                            <p id="jobTitleP"></p>
                           </div>
                           <br>
                           <div  id="descriptionError">
