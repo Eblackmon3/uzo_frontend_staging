@@ -462,7 +462,11 @@ textarea {
 
           function getWorkInfo(i){
             $.when(studentWorkAbilityResponse(studentBasicInfo[i].student_id),studentWorkHistoryRespose(studentBasicInfo[i].student_id)).done(function(workAbilityResponse, workHistoryRespose){
-              console.log(studentBasicInfo[i].student_id);
+              var workAbilityInfo= JSON.parse(workAbilityResponse[0]);
+              var workHistoryInfo= JSON.parse(workHistoryRespose[0]);
+              console.log(workAbilityInfo)
+              console.log(workHistoryInfo)
+
 
                  /*
                    <div class="panel panel-default">
@@ -504,6 +508,7 @@ textarea {
 
                   "Major: "+studentBasicInfo[i].major
                   +"</li>");
+                 $("#list-group"+i).append("<a href='#' class='list-group-item'>Resume</a>");
 
 
 
@@ -512,7 +517,6 @@ textarea {
               });
           }
           for(var i=0;i<studentBasicInfo.length;i++){
-            console.log(i);
             getWorkInfo(i);
 
                 
