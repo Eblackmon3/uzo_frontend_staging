@@ -417,39 +417,7 @@ textarea {
           }).done(function(data) { 
               var result = JSON.parse(data);
               
-              for(i=0;i<result.length;i++){
-                /*
-                   <div class="panel panel-default">
-                                <div class="panel-heading">
-                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse1">Collapsible panel</a>
-                                  </h4>
-                                </div>
-                                <div id="collapse1" class="panel-collapse collapse">
-                                  <div class="panel-body">
-                                  <ul class="list-group">
-                                    <li class="list-group-item">First item</li>
-                                    <li class="list-group-item">Second item</li>
-                                    <li class="list-group-item">Third item</li>
-                                  </ul>
-                                  </div>
-                              
-                                </div>
-
-                              </div>
-                */
-                $("#interestedStudentTab").append( "<div class='panel panel-default' id='panel"+i+"'>");
-                $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
-                $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
-                $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+result[i].first_name+ " "+ result[i].last_name+"</a>");
-                $("#panel"+i).append("<div id='collapse"+i+"'class='panel-collapse collapse'>");
-                $("#collapse"+i).append("<div class='panel-body' id='panel-body"+i+"'>");
-                $("#panel-body"+i).append("<ul class='list-group' id='list-group"+i+"'>");
-                $("#list-group"+i).append("<li class='list-group-item'>"+ "first Item"+"</li>");
-
-
-                
-              }
+        
               
  
                
@@ -459,7 +427,7 @@ textarea {
         $.when(jobInfoResponse(), interestedStudentResponse()).done(function(jobResponse, studentResponse){
           var studentBasicInfo= JSON.parse(studentResponse[0]);
           console.log(studentBasicInfo);
-          
+
               for(i=0;i<studentBasicInfo.length;i++){
                 /*
                    <div class="panel panel-default">
