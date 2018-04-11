@@ -41,7 +41,7 @@
   background: #ccc;
 }
 
-.nav ul {
+.menu ul {
   list-style: none;
   background-color: #80ced6;
   text-align: center;
@@ -49,32 +49,32 @@
   margin: 0;
 }
 
-.nav li {
+.menu li {
   font-family: 'Roboto', sans-serif;
   font-size: 1.2em;
   line-height: 40px;
   height: 40px;
   border-bottom: 1px solid #888;
 }
-.nav a {
+.menu a {
   text-decoration: none;
   color: #fff;
   display: block;
   transition: .3s background-color;
 }
 
-.nav a:hover {
+.menu a:hover {
   background-color: #005f5f;
 }
 
-.nav a.active {
+.menu a.active {
   background-color: #fff;
   color: #444;
   cursor: default;
 }
 
 @media screen and (min-width: 600px) {
-  .nav li {
+  .menu li {
     width: 150px;
     border-bottom: none;
     height: 50px;
@@ -83,7 +83,7 @@
   }
 
   /* Option 1 - Display Inline */
-  .nav li {
+  .menu li {
     display: inline-block;
     margin-right: -4px;
   }
@@ -426,7 +426,7 @@ textarea {
 
 <body class="client">
   <header>
-    <div class="nav">
+    <div class="menu">
       <ul id="myTab">
         <li class="schedule"><a class="active" href="#first" data-toggle="tab" id="shedule">My Schedule</a></li>
         <li class="payment_info"><a  href="#fifth" data-toggle="tab" id="payment_info">Payment Info</a></li>
@@ -445,11 +445,9 @@ textarea {
   </header>
 
 
-  <!-- Modal -->
   <div class="modal fade bd-example-modal-lg" id="createJobModal" role="dialog">
     <div class="modal-dialog modal-lg">
 
-      <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -539,11 +537,9 @@ textarea {
   </div>
 
 
-  <!-- Modal -->
   <div class="modal fade bd-example-modal-lg" id="showJobModal" role="dialog">
     <div class="modal-dialog modal-lg">
 
-      <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
