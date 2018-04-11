@@ -423,13 +423,49 @@ textarea {
                
           });
         }
+        var student_id= 
+        var studentWorkHistoryRespose= function (studentid){
+        return $.ajax({
+              type: 'POST',
+              contentType: "application/json",
+              url: 'https://uzo-web-app.herokuapp.com/get_student_work_history',
+             data:JSON.stringify(jobInfo)
+             
+          }).done(function(data) { 
+              var result = JSON.parse(data);
+              
+        
+              
+ 
+               
+          });
+        }
+
+        var studentWorkAbilityResponse= function (studentid){
+        return $.ajax({
+              type: 'POST',
+              contentType: "application/json",
+              url: 'https://uzo-web-app.herokuapp.com/get_student_work_ability',
+             data:JSON.stringify(jobInfo)
+             
+          }).done(function(data) { 
+              var result = JSON.parse(data);
+              
+        
+              
+ 
+               
+          });
+        }
 
         $.when(jobInfoResponse(), interestedStudentResponse()).done(function(jobResponse, studentResponse){
           var studentBasicInfo= JSON.parse(studentResponse[0]);
           console.log(studentBasicInfo);
-
-              for(i=0;i<studentBasicInfo.length;i++){
-                /*
+          for(i=0;i<studentBasicInfo.length;i++){
+            $.when(studentWorkAbilityResponse(studentBasicInfo[i].student_id),studentWorkHistoryRespose(studentBasicInfo[i].student_id)).done(function(workAbilityResponse, workHistoryRespose){
+              console.log(workHistoryRespose);
+              console.log(workAbilityResponse);
+                 /*
                    <div class="panel panel-default">
                                 <div class="panel-heading">
                                   <h4 class="panel-title">
@@ -449,6 +485,7 @@ textarea {
 
                               </div>
                 */
+
                 $("#interestedStudentTab").append( "<div class='panel panel-default' id='panel"+i+"'>");
                 $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
                 $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
@@ -472,10 +509,12 @@ textarea {
 
 
 
+
+              });
+
                 
               }
-              
- 
+
           
 
         });
