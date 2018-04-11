@@ -396,7 +396,8 @@ textarea {
               console.log(moment(calEvent.end).format("'hh:mm A'"));
               $("#jobTitleP").text(result.job_title);  
               $("#jobDescP").text(result.description);  
-              $("#shitStartP").text(result.start_time);
+              $("#shitStartP").text(moment(calEvent.stat).format("'hh:mm A'"));
+              $("#shitEndP").text(moment(calEvent.stat).format("'hh:mm A'"));
                
           });
 
@@ -596,7 +597,7 @@ textarea {
                           <div>
                             <label for="shitStart">What time does the shift end</label>
                             <br>
-                            <label></label>
+                            <p id="shitEndP"></p>
                           </div>
                             <br>
                           <div>
