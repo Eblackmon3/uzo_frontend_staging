@@ -428,7 +428,7 @@ textarea {
               type: 'POST',
               contentType: "application/json",
               url: 'https://uzo-web-app.herokuapp.com/get_student_work_history',
-             data:JSON.stringify(jobInfo)
+             data:JSON.stringify(studentid)
              
           }).done(function(data) { 
               var result = JSON.parse(data);
@@ -445,7 +445,7 @@ textarea {
               type: 'POST',
               contentType: "application/json",
               url: 'https://uzo-web-app.herokuapp.com/get_student_work_ability',
-             data:JSON.stringify(jobInfo)
+             data:JSON.stringify(studentid)
              
           }).done(function(data) { 
               var result = JSON.parse(data);
