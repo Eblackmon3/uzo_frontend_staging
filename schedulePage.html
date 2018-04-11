@@ -393,8 +393,10 @@ textarea {
              
           }).done(function(data) { 
               var result = JSON.parse(data);
-              console.log(result.job_title);
+              console.log(calEvent);
               $("#jobTitleP").text(result.job_title);  
+              $("#jobDescP").text(result.description);  
+              $("#shitStartP").text(result.start_time);
                
           });
 
@@ -582,13 +584,13 @@ textarea {
                           <div  id="descriptionError">
                             <label for="jobDesc">Description of Job</label>
                             <br>
-                            <label></label>
+                            <p id="jobDescP"></p>
                           </div>
                             <br>
                           <div>
                             <label for="shitStart">What time does the shift start</label>
                             <br>
-                            <label></label>
+                            <p id="shitStartP"></p>
                           </div>
                           <br>
                           <div>
