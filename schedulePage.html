@@ -396,8 +396,8 @@ textarea {
               console.log(moment(calEvent.end).format("'hh:mm A'"));
               $("#jobTitleP").text(result.job_title);  
               $("#jobDescP").text(result.description);  
-              $("#shitStartP").text(moment(calEvent.stat).format("'hh:mm A'"));
-              $("#shitEndP").text(moment(calEvent.stat).format("'hh:mm A'"));
+              $("#shitStartP").text(moment(calEvent.start).format("'hh:mm A'"));
+              $("#shitEndP").text(moment(calEvent.end).format("'hh:mm A'"));
                
           });
 
