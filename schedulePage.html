@@ -385,7 +385,6 @@ textarea {
         var jobInfo={
          "job_id":calEvent.job_id
           };
-
         $.ajax({
               type: 'POST',
               contentType: "application/json",
@@ -394,8 +393,8 @@ textarea {
              
           }).done(function(data) { 
               var result = JSON.parse(data);
-              $("#jobTitleP").val(result.job_title);
-              
+              console.log(result);
+              $("#jobTitleP").val(result.job_title);  
                
           });
 
