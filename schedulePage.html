@@ -496,8 +496,7 @@ textarea {
                   };
 
             $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
-              var workHistoryInfo= JSON.parse(workHistoryRespose[0]);
-              console.log(workAbilityInfo)
+              var workHistoryInfo= JSON.parse(workHistoryRespose);
               console.log(workHistoryInfo)
 
 
