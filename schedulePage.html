@@ -459,9 +459,10 @@ textarea {
 
         $.when(jobInfoResponse(), interestedStudentResponse()).done(function(jobResponse, studentResponse){
           var studentBasicInfo= JSON.parse(studentResponse[0]);
-          for(var i=0;i<studentBasicInfo.length;i++){
-            (function(index) { $.when(studentWorkAbilityResponse(studentBasicInfo[i].student_id),studentWorkHistoryRespose(studentBasicInfo[i].student_id)).done(function(workAbilityResponse, workHistoryRespose){
-              console.log(i);
+
+          function getWorkInfo(i){
+            $.when(studentWorkAbilityResponse(studentBasicInfo[i].student_id),studentWorkHistoryRespose(studentBasicInfo[i].student_id)).done(function(workAbilityResponse, workHistoryRespose){
+
                  /*
                    <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -508,7 +509,10 @@ textarea {
 
 
               });
-          })(i);
+          }
+          for(var i=0;i<studentBasicInfo.length;i++){
+            console.log(i);
+            getWorkInfo(i);
 
                 
               }
