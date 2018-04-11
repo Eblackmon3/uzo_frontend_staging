@@ -119,12 +119,12 @@ textarea {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script>
-  
+
 
 	$(document).ready(function () {
     $('#rate').mask("#.##0,00", {reverse: true});
 
-    //function to convert date to a moment 
+    //function to convert date to a moment
     function convertTime(date){
       var justTime= date.substring(0,5);
       var timeArray=justTime.split(":");
@@ -148,7 +148,7 @@ textarea {
     var startDate=null;
     var endDate=null;
 
-    
+
 
     $('input.timepicker').timepicker({
       zindex:1151
@@ -159,28 +159,28 @@ textarea {
     $( "#jtitle" ).change(function() {
         if(!$("#jtitle").val()){
           $( "#titleError" ).removeClass( "has-success" ).addClass( "has-error" );
-        
+
 
         }if($("#jtitle").val()){
           $( "#titleError" ).removeClass( "has-error" ).addClass( "has-success" );
-        
+
         }
     });
     $( "#jdescription" ).change(function() {
         if(!$("#jdescription").val()){
           $( "#descriptionError" ).removeClass( "has-success" ).addClass( "has-error" );
-          
+
 
         }if($("#jdescription").val()){
           $( "#descriptionError" ).removeClass( "has-error" ).addClass( "has-success" );
-          
+
         }
 
-        
+
     $( "#rate" ).change(function() {
         if(!$("#rate").val()){
           $( "#salaryError" ).removeClass( "has-success" ).addClass( "has-error" );
-          
+
 
         }if($("#rate").val()){
           $( "#salaryError" ).removeClass( "has-error" ).addClass( "has-success" );
@@ -210,7 +210,7 @@ textarea {
          console.log(startTime)
          var endTime = $("#endTime").val();
          endTime= convertTime(endTime);
-  
+
 
          var employeeCount = $("#employeeCount").val();
          var preferred_skills = $("#jdescription2").val();
@@ -264,7 +264,7 @@ textarea {
 
         });
       }
-      
+
         $.when(ajaxFunction()).done(function(response){
             //alert("Job Added");
         });
@@ -292,7 +292,7 @@ textarea {
 
         });
 
-      //Page navigation section 
+      //Page navigation section
 
      $("#payment_info").click(function(){
        window.location.replace("paymentInfo.html");
@@ -311,7 +311,7 @@ textarea {
 
           }
 
-//Ensure that jobs are loaded on signin and run the full calendar functions actas a main method 
+//Ensure that jobs are loaded on signin and run the full calendar functions actas a main method
     var companyJobListFunction= function (){
         return $.ajax({
           type: 'POST',
@@ -328,18 +328,18 @@ textarea {
             "start":result[i].date+"T"+result[i].start_time,
             "end":result[i].date+"T"+result[i].end_time,
             "allDay": false,
-            "job_id":result[i].job_id 
+            "job_id":result[i].job_id
           });
           }
           console.log(jobs)
-            
+
             //initial events
-            
+
             $('#calendar').fullCalendar({
 
 
               events: jobs,
-            
+
         //Need to add a create Event Button
         header: {
       left: 'month,agendaWeek,agendaDay',
@@ -375,7 +375,7 @@ textarea {
 
          */
 
-        
+
         },
 
        eventClick: function(calEvent, jsEvent, view) {
@@ -393,28 +393,28 @@ textarea {
 
      })
 
-          
+
 
 
           }
-          
+
 
 
         });
       }
-      
-      
+
+
         $.when(companyJobListFunction()).done(function(response){
-            
+
 
         });
 
-        
+
 
     //moment().format('MMMM Do YYYY, h:mm:ss a')
 
-      
-      
+
+
 
 
 });
@@ -549,7 +549,25 @@ textarea {
           <h4 class="modal-title">Add Job</h4>
         </div>
         <div class="modal-body">
-        
+          <div role="tabpanel">
+                  <ul class="nav nav-tabs" role="tablist">
+                      <li role="presentation" class="active"><a href="#jobInfoTab" aria-controls="jobInfoTab" role="tab" data-toggle="tab">Job Information</a>
+
+                      </li>
+                      <li role="presentation"><a href="#interestedStudentTab" aria-controls="interestedStudentTab" role="tab" data-toggle="tab">Interested Students</a>
+
+                      </li>
+                      <li role="presentation"><a href="#jobManagerTab" aria-controls="jobManagerTab" role="tab" data-toggle="tab">Job Manager</a>
+
+                      </li>
+                  </ul>
+                  <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane active" id="jobInfoTab">Job Info goes here</div>
+                      <div role="tabpanel" class="tab-pane" id="interestedStudentTab">Interested students go here</div>
+                      <div role="tabpanel" class="tab-pane" id="jobManagerTab">Managing students go here</div>
+                  </div>
+              </div>
+          </div>
 
         </div>
         <div class="modal-footer">
@@ -562,7 +580,7 @@ textarea {
 
 
 
-  
+
 
 </body>
 
