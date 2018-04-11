@@ -458,7 +458,7 @@ textarea {
         }
 
         $.when(jobInfoResponse(), interestedStudentResponse()).done(function(jobResponse, studentResponse){
-          console.log(studentResponse[0][0]);
+          console.log(JSON.parse(studentResponse));
           
 
         });
