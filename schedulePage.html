@@ -393,7 +393,7 @@ textarea {
              
           }).done(function(data) { 
               var result = JSON.parse(data);
-              console.log(moment(calEvent.end).format("YYYY-MM-DD HH:mm"));
+              console.log(moment(calEvent.end).format("'hh:mm A'"));
               $("#jobTitleP").text(result.job_title);  
               $("#jobDescP").text(result.description);  
               $("#shitStartP").text(result.start_time);
