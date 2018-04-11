@@ -459,7 +459,7 @@ textarea {
 
         $.when(jobInfoResponse(), interestedStudentResponse()).done(function(jobResponse, studentResponse){
           var studentBasicInfo= JSON.parse(studentResponse[0]);
-          for(i=0;i<studentBasicInfo.length;i++){
+          for(var i=0;i<studentBasicInfo.length;i++){
             console.log(i);
             $.when(studentWorkAbilityResponse(studentBasicInfo[i].student_id),studentWorkHistoryRespose(studentBasicInfo[i].student_id)).done(function(workAbilityResponse, workHistoryRespose){
 
