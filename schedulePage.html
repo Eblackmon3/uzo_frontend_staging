@@ -396,8 +396,12 @@ textarea {
               console.log(moment(calEvent.end).format("'hh:mm A'"));
               $("#jobTitleP").text(result.job_title);  
               $("#jobDescP").text(result.description);  
-              $("#shitStartP").text(moment(calEvent.start).format("'hh:mm A'"));
-              $("#shitEndP").text(moment(calEvent.end).format("'hh:mm A'"));
+              $("#shitStartP").text(moment(calEvent.start).format("'hh:mm A'").toString());
+              $("#shitEndP").text(moment(calEvent.end).format("'hh:mm A'").toString());
+              $("#ecountP").text(result.num_employees); 
+              $("#jobDesc2P").text(result.important_quality); 
+              $("#qualityP").text(result.preferred_skills);
+              $("#rateP").text(result.rate);  
                
           });
 
@@ -603,7 +607,7 @@ textarea {
                           <div>
                             <label for="ecount">How many employees do you need per shift?</label>
                             <br>
-                            <label></label>
+                            <p id="ecountP"></p>
                           </div>
                       </div>
                       <div class="col-md-6">
@@ -611,19 +615,19 @@ textarea {
                         <br>
                         <label for="jobDesc2">Are their any required or preferred skills, certifications, or education requirements for workers?</label>
                         <br>
-                        <label></label>
+                         <p id="jobDesc2P"></p>
                         </div>
                         <br>
                         <div>
                           <label for="quality">What is the most important quality you're looking for in your workers?</label>
                           <br>
-                          <label></label>
+                          <p id="qualityP"></p>
                         </div>
                         <br>
                         <div class="form-row">
                           <label for="c2">Hourly Rate</label>
                           <br>
-                          <label></label>
+                           <p id="rateP"></p>
                         </div>
                         </div>
                         </div>
