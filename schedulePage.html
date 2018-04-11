@@ -462,6 +462,7 @@ textarea {
 
           function getWorkInfo(i){
             $.when(studentWorkAbilityResponse(studentBasicInfo[i].student_id),studentWorkHistoryRespose(studentBasicInfo[i].student_id)).done(function(workAbilityResponse, workHistoryRespose){
+              console.log(studentBasicInfo[i].student_id);
 
                  /*
                    <div class="panel panel-default">
