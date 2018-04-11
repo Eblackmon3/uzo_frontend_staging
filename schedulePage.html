@@ -416,7 +416,11 @@ textarea {
              
           }).done(function(data) { 
               var result = JSON.parse(data);
-              console.log(result)  
+              console.log(result) 
+              for(i=0;i<result.length;i++){
+                $("#interestedStudentList").append("<li>Appended item</li>");
+              }
+ 
                
           });
         }
@@ -655,7 +659,7 @@ textarea {
                       </div>
                       <div role="tabpanel" class="tab-pane" id="interestedStudentTab">
                         <div class="container">
-                          <div class="list-group">
+                          <div class="list-group" id="interestedStudentList">
                             <a href="#" class="list-group-item">First item</a>
                             <a href="#" class="list-group-item">Second item</a>
                             <a href="#" class="list-group-item">Third item</a>
