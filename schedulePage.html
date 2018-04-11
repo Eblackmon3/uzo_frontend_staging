@@ -351,7 +351,7 @@ textarea {
       selectable: true,
        dayClick: function(date, jsEvent, view) {
           $("#createJobModal").modal("show");
-          console.log(jsEvent);
+
 
           startDate=date;
           endDate=date;
@@ -382,6 +382,7 @@ textarea {
 
        eventClick: function(calEvent, jsEvent, view) {
         $('#showJobModal').appendTo("body").modal('show');
+        console.log(calEvent);
 
         console.log('Event: ' + calEvent.title);
         console.log('Start: ' + moment(calEvent.start).format('MM/DD/YYYY'));
