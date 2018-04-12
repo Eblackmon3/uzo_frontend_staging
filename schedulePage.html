@@ -525,9 +525,7 @@ textarea {
 
             $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
               var workHistoryInfo= JSON.parse(workHistoryRespose);
-              var  clockinBtns=[];
-              var  clockoutBtns=[];
-              var  completeBtns=[];
+              
 
                 $("#jobManagerTab").append( "<div class='panel panel-default' id='jobMpanel"+i+"'>");
                 $("#jobMpanel"+i).append("<div class='panel-heading' id='jobMpanel-heading"+i+"'>");
@@ -543,11 +541,10 @@ textarea {
                 $("#jobManagerGroup"+i).append("<button type='button'id='completeBtn"+i+"' class='btn btn-primary'>complete</button>");
                 completeBtns.push("completeBtn"+i)
                 console.log(completeBtns)
-                for(var j=0;j<completeBtns.legth;j++){
-                  $("#"+completeBtns[i]).click(function(){
+                  $("#"+completeBtn).click(function(){
                         console.log(i);
                     });
-                }
+                
 
 
               });
