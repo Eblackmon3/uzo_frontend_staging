@@ -420,8 +420,7 @@ textarea {
       center: 'title',
       right: 'custom2 prevYear,prev,next,nextYear'
       },
-    // put your options and callbacks here
-      selectable: true,
+
        dayClick: function(date, jsEvent, view) {
           $("#createJobModal").modal("show");
 
@@ -494,7 +493,7 @@ textarea {
      })
 
 
- $("#showJobModal").on('show.bs.modal', function () {
+ $("#showJobModal").on('shown.bs.modal', function () {
             alert(jobIDInfo);
     });
 
