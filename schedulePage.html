@@ -526,19 +526,19 @@ textarea {
                   console.log(calendarEvent.job_id)
                   var clockinInfo={
                       "job_id": calendarEvent.job_id,
-                      "student_id":studentIDInfo,
+                      "student_id":studentIDInfo.student_id,
                       "clock_in" :moment().format()
                     };
                     console.log
                     var clockoutInfo={
                       "job_id":calendarEvent.job_id,
-                      "student_id":studentIDInfo,
+                      "student_id":studentIDInfo.student_id,
                       "clock_in" :moment().format()
                     };
 
                     var completedInfo={
                       "job_id":calendarEvent.job_id,
-                      "student_id":studentIDInfo,
+                      "student_id":studentIDInfo.student_id,
                       "completed" :true
                     };
            
