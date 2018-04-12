@@ -488,24 +488,7 @@ textarea {
 
             $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
               var workHistoryInfo= JSON.parse(workHistoryRespose);
-              var clockinInfo={
-                      "job_id": calendarEvent.job_id,
-                      "student_id":studentIDInfo,
-                      "clock_in" :moment().format()
-                    };
-                    console.log
-                    var clockoutInfo={
-                      "job_id":calendarEvent.job_id,
-                      "student_id":studentIDInfo,
-                      "clock_in" :moment().format()
-                    };
-
-                    var completedInfo={
-                      "job_id":calendarEvent.job_id,
-                      "student_id":studentIDInfo,
-                      "completed" :true
-                    };
-           
+              
 
                 $("#interestedStudentTab").append( "<div class='panel panel-default' id='panel"+i+"'>");
                 $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
@@ -540,6 +523,24 @@ textarea {
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
                   };
+                  var clockinInfo={
+                      "job_id": calendarEvent.job_id,
+                      "student_id":studentIDInfo,
+                      "clock_in" :moment().format()
+                    };
+                    console.log
+                    var clockoutInfo={
+                      "job_id":calendarEvent.job_id,
+                      "student_id":studentIDInfo,
+                      "clock_in" :moment().format()
+                    };
+
+                    var completedInfo={
+                      "job_id":calendarEvent.job_id,
+                      "student_id":studentIDInfo,
+                      "completed" :true
+                    };
+           
                   
 
             $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
