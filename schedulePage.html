@@ -127,6 +127,7 @@ textarea {
     //attributes as to unest Ajax calls 
     var studentBasicInfo;
     var jobIDInfo;
+    var calendarEvent;
     $('#rate').mask("#.##0,00", {reverse: true});
 
      $("#dismissShowJob").click(function(){
@@ -458,10 +459,16 @@ textarea {
          "job_id":calEvent.job_id
           };
           jobIDInfo=calEvent.job_id;
-        
-        
+          calendarEvent=calendarEvent;
 
-        $.when(jobInfoResponse(jobInfo,calEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
+      }
+
+     })
+
+
+ $("#showJobModal").on('shown.bs.modal', function () {
+            alert(jobIDInfo);
+             $.when(jobInfoResponse(jobInfo,calEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
           studentBasicInfo= JSON.parse(studentResponse[0]);
           console.log(studentBasicInfo);
 
@@ -482,19 +489,6 @@ textarea {
           
 
         });
-
-
-        
-        
-
-
-      }
-
-     })
-
-
- $("#showJobModal").on('shown.bs.modal', function () {
-            alert(jobIDInfo);
     });
 
 
