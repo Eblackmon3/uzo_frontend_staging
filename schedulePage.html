@@ -553,7 +553,7 @@ textarea {
                 clockoutBtns.push("clockoutBtn"+i)
                 $("#jobManagerGroup"+i).append("<button type='button'id='completeBtn"+i+"' class='btn btn-primary'>complete</button>");
                 completeBtns.push("completeBtn"+i)
-
+                console.log(completeBtns)
                 for(var j=0;j<completeBtns.legth;j++){
                   $("#"+completeBtns[i]).click(function(){
                         console.log(i);
