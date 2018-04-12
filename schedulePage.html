@@ -482,6 +482,23 @@ textarea {
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
                   };
+
+                  var clockinInfo={
+                      job_id= calendarEvent.job_id,
+                      "student_id":studentBasicInfo[i].student_id,
+                      "clock_in" :moment().format()
+                    };
+                    var clockoutInfo={
+                      job_id= calendarEvent.job_id,
+                      "student_id":studentBasicInfo[i].student_id,
+                      "clock_in" :moment().format()
+                    };
+
+                    var completedInfo={
+                      job_id= calendarEvent.job_id,
+                      "student_id":studentBasicInfo[i].student_id,
+                      "completed" :true
+                    };
                
 
             $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
@@ -539,14 +556,43 @@ textarea {
                 $("#jobManagerGroup"+i).append("<button type='button'id='completeBtn"+i+"' class='btn btn-primary'>complete</button>");
                   $("#completeBtn"+i).click(function(){
                     $(this).css('background-color','red');
-                        console.log(i);
+                         $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/insert_job',
+                            data:JSON.stringify(completedInfo)
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                            console.log(result);
+
+                          });
                     });
                   $("#clockinBtn"+i).click(function(){
                     $(this).css('background-color','red');
-                        console.log(i);
+                        $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/clockin_student',
+                            data:JSON.stringify(clockinInfo)
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                             console.log(result);
+
+
+                          });
                     });$("#clockoutBtn"+i).click(function(){
                       $(this).css('background-color','red');
-                        console.log(i);
+                        $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/insert_job',
+                            data:JSON.stringify(clockoutInfo)
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                             console.log(result);
+
+
+                          });
                     });
                 
 
