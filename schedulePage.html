@@ -490,13 +490,13 @@ textarea {
         $.when(jobInfoResponse(), interestedStudentResponse()).done(function(jobResponse, studentResponse){
           var studentBasicInfo= JSON.parse(studentResponse[0]);
           console.log(studentBasicInfo);
-
+/*
           function getWorkInfo(i){
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
                   };
                   console.log(studentIDInfo)
-/*
+
             $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
               var workHistoryInfo= JSON.parse(workHistoryRespose);
               console.log(workHistoryInfo)
