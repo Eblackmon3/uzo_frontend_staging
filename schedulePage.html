@@ -206,7 +206,23 @@ textarea {
 
 
 
-
+ var studentWorkHistoryRespose= function (studentid){
+        return $.ajax({
+              type: 'POST',
+              contentType: "application/json",
+              url: 'https://uzo-web-app.herokuapp.com/get_student_work_history',
+             data:JSON.stringify(studentid)
+             
+          }).done(function(data) { 
+              var result = JSON.parse(data);
+              console.log(result);
+              
+        
+              
+ 
+               
+          });
+        }
 
 
 //The function that controls he jobsumbit action, outside as to not add multiple click functions to the dev
@@ -453,23 +469,7 @@ textarea {
                
           });
         }
-        var studentWorkHistoryRespose= function (studentid){
-        return $.ajax({
-              type: 'POST',
-              contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_student_work_history',
-             data:JSON.stringify(studentid)
-             
-          }).done(function(data) { 
-              var result = JSON.parse(data);
-              console.log(result);
-              
-        
-              
- 
-               
-          });
-        }
+       
 
         var studentWorkAbilityResponse= function (studentid){
         return $.ajax({
