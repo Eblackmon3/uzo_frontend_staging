@@ -531,14 +531,13 @@ textarea {
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
                   };
-                  console.log(studentIDInfo)
+                  
 
             $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
               var workHistoryInfo= JSON.parse(workHistoryRespose);
               var  clockinBtns=[];
               var  clockoutBtns=[];
               var  completeBtns=[];
-              console.log(workHistoryInfo)
 
                 $("#jobManagerTab").append( "<div class='panel panel-default' id='jobMpanel"+i+"'>");
                 $("#jobMpanel"+i).append("<div class='panel-heading' id='jobMpanel-heading"+i+"'>");
