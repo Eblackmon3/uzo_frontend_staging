@@ -383,34 +383,34 @@ textarea {
         }
 
 
-//Ensure that jobs are loaded on signin and run the full calendar 
-    var companyJobListFunction= function (){
-        return $.ajax({
-          type: 'POST',
-          contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/get_company_job_list',
-          data:JSON.stringify(companyInfo)
-        }).done(function(data) {
-          var result= JSON.parse(data);
-          var jobs= []
-          if(!(result==null ||result==undefined ||result=="undefined")){
-          for(i=0;i<result.length;i++){
-            jobs.push({
-            "title":result[i].job_title,
-            "start":result[i].date+"T"+result[i].start_time,
-            "end":result[i].date+"T"+result[i].end_time,
-            "allDay": false,
-            "job_id":result[i].job_id
-          });
-          }
-          console.log(jobs)
-
-            //initial events
+//Ensure that jobs are loaded on signin and run the full calendar
 
             $('#calendar').fullCalendar({
 
 
-              events: jobs,
+              events: function(start, end, timezone, callback) {
+                $.ajax({
+                        type: 'POST',
+                        contentType: "application/json",
+                        url: 'https://uzo-web-app.herokuapp.com/get_company_job_list',
+                        data:JSON.stringify(companyInfo)
+                      }).done(function(data) {
+                        var result= JSON.parse(data);
+                        var events= []
+                        if(!(result==null ||result==undefined ||result=="undefined")){
+                        for(i=0;i<result.length;i++){
+                          events.push({
+                          "title":result[i].job_title,
+                          "start":result[i].date+"T"+result[i].start_time,
+                          "end":result[i].date+"T"+result[i].end_time,
+                          "allDay": false,
+                          "job_id":result[i].job_id
+                        });
+                        }
+                      }
+
+        });
+              }
 
         //Need to add a create Event Button
         header: {
@@ -463,7 +463,7 @@ textarea {
           studentBasicInfo= JSON.parse(studentResponse[0]);
           console.log(studentBasicInfo);
           
-          
+
         
           for(var i=0;i<studentBasicInfo.length;i++){
             getWorkInfo(i,studentBasicInfo);
@@ -493,9 +493,6 @@ textarea {
           }
 
 
-
-        });
-      }
 
 
         $.when(companyJobListFunction()).done(function(response){
