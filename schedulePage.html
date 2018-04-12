@@ -127,6 +127,7 @@ textarea {
     //attributes as to unest Ajax calls 
     var studentBasicInfo;
     var jobInfo;
+    var calendarEvent;
     $('#rate').mask("#.##0,00", {reverse: true});
 
      $("#dismissShowJob").click(function(){
@@ -451,7 +452,21 @@ textarea {
 
         },
 
+       eventClick: function(calEvent, jsEvent, view) {
+        //all I want is to pass data through here and call somewhere elese
+        $('#showJobModal').appendTo("body").modal('show');
+        jobInfo={
+         "job_id":calEvent.job_id
+          };
+          calendarEvent=calEvent;
+      
 
+
+        
+        
+
+
+      }
 
      })
 
@@ -470,37 +485,6 @@ textarea {
 
 
         });
-
-        $('#calendar').fullCalendar({
-  eventClick: function(calEvent, jsEvent, view) {
-        $('#showJobModal').appendTo("body").modal('show');
-        var jobInfo={
-         "job_id":calEvent.job_id
-          };
-        
-        
-
-        $.when(jobInfoResponse(jobInfo,calEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
-          studentBasicInfo= JSON.parse(studentResponse[0]);
-          console.log(studentBasicInfo);
-          
-
-        /*
-          for(var i=0;i<studentBasicInfo.length;i++){
-            getWorkInfo(i,studentBasicInfo);
-
-              }
-              */
-              
-
-              
-
-
-          
-
-        });
-      }
-});
 
 
 
@@ -545,6 +529,26 @@ textarea {
               });
               
           }
+
+          $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
+          studentBasicInfo= JSON.parse(studentResponse[0]);
+          console.log(studentBasicInfo);
+          
+
+        /*
+          for(var i=0;i<studentBasicInfo.length;i++){
+            getWorkInfo(i,studentBasicInfo);
+
+              }
+              */
+              
+
+              
+
+
+          
+
+        });
 
 
 
