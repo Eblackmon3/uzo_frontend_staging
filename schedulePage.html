@@ -360,7 +360,7 @@ textarea {
 
 
 //this method is to pull the original information for each job modal
- var jobInfoResponse= function (jobInfo){
+ var jobInfoResponse= function (jobInfo, calEvent){
         return $.ajax({
               type: 'POST',
               contentType: "application/json",
@@ -459,7 +459,7 @@ textarea {
         
         
 
-        $.when(jobInfoResponse(jobInfo), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
+        $.when(jobInfoResponse(jobInfo,calEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
           studentBasicInfo= JSON.parse(studentResponse[0]);
           console.log(studentBasicInfo);
           
