@@ -490,7 +490,7 @@ textarea {
         $.when(jobInfoResponse(), interestedStudentResponse()).done(function(jobResponse, studentResponse){
           var studentBasicInfo= JSON.parse(studentResponse[0]);
 
-          /*function getWorkInfo(i){
+          function getWorkInfo(i){
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
                   };
@@ -547,12 +547,14 @@ textarea {
 
 
               });
-          }*/
+          }
+          /*
           for(var i=0;i<studentBasicInfo.length;i++){
             getWorkInfo(i);
 
                 
               }
+              */
 
           
 
