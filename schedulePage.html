@@ -123,6 +123,8 @@ textarea {
 
 
 	$(document).ready(function () {
+
+    var studentBasicInfo;
     $('#rate').mask("#.##0,00", {reverse: true});
 
      $("#dismissShowJob").click(function(){
@@ -204,7 +206,47 @@ textarea {
 
 
 
+function getWorkInfo(i,studentBasicInfo){
+            
+            var studentIDInfo={
+                 "student_id":studentBasicInfo[i].student_id
+                  };
+                  console.log(studentIDInfo)
 
+            $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
+              var workHistoryInfo= JSON.parse(workHistoryRespose);
+              console.log(workHistoryInfo)
+
+
+
+                $("#interestedStudentTab").append( "<div class='panel panel-default' id='panel"+i+"'>");
+                $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
+                $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
+                $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+studentBasicInfo[i].first_name+ " "+ studentBasicInfo[i].last_name+"</a>");
+                $("#panel"+i).append("<div id='collapse"+i+"'class='panel-collapse collapse'>");
+                $("#collapse"+i).append("<div class='panel-body' id='panel-body"+i+"'>");
+                $("#panel-body"+i).append("<ul class='list-group' id='list-group"+i+"'>");
+                $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "University: "+studentBasicInfo[i].university
+                  +"</li>");
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Year in School:"+studentBasicInfo[i].year
+                  +"</li>");
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Major: "+studentBasicInfo[i].major
+                  +"</li>");
+                 $("#list-group"+i).append("<a href='"+workHistoryInfo.resume_location +"' class='list-group-item'>Resume</a>");
+
+
+
+
+
+              });
+              
+          }
 
 
 
@@ -488,55 +530,12 @@ textarea {
         }
 
         $.when(jobInfoResponse(), interestedStudentResponse()).done(function(jobResponse, studentResponse){
-          var studentBasicInfo= JSON.parse(studentResponse[0]);
+          studentBasicInfo= JSON.parse(studentResponse[0]);
           console.log(studentBasicInfo);
-
-          function getWorkInfo(i){
-            /*
-            var studentIDInfo={
-                 "student_id":studentBasicInfo[i].student_id
-                  };
-                  console.log(studentIDInfo)
-
-            $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
-              var workHistoryInfo= JSON.parse(workHistoryRespose);
-              console.log(workHistoryInfo)
-
-
-
-                $("#interestedStudentTab").append( "<div class='panel panel-default' id='panel"+i+"'>");
-                $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
-                $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
-                $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+studentBasicInfo[i].first_name+ " "+ studentBasicInfo[i].last_name+"</a>");
-                $("#panel"+i).append("<div id='collapse"+i+"'class='panel-collapse collapse'>");
-                $("#collapse"+i).append("<div class='panel-body' id='panel-body"+i+"'>");
-                $("#panel-body"+i).append("<ul class='list-group' id='list-group"+i+"'>");
-                $("#list-group"+i).append("<li class='list-group-item'>"+ 
-
-                  "University: "+studentBasicInfo[i].university
-                  +"</li>");
-                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
-
-                  "Year in School:"+studentBasicInfo[i].year
-                  +"</li>");
-                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
-
-                  "Major: "+studentBasicInfo[i].major
-                  +"</li>");
-                 $("#list-group"+i).append("<a href='"+workHistoryInfo.resume_location +"' class='list-group-item'>Resume</a>");
-
-
-
-
-
-              });
-              */
-          }
         
           for(var i=0;i<studentBasicInfo.length;i++){
-            getWorkInfo(i);
+            getWorkInfo(i,studentBasicInfo);
 
-                
               }
               
 
