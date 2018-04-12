@@ -464,18 +464,11 @@ textarea {
 
 
  $("#showJobModal").on('shown.bs.modal', function () {
-            alert(calendarEvent.job_id);
             var jobInfo={
                "job_id":calendarEvent.job_id
                 };
              $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
           studentBasicInfo= JSON.parse(studentResponse[0]);
-          console.log(studentBasicInfo);
-
-
-          
-
-        
           for(var i=0;i<studentBasicInfo.length;i++){
             getWorkInfo(i,studentBasicInfo);
             jobManager(i,studentBasicInfo);
@@ -542,18 +535,10 @@ textarea {
 
             $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
               var workHistoryInfo= JSON.parse(workHistoryRespose);
+              var  clockinBtns=[];
+              var  clockoutBtns=[];
+              var  completeBtns=[];
               console.log(workHistoryInfo)
-
-                /*
-
-                <div class="btn-group">
-                        <button type="button" class="btn btn-primary">Apple</button>
-                        <button type="button" class="btn btn-primary">Samsung</button>
-                        <button type="button" class="btn btn-primary">Sony</button>
-                      </div>
-              </div>
-
-                */
 
                 $("#jobManagerTab").append( "<div class='panel panel-default' id='jobMpanel"+i+"'>");
                 $("#jobMpanel"+i).append("<div class='panel-heading' id='jobMpanel-heading"+i+"'>");
@@ -563,8 +548,17 @@ textarea {
                 $("#jobMcollapse"+i).append("<div class='panel-body' id='jobMpanel-body"+i+"'>");
                 $("#jobMpanel-body"+i).append("<div class='btn-group' id='jobManagerGroup"+i+"'>");
                 $("#jobManagerGroup"+i).append("<button type='button'id='clockinBtn"+i+"' class='btn btn-primary'>clock-in</button>");
+                clockinBtns.push(clockinBtn+i+"");
                 $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary'>clock-out</button>");
-                $("#jobManagerGroup"+i).append("<button type='button'id='completeButton"+i+"' class='btn btn-primary'>complete</button>");
+                clockoutBtns.push(clockoutBtn+i+"")
+                $("#jobManagerGroup"+i).append("<button type='button'id='completeBtn"+i+"' class='btn btn-primary'>complete</button>");
+                completeBtns.push(completeBtn+i+"")
+
+                for(var j=0;j<completeBtns.legth;j++){
+                  $("#"+completeBtns[i]).click(function(){
+                        console.log(i);
+                    });
+                }
 
 
               });
