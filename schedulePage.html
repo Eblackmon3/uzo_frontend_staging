@@ -128,11 +128,14 @@ textarea {
     var studentBasicInfo;
     var jobInfo;
     var calendarEvent;
+    var showJobModalOpen=false;
     $('#rate').mask("#.##0,00", {reverse: true});
 
      $("#dismissShowJob").click(function(){
       console.log("dismissButtonClicked")
       $("#interestedStudentTab").empty();
+      showJobModalOpen=false;
+      console.log("modal closed")
 
 
      });
@@ -243,6 +246,10 @@ textarea {
                
           });
         }
+
+         $("#showJobModal").on('shown.bs.modal', function () {
+            alert('The modal is fully shown.');
+          });
 
 
 //The function that controls he jobsumbit action, outside as to not add multiple click functions to the dev
@@ -459,6 +466,8 @@ textarea {
          "job_id":calEvent.job_id
           };
           calendarEvent=calEvent;
+          showJobModalOpen=true;
+          alert("modal closed")
       
 
 
@@ -529,9 +538,7 @@ textarea {
               });
               
           }
-          $('#showJobModal').on('shown.bs.modal', function (e) {
-                    // do something...
-                  })
+          
 /*
           $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
           studentBasicInfo= JSON.parse(studentResponse[0]);
@@ -679,7 +686,7 @@ textarea {
   </div>
 
 
-  <div class="modal fade bd-example-modal-lg" id="showJobModal" role="dialog">
+  <div class="modal fade " id="showJobModal" role="dialog">
     <div class="modal-dialog modal-lg">
 
       <div class="modal-content">
