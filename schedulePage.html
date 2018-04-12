@@ -126,16 +126,12 @@ textarea {
 
     //attributes as to unest Ajax calls 
     var studentBasicInfo;
-    var jobInfo=null;
-    var calendarEvent=null;
-    var showJobModalOpen=false;
+    var jobInfo;
     $('#rate').mask("#.##0,00", {reverse: true});
 
      $("#dismissShowJob").click(function(){
       console.log("dismissButtonClicked")
       $("#interestedStudentTab").empty();
-      showJobModalOpen=false;
-      
 
 
      });
@@ -247,71 +243,6 @@ textarea {
           });
         }
 
-         $("#showJobModal").on('show.bs.modal', function () {
-            alert(jobInfo);
-
-            function getWorkInfo(i,studentBasicInfo){
-            
-            var studentIDInfo={
-                 "student_id":studentBasicInfo[i].student_id
-                  };
-                  console.log(studentIDInfo)
-
-            $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
-              var workHistoryInfo= JSON.parse(workHistoryRespose);
-              console.log(workHistoryInfo)
-
-
-
-                $("#interestedStudentTab").append( "<div class='panel panel-default' id='panel"+i+"'>");
-                $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
-                $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
-                $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+studentBasicInfo[i].first_name+ " "+ studentBasicInfo[i].last_name+"</a>");
-                $("#panel"+i).append("<div id='collapse"+i+"'class='panel-collapse collapse'>");
-                $("#collapse"+i).append("<div class='panel-body' id='panel-body"+i+"'>");
-                $("#panel-body"+i).append("<ul class='list-group' id='list-group"+i+"'>");
-                $("#list-group"+i).append("<li class='list-group-item'>"+ 
-
-                  "University: "+studentBasicInfo[i].university
-                  +"</li>");
-                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
-
-                  "Year in School:"+studentBasicInfo[i].year
-                  +"</li>");
-                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
-
-                  "Major: "+studentBasicInfo[i].major
-                  +"</li>");
-                 $("#list-group"+i).append("<a href='"+workHistoryInfo.resume_location +"' class='list-group-item'>Resume</a>");
-
-
-
-
-
-              });
-              
-          }
-           $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
-          studentBasicInfo= JSON.parse(studentResponse[0]);
-          console.log(studentBasicInfo);
-          
-
-        
-          for(var i=0;i<studentBasicInfo.length;i++){
-            getWorkInfo(i,studentBasicInfo);
-
-              }
-              
-              
-
-              
-
-
-          
-
-        });
-          });
-
 
 //The function that controls he jobsumbit action, outside as to not add multiple click functions to the dev
          $("#jobSubmit").click(function(){
@@ -339,7 +270,9 @@ textarea {
          }
          var rate = $("#rate").val();
 
-         
+         if(!jtitle){
+
+         }
 
 
 
@@ -487,13 +420,6 @@ textarea {
       },
     // put your options and callbacks here
       selectable: true,
-
-      eventClick: function(calEvent, jsEvent, view) {
-        //all I want is to pass data through here and call somewhere elese
-        $('#showJobModal').appendTo("body").modal('show');
-        jobInfo=calEvent;
-
-      },
        dayClick: function(date, jsEvent, view) {
           $("#createJobModal").modal("show");
 
@@ -523,7 +449,41 @@ textarea {
          */
 
 
-        }
+        },
+
+       eventClick: function(calEvent, jsEvent, view) {
+        $('#showJobModal').appendTo("body").modal('show');
+        var jobInfo={
+         "job_id":calEvent.job_id
+          };
+        
+        
+
+        $.when(jobInfoResponse(jobInfo,calEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
+          studentBasicInfo= JSON.parse(studentResponse[0]);
+          console.log(studentBasicInfo);
+          
+          
+        
+          for(var i=0;i<studentBasicInfo.length;i++){
+            getWorkInfo(i,studentBasicInfo);
+
+              }
+              
+
+              
+
+
+          
+
+        });
+
+
+        
+        
+
+
+      }
 
      })
 
@@ -545,11 +505,47 @@ textarea {
 
 
 
-    
-          
+    function getWorkInfo(i,studentBasicInfo){
+            
+            var studentIDInfo={
+                 "student_id":studentBasicInfo[i].student_id
+                  };
+                  console.log(studentIDInfo)
 
-         
+            $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
+              var workHistoryInfo= JSON.parse(workHistoryRespose);
+              console.log(workHistoryInfo)
 
+
+
+                $("#interestedStudentTab").append( "<div class='panel panel-default' id='panel"+i+"'>");
+                $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
+                $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
+                $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+studentBasicInfo[i].first_name+ " "+ studentBasicInfo[i].last_name+"</a>");
+                $("#panel"+i).append("<div id='collapse"+i+"'class='panel-collapse collapse'>");
+                $("#collapse"+i).append("<div class='panel-body' id='panel-body"+i+"'>");
+                $("#panel-body"+i).append("<ul class='list-group' id='list-group"+i+"'>");
+                $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "University: "+studentBasicInfo[i].university
+                  +"</li>");
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Year in School:"+studentBasicInfo[i].year
+                  +"</li>");
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Major: "+studentBasicInfo[i].major
+                  +"</li>");
+                 $("#list-group"+i).append("<a href='"+workHistoryInfo.resume_location +"' class='list-group-item'>Resume</a>");
+
+
+
+
+
+              });
+              
+          }
 
 
 
@@ -676,7 +672,7 @@ textarea {
   </div>
 
 
-  <div class="modal fade " id="showJobModal" role="dialog">
+  <div class="modal fade bd-example-modal-lg" id="showJobModal" role="dialog">
     <div class="modal-dialog modal-lg">
 
       <div class="modal-content">
