@@ -521,10 +521,7 @@ textarea {
        eventClick: function(calEvent, jsEvent, view) {
         //all I want is to pass data through here and call somewhere elese
         $('#showJobModal').appendTo("body").modal('show');
-        jobInfo={
-         "job_id":calEvent.job_id
-          };
-          calendarEvent=calEvent;
+        jobInfo=calEvent.job_id;
  
         
       
