@@ -459,8 +459,8 @@ textarea {
         
         
 
-        $.when(interestedStudentResponse(jobInfo)).done(function(studentResponse){
-          studentBasicInfo= JSON.parse(studentResponse[0]);
+        $.when(interestedStudentResponse(jobInfo)).done(function( studentResponse){
+          studentBasicInfo= JSON.parse(studentResponse);
           console.log(studentBasicInfo);
           
         
