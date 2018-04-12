@@ -132,6 +132,7 @@ textarea {
      $("#dismissShowJob").click(function(){
       console.log("dismissButtonClicked")
       $("#interestedStudentTab").empty();
+      $("#jobManagerTab").empty();
 
 
      });
@@ -550,7 +551,16 @@ textarea {
               var workHistoryInfo= JSON.parse(workHistoryRespose);
               console.log(workHistoryInfo)
 
+                /*
 
+                <div class="btn-group">
+                        <button type="button" class="btn btn-primary">Apple</button>
+                        <button type="button" class="btn btn-primary">Samsung</button>
+                        <button type="button" class="btn btn-primary">Sony</button>
+                      </div>
+              </div>
+
+                */
 
                 $("#jobManagerTab").append( "<div class='panel panel-default' id='jobMpanel"+i+"'>");
                 $("#jobMpanel"+i).append("<div class='panel-heading' id='jobMpanel-heading"+i+"'>");
@@ -558,7 +568,11 @@ textarea {
                 $("#jobMpanel-title"+i).append("<a data-toggle='collapse' href='#jobMcollapse"+i+"'>"+studentBasicInfo[i].first_name+ " "+ studentBasicInfo[i].last_name+"</a>");
                 $("#jobMpanel"+i).append("<div id='jobMcollapse"+i+"'class='panel-collapse collapse'>");
                 $("#jobMcollapse"+i).append("<div class='panel-body' id='jobMpanel-body"+i+"'>");
-                $("#jobMpanel-body"+i).append("<ul class='list-group' id='list-group"+i+"'>");
+                $("#jobMpanel-body"+i).append("<div class='btn-group' id='jobManagerGroup"+i+"1>");
+                $("#jobManagerGroup"+i).append("<button type='button'id='clockinBtn"+i+"' class='btn btn-primary'>clock-in</button>");
+                $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary'>clock-out</button>");
+                $("#jobManagerGroup"+i).append("<button type='button'id='completeButton"+i+"' class='btn btn-primary'>complete</button>");
+
 
               });
               
