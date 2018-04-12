@@ -487,6 +487,21 @@ textarea {
       },
     // put your options and callbacks here
       selectable: true,
+
+      eventClick: function(calEvent, jsEvent, view) {
+        //all I want is to pass data through here and call somewhere elese
+        $('#showJobModal').appendTo("body").modal('show');
+        jobInfo=calEvent.job_id;
+ 
+        
+      
+
+
+        
+        
+
+
+      },
        dayClick: function(date, jsEvent, view) {
           $("#createJobModal").modal("show");
 
@@ -516,22 +531,7 @@ textarea {
          */
 
 
-        },
-
-       eventClick: function(calEvent, jsEvent, view) {
-        //all I want is to pass data through here and call somewhere elese
-        $('#showJobModal').appendTo("body").modal('show');
-        jobInfo=calEvent.job_id;
- 
-        
-      
-
-
-        
-        
-
-
-      }
+        }
 
      })
 
