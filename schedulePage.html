@@ -529,10 +529,10 @@ textarea {
               });
               
           }
-          $('#myModal').is(':visible'){
-
+          if($('#myModal').is(':visible')){
+            alert("visible");
           }
-          /*
+/*
           $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
           studentBasicInfo= JSON.parse(studentResponse[0]);
           console.log(studentBasicInfo);
