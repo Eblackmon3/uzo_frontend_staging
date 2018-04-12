@@ -523,6 +523,7 @@ textarea {
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
                   };
+                  console.log(calendarEvent.job_id)
                   var clockinInfo={
                       "job_id": calendarEvent.job_id,
                       "student_id":studentIDInfo,
@@ -562,7 +563,7 @@ textarea {
                          $.ajax({
                             type: 'POST',
                             contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/insert_job',
+                            url: 'https://uzo-web-app.herokuapp.com/clockin_student',
                             data:JSON.stringify(completedInfo)
                           }).done(function(data) {
                             var result= JSON.parse(data);
