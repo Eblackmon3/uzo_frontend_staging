@@ -130,7 +130,6 @@ textarea {
     $('#rate').mask("#.##0,00", {reverse: true});
 
      $("#dismissShowJob").click(function(){
-      console.log("dismissButtonClicked")
       $("#interestedStudentTab").empty();
       $("#jobManagerTab").empty();
 
@@ -142,7 +141,6 @@ textarea {
       var justTime= date.substring(0,5);
       var timeArray=justTime.split(":");
       var hours= parseInt(timeArray[0]);
-      console.log("hours:"+hours);
       var minutes= parseInt(timeArray[1]);
       if(date.includes("PM")&&hours<12){
           hours=hours+12;
@@ -218,7 +216,6 @@ textarea {
              
           }).done(function(data) { 
               var result = JSON.parse(data);
-              console.log(result);
               
         
               
@@ -252,7 +249,6 @@ textarea {
          var jdescription = $("#jdescription").val();
          var startTime = $("#startTime").val();
          startTime=convertTime(startTime);
-         console.log(startTime)
          var endTime = $("#endTime").val();
          endTime= convertTime(endTime);
 
@@ -293,8 +289,6 @@ textarea {
           "num_employees": employeeCount
 
           };
-          console.log(moment(moment(endDate).format()+"T"+endTime));
-          console.log(moment(moment(startDate).format()+"T"+startTime));
           if(moment(moment(endDate).format()+"T"+endTime)>moment(moment(startDate).format()+"T"+startTime)){
 
           //used by the create job function to add it to the database  
@@ -370,7 +364,6 @@ textarea {
              
           }).done(function(data) { 
               var result = JSON.parse(data);
-              console.log(moment(calEvent.end).format("'hh:mm A'"));
               $("#jobTitleP").text(result.job_title);  
               $("#jobDescP").text(result.description);  
               $("#shitStartP").text(moment(calEvent.start).format("'hh:mm A'").toString());
@@ -396,7 +389,6 @@ textarea {
                       }).done(function(data) {
                         var result= JSON.parse(data);
                         var events=[];
-                        console.log(result);
                         if(!(result==null ||result==undefined ||result=="undefined")){
                         for(i=0;i<result.length;i++){
                           events.push({
@@ -408,7 +400,7 @@ textarea {
                         });
                         }
                       }
-                      console.log(events);
+
                       callback(events);
 
         });
@@ -490,13 +482,11 @@ textarea {
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
                   };
-                  console.log(studentIDInfo)
+               
 
             $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
               var workHistoryInfo= JSON.parse(workHistoryRespose);
-              console.log(workHistoryInfo)
-
-
+           
 
                 $("#interestedStudentTab").append( "<div class='panel panel-default' id='panel"+i+"'>");
                 $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
