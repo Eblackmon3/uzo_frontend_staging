@@ -495,33 +495,13 @@ textarea {
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
                   };
-
+/*
             $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
               var workHistoryInfo= JSON.parse(workHistoryRespose);
               console.log(workHistoryInfo)
 
 
-                 /*
-                   <div class="panel panel-default">
-                                <div class="panel-heading">
-                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse1">Collapsible panel</a>
-                                  </h4>
-                                </div>
-                                <div id="collapse1" class="panel-collapse collapse">
-                                  <div class="panel-body">
-                                  <ul class="list-group">
-                                    <li class="list-group-item">First item</li>
-                                    <li class="list-group-item">Second item</li>
-                                    <li class="list-group-item">Third item</li>
-                                  </ul>
-                                  </div>
-                              
-                                </div>
 
-                              </div>
-                */
-                /*
                 $("#interestedStudentTab").append( "<div class='panel panel-default' id='panel"+i+"'>");
                 $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
                 $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
@@ -544,12 +524,13 @@ textarea {
                  $("#list-group"+i).append("<a href='"+workHistoryInfo.resume_location +"' class='list-group-item'>Resume</a>");
 
 
-*/
+
 
 
               });
+              */
           }
-          
+        
           for(var i=0;i<studentBasicInfo.length;i++){
             getWorkInfo(i);
 
