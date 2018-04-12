@@ -464,11 +464,14 @@ textarea {
         $.when(jobInfoResponse(jobInfo,calEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
           studentBasicInfo= JSON.parse(studentResponse[0]);
           console.log(studentBasicInfo);
+
+
           
 
         
           for(var i=0;i<studentBasicInfo.length;i++){
             getWorkInfo(i,studentBasicInfo);
+            jobManager(i,studentBasicInfo);
 
               }
               
@@ -532,6 +535,30 @@ textarea {
 
 
 
+
+              });
+              
+          }
+          function jobManager(i,studentBasicInfo){
+            
+            var studentIDInfo={
+                 "student_id":studentBasicInfo[i].student_id
+                  };
+                  console.log(studentIDInfo)
+
+            $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
+              var workHistoryInfo= JSON.parse(workHistoryRespose);
+              console.log(workHistoryInfo)
+
+
+
+                $("#jobManagerTab").append( "<div class='panel panel-default' id='jobMpanel"+i+"'>");
+                $("#jobMpanel"+i).append("<div class='panel-heading' id='jobMpanel-heading"+i+"'>");
+                $("#jobMpanel-heading"+i).append("<h4 class='panel-title' id='jobMpanel-title"+i+"'>");
+                $("#jobMpanel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+studentBasicInfo[i].first_name+ " "+ studentBasicInfo[i].last_name+"</a>");
+                $("#panel"+i).append("<div id='jobMcollapse"+i+"'class='panel-collapse collapse'>");
+                $("#jobMcollapse"+i).append("<div class='panel-body' id='jobMpanel-body"+i+"'>");
+                $("#jobMpanel-body"+i).append("<ul class='list-group' id='list-group"+i+"'>");
 
               });
               
@@ -748,7 +775,9 @@ textarea {
 
                       <!--Other tabs -->
                       <div role="tabpanel" class="tab-pane" id="jobManagerTab">
-                        <h3>Managing students go here</h3>
+                        <div class="container">
+                         
+                        </div>
                       </div>
                   </div>
               </div>
