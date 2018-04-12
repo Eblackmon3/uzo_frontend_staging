@@ -459,7 +459,7 @@ textarea {
         
         
 
-        $.when(jobInfoResponse(jobInfo,calEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
+        $.when(interestedStudentResponse(jobInfo)).done(function(studentResponse){
           studentBasicInfo= JSON.parse(studentResponse);
           console.log(studentBasicInfo);
           
@@ -474,6 +474,11 @@ textarea {
 
 
           
+
+        });
+
+        $.when(jobInfoResponse(jobInfo,calEvent)).done(function(jobResponse){
+              
 
         });
         
