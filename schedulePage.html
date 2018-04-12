@@ -124,7 +124,9 @@ textarea {
 
 	$(document).ready(function () {
 
+    //attributes as to unest Ajax calls 
     var studentBasicInfo;
+    var jobInfo;
     $('#rate').mask("#.##0,00", {reverse: true});
 
      $("#dismissShowJob").click(function(){
@@ -204,7 +206,7 @@ textarea {
     });
         */
 
-
+// this method is used in order to pull the student resume amongst other things for the modal
 
  var studentWorkHistoryRespose= function (studentid){
         return $.ajax({
@@ -216,6 +218,23 @@ textarea {
           }).done(function(data) { 
               var result = JSON.parse(data);
               console.log(result);
+              
+        
+              
+ 
+               
+          });
+        }
+
+        var interestedStudentResponse= function (jobInfo){
+        return $.ajax({
+              type: 'POST',
+              contentType: "application/json",
+              url: 'https://uzo-web-app.herokuapp.com/get_jobs_interested_students_by_id',
+             data:JSON.stringify(jobInfo)
+             
+          }).done(function(data) { 
+              var result = JSON.parse(data);
               
         
               
@@ -276,6 +295,8 @@ textarea {
           console.log(moment(moment(endDate).format()+"T"+endTime));
           console.log(moment(moment(startDate).format()+"T"+startTime));
           if(moment(moment(endDate).format()+"T"+endTime)>moment(moment(startDate).format()+"T"+startTime)){
+
+          //used by the create job function to add it to the database  
          var ajaxFunction= function (){
         return $.ajax({
           type: 'POST',
@@ -316,6 +337,8 @@ textarea {
 
         });
 
+
+
       //Page navigation section
 
      $("#payment_info").click(function(){
@@ -335,8 +358,8 @@ textarea {
 
           }
 
-//Ensure that jobs are loaded on signin and run the full calendar functions actas a main method
 
+//this method is to pull the original information for each job modal
  var jobInfoResponse= function (jobInfo){
         return $.ajax({
               type: 'POST',
@@ -359,6 +382,8 @@ textarea {
           });
         }
 
+
+//Ensure that jobs are loaded on signin and run the full calendar 
     var companyJobListFunction= function (){
         return $.ajax({
           type: 'POST',
@@ -431,71 +456,16 @@ textarea {
         var jobInfo={
          "job_id":calEvent.job_id
           };
-        var jobInfoResponse= function (){
-        return $.ajax({
-              type: 'POST',
-              contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_job_by_id',
-             data:JSON.stringify(jobInfo)
-             
-          }).done(function(data) { 
-              var result = JSON.parse(data);
-              console.log(moment(calEvent.end).format("'hh:mm A'"));
-              $("#jobTitleP").text(result.job_title);  
-              $("#jobDescP").text(result.description);  
-              $("#shitStartP").text(moment(calEvent.start).format("'hh:mm A'").toString());
-              $("#shitEndP").text(moment(calEvent.end).format("'hh:mm A'").toString());
-              $("#ecountP").text(result.num_employees); 
-              $("#jobDesc2P").text(result.important_quality); 
-              $("#qualityP").text(result.preferred_skills);
-              $("#rateP").text(result.rate);  
-               
-          });
-        }
-
-        var interestedStudentResponse= function (){
-        return $.ajax({
-              type: 'POST',
-              contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_jobs_interested_students_by_id',
-             data:JSON.stringify(jobInfo)
-             
-          }).done(function(data) { 
-              var result = JSON.parse(data);
-              
         
-              
- 
-               
-          });
-        }
-       
-
-        var studentWorkAbilityResponse= function (studentid){
-        return $.ajax({
-              type: 'POST',
-              contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_student_work_ability',
-             data:JSON.stringify(studentid)
-             
-          }).done(function(data) { 
-              var result = JSON.parse(data);
-              
         
-              
- 
-               
-          });
-        }
-        /*
 
-        $.when(jobInfoResponse(), interestedStudentResponse()).done(function(jobResponse, studentResponse){
+        $.when(jobInfoResponse(jobInfo), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
           studentBasicInfo= JSON.parse(studentResponse[0]);
           console.log(studentBasicInfo);
           
         
           for(var i=0;i<studentBasicInfo.length;i++){
-            //getWorkInfo(i,studentBasicInfo);
+            getWorkInfo(i,studentBasicInfo);
 
               }
               
@@ -506,7 +476,7 @@ textarea {
           
 
         });
-        */
+        
 
 
       }
