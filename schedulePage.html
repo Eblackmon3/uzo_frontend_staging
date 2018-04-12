@@ -529,9 +529,9 @@ textarea {
               });
               
           }
-          if($('#showJobModal').is(':visible')){
-            console.log("visible")
-          }
+          $('#showJobModal').on('shown.bs.modal', function (e) {
+                    // do something...
+                  })
 /*
           $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
           studentBasicInfo= JSON.parse(studentResponse[0]);
