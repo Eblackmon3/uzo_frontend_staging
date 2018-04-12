@@ -535,13 +535,10 @@ textarea {
                 $("#jobMcollapse"+i).append("<div class='panel-body' id='jobMpanel-body"+i+"'>");
                 $("#jobMpanel-body"+i).append("<div class='btn-group' id='jobManagerGroup"+i+"'>");
                 $("#jobManagerGroup"+i).append("<button type='button'id='clockinBtn"+i+"' class='btn btn-primary'>clock-in</button>");
-                clockinBtns.push("clockinBtn"+i);
                 $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary'>clock-out</button>");
-                clockoutBtns.push("clockoutBtn"+i)
                 $("#jobManagerGroup"+i).append("<button type='button'id='completeBtn"+i+"' class='btn btn-primary'>complete</button>");
-                completeBtns.push("completeBtn"+i)
                 console.log(completeBtns)
-                  $("#"+completeBtn).click(function(){
+                  $("#completeBtn"+i).click(function(){
                         console.log(i);
                     });
                 
