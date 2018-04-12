@@ -386,8 +386,6 @@ textarea {
 //Ensure that jobs are loaded on signin and run the full calendar
 
             $('#calendar').fullCalendar({
-
-
               events: function(start, end, timezone, callback) {
                 $.ajax({
                         type: 'POST',
@@ -395,6 +393,7 @@ textarea {
                         url: 'https://uzo-web-app.herokuapp.com/get_company_job_list',
                         data:JSON.stringify(companyInfo)
                       }).done(function(data) {
+                        console.log("here");
                         var result= JSON.parse(data);
                         var events= []
                         if(!(result==null ||result==undefined ||result=="undefined")){
