@@ -126,7 +126,7 @@ textarea {
 
     //attributes as to unest Ajax calls 
     var studentBasicInfo;
-    var jobInfo;
+    var jobIDInfo;
     $('#rate').mask("#.##0,00", {reverse: true});
 
      $("#dismissShowJob").click(function(){
@@ -457,6 +457,7 @@ textarea {
         var jobInfo={
          "job_id":calEvent.job_id
           };
+          jobIDInfo=calEvent;
         
         
 
@@ -489,7 +490,9 @@ textarea {
      })
 
 
-
+ $("#showJobModal").on('show.bs.modal', function () {
+            alert(jobIDInfo);
+    });
 
 
     function getWorkInfo(i,studentBasicInfo){
