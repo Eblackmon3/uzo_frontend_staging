@@ -394,6 +394,7 @@ textarea {
                         data:JSON.stringify(companyInfo)
                       }).done(function(data) {
                         var result= JSON.parse(data);
+                        var events=[];
                         console.log(result);
                         if(!(result==null ||result==undefined ||result=="undefined")){
                         for(i=0;i<result.length;i++){
