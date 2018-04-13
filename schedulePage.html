@@ -505,6 +505,10 @@ textarea {
             getWorkInfo(i,studentBasicInfo);
             //jobManager(i,studentJobBasicInfo)
               }
+          for(var i=0;i<studentJobsBasicInfo.length;i++){
+            getWorkInfo(i,studentJobsBasicInfo);
+            //jobManager(i,studentJobBasicInfo)
+              }
               
 
               
@@ -605,8 +609,6 @@ textarea {
                     };
            
                   
-
-            $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
               var workHistoryInfo= JSON.parse(workHistoryRespose);
               
 
@@ -664,7 +666,7 @@ textarea {
                 
 
 
-              });
+        
               
           }
 
