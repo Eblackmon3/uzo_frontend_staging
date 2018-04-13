@@ -523,6 +523,7 @@ textarea {
                 $("#panel"+i).append("<div id='collapse"+i+"'class='panel-collapse collapse'>");
                 $("#collapse"+i).append("<div class='panel-body' id='panel-body"+i+"'>");
                 $("#panel-body"+i).append("<ul class='list-group' id='list-group"+i+"'>");
+                $("#panel-body"+i).append("<div class='btn-group' id='studentGroup"+i+"'>");
                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
 
                   "University: "+studentBasicInfo[i].university
@@ -536,7 +537,8 @@ textarea {
                   "Major: "+studentBasicInfo[i].major
                   +"</li>");
                  $("#list-group"+i).append("<a href='"+workHistoryInfo.resume_location +"' class='list-group-item'>Resume</a>");
-                 $("#panel_body"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Select</button>");
+
+                 $("#studentGroup"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Select</button>");
                  $.ajax({
                             type: 'POST',
                             contentType: "application/json",
