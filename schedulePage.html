@@ -224,7 +224,24 @@ textarea {
           });
         }
 
+        ar getJobStudents= function (jobId){
+        return $.ajax({
+              type: 'POST',
+              contentType: "application/json",
+              url: 'https://uzo-web-app.herokuapp.com/get_jobs_students_by_id',
+             data:JSON.stringify(jobId)
+             
+          }).done(function(data) { 
+              var result = JSON.parse(data);
+              
         
+              
+ 
+               
+          });
+        }
+
+
 
         var interestedStudentResponse= function (jobInfo){
         return $.ajax({
@@ -477,13 +494,12 @@ textarea {
                "job_id":calendarEvent.job_id
                 };
 
-
-
-
-             $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
+             $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo),getJobStudents(jobInfo) ).done(function(jobResponse, studentResponse,jobsStudents){
 
                    
           studentBasicInfo= JSON.parse(studentResponse[0]);
+          studentJobsBasicInfo= JSON.parse(jobsStudents[0]);
+          console.log(studentJobsBasicInfo);
           
           for(var i=0;i<studentBasicInfo.length;i++){
             getWorkInfo(i,studentBasicInfo);
