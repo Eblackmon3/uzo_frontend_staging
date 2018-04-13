@@ -224,22 +224,7 @@ textarea {
           });
         }
 
-        var studentJobs= function (jobid){
-        return $.ajax({
-              type: 'POST',
-              contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_jobs_students_by_id',
-             data:JSON.stringify(jobid)
-             
-          }).done(function(data) { 
-              var result = JSON.parse(data);
-              
         
-              
- 
-               
-          });
-        }
 
         var interestedStudentResponse= function (jobInfo){
         return $.ajax({
@@ -504,11 +489,6 @@ textarea {
             getWorkInfo(i,studentBasicInfo);
             //jobManager(i,studentJobBasicInfo)
               }
-
-          for(var i=0;i<studentBasicInfo.length;i++){
-            getWorkInfo(i,studentBasicInfo);
-            //jobManager(i,studentJobBasicInfo)
-              }
               
 
               
@@ -610,7 +590,7 @@ textarea {
            
                   
 
-            $.when(studentJobs(studentIDInfo)).done(function(workHistoryRespose){
+            $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
               var workHistoryInfo= JSON.parse(workHistoryRespose);
               
 
