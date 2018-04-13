@@ -376,6 +376,21 @@ textarea {
           });
         }
 
+        //this method is to pull the original information for each job modal
+ var assignStudentJob= function (studentJob){
+        return $.ajax({
+              type: 'POST',
+              contentType: "application/json",
+              url: 'https://uzo-web-app.herokuapp.com/assign_student_job',
+             data:JSON.stringify(studentJob)
+             
+          }).done(function(data) { 
+              var result = JSON.parse(data);
+              console.log(result); 
+               
+          });
+        }
+
 
 //Ensure that jobs are loaded on signin and run the full calendar
 
@@ -459,12 +474,18 @@ textarea {
             var jobInfo={
                "job_id":calendarEvent.job_id
                 };
+
+
+
+
              $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
+
+                   
           studentBasicInfo= JSON.parse(studentResponse[0]);
+          
           for(var i=0;i<studentBasicInfo.length;i++){
             getWorkInfo(i,studentBasicInfo);
-            jobManager(i,studentBasicInfo);
-
+            jobManager(i,studentJobBasicInfo)
               }
               
 
@@ -482,6 +503,11 @@ textarea {
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
                   };
+                  var studentJob={
+                     "job_id":calendarEvent.job_id,
+                     "company_id": sessionStorage.getItem("company_id"),
+                     "student_id":studentBasicInfo[i].student_id
+                      };
 
 
                
@@ -510,7 +536,7 @@ textarea {
                   "Major: "+studentBasicInfo[i].major
                   +"</li>");
                  $("#list-group"+i).append("<a href='"+workHistoryInfo.resume_location +"' class='list-group-item'>Resume</a>");
-                 $("#panel_body"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Select Student</button>");
+                 $("#panel_body"+i).append("<button type='button' id='selectStudent"+i+"' class='btn btn-primary'>Select Student</button>");
 
 
 
@@ -519,7 +545,7 @@ textarea {
               });
               
           }
-          function jobManager(i,studentBasicInfo){
+          function jobManager(i,studentJobBasicInfo){
             
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
