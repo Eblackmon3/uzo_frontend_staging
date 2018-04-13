@@ -620,7 +620,7 @@ textarea {
                 $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary'>clock-out</button>");
                 $("#jobManagerGroup"+i).append("<button type='button'id='completeBtn"+i+"' class='btn btn-primary'>complete</button>");
                   $("#completeBtn"+i).click(function(){
-                    $(this).css('background-color','red');
+                    $(this).css('background-color','green');
                          $.ajax({
                             type: 'POST',
                             contentType: "application/json",
@@ -634,7 +634,7 @@ textarea {
                     });
                   $("#clockinBtn"+i).click(function(){
                     console.log(clockinInfo)
-                    $(this).css('background-color','red');
+                    $(this).css('background-color','green');
                         $.ajax({
                             type: 'POST',
                             contentType: "application/json",
@@ -647,11 +647,11 @@ textarea {
 
                           });
                     });$("#clockoutBtn"+i).click(function(){
-                      $(this).css('background-color','red');
+                      $(this).css('background-color','green');
                         $.ajax({
                             type: 'POST',
                             contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/clockin_student',
+                            url: 'https://uzo-web-app.herokuapp.com/clockout_student',
                             data:JSON.stringify(clockoutInfo)
                           }).done(function(data) {
                             var result= JSON.parse(data);
