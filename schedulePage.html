@@ -495,22 +495,20 @@ textarea {
 
 
 
-             $.when(jobInfoResponse(jobInfo,calendarEvent, studentJobs), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse, jobsStudentList){
+             $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
 
                    
           studentBasicInfo= JSON.parse(studentResponse[0]);
-          jobStudents=JSON.parse(jobsStudentList[0])
           
           for(var i=0;i<studentBasicInfo.length;i++){
             getWorkInfo(i,studentBasicInfo);
             //jobManager(i,studentJobBasicInfo)
               }
 
-          for(var i=0;i<jobStudents.length;i++){
-            getWorkInfo(i,jobStudents);
+          for(var i=0;i<studentBasicInfo.length;i++){
+            getWorkInfo(i,studentBasicInfo);
             //jobManager(i,studentJobBasicInfo)
               }
-
               
 
               
@@ -586,7 +584,7 @@ textarea {
               });
               
           }
-          function jobManager(i,jobStudents){
+          function jobManager(i,studentJobBasicInfo){
             
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
