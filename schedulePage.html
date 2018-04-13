@@ -567,7 +567,7 @@ textarea {
                             type: 'POST',
                             contentType: "application/json",
                             url: 'https://uzo-web-app.herokuapp.com/assign_student_job',
-                            data:JSON.stringify(studentJob)
+                            data:JSON.stringify(studentIDInfo)
                           }).done(function(data) {
                             var result= JSON.parse(data);
                              console.log(result);
