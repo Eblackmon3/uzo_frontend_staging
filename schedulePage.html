@@ -525,17 +525,17 @@ textarea {
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
                   };
-                  var studentJob={
-                     "job_id":calendarEvent.job_id,
-                     "company_id": sessionStorage.getItem("company_id"),
-                     "student_id":studentBasicInfo[i].student_id
-                      };
 
 
                
 
             $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
               var workHistoryInfo= JSON.parse(workHistoryRespose);
+              var studentJob={
+                     "job_id":calendarEvent.job_id,
+                     "company_id": sessionStorage.getItem("company_id"),
+                     "student_id":workHistoryInfo.student_id
+                      };
               
 
                 $("#interestedStudentTab").append( "<div class='panel panel-default' id='panel"+i+"'>");
@@ -567,7 +567,7 @@ textarea {
                             type: 'POST',
                             contentType: "application/json",
                             url: 'https://uzo-web-app.herokuapp.com/assign_student_job',
-                            data:JSON.stringify(studentIDInfo)
+                            data:JSON.stringify(studentJob)
                           }).done(function(data) {
                             var result= JSON.parse(data);
                              console.log(result);
