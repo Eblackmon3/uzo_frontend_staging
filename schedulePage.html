@@ -536,7 +536,7 @@ textarea {
                   "Major: "+studentBasicInfo[i].major
                   +"</li>");
                  $("#list-group"+i).append("<a href='"+workHistoryInfo.resume_location +"' class='list-group-item'>Resume</a>");
-                 $("#panel_body"+i).append("<button type='button' id='selectStudent"+i+"' class='btn btn-primary'>Select Student</button>");
+                 $("#panel_body"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Select</button>");
                  $.ajax({
                             type: 'POST',
                             contentType: "application/json",
