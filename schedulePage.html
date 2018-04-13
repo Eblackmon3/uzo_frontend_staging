@@ -224,6 +224,23 @@ textarea {
           });
         }
 
+        var studentJobs= function (jobid){
+        return $.ajax({
+              type: 'POST',
+              contentType: "application/json",
+              url: 'https://uzo-web-app.herokuapp.com/get_jobs_students_by_id',
+             data:JSON.stringify(jobid)
+             
+          }).done(function(data) { 
+              var result = JSON.parse(data);
+              
+        
+              
+ 
+               
+          });
+        }
+
         var interestedStudentResponse= function (jobInfo){
         return $.ajax({
               type: 'POST',
@@ -478,15 +495,22 @@ textarea {
 
 
 
-             $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse){
+             $.when(jobInfoResponse(jobInfo,calendarEvent, studentJobs), interestedStudentResponse(jobInfo)).done(function(jobResponse, studentResponse, jobsStudentList){
 
                    
           studentBasicInfo= JSON.parse(studentResponse[0]);
+          jobStudents=JSON.parse(jobsStudentList[0])
           
           for(var i=0;i<studentBasicInfo.length;i++){
             getWorkInfo(i,studentBasicInfo);
             //jobManager(i,studentJobBasicInfo)
               }
+
+          for(var i=0;i<jobStudents.length;i++){
+            getWorkInfo(i,jobStudents);
+            //jobManager(i,studentJobBasicInfo)
+              }
+
               
 
               
@@ -562,7 +586,7 @@ textarea {
               });
               
           }
-          function jobManager(i,studentJobBasicInfo){
+          function jobManager(i,jobStudents){
             
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
@@ -588,7 +612,7 @@ textarea {
            
                   
 
-            $.when(studentWorkHistoryRespose(studentIDInfo)).done(function(workHistoryRespose){
+            $.when(studentJobs(studentIDInfo)).done(function(workHistoryRespose){
               var workHistoryInfo= JSON.parse(workHistoryRespose);
               
 
