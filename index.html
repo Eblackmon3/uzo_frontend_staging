@@ -87,11 +87,13 @@
   border-radius: 50%;
   position: relative;
     float: left;
-    width:  200px;
-    height: 200px;
+    width:  400px;
+    height: 400px;
     background-position: 50% 50%;
     background-repeat:   no-repeat;
     background-size:     cover;
+    margin-left: auto;
+    margin-right: auto;
 }
   /*
   .container {
@@ -171,12 +173,10 @@ $(document).ready(function(){
   $("#business").click(function(){
       window.location.replace("businessIndex.html");
   });
+  /*
   $("#student").click(function(){
-      console.log("here");
-        $.when(ajaxFunction()).done(function(response){
-          window.location.replace("studentIndex.html");
-        });
-  });
+    window.location.replace("studentIndex.html");
+  });*/
 
 });
 </script>
