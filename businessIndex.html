@@ -156,18 +156,101 @@ background-image: url(whiteting.jpg);
 
 $(document).ready(function(){
 
+   $(document).keypress(function(e) {
+    if(e.which == 13) {
+         var passwordVal = $("#password").val();
+    var emailVal = $("#email").val().toLowerCase();
+    var password = $("#password");
+    var registrationInfo = {
+        email:emailVal,
+        password: passwordVal
+      }
 
-  $("#business").click(function(){
+    var ajaxFunction= function (){
+        return $.ajax({
+          type: 'POST',
+          contentType: "application/json",
+          url: 'https://uzo-web-app.herokuapp.com/check_company_login',
+          data:JSON.stringify(registrationInfo)
+        }).done(function(data) {
+          var result= JSON.parse(data);
+          console.log(result);
+          console.log(result.company_id)
+          if(result.company_login==="Does not exist"){
+            $( "#emailCheck" ).removeClass( "has-success" ).addClass( "has-error" );
+            $( "#passwordCheck" ).removeClass( "has-success" ).addClass( "has-error" );
+            $("#errorMessage").text("password incorrect");
+            console.log("password wrong")
+          }else{
+            sessionStorage.setItem("company_id",result.company_id);
+            $( "#emailCheck" ).removeClass( "has-error" ).addClass( "has-success" );
+            $( "#passwordCheck" ).removeClass( "has-error" ).addClass( "has-success" );
+            $("#errorMessage").text("");
+            console.log("")
+
+
+          }
+
+        });
+      }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-          window.location.replace("businessIndex.html");
+          if(sessionStorage.getItem("company_id")){
+            window.location.replace("schedulePage.html");
+          }
+
+
         });
-  });
-  $("#student").click(function(){
+    }
+});
+
+  $("#loginBtn").click(function(){
+     var passwordVal = $("#password").val();
+    var emailVal = $("#email").val().toLowerCase();
+    var password = $("#password");
+    var registrationInfo = {
+        email:emailVal,
+        password: passwordVal
+      }
+
+    var ajaxFunction= function (){
+        return $.ajax({
+          type: 'POST',
+          contentType: "application/json",
+          url: 'https://uzo-web-app.herokuapp.com/check_company_login',
+          data:JSON.stringify(registrationInfo)
+        }).done(function(data) {
+          var result= JSON.parse(data);
+          console.log(result);
+          console.log(result.company_id)
+          if(result.company_login==="Does not exist"){
+            $( "#emailCheck" ).removeClass( "has-success" ).addClass( "has-error" );
+            $( "#passwordCheck" ).removeClass( "has-success" ).addClass( "has-error" );
+            $("#errorMessage").text("password incorrect");
+            console.log("password wrong")
+          }else{
+            sessionStorage.setItem("company_id",result.company_id);
+            $( "#emailCheck" ).removeClass( "has-error" ).addClass( "has-success" );
+            $( "#passwordCheck" ).removeClass( "has-error" ).addClass( "has-success" );
+            $("#errorMessage").text("");
+            console.log("")
+
+
+          }
+
+        });
+      }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-          window.location.replace("studentIndex.html");
+          if(sessionStorage.getItem("company_id")){
+            window.location.replace("schedulePage.html");
+          }
+
+
         });
+
+
+
   });
 
 });
@@ -177,16 +260,31 @@ $(document).ready(function(){
 
 
 <body>
-  <div class="front-page">
-    <div class="container">
-      <div style="float:left;width:49%">
-	       <img id= "student" src="https://images.unsplash.com/photo-1506205146167-e60bb7368b94?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&dl=gabriel-lopez-389225-unsplash.jpg&s=9a718053e77d48e637ebe5c1ee248536" style="border-radius:50%">
-       </div>
-       <div style="float:right;width:49%">
-	        <img id= "business" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&dl=ali-morshedlou-566510-unsplash.jpg&s=bfc428602a5f0a50b8e8a419cdf73647" style="border-radius:50%">
-    </div>
-  </div>
+  <div class="login-page">
+  <div class="form">
+    <form class="form-group">
 
+      <div id="emailCheck">
+      <div class="input-group">
+      <input id="email" type="text" class="form-control" name="email" placeholder="Email"/>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+    </div>
+    </div>
+    <br>
+    <div id="passwordCheck">
+    <div class="input-group">
+      <input id="password" type="password" class="form-control" name="password" placeholder="Password"/>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+    </div>
+    </div>
+  </br>
+  <p align="center" id="errorMessage" div class="passError"></p>
+</br>
+
+      <button type="button" id="loginBtn">login</button>
+      <p class="message">Not registered? <a href="https://uzo-frontend.herokuapp.com/clientRegistrationPage.html">Create an account</a></p>
+    </form>
+  </div>
 </div>
   <!--
   <div class="container">
