@@ -27,6 +27,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
   <
 
 
@@ -127,7 +131,7 @@ textarea {
     //attributes as to unest Ajax calls 
     var studentBasicInfo;
     var calendarEvent;
-    $('#rate').mask('000.000.000.000.000,00', {reverse: true});
+    $('#rate').mask('000,000,000,000,000.00', {reverse: true});
 
      $("#dismissShowJob").click(function(){
       $("#interestedStudentTab").empty();
@@ -774,7 +778,7 @@ textarea {
                 <div class="input-group">
                   <span class="input-group-addon">$</span>
                    <div id="salaryError">
-                  <input type="text" value="15" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="rate" />
+                  <input type="text" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="rate" />
                 </div>
                 </div>
               </div>
