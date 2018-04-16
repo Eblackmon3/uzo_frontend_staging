@@ -288,7 +288,9 @@ textarea {
          }else{
             important_quality="Punctuality";
          }
-         var rate = $("#rate").val();
+         var rate = numeral($("#rate").val()).format('0.00');
+         var rate = rate.replace(/,/g, ''),
+    asANumber = +noCommas;
 
          if(!jtitle){
 
