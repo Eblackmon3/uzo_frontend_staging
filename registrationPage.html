@@ -432,6 +432,7 @@ function()
 						 return $.ajax({
 						type: 'POST',
 				        enctype: 'multipart/form-data',
+				        crossDomain: true,
 				        processData: false,  // Important!
 				        contentType: false,
 				        cache: false,
