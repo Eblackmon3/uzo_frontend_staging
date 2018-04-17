@@ -280,6 +280,7 @@ $("#deleteJobButton").click(function(){
 
 //The function that controls the update job function
          $("#jobSubmitUp").click(function(){
+          console.log
           var startTime;
           var endTime;
           var jtitle = $("#jtitleUp").val();
@@ -300,7 +301,7 @@ $("#deleteJobButton").click(function(){
          var rate = rate.replace(/,/g, ''),
             asANumber = +rate;
           }
-
+          console.log(moment(startDate).format())
          var jobInfo={
          "date": moment(startDate).format(),
          "rate": rate,
