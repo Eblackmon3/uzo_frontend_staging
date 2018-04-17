@@ -282,21 +282,21 @@ $("#deleteJobButton").click(function(){
          $("#jobSubmitUp").click(function(){
           var startTime;
           var endTime;
-          var jtitle = $("#jtitle").val();
-         var jdescription = $("#jdescription").val();
-         if($("#startTime").val()){
-          startTime = $("#startTime").val();
+          var jtitle = $("#jtitleUp").val();
+         var jdescription = $("#jdescriptionUp").val();
+         if($("#startTimeUp").val()){
+          startTime = $("#startTimeUp").val();
          startTime=convertTime(startTime);
           }
-          if($("#endTime").val()){
-         endTime = $("#endTime").val();
+          if($("#endTimeUp").val()){
+         endTime = $("#endTimeUp").val();
          endTime= convertTime(endTime);
        }
 
 
-         var employeeCount = $("#employeeCount").val();
-        if($("#rate").val()){
-         var rate = numeral($("#rate").val()).format('0.00');
+         var employeeCount = $("#employeeCountUp").val();
+        if($("#rateUp").val()){
+         var rate = numeral($("#rateUp").val()).format('0.00');
          var rate = rate.replace(/,/g, ''),
             asANumber = +rate;
           }
@@ -311,7 +311,7 @@ $("#deleteJobButton").click(function(){
          "description":jdescription,
          "num_employees": employeeCount
           };
-          console.log("here");
+          console.log(jobInfo);
           //used by the create job function to add it to the database  
          var ajaxFunction= function (){
         return $.ajax({
@@ -330,12 +330,12 @@ $("#deleteJobButton").click(function(){
             */
             //need both of these too kill modals
 
-            $("#createJobModal").modal("hide");
+            $("#showJobModal").modal("hide");
              $('body').removeClass().removeAttr('style');$('.modal-backdrop').remove();
-             $("#jtitle").val("");
-             $("#jdescription").val("");
-            $("#startTime").val("");
-           $("#endTime").val("");
+             $("#jtitleUp").val("");
+             $("#jdescriptionUp").val("");
+            $("#startTimeUp").val("");
+           $("#endTimeUp").val("");
 
 
         });
@@ -347,7 +347,7 @@ $("#deleteJobButton").click(function(){
 
        
 
-        $("#jdescription2").val("");
+        $("#jdescription2Up").val("");
            
       
 
