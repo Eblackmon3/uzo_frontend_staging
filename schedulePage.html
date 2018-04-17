@@ -266,7 +266,8 @@ textarea {
 
 //this function allows you to delete the job
 $("#deleteJob").click(function(){
-  //$("#deleteJobModel").modal("show");
+  $('#deleteJobModel').css('position', 'absolute');
+  $("#deleteJobModel").modal("show");
 
 
 });
@@ -813,7 +814,7 @@ $("#deleteJob").click(function(){
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" id="dismissShowJob">&times;</button>
           <h4 class="modal-title">Job Details</h4>
-          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" href="#deleteJobModel" id="deleteJob"> Delete Job</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="deleteJob"> Delete Job</button>
         </div>
         <div class="modal-body">
           
@@ -907,25 +908,6 @@ $("#deleteJob").click(function(){
   </div>
 </div>
 
-<div id="deleteJobModel" class="modal fade" tabindex="-1" data-focus-on="input:first" style="display: none;">
-  <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title">Stack Two</h4>
-            </div>
-            <div class="modal-body">
-              <p>One fine body…</p>
-              <p>One fine body…</p>
-              <input class="form-control" type="text" data-tabindex="1">
-              <input class="form-control" type="text" data-tabindex="2">
-              <button class="btn btn-default" data-toggle="modal" href="#stack3">Launch modal</button>
-            </div>
-            <div class="modal-footer">
-              <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-              <button type="button" class="btn btn-primary">Ok</button>
-            </div>
-          </div>
-          </div>
 
 
 
