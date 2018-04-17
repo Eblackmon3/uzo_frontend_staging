@@ -375,10 +375,10 @@ function()
 				var street = $("#street").val();
 				var apt= $("#apt").val();
 				var zipcode= $("#zipcode").val();
+				var student_id= $("#studentid").val();
 
 				var major = $("#major").val();
                 var password= " ";
-                var description = " ";
 				var grade = $('input[name=optradio]:checked').val();
                              if(grade=="Freshman"){
                              grade=1;
@@ -398,7 +398,7 @@ function()
 				var file_data = id[0].files[0];
 				var form_data = new FormData();
 				form_data.append("file", file_data);
-				var student_idnum = $("#studentid").val();
+				var student_id = $("#studentid").val();
 				var registrationInfo = {
 					 first_name: fname,
 					 last_name: lname,
@@ -409,13 +409,13 @@ function()
 					 major:major,
 					 year:grade,
                      password: password,
-                     description: description,
+                     description: student_id,
                      state:state,
                      city:city,
                      street: street,
                      apt:apt,
                      zipcode:zipcode,
-										 student_idnum:studentid
+					
 				 }
 				 /* This is the check for making sure user enters an 801 
 				 var n = student_idnum.startsWith("801");
@@ -458,7 +458,7 @@ function()
 				}
 
         		//Need to change this when the other adress stuff is put in
-				if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade|| !state || !city || !street || !zipcode ||!student_idnum){
+				if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade|| !state || !city || !street || !zipcode ||!student_idnum|| !student_id){
 						alert("You must fill in required fields!");
 					}
 				else{
