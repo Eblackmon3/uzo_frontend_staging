@@ -816,6 +816,23 @@ $("#deleteJob").click(function(){
           <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" href="#deleteJobModel" id="deleteJob"> Delete Job</button>
         </div>
         <div class="modal-body">
+          <div id="deleteJobModel" class="modal hide fade" tabindex="-1" data-focus-on="input:first">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>Stack Two</h3>
+              </div>
+              <div class="modal-body">
+                <p>One fine body…</p>
+                <p>One fine body…</p>
+                <input type="text" data-tabindex="1">
+                <input type="text" data-tabindex="2">
+              </div>
+              <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn">Close</button>
+                <button type="button" class="btn btn-primary">Ok</button>
+              </div>
+            </div>
+ 
           <div role="tabpanel">
                   <ul class="nav nav-tabs" role="tablist">
                       <li role="presentation" class="active"><a href="#jobInfoTab"  role="tab" data-toggle="tab">Job Information</a>
@@ -906,23 +923,7 @@ $("#deleteJob").click(function(){
   </div>
 
 
-<div class="modal fade" id="deleteJobModel">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <p>Are your sure you want to delete the job?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+
 
 
 </body>
