@@ -447,15 +447,13 @@ function()
 				}
 
         		//Need to change this when the other adress stuff is put in
-				if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade || !id[0].files[0] || !state || !city || !street || !zipcode){
+				if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade|| !state || !city || !street || !zipcode){
 						alert("You must fill in required fields!");
 					}
 				else{
 					$.when(ajaxFunction()).done(function(a1){
 						form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
 						console.log(sessionStorage.getItem("student_id"));
-						
-						  console.log(response);
 						  window.location.replace("registrationPage2.html")
 						
 
