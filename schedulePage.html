@@ -265,6 +265,9 @@ textarea {
         }
 
 //this function allows you to delete the job
+$("#deleteJobButton").click(function(){
+      deleteJob(jobIDInfo)
+  });
 
 
 //The function that controls he jobsumbit action, outside as to not add multiple click functions to the dev
@@ -437,7 +440,32 @@ textarea {
                
           });
         }
-//add 
+// delete job 
+
+ var deleteJob= function (jobID){
+        var jobInfo={
+               "job_id":jobID
+                };
+
+               $('#calendar').fullCalendar('removeEvents',jobID);
+
+                return $.ajax({
+                      type: 'POST',
+                      contentType: "application/json",
+                      url: 'https://uzo-web-app.herokuapp.com/delete_job_by_id',
+                     data:JSON.stringify(jobInfo)
+                     
+                  }).done(function(data) { 
+                      var result = JSON.parse(data);
+                      //Delete the event
+                     
+                      console.log(result);
+                       
+                  });
+
+        }
+
+
 
 //Ensure that jobs are loaded on signin and run the full calendar
 
@@ -522,24 +550,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
         element.bind('mousedown', function (e) {
             if (e.which == 3) {
                 console.log(event);
-                var jobInfo={
-               "job_id":event.job_id
-                };
-
-               $('#calendar').fullCalendar('removeEvents', event.job_id);
-                return $.ajax({
-                      type: 'POST',
-                      contentType: "application/json",
-                      url: 'https://uzo-web-app.herokuapp.com/delete_job_by_id',
-                     data:JSON.stringify(jobInfo)
-                     
-                  }).done(function(data) { 
-                      var result = JSON.parse(data);
-                      //Delete the event
-                     
-                      console.log(result);
-                       
-                  });
+                jobIDInfo=event.job_id;
                 
             }
         });
@@ -956,6 +967,20 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
   </div>
 </div>
 
+
+<div id="deleteJob" class="modal fade" tabindex="-1" data-focus-on="input:first" style="display: none;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">Delete Job</h4>
+  </div>
+  <div class="modal-body">
+    <h4 >Are you sure you want to delete this job?</h4>
+  </div>
+  <div class="modal-footer">
+    <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+    <button type="button" class="btn btn-primary" id="deleteJobButton">Ok</button>
+  </div>
+</div>
 
 
 
