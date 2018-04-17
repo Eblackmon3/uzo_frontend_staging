@@ -417,9 +417,13 @@ textarea {
                
           });
         }
-
+//add 
 
 //Ensure that jobs are loaded on signin and run the full calendar
+
+$('#calendar:not(".fc-event")').on('contextmenu', function (e) {
+    e.preventDefault()
+})
 
             $('#calendar').fullCalendar({
               events: function(start, end, timezone, callback) {
