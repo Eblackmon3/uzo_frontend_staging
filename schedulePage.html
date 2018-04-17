@@ -523,7 +523,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
             if (e.which == 3) {
                 console.log(event);
                 var jobInfo={
-               "job_id":calEvent.job_id
+               "job_id":event.job_id
                 };
                 return $.ajax({
                       type: 'POST',
@@ -534,7 +534,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                   }).done(function(data) { 
                       var result = JSON.parse(data);
                       //Delete the event
-                      $('#calendar').fullCalendar('removeEvents', calendarEvent.jo_id);
+                      $('#calendar').fullCalendar('removeEvents', event.job_id);
                       console.log(result);
                        
                   });
