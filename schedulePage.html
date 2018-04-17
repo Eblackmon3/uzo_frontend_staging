@@ -321,6 +321,7 @@ $("#deleteJobButton").click(function(){
           data:JSON.stringify(jobInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
+          console.log(result);
           /*
            var eventData= [{ title  : jtitle,start: moment(startDate).format()+"T"+startTime, end:moment(endDate).format()+"T"+endTime, allDay: false, job_id:result.inserted_job}];
 
