@@ -494,11 +494,16 @@ textarea {
 
       },
 
-      eventRightclick: function(calEvent, jsEvent, view) {
-      alert('an event has been rightclicked!');
-      console.log(calEvent);
-        return false;
-    }
+      eventMouseover : function(data, event, view) {
+            var content = '<h3>'+data.title+'</h3>' + 
+                '<p><b>Start:</b> '+data.start+'<br />' + 
+                (data.end && '<p><b>End:</b> '+data.end+'</p>' || '');
+
+            tooltip.set({
+                'content.text': content
+            })
+            .reposition(event).show(event);
+        }
 
      })
 
