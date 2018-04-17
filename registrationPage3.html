@@ -32,8 +32,8 @@
 	<script>
 
 		function ValidateSize(file) {
-			console.log(file)
-        var FileSize = file[0].files[0].size / 1024 ; // in MB
+
+        var FileSize = file.size/ 1024 ; // in MB
         if (FileSize > 1) {
             alert('File size exceeds 2 MB');
            return true;
