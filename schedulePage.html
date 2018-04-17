@@ -816,23 +816,7 @@ $("#deleteJob").click(function(){
           <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" href="#deleteJobModel" id="deleteJob"> Delete Job</button>
         </div>
         <div class="modal-body">
-          <div id="deleteJobModel" class="modal fade" tabindex="-1" data-focus-on="input:first">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title">Stack Two</h4>
-            </div>
-            <div class="modal-body">
-              <p>One fine body…</p>
-              <p>One fine body…</p>
-              <input class="form-control" type="text" data-tabindex="1">
-              <input class="form-control" type="text" data-tabindex="2">
-              <button class="btn btn-default" data-toggle="modal" href="#stack3">Launch modal</button>
-            </div>
-            <div class="modal-footer">
-              <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-              <button type="button" class="btn btn-primary">Ok</button>
-            </div>
-          </div>
+          
           <div role="tabpanel">
                   <ul class="nav nav-tabs" role="tablist">
                       <li role="presentation" class="active"><a href="#jobInfoTab"  role="tab" data-toggle="tab">Job Information</a>
@@ -916,7 +900,24 @@ $("#deleteJob").click(function(){
                       </div>
                   </div>
               </div>
-        </div
+        </div>
+        <div id="deleteJobModel" class="modal fade" tabindex="-1" data-focus-on="input:first" style="display: none;">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title">Stack Two</h4>
+            </div>
+            <div class="modal-body">
+              <p>One fine body…</p>
+              <p>One fine body…</p>
+              <input class="form-control" type="text" data-tabindex="1">
+              <input class="form-control" type="text" data-tabindex="2">
+              <button class="btn btn-default" data-toggle="modal" href="#stack3">Launch modal</button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+              <button type="button" class="btn btn-primary">Ok</button>
+            </div>
+          </div>
 
     </div>
   </div>
