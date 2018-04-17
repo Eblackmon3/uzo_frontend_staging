@@ -266,8 +266,8 @@ textarea {
 
 //this function allows you to delete the job
 $("#deleteJob").click(function(){
-  $("#deleteJobModel").modal("show");
-  
+  //$("#deleteJobModel").modal("show");
+
 
 });
 
@@ -813,7 +813,7 @@ $("#deleteJob").click(function(){
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" id="dismissShowJob">&times;</button>
           <h4 class="modal-title">Job Details</h4>
-          <button type="button" class="btn btn-secondary btn-sm" id="deleteJob"> Delete Job</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" href="#deleteJobModel" id="deleteJob"> Delete Job</button>
         </div>
         <div class="modal-body">
           <div role="tabpanel">
