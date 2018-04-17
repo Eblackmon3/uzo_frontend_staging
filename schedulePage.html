@@ -976,30 +976,30 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
           <div class="form-group">
             <div class="col-md-6">
             <label for="jtitle">Job Title</label>
-            <div id="titleError" >
-              <input type="text" class="form-control" name="jtitle" id="jtitle"/>
+            <div id="titleErrorUp" >
+              <input type="text" class="form-control" name="jtitle" id="jtitleUp"/>
           </div>
             <br>
               <label for="jobDesc">Description of Job</label>
-              <div  id="descriptionError">
-                <textarea class= "form-control" rows="4" cols="55" placeholder="In a few sentences, tell us what the position entails?" id="jdescription">
+              <div  id="descriptionErrorUp">
+                <textarea class= "form-control" rows="4" cols="55" placeholder="In a few sentences, tell us what the position entails?" id="jdescriptionUp">
                 </textarea>
             </div>
               <br>
               <label for="shitStart">What time does the shift start</label>
-                <div id="startError">
-                <input type="text" class=" form-control timepicker" name="time" id="startTime"/>
+                <div id="startErrorUp">
+                <input type="text" class=" form-control timepicker" name="time" id="startTimeUp"/>
             </div>
               <br>
               <label for="shitStart">What time does the shift end</label>
-                <div  id="endError">
-                <input type="text" class="form-control timepicker" name="time" id="endTime"/>
+                <div  id="endErrorUp">
+                <input type="text" class="form-control timepicker" name="time" id="endTimeUp"/>
             </div>
               <br>
               <div>
               <label for="ecount">How many employees do you need per shift?</label>
               <form>
-                <select  id="employeeCount">
+                <select  id="employeeCountUp">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -1026,31 +1026,17 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
             </div>
 
             <div class="col-md-6">
-              <label for="jobDesc2">Are their any required or preferred skills, certifications, or education requirements for workers?</label>
-                <textarea rows="4" cols="55" id="jdescription2" class="form-control">
-                </textarea>
-              <br>
-              <div>
-                <label for="quality">What is the most important quality you're looking for in your workers?</label>
-                <form id="important_quality">
-                  <input type="radio" name="option" value="Industry Experience" id= "industryExp"> Industry Experience <br>
-                  <input type="radio" name="option" value="Professional Appearance" id= "profAp"> Professional Appearance<br>
-                  <input type="radio" name="option" value="Proximity to Job Location" id= "proximity"> Proximity to Job Location<br>
-                  <input type="radio" name="option" value="Punctuality" id= "punctuality"> Punctuality<br>
-                </form>
-              </div>
-              <br>
               <div class="form-row">
                 <label for="c2">Hourly Rate</label>
                 <div class="input-group">
                   <span class="input-group-addon">$</span>
-                   <div id="salaryError">
-                  <input type="text" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="rate" />
+                   <div id="salaryErrorUp">
+                  <input type="text" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="rateUp" />
                 </div>
                 </div>
               </div>
             </br>
-               <button type="button" class="btn btn-default"  id = "jobSubmit" >Update Job</button>
+               <button type="button" class="btn btn-default"  id = "jobSubmitUp" >Update Job</button>
           </div>
         </form>
                          
