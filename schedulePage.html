@@ -498,16 +498,15 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
       },
 
-      eventMouseover : function(data, event, view) {
-            var content = '<h3>'+data.title+'</h3>' + 
-                '<p><b>Start:</b> '+data.start+'<br />' + 
-                (data.end && '<p><b>End:</b> '+data.end+'</p>' || '');
+      eventRender: function (event, element) {
+        element.bind('mousedown', function (e) {
+            if (e.which == 3) {
+                alert('Right mouse button pressed');
+            }
+        });
+      }
 
-            tooltip.set({
-                'content.text': content
-            })
-            .reposition(event).show(event);
-        }
+      
 
      })
 
