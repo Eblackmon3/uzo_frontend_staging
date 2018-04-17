@@ -30,6 +30,17 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script>
+
+		function ValidateSize(file) {
+        var FileSize = file.files[0].size / 1024 / 1024; // in MB
+        if (FileSize > 2) {
+            alert('File size exceeds 2 MB');
+           return false;
+        } else {
+        	return true;
+        }
+    }
+
 	$(document).ready(function(){
 			$("#back").click(function(){
 					window.location.href='registrationPage2.html';
@@ -75,6 +86,8 @@
 
 				if(!customFile[0].files[0]){
 					alert("Resume must be upload ");
+				}if else(ValidateSize(file_data)){
+
 				}else{
 					$.when(ajaxFunction()).done(function(a1){
 						form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
