@@ -455,7 +455,7 @@ function()
 						form_data.append("student_id", parseInt(sessionStorage.getItem("student_id")));
 						console.log(sessionStorage.getItem("student_id"));
 						  window.location.replace("registrationPage2.html")
-						
+
 
 						});
 
@@ -648,8 +648,11 @@ function()
 
 								<div class="custom-file">
 									<div class="col-md-12">
-										<h5 align="center">Please provide proof that you are a  student by uploading a photo of the front of your college ID</h5>
-										<input type="file" class="custom-file-input" id="customFile">
+										<h5 align="center">Please provide proof that you are a  student by providing your student ID number</h5>
+										<div class="input-group">
+											<input type="text" class="form-control" name="studentid" id="studentid" placeholder="Enter 801 number"/>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+										</div>
 
 									</div>
 
