@@ -278,6 +278,80 @@ $("#deleteJobButton").click(function(){
   });
 
 
+//The function that controls the update job function
+         $("#jobSubmitUp").click(function(){
+          var startTime;
+          var endTime;
+          var jtitle = $("#jtitle").val();
+         var jdescription = $("#jdescription").val();
+         if($("#startTime").val()){
+          startTime = $("#startTime").val();
+         startTime=convertTime(startTime);
+          }
+          if($("#endTime").val()){
+         endTime = $("#endTime").val();
+         endTime= convertTime(endTime);
+       }
+
+
+         var employeeCount = $("#employeeCount").val();
+        if($("#rate").val()){
+         var rate = numeral($("#rate").val()).format('0.00');
+         var rate = rate.replace(/,/g, ''),
+            asANumber = +rate;
+          }
+
+         var jobInfo={
+         "date": moment(startDate).format(),
+         "rate": rate,
+         "job_title": jtitle,
+         "start_time":startTime,
+         "end_time":endTime,
+         "company_id":sessionStorage.getItem("company_id"),
+         "description":jdescription,
+         "num_employees": employeeCount
+          };
+
+          //used by the create job function to add it to the database  
+         var ajaxFunction= function (){
+        return $.ajax({
+          type: 'POST',
+          contentType: "application/json",
+          url: 'https://uzo-web-app.herokuapp.com/update_job_info',
+          data:JSON.stringify(jobInfo)
+        }).done(function(data) {
+          var result= JSON.parse(data);
+          /*
+           var eventData= [{ title  : jtitle,start: moment(startDate).format()+"T"+startTime, end:moment(endDate).format()+"T"+endTime, allDay: false, job_id:result.inserted_job}];
+
+           $("#calendar").fullCalendar('addEventSource', eventData);
+            $("#calendar").fullCalendar("unselect");
+            */
+            //need both of these too kill modals
+
+            $("#createJobModal").modal("hide");
+             $('body').removeClass().removeAttr('style');$('.modal-backdrop').remove();
+             $("#jtitle").val("");
+             $("#jdescription").val("");
+            $("#startTime").val("");
+           $("#endTime").val("");
+
+
+        });
+      }
+
+        $.when(ajaxFunction()).done(function(response){
+            //alert("Job Added");
+        });
+
+       
+
+        $("#jdescription2").val("");
+           
+      
+
+        });
+
 //The function that controls he jobsumbit action, outside as to not add multiple click functions to the dev
          $("#jobSubmit").click(function(){
           if($("#jtitle").val()&&$("#jdescription").val()&&$("#startTime").val()&&$("#endTime").val()&&$("#rate").val()){
@@ -809,6 +883,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
               <label for="ecount">How many employees do you need per shift?</label>
               <form>
                 <select  id="employeeCount">
+                  <option value=null>No Change</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -1031,7 +1106,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                 <div class="input-group">
                   <span class="input-group-addon">$</span>
                    <div id="salaryErrorUp">
-                  <input type="text" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="rateUp" />
+                  <input type="text" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="rateUp" />
                 </div>
                 </div>
               </div>
