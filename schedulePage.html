@@ -501,6 +501,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
       eventRender: function (event, element) {
         element.bind('mousedown', function (e) {
             if (e.which == 3) {
+                console.log(event);
                 alert('Right mouse button pressed');
             }
         });
