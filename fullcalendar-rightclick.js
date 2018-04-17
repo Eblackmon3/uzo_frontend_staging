@@ -45,7 +45,7 @@
 							// FullCalendar >= 2.5.0:
 							that.prepareHits();
 							var hit = that.queryHit(ev.pageX, ev.pageY);
-							cell = that.getHitSpan(hit);
+							cell = that.getHitFootprint(hit);
 						}
 						if (cell)
 							return that[trigger](
