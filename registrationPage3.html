@@ -89,7 +89,7 @@
 
 				if(!customFile[0].files[0]){
 					alert("Resume must be upload ");
-				}else if(ValidateSize(file_data)){
+				}else if(ValidateSize(customFile[0].files[0])){
 
 				}else{
 					$.when(ajaxFunction()).done(function(a1){
