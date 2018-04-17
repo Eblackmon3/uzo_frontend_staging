@@ -424,7 +424,7 @@ $("#deleteJobButton").click(function(){
         return $.ajax({
               type: 'POST',
               contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/delete_job_by_id',
+              url: 'https://uzo-web-app.herokuapp.com/get_job_by_id',
              data:JSON.stringify(jobInfo)
              
           }).done(function(data) { 
