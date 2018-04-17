@@ -340,6 +340,7 @@ function()
 
 
 		 $("#zipcode").ForceNumericOnly();
+		 $("#student_id").ForceNumericOnly();
 
                       /*
 
@@ -393,12 +394,8 @@ function()
                              }else{
                              	grade=null;
                              }
-				var id = $("#customFile");
-				console.log(id[0].files[0]);
-				var file_data = id[0].files[0];
-				var form_data = new FormData();
-				form_data.append("file", file_data);
-				var student_id = $("#studentid").val();
+				
+				//var student_id = $("#studentid").val();
 				var registrationInfo = {
 					 first_name: fname,
 					 last_name: lname,
