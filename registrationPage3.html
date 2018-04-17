@@ -34,8 +34,9 @@
 		function ValidateSize(file) {
 
         var FileSize = file.size/ 1024 ; // in MB
+        console.log(FileSize)
         if (FileSize > 1) {
-            alert('File size exceeds 2 MB');
+            alert('File size exceeds 1 MB');
            return true;
         } else {
         	return false;
