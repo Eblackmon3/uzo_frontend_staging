@@ -331,6 +331,7 @@ function()
         });
     });
 };
+
 	$(document).ready(function(){
 		 $("#number").mask('(000) 000-0000');
 		 $("#dob").mask('00-00-0000');
@@ -397,6 +398,7 @@ function()
 				var file_data = id[0].files[0];
 				var form_data = new FormData();
 				form_data.append("file", file_data);
+				var student_idnum = $("#studentid").val();
 				var registrationInfo = {
 					 first_name: fname,
 					 last_name: lname,
@@ -412,7 +414,15 @@ function()
                      city:city,
                      street: street,
                      apt:apt,
-                     zipcode:zipcode
+                     zipcode:zipcode,
+										 student_idnum:studentid
+				 }
+				 var n = student_idnum.startsWith("801");
+				 if (n == "false"){
+					 alert("You must startwith 801!");
+				 }
+				 else{
+
 				 }
 
 				 var ajaxFunction= function (){
@@ -447,7 +457,7 @@ function()
 				}
 
         		//Need to change this when the other adress stuff is put in
-				if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade|| !state || !city || !street || !zipcode){
+				if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade|| !state || !city || !street || !zipcode ||!student_idnum){
 						alert("You must fill in required fields!");
 					}
 				else{
