@@ -415,24 +415,6 @@ $("#deleteJobButton").click(function(){
         }
 
 
-//this method is to pull the original information for each job modal
- var jobInfoResponse= function (calEvent){
-  var jobInfo={
-               "job_id":calEvent.job_id
-                };
-
-        return $.ajax({
-              type: 'POST',
-              contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_job_by_id',
-             data:JSON.stringify(jobInfo)
-             
-          }).done(function(data) { 
-              var result = JSON.parse(data);
-              console.log(result);
-               
-          });
-        }
 
         //this method is to pull the original information for each job modal
  var assignStudentJob= function (studentJob){
