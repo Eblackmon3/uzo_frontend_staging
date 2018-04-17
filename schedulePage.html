@@ -301,9 +301,8 @@ $("#deleteJobButton").click(function(){
          var rate = rate.replace(/,/g, ''),
             asANumber = +rate;
           }
-          console.log(moment(startDate).format())
          var jobInfo={
-         "date": moment(startDate).format(),
+         "date": moment(startTime).format("YYYY-MM-DD"),
          "rate": rate,
          "job_title": jtitle,
          "start_time":startTime,
@@ -611,8 +610,8 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
           jobIDInfo=calEvent.job_id;
           calendarEvent=calEvent;
           console.log(calEvent)
-          startDate=calEvent.date;
-          endDate=calEvent.date;
+          startDate=calEvent.start;
+          endDate=calEvent.end;
 
       },
 
