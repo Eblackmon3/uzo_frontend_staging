@@ -124,6 +124,12 @@
 
   <script>
   $(document).ready(function () {
+    //Log out button
+$("#logoutButton").click(function(){
+  sessionStorage.setItem("company_id")
+ window.location.replace("index.html");
+     
+  });
 
      $("#schedule_tab").click(function(){
        window.location.replace("schedulePage.html");
@@ -255,7 +261,7 @@
 
   <button>Store Credit Card Info</button>
 </form>
-<button type="button" class="btn btn-primary btn-lg">Logout</button>
+<button type="button" class="btn btn-primary btn-lg" id="logoutButton">Logout</button>
 
 
 </body>

@@ -264,6 +264,14 @@ textarea {
           });
         }
 
+ //Log out button
+$("#logoutButton").click(function(){
+  sessionStorage.setItem("company_id")
+ window.location.replace("index.html");
+     
+  });
+       
+
 //this function allows you to delete the job
 $("#deleteJobButton").click(function(){
       deleteJob(jobIDInfo)
@@ -772,7 +780,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
         </div>
     </div>
-    <button type="button" class="btn btn-primary btn-lg">Logout</button>
+    <button type="button" class="btn btn-primary btn-lg" id="logoutButton">Logout</button>
 
 
     </div>
