@@ -264,6 +264,12 @@ textarea {
           });
         }
 
+//this function allows you to delete the job
+$("#deleteJob").click(function(){
+  $("#deleteJobModel").modal("show");
+  
+
+});
 
 //The function that controls he jobsumbit action, outside as to not add multiple click functions to the dev
          $("#jobSubmit").click(function(){
@@ -807,7 +813,7 @@ textarea {
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" id="dismissShowJob">&times;</button>
           <h4 class="modal-title">Job Details</h4>
-          <button type="button" class="btn btn-secondary btn-sm"> Delete Job</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="deleteJob"> Delete Job</button>
         </div>
         <div class="modal-body">
           <div role="tabpanel">
@@ -900,7 +906,23 @@ textarea {
   </div>
 
 
-
+<div class="modal fade" id="deleteJobModel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are your sure you want to delete the job?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 </body>
