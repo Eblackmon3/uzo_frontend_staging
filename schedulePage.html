@@ -456,7 +456,7 @@ $("#deleteJobButton").click(function(){
 
     if(!sessionStorage.getItem("company_id")){
 
-            window.location.replace("businessndex.html");
+            window.location.replace("businessIndex.html");
           }else{
             console.log(sessionStorage.getItem("company_id"));
           }
@@ -477,14 +477,6 @@ $("#deleteJobButton").click(function(){
              
           }).done(function(data) { 
               var result = JSON.parse(data);
-              $("#jobTitleP").text(result.job_title);  
-              $("#jobDescP").text(result.description);  
-              $("#shitStartP").text(moment(calEvent.start).format("'hh:mm A'").toString());
-              $("#shitEndP").text(moment(calEvent.end).format("'hh:mm A'").toString());
-              $("#ecountP").text(result.num_employees); 
-              $("#jobDesc2P").text(result.important_quality); 
-              $("#qualityP").text(result.preferred_skills);
-              $("#rateP").text(result.rate);  
                
           });
         }
@@ -717,6 +709,19 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                           }).done(function(data) {
                             var result= JSON.parse(data);
                              console.log(result);
+                             .ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/add_one_student_to_job',
+                            data:JSON.stringify(studentJob)
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                             console.log(result);
+                             
+
+
+                          });
+
 
 
                           });
