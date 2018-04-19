@@ -182,7 +182,7 @@ $(document).ready(function(){
             $("#errorMessage").text("password incorrect");
             console.log("password wrong")
           }else{
-            sessionStorage.setItem("company_id",result.student_id);
+            sessionStorage.setItem("student_id",result.student_id);
             $( "#emailCheck" ).removeClass( "has-error" ).addClass( "has-success" );
             $( "#passwordCheck" ).removeClass( "has-error" ).addClass( "has-success" );
             $("#errorMessage").text("");
@@ -196,7 +196,7 @@ $(document).ready(function(){
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
           if(sessionStorage.getItem("student_id")){
-            window.location.replace("commingSoon.html");
+            window.location.replace("studentPage.html");
           }
 
 
@@ -217,19 +217,19 @@ $(document).ready(function(){
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/check_company_login',
+          url: 'https://uzo-web-app.herokuapp.com/check_student_login',
           data:JSON.stringify(registrationInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
           console.log(result);
-          console.log(result.company_id)
-          if(result.company_login==="Does not exist"){
+          console.log(result.student_id)
+          if(result.student_login==="Does not exist"){
             $( "#emailCheck" ).removeClass( "has-success" ).addClass( "has-error" );
             $( "#passwordCheck" ).removeClass( "has-success" ).addClass( "has-error" );
             $("#errorMessage").text("password incorrect");
             console.log("password wrong")
           }else{
-            sessionStorage.setItem("company_id",result.company_id);
+            sessionStorage.setItem("student_id",result.student_id);
             $( "#emailCheck" ).removeClass( "has-error" ).addClass( "has-success" );
             $( "#passwordCheck" ).removeClass( "has-error" ).addClass( "has-success" );
             $("#errorMessage").text("");
@@ -242,8 +242,8 @@ $(document).ready(function(){
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-          if(sessionStorage.getItem("company_id")){
-            window.location.replace("schedulePage.html");
+          if(sessionStorage.getItem("student_id")){
+            window.location.replace("studentPage.html");
           }
 
 
