@@ -198,8 +198,23 @@ $("#logoutButton").click(function(){
                   +"</li>");
                  
 
-                 $("#studentGroup"+i).append("<button type='button'id='setInterest"+i+"' class='btn btn-primary'>Select</button>");
+                 $("#studentGroup"+i).append("<button type='button'id='setInterest"+i+"' class='btn btn-primary'>Interested</button>");
                  $("#setInterest"+i).click(function(){
+                  alert("Company has been notified of your interest");
+                  var interestedArray={
+                 "student_id":sessionStorage.getItem("student_id"),
+                 "job_id": jobsInfo[i].id
+                  };
+                          $.ajax({
+                      type: 'POST',
+                      contentType: "application/json",
+                      url: 'https://uzo-web-app.herokuapp.com/insert_interested_student',
+                      data:JSON.stringify(interestedArray)
+                     
+                  }).done(function(data) { 
+                      var result = JSON.parse(data);
+                          
+                  });
 
               });
 
