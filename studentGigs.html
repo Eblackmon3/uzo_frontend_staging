@@ -144,6 +144,78 @@ $("#logoutButton").click(function(){
 
      });
 
+
+   //this method is to pull the original information for each job modal
+ var jobInfoResponse= function (){
+  studentID= {
+    "student_id":sessionStorage.getItem("student_id")
+  }
+        return $.ajax({
+              type: 'POST',
+              contentType: "application/json",
+              url: 'https://uzo-web-app.herokuapp.com/get_students_jobs_by_id',
+               data:JSON.stringify(studentID)
+             
+          }).done(function(data) { 
+              var result = JSON.parse(data);
+                  
+          });
+        }
+ 
+ var addGigList = function(i,jobsInfo){
+
+                $("#open_jobs_list").append( "<div class='panel panel-default' id='panel"+i+"'>");
+                $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
+                $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
+                $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+jobsInfo[i].job_title+"</a>");
+                $("#panel"+i).append("<div id='collapse"+i+"'class='panel-collapse collapse'>");
+                $("#collapse"+i).append("<div class='panel-body' id='panel-body"+i+"'>");
+                $("#panel-body"+i).append("<div class='btn-group' id='studentGroup"+i+"'>");
+                $("#panel-body"+i).append("<ul class='list-group' id='list-group"+i+"'>");
+
+                $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Company Name: "+jobsInfo[i].company_name
+                  +"</li>");
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Description: "+jobsInfo[i].description
+                  +"</li>");
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Rate: "+jobsInfo[i].rate
+                  +"</li>");
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Start: "+moment(moment(jobsInfo[i].date+"T"+jobsInfo[i].start_time)).format("MM-DD-YY hh:mm A")
+                  +"</li>");
+
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "End : "+moment(moment(jobsInfo[i].date+"T"+jobsInfo[i].end_time)).format("MM-DD-YY hh:mm A")
+                  +"</li>");
+
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Address: "+jobsInfo[i].street+ " "+jobsInfo[i].city+ " "+jobsInfo[i].state
+                  +"</li>");
+
+
+ }
+
+
+            $.when(j=jobInfoResponse()).done(function(jobs){
+              var jobsInfo= JSON.parse(jobs);
+             
+              console.log(jobsInfo);
+              
+                for(var i=0;i<jobsInfo.length;i++){
+                  addGigList(i,jobsInfo);
+               
+
+               }
+             });
+
   
  });             
 
