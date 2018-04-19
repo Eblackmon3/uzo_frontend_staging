@@ -203,7 +203,7 @@ $("#logoutButton").click(function(){
                   alert("Company has been notified of your interest");
                   var interestedArray={
                  "student_id":sessionStorage.getItem("student_id"),
-                 "job_id": jobsInfo[i].id
+                 "job_id": jobsInfo[i].job_id
                   };
                           $.ajax({
                       type: 'POST',
