@@ -176,7 +176,7 @@ $("#logoutButton").click(function(){
                   +"</li>");
                  $("#list-group"+i).append("<li class='list-group-item'>"+ 
 
-                  "Description"+jobsInfo[i].description
+                  "Description: "+jobsInfo[i].description
                   +"</li>");
                  $("#list-group"+i).append("<li class='list-group-item'>"+ 
 
@@ -184,13 +184,12 @@ $("#logoutButton").click(function(){
                   +"</li>");
                  $("#list-group"+i).append("<li class='list-group-item'>"+ 
 
-                  "Start: "+moment(moment(jobsInfo[i].date).format()+"T"+jobsInfo[i].start_time).format("MM-DD-YY hh:mm A")
+                  "Start: "+moment(moment(jobsInfo[i].date+"T"+jobsInfo[i].start_time).format("MM-DD-YY hh:mm A")
                   +"</li>");
-                 console.log(moment(moment(jobsInfo[i].date).format()+"T"+jobsInfo[i].start_time))
 
                  $("#list-group"+i).append("<li class='list-group-item'>"+ 
 
-                  "End : "+moment(moment(jobsInfo[i].date).format()+"T"+jobsInfo[i].end_time).format("MM-DD-YY hh:mm A")
+                  "End : "+moment(moment(jobsInfo[i].date+"T"+jobsInfo[i].end_time).format("MM-DD-YY hh:mm A")
                   +"</li>");
 
                  $("#list-group"+i).append("<li class='list-group-item'>"+ 
