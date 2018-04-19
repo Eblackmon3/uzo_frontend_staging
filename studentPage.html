@@ -158,10 +158,10 @@ $("#logoutButton").click(function(){
               var jobsInfo= JSON.parse(jobs);
              
               console.log(jobsInfo);
-              
-              /*
 
-                $("#interestedStudentTab").append( "<div class='panel panel-default' id='panel"+i+"'>");
+                for(var i=0;i<jobsInfo.length;i++){
+                /*
+                $("#open_jobs_list").append( "<div class='panel panel-default' id='panel"+i+"'>");
                 $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
                 $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
                 $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+studentBasicInfo[i].first_name+ " "+ studentBasicInfo[i].last_name+"</a>");
@@ -186,9 +186,10 @@ $("#logoutButton").click(function(){
 
                  $("#studentGroup"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Select</button>");
                  $("#selectStudent"+i).click(function(){
-                */
 
               });
+              */
+               }
               
 
 	</script>
@@ -204,18 +205,12 @@ $("#logoutButton").click(function(){
       </ul>
 
     </div>
-
-		<div class="tab-content">
-
-    <div id="openGigsTab" class="tab-pane fade in active">
-      <div class="container">
+      <div class="container" id= "open_jobs_list">
                          
       </div>
-    </div>
-    <div id="second" class="tab-pane fade in active">
-    <p> This should be a list of jobs of logged in student </p>
+    
+    
 
-    </div>
     <button type="button" class="btn btn-primary btn-lg" id="logoutButton">Logout</button>
   </header>
 
