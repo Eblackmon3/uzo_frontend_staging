@@ -152,15 +152,9 @@ $("#logoutButton").click(function(){
                   
           });
         }
+ 
+ var addGigList = function(i,jobs){
 
-
-            $.when(j=jobInfoResponse()).done(function(jobs){
-              var jobsInfo= JSON.parse(jobs);
-             
-              console.log(jobsInfo);
-              
-                for(var i=0;i<jobsInfo.length;i++){
-                
                 $("#open_jobs_list").append( "<div class='panel panel-default' id='panel"+i+"'>");
                 $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
                 $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
@@ -200,7 +194,6 @@ $("#logoutButton").click(function(){
 
                  $("#studentGroup"+i).append("<button type='button'id='setInterest"+i+"' class='btn btn-primary'>Interested</button>");
                  $("#setInterest"+i).click(function(){
-                  console.log(i);
                   //alert("Company has been notified of your interest");
                   var interestedArray={
                  "student_id":sessionStorage.getItem("student_id"),
@@ -218,6 +211,19 @@ $("#logoutButton").click(function(){
                   });
 
               });
+
+
+ }
+
+
+            $.when(j=jobInfoResponse()).done(function(jobs){
+              var jobsInfo= JSON.parse(jobs);
+             
+              console.log(jobsInfo);
+              
+                for(var i=0;i<jobsInfo.length;i++){
+                  addGigList(i,jobs);
+               
 
                }
              });
