@@ -200,7 +200,8 @@ $("#logoutButton").click(function(){
 
                  $("#studentGroup"+i).append("<button type='button'id='setInterest"+i+"' class='btn btn-primary'>Interested</button>");
                  $("#setInterest"+i).click(function(){
-                  alert("Company has been notified of your interest");
+                  console.log(jobsInfo[i]);
+                  //alert("Company has been notified of your interest");
                   var interestedArray={
                  "student_id":sessionStorage.getItem("student_id"),
                  "job_id": jobsInfo[i].job_id
