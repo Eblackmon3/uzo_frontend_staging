@@ -478,7 +478,7 @@ $("#deleteJobButton").click(function(){
           }).done(function(data) { 
               var result = JSON.parse(data);
               console.log(result);
-              console.log( $("#jobTitleP"))
+              console.log( $("#jobTitleP").val())
               $("#jobTitleP").val(result.job_title);
               $("#jobDescP").val(result.description);
 
