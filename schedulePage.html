@@ -478,6 +478,19 @@ $("#deleteJobButton").click(function(){
           }).done(function(data) { 
               var result = JSON.parse(data);
               console.log(result);
+              $("#jobTitleP").val(result.job_title);
+              $("#jobDescP").val(result.description);
+
+              $("#shitStartP").val(result.job_title);
+              $("#shitEndP").val(result.description);
+
+              $("#ecountP").val(result.job_title);
+              $("#jobDesc2P").val(result.description);
+
+              $("#qualityP").val(result.job_title);
+              $("#rateP").val(result.description);
+
+
                
           });
         }
