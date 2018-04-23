@@ -620,8 +620,8 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
               $("#jobTitleP").text(result.job_title);
               $("#jobDescP").text(result.description);
 
-              $("#shitStartP").text(moment(result.start_time).format('h:mm a'));
-              $("#shitEndP").text(moment(result.end_time).format('h:mm a'));
+              $("#shitStartP").text(moment(result.date+"T"+result.start_time).format('h:mm a'));
+              $("#shitEndP").text(moment(result.date+"T"+result.end_time).format('h:mm a'));
 
               $("#ecountP").text(result.num_employees);
               $("#jobDesc2P").text(result.important_quality);
