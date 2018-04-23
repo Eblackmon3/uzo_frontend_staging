@@ -337,7 +337,9 @@ function()
 		 $("#dob").mask('00-00-0000');
 
 		 $("#password").change(function(){
+
 					var password = $("#password").val();
+					console.log(password);
 					var cpassword = $("#cpassword").val();
 		    	if(cpassword===password){
 		    		$( "#errorPassword" ).removeClass( "has-error" ).addClass( "has-success" );
@@ -410,7 +412,7 @@ function()
 				var student_id= $("#studentid").val();
 
 				var password = $("#password").val();
-				console.log(password);
+
 				var cpassword = $("#cpassword").val();
 
 				var major = $("#major").val();
