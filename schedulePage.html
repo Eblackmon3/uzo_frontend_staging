@@ -637,7 +637,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
               result= JSON.parse(jobResponse[0]);
               console.log(result.job_title);
               
-              $("#jobTitleP").val(result.job_title);
+              $("#jobTitleP").text(result.job_title);
               $("#jobDescP").val(result.description);
 
               $("#shitStartP").val(result.job_title);
