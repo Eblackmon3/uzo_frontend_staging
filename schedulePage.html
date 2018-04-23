@@ -646,8 +646,8 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                 };
 
              $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo),getJobStudents(jobInfo) ).done(function(jobResponse, studentResponse,jobsStudents){
-              
-              console.log(jobResponse[0].job_title);
+              result= JSON.parse(jobResponse[0]);
+              console.log(result.job_title);
               $("#jobTitleP").val(result.job_title);
               $("#jobDescP").val(result.description);
 
