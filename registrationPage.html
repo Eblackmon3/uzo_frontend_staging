@@ -409,6 +409,9 @@ function()
 				var zipcode= $("#zipcode").val();
 				var student_id= $("#studentid").val();
 
+				var password = $("#password").val();
+				var cpassword = $("#cpassword").val();
+
 				var major = $("#major").val();
                 var password= " ";
 				var grade = $('input[name=optradio]:checked').val();
@@ -443,6 +446,7 @@ function()
                      street: street,
                      apt:apt,
                      zipcode:zipcode,
+                     password:password
 					
 				 }
 				 /* This is the check for making sure user enters an 801 
@@ -486,7 +490,7 @@ function()
 				}
 
         		//Need to change this when the other adress stuff is put in
-				if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade|| !state || !city || !street || !zipcode ||!student_id){
+				if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade|| !state || !city || !street || !zipcode ||!student_id|| !password || !cpassword){
 						alert("You must fill in required fields!");
 					}
 				else{
