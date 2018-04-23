@@ -336,6 +336,37 @@ function()
 		 $("#number").mask('(000) 000-0000');
 		 $("#dob").mask('00-00-0000');
 
+		 $("#password").change(function(){
+					var password = $("#password").val();
+					var cpassword = $("#cpassword").val();
+		    	if(cpassword===password){
+		    		$( "#errorPassword" ).removeClass( "has-error" ).addClass( "has-success" );
+		    		$( "#errorCpassword" ).removeClass( "has-error" ).addClass( "has-success" );
+		    		$("#errorMessage").text("");
+
+		    	}else if(!(cpassword===password)){
+		    		$( "#errorPassword" ).removeClass( "has-success" ).addClass( "has-error" );
+		    		$( "#errorCpassword" ).removeClass( "has-success" ).addClass( "has-error" );
+		    		$("#errorMessage").text("Passwords must be the same");
+
+		    	}
+		});
+				$("#cpassword").change(function(){
+					var password = $("#password").val();
+				var cpassword = $("#cpassword").val();
+		    	if(cpassword===password){
+		    		$( "#errorPassword" ).removeClass( "has-error" ).addClass( "has-success" );
+		    		$( "#errorCpassword" ).removeClass( "has-error" ).addClass( "has-success" );
+		    		$("#errorMessage" ).text("");
+
+		    	}else if(!(cpassword===password)){
+		    		$( "#errorPassword" ).removeClass( "has-success" ).addClass( "has-error" );
+		    		$( "#errorCpassword" ).removeClass( "has-success" ).addClass( "has-error" );
+		    		$("#errorMessage").text("Passwords must be the same");
+
+		    	}
+		});
+
 
 
 
@@ -621,7 +652,7 @@ function()
 											<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 										</div>
 										<hr>
-										<label for="name" >Password</label>
+										<label for="name" >Re-enter Password</label>
 						
 							<div id="errorCpassword">
 							<div class="input-group">
