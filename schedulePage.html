@@ -585,7 +585,6 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
         
           jobIDInfo=calEvent.job_id;
           calendarEvent=calEvent;
-          console.log(calEvent)
           startDate=calEvent.start;
           endDate=calEvent.end;
 
@@ -621,14 +620,14 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
               $("#jobTitleP").text(result.job_title);
               $("#jobDescP").text(result.description);
 
-              $("#shitStartP").text(result.job_title);
-              $("#shitEndP").text(result.description);
+              $("#shitStartP").text(result.start_time);
+              $("#shitEndP").text(result.end_time);
 
-              $("#ecountP").text(result.job_title);
-              $("#jobDesc2P").text(result.description);
+              $("#ecountP").text(result.num_employees);
+              $("#jobDesc2P").text(result.preferred_skills);
 
-              $("#qualityP").text(result.job_title);
-              $("#rateP").text(result.description);
+              $("#qualityP").text(result.important_quality);
+              $("#rateP").text(result.rate);
               
               
 
