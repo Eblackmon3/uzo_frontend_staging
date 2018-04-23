@@ -551,7 +551,8 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                           "start":result[i].date+"T"+result[i].start_time,
                           "end":result[i].date+"T"+result[i].end_time,
                           "allDay": false,
-                          "job_id":result[i].job_id
+                          "job_id":result[i].job_id, 
+                          "rate": result[i].rate,
                         });
                         }
                       }
@@ -574,27 +575,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
           startDate=date;
           endDate=date;
-          //for now I'll just use the an random array
-          /*
-            Once steven has added the add event data I will us that in the add event source
-            get the current date using this moment(start).format('MM/DD/YYYY') and the time rotater the n append using T and store in DB
-
-            {
-         "date": "2018-06-15",
-         "rate": "40/hr",
-         "dress_code": "Formal",
-         "duration":2.5,
-         "open": true,
-         "job_title": "Janitor",
-         "time":2300,
-         "company_id":1,
-         "description":"chillen"
-         "important_quality": "idk",
-         "preferred_quality": "idk"
-
-}
-
-         */
+         
 
 
         },
@@ -775,7 +756,8 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                     var completedInfo={
                       "job_id":calendarEvent.job_id,
                       "student_id":studentIDInfo.student_id,
-                      "completed" :true
+                      "completed" :true,
+                      "amount_to_pay": calendarEvent.rate
                     };
               
 
