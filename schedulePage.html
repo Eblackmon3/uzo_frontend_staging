@@ -672,7 +672,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                      "company_id": sessionStorage.getItem("company_id"),
                      "student_id":studentBasicInfo[i].student_id
                       };
-              console.log(studentBasicInfo[i]);
+        
               
 
                 $("#interestedStudentTab").append( "<div class='panel panel-default' id='panel"+i+"'>");
@@ -738,7 +738,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
               
           }
           function jobManager(i,studentJobBasicInfo){
-            
+            console.log(studentBasicInfo[i]);
             
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
