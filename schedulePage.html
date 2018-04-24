@@ -824,9 +824,6 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                       
                     });
                   $("#clockinBtn"+i).click(function(){
-                    $("#jobManagerGroup"+i).append("<button type='button'id='clock_inSure"+i+"' class='btn btn-primary'>Are you sure?</button>");
-                    $("#clockinBtn"+i).click(function(){
-
                     console.log(clockinInfo)
                     $(this).css('background-color','green');
                         $.ajax({
@@ -837,7 +834,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                           }).done(function(data) {
                             var result= JSON.parse(data);
                              console.log(result);
-                            });
+
 
                           });
                     });$("#clockoutBtn"+i).click(function(){
