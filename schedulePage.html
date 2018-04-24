@@ -738,10 +738,10 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
               
           }
           function jobManager(i,studentJobBasicInfo){
-            console.log(studentBasicInfo[i]);
+            console.log(studentJobBasicInfo[i]);
             
             var studentIDInfo={
-                 "student_id":studentBasicInfo[i].student_id
+                 "student_id":studentJobBasicInfo[i].student_id
                   };
                   console.log(calendarEvent.job_id)
                   var clockinInfo={
@@ -767,7 +767,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                 $("#jobManagerTab").append( "<div class='panel panel-default' id='jobMpanel"+i+"'>");
                 $("#jobMpanel"+i).append("<div class='panel-heading' id='jobMpanel-heading"+i+"'>");
                 $("#jobMpanel-heading"+i).append("<h4 class='panel-title' id='jobMpanel-title"+i+"'>");
-                $("#jobMpanel-title"+i).append("<a data-toggle='collapse' href='#jobMcollapse"+i+"'>"+studentBasicInfo[i].first_name+ " "+ studentBasicInfo[i].last_name+"</a>");
+                $("#jobMpanel-title"+i).append("<a data-toggle='collapse' href='#jobMcollapse"+i+"'>"+studentJobBasicInfo[i].first_name+ " "+ studentJobBasicInfo[i].last_name+"</a>");
                 $("#jobMpanel"+i).append("<div id='jobMcollapse"+i+"'class='panel-collapse collapse'>");
                 $("#jobMcollapse"+i).append("<div class='panel-body' id='jobMpanel-body"+i+"'>");
                 $("#jobMpanel-body"+i).append("<div class='btn-group' id='jobManagerGroup"+i+"'>");
