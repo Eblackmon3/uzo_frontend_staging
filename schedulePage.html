@@ -776,6 +776,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                   $("#completeBtn"+i).click(function(){
                     $(this).css('background-color','green');
                     $.ajax({
+                      window.confirm("confirm");
                             type: 'POST',
                             contentType: "application/json",
                             url: 'https://uzo-web-app.herokuapp.com/get_job_status',
