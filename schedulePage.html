@@ -786,6 +786,9 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                           }).done(function(data) {
                             var result= JSON.parse(data);
                             console.log(result);
+                            var duration = moment.duration(moment(result.clock_in).diff(moment(result.clock_out)));
+                            var hours = duration.asHours();
+                            console.log(hours);
 
 
                           });
