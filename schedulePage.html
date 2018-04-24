@@ -774,7 +774,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                 $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary'>clock-out</button>");
                 $("#jobManagerGroup"+i).append("<button type='button'id='completeBtn"+i+"' class='btn btn-primary'>complete</button>");
                   $("#completeBtn"+i).click(function(){
-                    if (confirm("Press a button!")) {
+                    if (confirm("Are you sure you would like to complete the job?")) {
                           $.ajax({
                             type: 'POST',
                             contentType: "application/json",
@@ -828,7 +828,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                     });
                   $("#clockinBtn"+i).click(function(){
                     console.log(clockinInfo)
-                    $(this).css('background-color','green');
+                    if (confirm("Are you sure you would like to clock-in the job?")) {
                         $.ajax({
                             type: 'POST',
                             contentType: "application/json",
@@ -840,8 +840,9 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
 
                           });
+                        }
                     });$("#clockoutBtn"+i).click(function(){
-                      $(this).css('background-color','green');
+                      if (confirm("Are you sure you would like to clock-out the job?")) {
                         $.ajax({
                             type: 'POST',
                             contentType: "application/json",
@@ -853,6 +854,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
 
                           });
+                        }
                     });
                 
 
