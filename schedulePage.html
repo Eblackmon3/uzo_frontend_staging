@@ -775,6 +775,11 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                 $("#jobManagerGroup"+i).append("<button type='button'id='completeBtn"+i+"' class='btn btn-primary'>complete</button>");
                   $("#completeBtn"+i).click(function(){
                     $(this).css('background-color','green');
+                    if (confirm("Press a button!")) {
+                            alert("You pressed OK!");
+                        } else {
+                            alert("You pressed Cancel!");
+                        }
                     $.ajax({
                             type: 'POST',
                             contentType: "application/json",
