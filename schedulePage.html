@@ -634,8 +634,8 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                    
           studentBasicInfo= JSON.parse(studentResponse[0]);
           studentJobsBasicInfo= JSON.parse(jobsStudents[0]);
-          console.log("job resp"+jobResponse);
-          console.log(studentJobsBasicInfo);
+          console.log("Interested Students: "+studentBasicInfo);
+          console.log("Students on Job:"+studentJobsBasicInfo);
           
           for(var i=0;i<studentBasicInfo.length;i++){
             getWorkInfo(i,studentBasicInfo);
