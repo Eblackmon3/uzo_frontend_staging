@@ -738,9 +738,6 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
               
           }
           function jobManager(i,studentJobBasicInfo){
-            var duration = moment.duration(calendarEvent.end.diff(calendarEvent.start));
-            var hours = duration.asHours();
-            console.log(hours)
             
             var studentIDInfo={
                  "student_id":studentBasicInfo[i].student_id
@@ -789,6 +786,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                             var duration = moment.duration(moment(result.clock_out).diff(moment(result.clock_in)));
                             var hours = duration.asHours();
                             console.log(hours);
+                            console.log(calendarEvent.rate);
 
 
                           });
