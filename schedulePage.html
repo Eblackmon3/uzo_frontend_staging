@@ -799,7 +799,22 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                             totalPay= hours*calendarEvent.rate
                             totalPay= Math.round(totalPay*100)/100;
                             totalPay = numeral(totalPay.toString()).format('0.00');
-                            console.log(totalPay);
+                            var payment= {
+                              "company_id":sessionStorage.getItem("company_id"),
+                             "amount": totalPay
+                            }
+
+                             $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/charge_company_card',
+                            data:JSON.stringify(payment)
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                            console.log(result);
+
+                          });
+
 
                           });
                         }
