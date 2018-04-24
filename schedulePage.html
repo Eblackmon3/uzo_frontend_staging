@@ -787,6 +787,10 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                             var hours = duration.asHours();
                             console.log(hours);
                             console.log(calendarEvent.rate);
+                            totalPay= hours*calendarEvent.rate
+                            totalPay= Math.round(totalPay*100/100);
+                            totalPay = numeral(totalPay.toString()).format('0.00');
+                            console.log(totalPay);
 
 
                           });
