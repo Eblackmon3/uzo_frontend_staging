@@ -132,27 +132,13 @@ $("#logoutButton").click(function(){
  window.location.replace("businessIndex.html");
      
   });
-//verify the student_id is available 
-/*
- if(!sessionStorage.getItem("company_id")){
-
-            window.location.replace("businessIndex.html");
-          }else{
-            console.log(sessionStorage.getItem("company_id"));
-          }
-          */
-
 
    //this method is to pull the original information for each job modal
  var jobInfoResponse= function (){
-  studentID= {
-    "student_id":sessionStorage.getItem("student_id")
-  }
         return $.ajax({
-              type: 'POST',
+              type: 'GET',
               contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_students_jobs_by_id',
-               data:JSON.stringify(studentID)
+              url: 'https://uzo-web-app.herokuapp.com/populate_student_job_list'
              
           }).done(function(data) { 
               var result = JSON.parse(data);
@@ -207,12 +193,14 @@ $("#logoutButton").click(function(){
               var jobsInfo= JSON.parse(jobs);
              
               console.log(jobsInfo);
+              /*
               
                 for(var i=0;i<jobsInfo.length;i++){
                   addGigList(i,jobsInfo);
                
 
                }
+               */
              });
 
   
