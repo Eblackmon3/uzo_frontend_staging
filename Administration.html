@@ -147,13 +147,12 @@ $("#logoutButton").click(function(){
         }
  
  var addGigList = function(i,jobsInfo){
-  console.log(jobsInfo);
 
                 $("#open_jobs_list").append( "<div class='panel panel-default' id='panel"+i+"'>");
 
                 $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
                 $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
-                $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+jobsInfo[i].student_id+"</a>");
+                $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+jobsInfo[i].student_id+"-"+jobsInfo[i].job_title</a>");
                 $("#panel"+i).append("<div id='collapse"+i+"'class='panel-collapse collapse'>");
                 $("#collapse"+i).append("<div class='panel-body' id='panel-body"+i+"'>");
                 $("#panel-body"+i).append("<div class='btn-group' id='studentGroup"+i+"'>");
