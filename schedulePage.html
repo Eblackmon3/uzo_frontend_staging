@@ -768,6 +768,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                 $("#jobManagerGroup"+i).append("<button type='button'id='clockinBtn"+i+"' class='btn btn-primary'>clock-in</button>");
                 $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary'>clock-out</button>");
                 $("#jobManagerGroup"+i).append("<button type='button'id='completeBtn"+i+"' class='btn btn-primary'>complete</button>");
+                $("#jobManagerGroup"+i).append("<button type='button'id='deleteButton"+i+"' class='btn btn-primary'>Delete Student</button>");
                   $("#completeBtn"+i).click(function(){
                     if (confirm("Are you sure you would like to complete the job?")) {
                           $.ajax({
@@ -854,6 +855,21 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                             contentType: "application/json",
                             url: 'https://uzo-web-app.herokuapp.com/clockout_student',
                             data:JSON.stringify(clockoutInfo)
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                             console.log(result);
+
+
+                          });
+                        }
+                    });
+                    $("#deleteButton"+i).click(function(){
+                      if (confirm("Are you sure you would like to delete student from Job")) {
+                        $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/delete_student_job',
+                            data:JSON.stringify(completedInfo)
                           }).done(function(data) {
                             var result= JSON.parse(data);
                              console.log(result);
