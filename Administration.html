@@ -149,10 +149,9 @@ $("#logoutButton").click(function(){
  var addGigList = function(i,jobsInfo){
   console.log(jobsInfo);
 
-                $("#open_jobs_list").append( "<div class='panel panel-default' id='panel"+i+"'>");
-                $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
+                $("#open_jobs_list").append( "<div class='panel panel-default' id='panel"+i$("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
                 $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
-                $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+jobsInfo[i].job_title+"</a>");
+                $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+jobsInfo[i].student_id+"</a>");
                 $("#panel"+i).append("<div id='collapse"+i+"'class='panel-collapse collapse'>");
                 $("#collapse"+i).append("<div class='panel-body' id='panel-body"+i+"'>");
                 $("#panel-body"+i).append("<div class='btn-group' id='studentGroup"+i+"'>");
@@ -160,33 +159,34 @@ $("#logoutButton").click(function(){
 
                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
 
-                  "Company Name: "+jobsInfo[i].company_name
+                  "rate: "+jobsInfo[i].rate
                   +"</li>");
                  $("#list-group"+i).append("<li class='list-group-item'>"+ 
 
-                  "Description: "+jobsInfo[i].description
+                  "clock-in:"+jobsInfo[i].clock_in
                   +"</li>");
                  $("#list-group"+i).append("<li class='list-group-item'>"+ 
 
-                  "Rate: "+jobsInfo[i].rate
+                  "clock_out: "+studentBasicInfo[i].clock_out
                   +"</li>");
                  $("#list-group"+i).append("<li class='list-group-item'>"+ 
+                 $("#studentGroup"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Pay Student</button>");
+                 $("#selectStudent"+i).click(function(){
+                  $(this).css('background-color','green');
+                 $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/assign_student_job',
+                            data:JSON.stringify(studentJob)
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                             console.log(result);
 
-                  "Start: "+moment(moment(jobsInfo[i].date+"T"+jobsInfo[i].start_time)).format("MM-DD-YY hh:mm A")
-                  +"</li>");
+                              });
 
-                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
-
-                  "End : "+moment(moment(jobsInfo[i].date+"T"+jobsInfo[i].end_time)).format("MM-DD-YY hh:mm A")
-                  +"</li>");
-
-                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
-
-                  "Address: "+jobsInfo[i].address
-                  +"</li>");
-
-
- }
+                        });
+               }
+                 
 
 
             $.when(j=jobInfoResponse()).done(function(jobs){
@@ -213,10 +213,7 @@ $("#logoutButton").click(function(){
   <header>
     <div class="menu">
       <ul id="myTab">
-        <li class="open_gigs"><a  href="#first" data-toggle="tab" id="open_gigs">Open Gigs</a></li>
-        <li class="my_gigs"><a class="active" href="#second" data-toggle="tab" id="my_gigs">My Gigs</a></li>
-        <li class="payment_info"><a  href="#third" data-toggle="tab" id="payment_info">payment_info</a></li>
-      </ul>
+        <li class="open_gigs"><a  href="#first" data-toggle="tab" id="all_jobs">All Jobs</a></li>
 
     </div>
       <div class="container" id= "open_jobs_list">
