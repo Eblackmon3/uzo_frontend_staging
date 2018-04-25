@@ -125,28 +125,22 @@ textarea {
 
 	<script>
 $(document).ready(function () {
+  console.log(sessionStorage.getItem("company_id"));
      //Log out button
 $("#logoutButton").click(function(){
-  sessionStorage.setItem("student_id",0)
- window.location.replace("studentIndex.html");
+  sessionStorage.setItem("company_id",0)
+ window.location.replace("businessIndex.html");
      
   });
 //verify the student_id is available 
- if(!sessionStorage.getItem("student_id")){
+/*
+ if(!sessionStorage.getItem("company_id")){
 
-            window.location.replace("studentIndex.html");
+            window.location.replace("businessIndex.html");
           }else{
-            console.log(sessionStorage.getItem("student_id"));
+            console.log(sessionStorage.getItem("company_id"));
           }
-      
-       $("#open_gigs").click(function(){
-       window.location.replace("studentPage.html");
-
-     });
-       $("#payment_info").click(function(){
-       window.location.replace("studentPaymentInfo.html");
-
-     });
+          */
 
 
    //this method is to pull the original information for each job modal

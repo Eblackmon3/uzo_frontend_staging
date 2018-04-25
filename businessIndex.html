@@ -244,7 +244,7 @@ $(document).ready(function(){
         $.when(ajaxFunction()).done(function(response){
           if(sessionStorage.getItem("company_id")){
             if(sessionStorage.getItem("company_id")==='31'){
-              //window.location.replace("Administration.html");
+              window.location.replace("Administration.html");
             }else{
             window.location.replace("schedulePage.html");
           }
