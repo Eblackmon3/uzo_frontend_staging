@@ -700,7 +700,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
                  $("#studentGroup"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Select</button>");
                  $("#selectStudent"+i).click(function(){
-                 
+                  if (confirm("Are you sure you would  like to add student to job")) {
                  $.ajax({
                             type: 'POST',
                             contentType: "application/json",
@@ -722,11 +722,13 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
 
                           });
+
                         }
 
 
 
                           });
+                        }
                         });
 
 
