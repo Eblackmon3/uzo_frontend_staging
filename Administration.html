@@ -208,7 +208,6 @@ $("#logoutButton").click(function(){
             $.when(j=jobInfoResponse()).done(function(jobs){
               var jobsInfo= JSON.parse(jobs);
              
-              console.log(jobsInfo);
               
               
                 for(var i=0;i<jobsInfo.length;i++){
