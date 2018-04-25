@@ -164,11 +164,11 @@ $("#logoutButton").click(function(){
                   +"</li>");
                  $("#list-group"+i).append("<li class='list-group-item'>"+ 
 
-                  "clock-in:"+moment(jobsInfo[i].clock_in)
+                  "clock-in:"+moment(jobsInfo[i].clock_in).format()
                   +"</li>");
                  $("#list-group"+i).append("<li class='list-group-item'>"+ 
 
-                  "clock_out: "+moment(jobsInfo[i].clock_out)
+                  "clock_out: "+moment(jobsInfo[i].clock_out).format()
                   +"</li>");
                  
                  $("#studentGroup"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Pay Student</button>");
