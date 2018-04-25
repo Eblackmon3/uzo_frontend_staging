@@ -77,6 +77,10 @@
   cursor: default;
 }
 
+.delete_button{
+  background-color:red;
+}
+
 @media screen and (min-width: 600px) {
   .menu li {
     width: 150px;
@@ -768,7 +772,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                 $("#jobManagerGroup"+i).append("<button type='button'id='clockinBtn"+i+"' class='btn btn-primary'>clock-in</button>");
                 $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary'>clock-out</button>");
                 $("#jobManagerGroup"+i).append("<button type='button'id='completeBtn"+i+"' class='btn btn-primary'>complete</button>");
-                $("#jobManagerGroup"+i).append("<button type='button'id='deleteButton"+i+"' class='btn btn-primary'>Delete Student</button>");
+                $("#jobManagerGroup"+i).append("<button type='button'id='deleteButton"+i+"' class='btn btn-primary delete_button'>Delete Student</button>");
                   $("#completeBtn"+i).click(function(){
                     if (confirm("Are you sure you would like to complete the job?")) {
                           $.ajax({
