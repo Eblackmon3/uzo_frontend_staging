@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+  <script
+  src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
+  integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+  crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css"/>
+
+    <link rel="stylesheet" type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css"/>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+  <script type="text/javascript" src="fullcalendar-rightclick.js"></script>
+
+
+
+
+	<style>
+	@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+	body {
+  margin: 0;
+  padding: 0;
+  background: #ccc;
+}
+
+.menu ul {
+  list-style: none;
+  background-color: #80ced6;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  line-height: 40px;
+  height: 40px;
+  border-bottom: 1px solid #888;
+}
+.menu a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  transition: .3s background-color;
+}
+
+.menu a:hover {
+  background-color: #005f5f;
+}
+
+.menu a.active {
+  background-color: #fff;
+  color: #444;
+  cursor: default;
+}
+
+@media screen and (min-width: 600px) {
+  .menu li {
+    width: 150px;
+    border-bottom: none;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4em;
+  }
+
+  /* Option 1 - Display Inline */
+  .menu li {
+    display: inline-block;
+    margin-right: -4px;
+  }
+
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%;
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
+
+textarea {
+  resize: none;
+}
+.timepicker{z-index:1151;}
+.timepicker.dropdown-menu {z-index:1151;}
+
+
+
+
+
+
+	body {
+	}
+	</style>
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script>
+$(document).ready(function () {
+     //Log out button
+$("#logoutButton").click(function(){
+  sessionStorage.setItem("student_id",0)
+ window.location.replace("studentIndex.html");
+     
+  });
+//verify the student_id is available 
+ if(!sessionStorage.getItem("student_id")){
+
+            window.location.replace("studentIndex.html");
+          }else{
+            console.log(sessionStorage.getItem("student_id"));
+          }
+      
+       $("#open_gigs").click(function(){
+       window.location.replace("studentPage.html");
+
+     });
+       $("#payment_info").click(function(){
+       window.location.replace("studentPaymentInfo.html");
+
+     });
+
+
+   //this method is to pull the original information for each job modal
+ var jobInfoResponse= function (){
+  studentID= {
+    "student_id":sessionStorage.getItem("student_id")
+  }
+        return $.ajax({
+              type: 'POST',
+              contentType: "application/json",
+              url: 'https://uzo-web-app.herokuapp.com/get_students_jobs_by_id',
+               data:JSON.stringify(studentID)
+             
+          }).done(function(data) { 
+              var result = JSON.parse(data);
+                  
+          });
+        }
+ 
+ var addGigList = function(i,jobsInfo){
+  console.log(jobsInfo);
+
+                $("#open_jobs_list").append( "<div class='panel panel-default' id='panel"+i+"'>");
+                $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
+                $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
+                $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+jobsInfo[i].job_title+"</a>");
+                $("#panel"+i).append("<div id='collapse"+i+"'class='panel-collapse collapse'>");
+                $("#collapse"+i).append("<div class='panel-body' id='panel-body"+i+"'>");
+                $("#panel-body"+i).append("<div class='btn-group' id='studentGroup"+i+"'>");
+                $("#panel-body"+i).append("<ul class='list-group' id='list-group"+i+"'>");
+
+                $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Company Name: "+jobsInfo[i].company_name
+                  +"</li>");
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Description: "+jobsInfo[i].description
+                  +"</li>");
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Rate: "+jobsInfo[i].rate
+                  +"</li>");
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Start: "+moment(moment(jobsInfo[i].date+"T"+jobsInfo[i].start_time)).format("MM-DD-YY hh:mm A")
+                  +"</li>");
+
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "End : "+moment(moment(jobsInfo[i].date+"T"+jobsInfo[i].end_time)).format("MM-DD-YY hh:mm A")
+                  +"</li>");
+
+                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Address: "+jobsInfo[i].address
+                  +"</li>");
+
+
+ }
+
+
+            $.when(j=jobInfoResponse()).done(function(jobs){
+              var jobsInfo= JSON.parse(jobs);
+             
+              console.log(jobsInfo);
+              
+                for(var i=0;i<jobsInfo.length;i++){
+                  addGigList(i,jobsInfo);
+               
+
+               }
+             });
+
+  
+ });             
+
+	</script>
+</head>
+
+<body class="student">
+  <header>
+    <div class="menu">
+      <ul id="myTab">
+        <li class="open_gigs"><a  href="#first" data-toggle="tab" id="open_gigs">Open Gigs</a></li>
+        <li class="my_gigs"><a class="active" href="#second" data-toggle="tab" id="my_gigs">My Gigs</a></li>
+        <li class="payment_info"><a  href="#third" data-toggle="tab" id="payment_info">payment_info</a></li>
+      </ul>
+
+    </div>
+      <div class="container" id= "open_jobs_list">
+                         
+      </div>
+    
+    
+
+    <button type="button" class="btn btn-primary btn-lg" id="logoutButton">Logout</button>
+  </header>
+
+
+
+
+</body>
+
+</html>
