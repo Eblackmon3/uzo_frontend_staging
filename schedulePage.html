@@ -340,8 +340,7 @@ $("#deleteJobButton").click(function(){
              $("#jdescriptionUp").val("");
             $("#startTimeUp").val("");
            $("#endTimeUp").val("");
-           $("#interestedStudentTab").empty();
-            $("#jobManagerTab").empty();
+           
 
 
         });
@@ -612,6 +611,13 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
       
 
      })
+
+  $("#showJobModal").on('hidden.bs.modal', function () {
+    $("#interestedStudentTab").empty();
+      $("#jobManagerTab").empty();
+
+
+  });
 
 
  $("#showJobModal").on('shown.bs.modal', function () {
