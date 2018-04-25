@@ -151,7 +151,7 @@ $("#logoutButton").click(function(){
 
                 $("#open_jobs_list").append( "<div class='panel panel-default' id='panel"+i+"'>");
 
-                  $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
+                $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
                 $("#panel-heading"+i).append("<h4 class='panel-title' id='panel-title"+i+"'>");
                 $("#panel-title"+i).append("<a data-toggle='collapse' href='#collapse"+i+"'>"+jobsInfo[i].student_id+"</a>");
                 $("#panel"+i).append("<div id='collapse"+i+"'class='panel-collapse collapse'>");
@@ -196,14 +196,14 @@ $("#logoutButton").click(function(){
               var jobsInfo= JSON.parse(jobs);
              
               console.log(jobsInfo);
-              /*
+              
               
                 for(var i=0;i<jobsInfo.length;i++){
                   addGigList(i,jobsInfo);
                
 
                }
-               */
+               
              });
 
   
