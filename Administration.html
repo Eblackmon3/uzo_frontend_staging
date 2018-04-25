@@ -174,17 +174,31 @@ $("#logoutButton").click(function(){
                  $("#studentGroup"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Pay Student</button>");
 
                  $("#selectStudent"+i).click(function(){
-                  $(this).css('background-color','green');
+                  if (confirm("Are you sure you would like to pay the student?")) {
+                  var duration = moment.duration(moment(jobsInfo[i].clock_out).diff(moment(jobsInfo[i].clock_in)));
+                            var hours = duration.asHours();
+                            totalPay= hours*calendarEvent.rate
+                            totalPay= Math.round(totalPay*100)/100;
+                            totalPay = numeral(totalPay.toString()).format('0.00');
+
+                            var payStudent={
+                            student_id=jobsInfo[i].student_id,
+                            amount=totalPay
+                          }
+                          console.log(payStudent);
+                          /*
                  $.ajax({
                             type: 'POST',
                             contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/assign_student_job',
-                            data:JSON.stringify(studentJob)
+                            url: 'https://uzo-web-app.herokuapp.com/transfer_funds_to_student',
+                            data:JSON.stringify(payStudent)
                           }).done(function(data) {
                             var result= JSON.parse(data);
                              console.log(result);
 
                               });
+                              */
+                        }
 
                         });
                }
