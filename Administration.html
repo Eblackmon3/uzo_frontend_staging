@@ -171,8 +171,9 @@ $("#logoutButton").click(function(){
 
                   "clock_out: "+studentBasicInfo[i].clock_out
                   +"</li>");
-                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
+                 
                  $("#studentGroup"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Pay Student</button>");
+
                  $("#selectStudent"+i).click(function(){
                   $(this).css('background-color','green');
                  $.ajax({
