@@ -746,17 +746,9 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                  "student_id":studentJobBasicInfo[i].student_id
                   };
                   console.log(calendarEvent.job_id)
-                  var clockinInfo={
-                      "job_id": calendarEvent.job_id,
-                      "student_id":studentIDInfo.student_id,
-                      "clock_in" :moment().format()
-                    };
-                    console.log
-                    var clockoutInfo={
-                      "job_id":calendarEvent.job_id,
-                      "student_id":studentIDInfo.student_id,
-                      "clock_out" :moment().format()
-                    };
+                  
+                    
+                    
 
                     var completedInfo={
                       "job_id":calendarEvent.job_id,
@@ -830,6 +822,11 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                       
                     });
                   $("#clockinBtn"+i).click(function(){
+                    var clockinInfo={
+                      "job_id": calendarEvent.job_id,
+                      "student_id":studentIDInfo.student_id,
+                      "clock_in" :moment().format()
+                    };
                     console.log(clockinInfo)
                     if (confirm("Are you sure you would like to clock-in the job?")) {
                         $.ajax({
@@ -846,6 +843,12 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                         }
                     });$("#clockoutBtn"+i).click(function(){
                       if (confirm("Are you sure you would like to clock-out the job?")) {
+                        var clockoutInfo={
+                          "job_id":calendarEvent.job_id,
+                          "student_id":studentIDInfo.student_id,
+                          "clock_out" :moment().format()
+                        };
+                        console.log(clockoutInfo);
                         $.ajax({
                             type: 'POST',
                             contentType: "application/json",
