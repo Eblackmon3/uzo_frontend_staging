@@ -1,0 +1,98 @@
+group 'WebApp'
+version '1.0-SNAPSHOT'
+
+
+apply plugin: 'java'
+apply plugin:'application'
+apply plugin: "io.spring.dependency-management"
+
+mainClassName = "Application.Main"
+applicationName = "uzo-web-app"
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.9.RELEASE")
+        classpath("io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName='WebApp'
+    version = '1.0.0'
+    manifest {
+        attributes(
+                'Main-Class': 'Application.Main'
+        )
+
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencyManagement {
+    imports {
+        mavenBom 'com.amazonaws:aws-java-sdk-bom:1.11.228'
+    }
+}
+
+dependencies {
+    // tag::jetty[]
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    // end::jetty[]
+    // tag::actuator[]
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    // end::actuator[]
+    testCompile("junit:junit")
+
+
+    compile group: "com.twilio.sdk", name: "twilio", version: "7.11.+"
+    compile 'org.postgresql:postgresql:42.1.1'
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
+    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
+
+    // https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp
+    compile group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4'
+
+    // https://mvnrepository.com/artifact/org.json/json
+    compile group: 'org.json', name: 'json', version: '20090211'
+
+    compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.4.0")
+
+    // https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk
+    compile 'com.amazonaws:aws-java-sdk-s3'
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+
+    // https://mvnrepository.com/artifact/com.stripe/stripe-java
+    compile group: 'com.stripe', name: 'stripe-java', version: '5.31.0'
+
+
+
+
+
+
+
+
+}
+
