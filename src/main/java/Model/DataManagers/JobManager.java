@@ -223,8 +223,8 @@ public class JobManager {
                 clock_in=rs.getString("clock_in");
                 clock_out=rs.getString("clock_out");
                 jobsStudents.add(jobStudentID);
-                clock_in_times.add(clock_out);
-               clock_out_times.add(clock_in);
+                clock_in_times.add(clock_in);
+               clock_out_times.add(clock_out);
                completed.add(rs.getBoolean("completed"));
             }
 
