@@ -180,6 +180,9 @@ public class JobManager {
         JSONObject selectedJobsStudent= new JSONObject();
         //the list of selected students
         JSONArray selectedStudents= new JSONArray();
+        ArrayList<String>clock_in_times= new ArrayList<>();
+        ArrayList<String>clock_out_times=new ArrayList<>();
+        ArrayList<Boolean>completed=new ArrayList<>();
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs=null;
@@ -187,6 +190,8 @@ public class JobManager {
         ArrayList<Integer> jobsStudents= new ArrayList<>();
         //holder for the student IDs that are associated witht he job
         int jobStudentID;
+        String clock_in;
+        String clock_out;
         int student_id;
         String email;
         String first_name;
@@ -215,8 +220,14 @@ public class JobManager {
 
             while(rs.next()){
                 jobStudentID=rs.getInt("student_id");
+                clock_in=rs.getString("clock_in");
+                clock_out=rs.getString("clock_out");
                 jobsStudents.add(jobStudentID);
+                clock_in_times.add(clock_out);
+               clock_out_times.add(clock_in);
+               completed.add(rs.getBoolean("completed"));
             }
+
 
             pstmt = conn.prepareStatement(sql2);
             System.out.println(jobsStudents.size());
@@ -254,6 +265,9 @@ public class JobManager {
                     selectedJobsStudent.put("year",year);
                     selectedJobsStudent.put("description",description);
                     selectedJobsStudent.put("zipcode",zipcode);
+                    selectedJobsStudent.put("clock_in",clock_in_times.get(i));
+                    selectedJobsStudent.put("clock_out",clock_out_times.get(i));
+                    selectedJobsStudent.put("completed",completed.get(i));
                     selectedStudents.put(selectedJobsStudent);
                     selectedJobsStudent=new JSONObject();
 
