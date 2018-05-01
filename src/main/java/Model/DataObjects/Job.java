@@ -22,8 +22,16 @@ public class Job {
     private String preferred_skills;
     private String important_quality;
     private int num_employees;
+    private boolean completed;
 
 
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
 
     public int getJob_id() {
         return job_id;

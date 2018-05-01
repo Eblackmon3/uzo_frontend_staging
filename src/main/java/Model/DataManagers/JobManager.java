@@ -663,6 +663,7 @@ public class JobManager {
                 selectedStudentJob.put("important_quality",rs.getString("important_quality"));
                 selectedStudentJob.put("preferred_skills",rs.getString("preferred_skills"));
                 selectedStudentJob.put("num_employees",rs.getInt("num_employees"));
+                selectedStudentJob.put("completed", rs.getBoolean("completed"));
             }
             pstmt.close();
             conn.close();
