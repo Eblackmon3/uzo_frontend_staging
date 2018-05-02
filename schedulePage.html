@@ -36,10 +36,10 @@
 
 
 
-	<style>
-	@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+  <style>
+  @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-	body {
+  body {
   margin: 0;
   padding: 0;
   background: #ccc;
@@ -80,6 +80,9 @@
 .delete_button{
   background-color:#ff0000;
 }
+.done_button{
+  background-color: #008000;
+}
 
 @media screen and (min-width: 600px) {
   .menu li {
@@ -119,27 +122,32 @@ textarea {
 
 
 
-	body {
-	}
-	</style>
+  body {
+  }
+  </style>
 
-	<meta charset="utf-8">
+  <meta charset="utf-8">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<script>
+  <script>
 
 
-	$(document).ready(function () {
+  $(document).ready(function () {
 
     //attributes as to unest Ajax calls 
     var studentBasicInfo;
     var calendarEvent;
+    var currJob;
+    var currRate;
+    var currJobID;
+    var currJobComp;
     $('#rate').mask('000,000,000,000,000.00', {reverse: true});
 
      $("#dismissShowJob").click(function(){
       $("#interestedStudentTab").empty();
-      $("#jobManagerTab").empty();
+      $("#studentsOnJob").empty();
+      $("#CompleteJob").css("background-color", "blue");
 
 
      });
@@ -488,7 +496,61 @@ $("#deleteJobButton").click(function(){
                
           });
         }
+        
 
+ $("#CompleteJob").click(function(){
+  if (!currJobComp){
+  var totalPay=0;
+
+  
+                    if (confirm("Are you sure you would like to complete the job?")) {
+                      $(this).css("background-color", "green");
+                      for(var i=0; i<currJob.length;i++){
+                        totalPay= totalPay+ completeJob(i,currJob,currRate);
+                      }
+                      totalPay = numeral(totalPay.toString()).format('0.00');
+
+                      console.log("job total pay:"+totalPay);
+                      console.log();
+                      jobInfo= {
+                        "job_id":currJobID,
+                        "completed":true
+                      }
+                      $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/complete_job',
+                           data:JSON.stringify(jobInfo)
+                           
+                        }).done(function(data) { 
+                            var result = JSON.parse(data);
+                            console.log(result);
+                             
+                        });
+                    }
+                  }else{
+                    alert("Job already been completed");
+                  }
+
+                  });
+
+ var completeJob = function(i,studentJobsBasicInfo,currRate){
+  result=studentJobsBasicInfo[i];
+  totalPay=0;
+  if(result.clock_out && result.clock_in){
+  var duration = moment.duration(moment(result.clock_out).diff(moment(result.clock_in)));
+                            var hours = duration.asHours();
+                            totalPay= hours*currRate
+                            totalPay= Math.round(totalPay*100)/100;
+                             if(totalPay>20){
+                                console.log("Student ID:"+result.student_id)
+                              }
+                            console.log("students pay:"+totalPay)
+                      }
+                            
+  return totalPay
+
+ };
 
 
         //this method is to pull the original information for each job modal
@@ -505,6 +567,10 @@ $("#deleteJobButton").click(function(){
                
           });
         }
+
+
+
+
 // delete job 
 
  var deleteJob= function (jobID){
@@ -558,6 +624,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                           "allDay": false,
                           "job_id":result[i].job_id, 
                           "rate": result[i].rate,
+                          "completed":result[i].completed
                         });
                         }
                       }
@@ -593,6 +660,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
           startDate=calEvent.start;
           endDate=calEvent.end;
 
+
       },
 
       eventRender: function (event, element) {
@@ -614,7 +682,8 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
   $("#showJobModal").on('hidden.bs.modal', function () {
     $("#interestedStudentTab").empty();
-      $("#jobManagerTab").empty();
+      $("#studentsOnJob").empty();
+      $("#CompleteJob").css("background-color", "blue");
 
 
   });
@@ -627,7 +696,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
              $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo),getJobStudents(jobInfo) ).done(function(jobResponse, studentResponse,jobsStudents){
               result= JSON.parse(jobResponse[0]);
-            
+
               
               $("#jobTitleP").text(result.job_title);
               $("#jobDescP").text(result.description);
@@ -646,6 +715,10 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                    
           studentBasicInfo= JSON.parse(studentResponse[0]);
           studentJobsBasicInfo= JSON.parse(jobsStudents[0]);
+          currJob=studentJobsBasicInfo;
+          currJobID=calendarEvent.job_id;
+          currRate=result.rate;
+          currJobComp=calendarEvent.completed;
           console.log(studentBasicInfo);
           console.log(studentJobsBasicInfo);
           
@@ -657,6 +730,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
             jobManager(i,studentJobsBasicInfo);
             //jobManager(i,studentJobBasicInfo)
               }
+
               
 
               
@@ -751,6 +825,10 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
               });
               
           }
+
+              //this method is to pull the original information for each job modal
+ 
+          
           function jobManager(i,studentJobBasicInfo){
             console.log(studentJobBasicInfo[i]);
             
@@ -769,71 +847,29 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                       "amount_to_pay": calendarEvent.rate
                     };
               
-
-                $("#jobManagerTab").append( "<div class='panel panel-default' id='jobMpanel"+i+"'>");
+                console.log(calendarEvent.completed);
+                if(calendarEvent.completed){
+                  $("#CompleteJob").css("background-color", "green");
+                }
+                $("#studentsOnJob").append( "<div class='panel panel-default' id='jobMpanel"+i+"'>");
                 $("#jobMpanel"+i).append("<div class='panel-heading' id='jobMpanel-heading"+i+"'>");
                 $("#jobMpanel-heading"+i).append("<h4 class='panel-title' id='jobMpanel-title"+i+"'>");
                 $("#jobMpanel-title"+i).append("<a data-toggle='collapse' href='#jobMcollapse"+i+"'>"+studentJobBasicInfo[i].first_name+ " "+ studentJobBasicInfo[i].last_name+"</a>");
                 $("#jobMpanel"+i).append("<div id='jobMcollapse"+i+"'class='panel-collapse collapse'>");
                 $("#jobMcollapse"+i).append("<div class='panel-body' id='jobMpanel-body"+i+"'>");
                 $("#jobMpanel-body"+i).append("<div class='btn-group' id='jobManagerGroup"+i+"'>");
-                $("#jobManagerGroup"+i).append("<button type='button'id='clockinBtn"+i+"' class='btn btn-primary'>clock-in</button>");
-                $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary'>clock-out</button>");
-                $("#jobManagerGroup"+i).append("<button type='button'id='completeBtn"+i+"' class='btn btn-primary'>complete</button>");
+                if(studentJobBasicInfo[i].clock_in){
+                $("#jobManagerGroup"+i).append("<button type='button'id='clockinBtn"+i+"' class='btn btn-primary done_button'>clock-in</button>");
+                  }else{
+                    $("#jobManagerGroup"+i).append("<button type='button'id='clockinBtn"+i+"' class='btn btn-primary'>clock-in</button>");
+                  }
+                  if(studentJobBasicInfo[i].clock_out){
+                $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary done_button'>clock-out</button>");
+                  }else{
+                    $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary'>clock-out</button>");
+                  }
                 $("#jobManagerGroup"+i).append("<button type='button'id='deleteButton"+i+"' class='btn btn-primary delete_button'>Delete Student</button>");
-                  $("#completeBtn"+i).click(function(){
-                    if (confirm("Are you sure you would like to complete the job?")) {
-                          $.ajax({
-                            type: 'POST',
-                            contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/get_job_status',
-                            data:JSON.stringify(completedInfo)
-                          }).done(function(data) {
-                            var result= JSON.parse(data);
-                            console.log(result);
-                            if(result[0].completed==false){
-                             $.ajax({
-                            type: 'POST',
-                            contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/set_completed_job',
-                            data:JSON.stringify(completedInfo)
-                          }).done(function(data) {
-                            var result= JSON.parse(data);
-                            console.log(result);
-                            var duration = moment.duration(moment(result.clock_out).diff(moment(result.clock_in)));
-                            var hours = duration.asHours();
-                            totalPay= hours*calendarEvent.rate
-                            totalPay= Math.round(totalPay*100)/100;
-                            totalPay = numeral(totalPay.toString()).format('0.00');
-                            var payment= {
-                              "company_id":sessionStorage.getItem("company_id"),
-                             "amount": totalPay
-                            }
 
-                             $.ajax({
-                            type: 'POST',
-                            contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/charge_company_card',
-                            data:JSON.stringify(payment)
-                          }).done(function(data) {
-                            var result= JSON.parse(data);
-                            console.log(result);
-
-                          });
-
-
-                          });
-                        }else{
-                          alert("Payment already processed");
-                        }
-
-
-                          });
-                            
-                        }
-                    
-                      
-                    });
                   $("#clockinBtn"+i).click(function(){
                     var clockinInfo={
                       "job_id": calendarEvent.job_id,
@@ -842,6 +878,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                     };
                     console.log(clockinInfo)
                     if (confirm("Are you sure you would like to clock-in the job?")) {
+                      $(this).css("background-color", "green");
                         $.ajax({
                             type: 'POST',
                             contentType: "application/json",
@@ -856,6 +893,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                         }
                     });$("#clockoutBtn"+i).click(function(){
                       if (confirm("Are you sure you would like to clock-out the job?")) {
+                        $(this).css("background-color", "green");
                         var clockoutInfo={
                           "job_id":calendarEvent.job_id,
                           "student_id":studentIDInfo.student_id,
@@ -906,7 +944,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
 
 
-	</script>
+  </script>
 </head>
 
 <body class="client">
@@ -920,7 +958,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 </div>
     </div>
 
-		<div class="tab-content">
+    <div class="tab-content">
 
     <div id="first" class="tab-pane fade in active">
         <div id='calendar'>
@@ -953,8 +991,8 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
             <br>
               <label for="jobDesc">Description of Job</label>
               <div  id="descriptionError">
-								<textarea class= "form-control" rows="4" cols="55" placeholder="In a few sentences, tell us what the position entails?" id="jdescription">
-								</textarea>
+                <textarea class= "form-control" rows="4" cols="55" placeholder="In a few sentences, tell us what the position entails?" id="jdescription">
+                </textarea>
             </div>
               <br>
               <label for="shitStart">What time does the shift start</label>
@@ -1127,8 +1165,10 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
                       <!--Other tabs -->
                       <div role="tabpanel" class="tab-pane" id="jobManagerTab">
-                        <div class="container">
-                         
+                        <button type="button" id="CompleteJob" class="btn btn-primary">Complete Job</button>
+                        <div class="container" id="studentsOnJob">
+                        
+                  
                         </div>
                       </div>
 
