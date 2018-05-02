@@ -36,10 +36,14 @@
 
 
 
-	<style>
-	@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+  <style>
+  @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-	body {
+  .done_button{
+  background-color: #008000;
+}
+
+  body {
   margin: 0;
   padding: 0;
   background: #ccc;
@@ -97,6 +101,7 @@
     width: 100%;
 }
 
+
 .modal-body .form-horizontal .control-label {
     text-align: left;
 }
@@ -115,17 +120,19 @@ textarea {
 
 
 
-	body {
-	}
-	</style>
+  body {
+  }
+  </style>
 
-	<meta charset="utf-8">
+  <meta charset="utf-8">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<script>
+  <script>
 $(document).ready(function () {
   console.log(sessionStorage.getItem("company_id"));
+   
+
      //Log out button
 $("#logoutButton").click(function(){
   sessionStorage.setItem("company_id",0)
@@ -142,12 +149,14 @@ $("#logoutButton").click(function(){
              
           }).done(function(data) { 
               var result = JSON.parse(data);
+              console.log(result)
                   
           });
         }
  
  var addGigList = function(i,jobsInfo){
-  console.log(jobsInfo)
+  console.log(jobsInfo[i]);
+  console.log(jobsInfo[i].completed);
 
                 $("#open_jobs_list").append( "<div class='panel panel-default' id='panel"+i+"'>");
 
@@ -171,12 +180,17 @@ $("#logoutButton").click(function(){
 
                   "clock_out: "+moment(jobsInfo[i].clock_out).format()
                   +"</li>");
-                 
-                 $("#studentGroup"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Pay Student</button>");
+                 if(jobsInfo[i].completed){
+                 $("#studentGroup"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary done_button'>Pay Student</button>");
+               }else{
+                  $("#studentGroup"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Pay Student</button>");
+               }
 
                  $("#selectStudent"+i).click(function(){
+                  if(!jobsInfo[i].completed){
                   if (confirm("Are you sure you would like to pay the student?")) {
                   var duration = moment.duration(moment(jobsInfo[i].clock_out).diff(moment(jobsInfo[i].clock_in)));
+                  console.log(duration)
                             var hours = duration.asHours();
                             totalPay= hours*jobsInfo[i].rate;
                             totalPay= Math.round(totalPay*100)/100;
@@ -196,10 +210,23 @@ $("#logoutButton").click(function(){
                           }).done(function(data) {
                             var result= JSON.parse(data);
                              console.log(result);
+                             $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/set_completed_job',
+                            data:JSON.stringify(jobsInfo[i])
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                             console.log(result);
+
+                              });
 
                               });
                               
                         }
+                      }else{
+                        alert(" Student already paid");
+                      }
 
                         });
                }
@@ -208,11 +235,13 @@ $("#logoutButton").click(function(){
 
             $.when(j=jobInfoResponse()).done(function(jobs){
               var jobsInfo= JSON.parse(jobs);
+              console.log(jobsInfo)
              
               
               
                 for(var i=0;i<jobsInfo.length;i++){
                   addGigList(i,jobsInfo);
+                  
                
 
                }
@@ -222,7 +251,7 @@ $("#logoutButton").click(function(){
   
  });             
 
-	</script>
+  </script>
 </head>
 
 <body class="student">
