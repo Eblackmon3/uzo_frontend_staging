@@ -110,8 +110,7 @@ public class StripeController {
             System.out.println(Balance.retrieve());
             transferParams.put("currency", "usd");
             transferParams.put("destination", studentInfo.get("token"));
-
-            Transfer.create(transferParams);
+            return Transfer.create(transferParams).toJson();
 
         }catch(Exception e ){
             e.printStackTrace();
