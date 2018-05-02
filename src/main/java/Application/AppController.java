@@ -1100,6 +1100,23 @@ api call example https://uzo-web-app.herokuapp.com/get_job_resources
         return manager.clockoutStudent(student).toString();
     }
 
+
+    /*
+*example url:https://uzo-web-app.herokuapp.com/complete_job
+* example header:
+* {
+   "job_id" : 1,
+   "completed" : true
+   }
+*/
+    @CrossOrigin(origins = "https://uzo-frontend-dev.herokuapp.com")
+    @PostMapping(value = "/complete_job")
+    public String completeJob(@RequestBody Job job) {
+        JobManager manager= new JobManager();
+        return manager.completeJob(job).toString();
+    }
+
+
     /*
          *example url:https://uzo-web-app.herokuapp.com/get_job_status
          * example header:

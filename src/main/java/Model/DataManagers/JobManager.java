@@ -1171,6 +1171,67 @@ public class JobManager {
 
     }
 
+    public JSONObject completeJob(Job studentJob){
+        JSONObject insertedCaptain= new JSONObject();
+        ResultSet rsObj = null;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql="update t_job_info set completed= ? where job_id=?;";
+        DbConn jdbcObj = new DbConn();
+        int affectedRows=0;
+        try{
+            if(studentJob.getJob_id()==0){
+                throw new Exception("Missing Parameter");
+            }
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setBoolean(1, studentJob.isCompleted());
+            pstmt.setInt(2, studentJob.getJob_id());
+            affectedRows = pstmt.executeUpdate();
+            pstmt.close();
+            conn.close();
+            insertedCaptain.put("affected_rows",affectedRows);
+
+        }catch(Exception e){
+            e.printStackTrace();
+            try{
+                insertedCaptain.put("error", e.toString());
+
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+
+        }finally{
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+        return insertedCaptain;
+
+    }
+
     public JSONObject setStudentCompleted(StudentJob studentJob){
         JSONObject insertedCaptain= new JSONObject();
         ResultSet rsObj = null;
