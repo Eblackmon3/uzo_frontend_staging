@@ -158,6 +158,8 @@ $("#logoutButton").click(function(){
   console.log(jobsInfo[i]);
   console.log(jobsInfo[i].completed);
 
+
+
                 $("#open_jobs_list").append( "<div class='panel panel-default' id='panel"+i+"'>");
 
                 $("#panel"+i).append("<div class='panel-heading' id='panel-heading"+i+"'>");
@@ -195,6 +197,7 @@ $("#logoutButton").click(function(){
                             totalPay= hours*jobsInfo[i].rate;
                             totalPay= Math.round(totalPay*100)/100;
                             totalPay = numeral(totalPay.toString()).format('0.00');
+                            jobsInfo.completed=true;
 
                             var payStudent={
                             "student_id":jobsInfo[i].student_id,
