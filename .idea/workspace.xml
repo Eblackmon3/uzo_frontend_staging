@@ -69,8 +69,8 @@
       <file leaf-file-name="AppController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="1063" column="62" lean-forward="true" selection-start-line="1063" selection-start-column="28" selection-end-line="1063" selection-end-column="62" />
+            <state relative-caret-position="117">
+              <caret line="1059" column="18" lean-forward="true" selection-start-line="1059" selection-start-column="18" selection-end-line="1059" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -105,7 +105,6 @@
       <find>removeStudentJob</find>
       <find>login</find>
       <find>remove</find>
-      <find>https://uzo-frontend.herokuapp.com</find>
       <find>jobs</find>
       <find>open</find>
       <find>get_jobs_Stude</find>
@@ -117,11 +116,12 @@
       <find>populate_student_job_list</find>
       <find>populateStudentsAndJobs</find>
       <find>https://uzo-frontend-dev.herokuapp.com</find>
+      <find>https://uzo-frontend.herokuapp.com</find>
     </findStrings>
     <replaceStrings>
       <replace />
-      <replace>https://uzo-frontend-dev.herokuapp.com</replace>
       <replace>https://uzo-frontend.herokuapp.com</replace>
+      <replace>https://uzo-frontend-dev.herokuapp.com</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -625,8 +625,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="32" />
-    <option name="y" value="56" />
+    <option name="x" value="151" />
+    <option name="y" value="221" />
     <option name="width" value="1150" />
     <option name="height" value="795" />
   </component>
@@ -855,7 +855,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="32" y="56" width="1150" height="795" extended-state="0" />
+    <frame x="151" y="221" width="1150" height="795" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1401,8 +1401,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="1063" column="62" lean-forward="true" selection-start-line="1063" selection-start-column="28" selection-end-line="1063" selection-end-column="62" />
+        <state relative-caret-position="117">
+          <caret line="1059" column="18" lean-forward="true" selection-start-line="1059" selection-start-column="18" selection-end-line="1059" selection-end-column="18" />
           <folding />
         </state>
       </provider>
