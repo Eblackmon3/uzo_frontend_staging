@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="629d3e88-3c46-4a87-8eb9-4b9e62a72580" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application/AppController.java" afterPath="$PROJECT_DIR$/src/main/java/Application/AppController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java" afterPath="$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java" />
-    </list>
+    <list default="true" id="629d3e88-3c46-4a87-8eb9-4b9e62a72580" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -80,8 +77,8 @@
       <file leaf-file-name="AppController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="1107" column="16" lean-forward="true" selection-start-line="1107" selection-start-column="16" selection-end-line="1107" selection-end-column="16" />
+            <state relative-caret-position="295">
+              <caret line="1104" column="13" lean-forward="true" selection-start-line="1104" selection-start-column="13" selection-end-line="1104" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -1399,8 +1396,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="1107" column="16" lean-forward="true" selection-start-line="1107" selection-start-column="16" selection-end-line="1107" selection-end-column="16" />
+        <state relative-caret-position="295">
+          <caret line="1104" column="13" lean-forward="true" selection-start-line="1104" selection-start-column="13" selection-end-line="1104" selection-end-column="59" />
           <folding />
         </state>
       </provider>
