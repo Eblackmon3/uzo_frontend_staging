@@ -1654,6 +1654,7 @@ public class JobManager {
                     selectedStudentJob.put("job_title", rs.getString("job_title"));
                     selectedStudentJob.put("job_id", rs.getInt("job_id"));
                     selectedStudentJob.put("completed", rs.getBoolean("completed"));
+                    selectedStudentJob.put("student_name", rs.getString("first_name")+ " "+ rs.getString("last_name"));
                     selectStudents.put(selectedStudentJob);
                     selectedStudentJob = new JSONObject();
                 }
