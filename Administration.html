@@ -191,6 +191,7 @@ $("#logoutButton").click(function(){
                  $("#selectStudent"+i).click(function(){
                   if(!jobsInfo[i].completed){
                   if (confirm("Are you sure you would like to pay the student?")) {
+                  $(this).css("background-color", "green");
                   var duration = moment.duration(moment(jobsInfo[i].clock_out).diff(moment(jobsInfo[i].clock_in)));
                   console.log(duration)
                             var hours = duration.asHours();
