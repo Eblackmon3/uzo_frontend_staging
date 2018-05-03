@@ -1708,7 +1708,7 @@ public class JobManager {
         }
 
 
-        return  selectStudents;
+        return  studentsOrganized;
     }
 
 

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="629d3e88-3c46-4a87-8eb9-4b9e62a72580" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java" afterPath="$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,8 +24,8 @@
       <file leaf-file-name="JobManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="1666" column="13" lean-forward="true" selection-start-line="1666" selection-start-column="13" selection-end-line="1666" selection-end-column="13" />
+            <state relative-caret-position="441">
+              <caret line="1710" column="33" lean-forward="false" selection-start-line="1710" selection-start-column="33" selection-end-line="1710" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -70,8 +69,8 @@
       <file leaf-file-name="AppController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="1314" column="46" lean-forward="false" selection-start-line="1314" selection-start-column="23" selection-end-line="1314" selection-end-column="46" />
+            <state relative-caret-position="297">
+              <caret line="1311" column="26" lean-forward="false" selection-start-line="1311" selection-start-column="26" selection-end-line="1311" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -1363,14 +1362,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="1314" column="46" lean-forward="false" selection-start-line="1314" selection-start-column="23" selection-end-line="1314" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataObjects/Job.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="443">
@@ -1404,10 +1395,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="1311" column="26" lean-forward="false" selection-start-line="1311" selection-start-column="26" selection-end-line="1311" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="1666" column="13" lean-forward="true" selection-start-line="1666" selection-start-column="13" selection-end-line="1666" selection-end-column="13" />
+        <state relative-caret-position="441">
+          <caret line="1710" column="33" lean-forward="false" selection-start-line="1710" selection-start-column="33" selection-end-line="1710" selection-end-column="33" />
           <folding />
         </state>
       </provider>
