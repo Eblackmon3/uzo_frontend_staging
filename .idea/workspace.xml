@@ -24,8 +24,8 @@
       <file leaf-file-name="JobManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="1623" column="236" lean-forward="false" selection-start-line="1623" selection-start-column="236" selection-end-line="1623" selection-end-column="236" />
+            <state relative-caret-position="153">
+              <caret line="1623" column="21" lean-forward="false" selection-start-line="1623" selection-start-column="21" selection-end-line="1623" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -1401,8 +1401,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="1623" column="236" lean-forward="false" selection-start-line="1623" selection-start-column="236" selection-end-line="1623" selection-end-column="236" />
+        <state relative-caret-position="153">
+          <caret line="1623" column="21" lean-forward="false" selection-start-line="1623" selection-start-column="21" selection-end-line="1623" selection-end-column="21" />
           <folding />
         </state>
       </provider>
