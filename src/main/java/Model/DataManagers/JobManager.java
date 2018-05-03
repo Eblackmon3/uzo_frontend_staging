@@ -1658,7 +1658,6 @@ public class JobManager {
                         selectedStudentJob.put("completed", rs.getBoolean("completed"));
                         selectedStudentJob.put("student_name", rs.getString("first_name") + " " + rs.getString("last_name"));
                         selectStudents.put(selectedStudentJob);
-                        studentsOrganized.put(selectStudents);
                         selectedStudentJob = new JSONObject();
                 }
                 studentsOrganized.put(selectStudents);
