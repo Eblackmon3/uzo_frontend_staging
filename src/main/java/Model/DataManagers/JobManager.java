@@ -1610,6 +1610,7 @@ public class JobManager {
     public JSONArray populateStudentsAndJobs(){
         JSONObject selectedStudentJob= new JSONObject();
         JSONArray  selectStudents= new JSONArray();
+        JSONArray studentsOrganized= new JSONArray();
         Connection conn = null;
         ArrayList<Integer> jobsInDB= new ArrayList<>();
         PreparedStatement pstmt = null;
@@ -1637,27 +1638,32 @@ public class JobManager {
             while(rs.next()){
                 jobsInDB.add(rs.getInt("job_id"));
             }
+            job_id=jobsInDB.get(0);
 
             for(int i=0;i<jobsInDB.size();i++) {
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setInt(1, jobsInDB.get(i));
                 rs = pstmt.executeQuery();
                 while (rs.next()) {
-                    rate = rs.getString("rate");
-                    clock_in = rs.getString("clock_in");
-                    clock_out = rs.getString("clock_out");
-                    student_id = rs.getInt("student_id");
-                    selectedStudentJob.put("rate", rate);
-                    selectedStudentJob.put("clock_in", clock_in);
-                    selectedStudentJob.put("clock_out", clock_out);
-                    selectedStudentJob.put("student_id", student_id);
-                    selectedStudentJob.put("job_title", rs.getString("job_title"));
-                    selectedStudentJob.put("job_id", rs.getInt("job_id"));
-                    selectedStudentJob.put("completed", rs.getBoolean("completed"));
-                    selectedStudentJob.put("student_name", rs.getString("first_name")+ " "+ rs.getString("last_name"));
-                    selectStudents.put(selectedStudentJob);
-                    selectedStudentJob = new JSONObject();
+                        rate = rs.getString("rate");
+                        clock_in = rs.getString("clock_in");
+                        clock_out = rs.getString("clock_out");
+                        student_id = rs.getInt("student_id");
+                        selectedStudentJob.put("rate", rate);
+                        selectedStudentJob.put("clock_in", clock_in);
+                        selectedStudentJob.put("clock_out", clock_out);
+                        selectedStudentJob.put("student_id", student_id);
+                        selectedStudentJob.put("job_title", rs.getString("job_title"));
+                        selectedStudentJob.put("job_id", rs.getInt("job_id"));
+                        selectedStudentJob.put("completed", rs.getBoolean("completed"));
+                        selectedStudentJob.put("student_name", rs.getString("first_name") + " " + rs.getString("last_name"));
+                        selectStudents.put(selectedStudentJob);
+                        studentsOrganized.put(selectStudents);
+                        selectedStudentJob = new JSONObject();
                 }
+                studentsOrganized.put(selectStudents);
+                selectStudents=new JSONArray();
+
             }
             pstmt.close();
             conn.close();
