@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="629d3e88-3c46-4a87-8eb9-4b9e62a72580" name="Default" comment="" />
+    <list default="true" id="629d3e88-3c46-4a87-8eb9-4b9e62a72580" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Application/AppController.java" afterPath="$PROJECT_DIR$/src/main/java/Application/AppController.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -67,8 +69,8 @@
       <file leaf-file-name="AppController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="1307" column="0" lean-forward="true" selection-start-line="1307" selection-start-column="0" selection-end-line="1307" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -85,7 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>inner</find>
       <find>addS</find>
       <find>addStudent</find>
       <find>https://uzo-web-app.herokuapp.com/assign_student_job</find>
@@ -115,12 +116,13 @@
       <find>https://uzo-frontend-dev.herokuapp.com/</find>
       <find>https://uzo-frontend-dev.herokuapp.com</find>
       <find>populate_student_job_list</find>
+      <find>https://uzo-frontend.herokuapp.com/</find>
     </findStrings>
     <replaceStrings>
       <replace />
-      <replace>https://uzo-frontend.herokuapp.com</replace>
       <replace>https://uzo-frontend-dev.herokuapp.com</replace>
       <replace>https://uzo-frontend.herokuapp.com/</replace>
+      <replace>https://uzo-frontend.herokuapp.com</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/gradle</dir>
@@ -1403,8 +1405,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="1307" column="0" lean-forward="true" selection-start-line="1307" selection-start-column="0" selection-end-line="1307" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding />
         </state>
       </provider>
