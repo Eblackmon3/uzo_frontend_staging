@@ -1621,7 +1621,7 @@ public class JobManager {
         String clock_out;
         DbConn jdbcObj = new DbConn();
         String preSql="select * from t_job_info";
-        String sql= "select * from t_student_job_map inner join t_job_info on t_student_job_map.job_id=t_job_info.job_id where t_job_info.job_id=?;";
+        String sql= "\uFEFFselect * from t_student_job_map inner join t_job_info on t_student_job_map.job_id=t_job_info.job_id inner join t_student_info on t_student_job_map.student_id=t_student_info.student_id where t_job_info.job_id=?;";
         try {
 
             //Connect to the database
