@@ -141,7 +141,7 @@ public class StudentManager {
             rs= pstmt.executeQuery();
             while(rs.next()){
                 phone_number= rs.getString("phone_number");
-                if(phone_number!=null || phone_number!="" ||phone_number!=" "){
+                if(phone_number!=null &&phone_number!="" &&phone_number!=" "){
                     phone_number = phone_number.replaceAll("\\D+","");
                     if(phone_number.length()==10){
                         phoneNumbers.add(phone_number);
