@@ -70,7 +70,7 @@ public class JobManager {
             conn.close();
             jdbcObj.closePool();
             Message message = Message.creator(new PhoneNumber("5713449998"),
-                    new PhoneNumber("+12406247881"),
+                    new PhoneNumber("+6787265534"),
                     jobInsert.getJob_title()+" Now Open" ).create();
 
         }catch(Exception e){
