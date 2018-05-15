@@ -6,6 +6,9 @@ import Model.DataObjects.Job;
 import Model.DataObjects.JobInsert;
 import Model.DataObjects.StudentJob;
 import Model.DbConn;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,6 +21,7 @@ import java.util.ArrayList;
 public class JobManager {
 
     public JSONObject insertJob(JobInsert jobInsert){
+        Twilio.init(System.getenv("TWILIO_ACCOUNT"),System.getenv("TWILIO_TOKEN"));
         JSONObject insertedJob= new JSONObject();
         ResultSet lastJob = null;
         Connection conn = null;
@@ -65,6 +69,9 @@ public class JobManager {
             lastJob.close();
             conn.close();
             jdbcObj.closePool();
+            Message message = Message.creator(new PhoneNumber("5713449998"),
+                    new PhoneNumber("+12406247881"),
+                    jobInsert.getJob_title()+" Now Open" ).create();
 
         }catch(Exception e){
             e.printStackTrace();
