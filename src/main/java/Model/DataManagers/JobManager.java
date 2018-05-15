@@ -76,7 +76,13 @@ public class JobManager {
              Message.creator(new PhoneNumber("6786513389"),
                     new PhoneNumber("6787265534"),
                     "New Job: "+ jobInsert.getJob_title()+ " Now Open").create();
-             
+            Message.creator(new PhoneNumber("4048207203"),
+                    new PhoneNumber("6787265534"),
+                    "New Job: "+ jobInsert.getJob_title()+ " Now Open").create();
+            Message.creator(new PhoneNumber("6786515678"),
+                    new PhoneNumber("6787265534"),
+                    "New Job: "+ jobInsert.getJob_title()+ " Now Open").create();
+
         }catch(Exception e){
             e.printStackTrace();
             try {
