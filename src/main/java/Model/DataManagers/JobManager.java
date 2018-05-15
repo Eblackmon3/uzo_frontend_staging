@@ -69,10 +69,14 @@ public class JobManager {
             lastJob.close();
             conn.close();
             jdbcObj.closePool();
-            Message message = Message.creator(new PhoneNumber("5713449998"),
+            Message.creator(new PhoneNumber("5713449998"),
                     new PhoneNumber("6787265534"),
                     "New Job: "+ jobInsert.getJob_title()+ " Now Open").create();
 
+             Message.creator(new PhoneNumber("6786513389"),
+                    new PhoneNumber("6787265534"),
+                    "New Job: "+ jobInsert.getJob_title()+ " Now Open").create();
+             
         }catch(Exception e){
             e.printStackTrace();
             try {
