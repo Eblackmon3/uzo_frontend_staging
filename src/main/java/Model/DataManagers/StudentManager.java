@@ -121,12 +121,12 @@ public class StudentManager {
         return studentObj;
     }
 
-    public ArrayList<Integer> getAllStudentsNumbers(){
+    public ArrayList<String> getAllStudentsNumbers(){
         Connection conn = null;
         PreparedStatement pstmt = null;
         String sql="select * from t_student_info";
         DbConn jdbcObj = new DbConn();
-        ArrayList<Integer> phoneNumbers= new ArrayList<>();
+        ArrayList<String> phoneNumbers= new ArrayList<>();
         String phone_number="";
         ResultSet rs=null;
         try {
@@ -144,7 +144,7 @@ public class StudentManager {
                 if(phone_number!=null || phone_number!="" ||phone_number!=" "){
                     phone_number = phone_number.replaceAll("\\D+","");
                     if(phone_number.length()==10){
-                        phoneNumbers.add(Integer.parseInt(phone_number));
+                        phoneNumbers.add(phone_number);
                     }
 
                 }
