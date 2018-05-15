@@ -121,6 +121,83 @@ public class StudentManager {
         return studentObj;
     }
 
+    public ArrayList<Integer> getAllStudentsNumbers(){
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql="select * from t_student_info";
+        DbConn jdbcObj = new DbConn();
+        ArrayList<Integer> phoneNumbers= new ArrayList<>();
+        String phone_number="";
+        ResultSet rs=null;
+        try {
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt = conn.prepareStatement(sql);
+            rs= pstmt.executeQuery();
+            while(rs.next()){
+                phone_number= rs.getString("phone_number");
+                if(phone_number!=null || phone_number!="" ||phone_number!=" "){
+                    phone_number = phone_number.replaceAll("\\D+","");
+                    if(phone_number.length()==10){
+                        phoneNumbers.add(Integer.parseInt(phone_number));
+                    }
+
+                }
+
+            }
+            rs.close();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+        }finally{
+            if(rs!=null){
+                try {
+                    rs.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+
+        return phoneNumbers;
+    }
+
+
 
     public JSONObject getLastInsertedStudent(){
         ResultSet rsObj = null;

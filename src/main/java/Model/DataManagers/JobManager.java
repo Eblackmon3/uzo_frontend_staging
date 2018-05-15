@@ -69,6 +69,11 @@ public class JobManager {
             lastJob.close();
             conn.close();
             jdbcObj.closePool();
+            StudentManager studManager= new StudentManager();
+            ArrayList<Integer> studentNumbers=studManager.getAllStudentsNumbers();
+            System.out.println(studentNumbers);
+
+            /*
             Message.creator(new PhoneNumber("5713449998"),
                     new PhoneNumber("6787265534"),
                     "New Job: "+ jobInsert.getJob_title()+ " Now Open").create();
@@ -82,6 +87,10 @@ public class JobManager {
             Message.creator(new PhoneNumber("6786515678"),
                     new PhoneNumber("6787265534"),
                     "New Job: "+ jobInsert.getJob_title()+ " Now Open").create();
+                    */
+
+            //Get a list of student phone numbers for us to call
+
 
         }catch(Exception e){
             e.printStackTrace();
