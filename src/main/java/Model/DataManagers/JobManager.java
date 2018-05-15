@@ -71,7 +71,7 @@ public class JobManager {
             jdbcObj.closePool();
             Message message = Message.creator(new PhoneNumber("5713449998"),
                     new PhoneNumber("6787265534"),
-                    jobInsert.getJob_title()+" Now Open" ).create();
+                    "New Job: "+ jobInsert.getJob_title()+ " Now Open").create();
 
         }catch(Exception e){
             e.printStackTrace();
