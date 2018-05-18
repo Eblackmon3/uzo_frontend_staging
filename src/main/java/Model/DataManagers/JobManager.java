@@ -71,6 +71,7 @@ public class JobManager {
             jdbcObj.closePool();
             StudentManager studManager= new StudentManager();
             ArrayList<String> studentNumbers=studManager.getAllStudentsNumbers();
+            System.out.println(studentNumbers);
             for(String number : studentNumbers) {
                 Message.creator(new PhoneNumber(number),
                         new PhoneNumber("6787265534"),

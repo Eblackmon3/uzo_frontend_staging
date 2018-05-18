@@ -145,6 +145,7 @@ public class StudentManager {
                     phone_number = phone_number.replaceAll("\\D+","");
                     if(phone_number.length()==10){
                         phoneNumbers.add(phone_number);
+
                     }
 
                 }
