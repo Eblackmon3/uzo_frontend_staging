@@ -73,9 +73,13 @@ public class JobManager {
             ArrayList<String> studentNumbers=studManager.getAllStudentsNumbers();
             System.out.println(studentNumbers);
             for(String number : studentNumbers) {
-                Message.creator(new PhoneNumber(number),
-                        new PhoneNumber("6787265534"),
-                        "New Job: " + jobInsert.getJob_title() + " Now Open").create();
+                try {
+                    Message.creator(new PhoneNumber(number),
+                            new PhoneNumber("6787265534"),
+                            "New Job: " + jobInsert.getJob_title() + " Now Open").create();
+                }catch(Exception e ){
+                    continue;
+                }
             }
 
 
