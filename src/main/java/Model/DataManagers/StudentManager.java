@@ -152,7 +152,7 @@ public class StudentManager {
                         try {
                             Message.creator(new PhoneNumber(phone_number),
                                     new PhoneNumber("6787265534"),
-                                    "New Job Posted").create();
+                                    "New Job Posted At: https://uzo-frontend.herokuapp.com/index.html").create();
                         }catch(Exception e ){
                             continue;
                         }
