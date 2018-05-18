@@ -72,35 +72,6 @@ public class JobManager {
             StudentManager studManager= new StudentManager();
             ArrayList<String> studentNumbers=studManager.getAllStudentsNumbers();
             System.out.println(studentNumbers);
-            for(String number : studentNumbers) {
-                try {
-                    Message.creator(new PhoneNumber(number),
-                            new PhoneNumber("6787265534"),
-                            "New Job: " + jobInsert.getJob_title() + " Now Open").create();
-                }catch(Exception e ){
-                    continue;
-                }
-            }
-
-
-            /*
-            Message.creator(new PhoneNumber("5713449998"),
-                    new PhoneNumber("6787265534"),
-                    "New Job: "+ jobInsert.getJob_title()+ " Now Open").create();
-
-             Message.creator(new PhoneNumber("6786513389"),
-                    new PhoneNumber("6787265534"),
-                    "New Job: "+ jobInsert.getJob_title()+ " Now Open").create();
-            Message.creator(new PhoneNumber("4048207203"),
-                    new PhoneNumber("6787265534"),
-                    "New Job: "+ jobInsert.getJob_title()+ " Now Open").create();
-            Message.creator(new PhoneNumber("6786515678"),
-                    new PhoneNumber("6787265534"),
-                    "New Job: "+ jobInsert.getJob_title()+ " Now Open").create();
-                    */
-
-            //Get a list of student phone numbers for us to call
-
 
         }catch(Exception e){
             e.printStackTrace();

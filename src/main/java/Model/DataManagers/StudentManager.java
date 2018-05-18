@@ -4,6 +4,9 @@ import AmazonController.s3Operations;
 import Model.DataObjects.*;
 import Model.DbConn;
 import StripeController.StripeController;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -122,6 +125,7 @@ public class StudentManager {
     }
 
     public ArrayList<String> getAllStudentsNumbers(){
+        Twilio.init(System.getenv("TWILIO_ACCOUNT"),System.getenv("TWILIO_TOKEN"));
         Connection conn = null;
         PreparedStatement pstmt = null;
         String sql="select * from t_student_info";
@@ -145,6 +149,13 @@ public class StudentManager {
                     phone_number = phone_number.replaceAll("\\D+","");
                     if(phone_number.length()==10){
                         phoneNumbers.add(phone_number);
+                        try {
+                            Message.creator(new PhoneNumber(phone_number),
+                                    new PhoneNumber("6787265534"),
+                                    "New Job Posted").create();
+                        }catch(Exception e ){
+                            continue;
+                        }
 
                     }
 
