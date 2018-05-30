@@ -278,7 +278,7 @@ textarea {
 
  //Log out button
 $("#logoutButton").click(function(){
-  sessionStorage.setItem("company_id",null)
+  sessionStorage.removeItem('company_id');
  window.location.replace("businessIndex.html");
      
   });

@@ -242,7 +242,7 @@ $(document).ready(function(){
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-          if(sessionStorage.getItem("company_id")&&sessionStorage.getItem("company_id")!=null){
+          if(sessionStorage.getItem("company_id")){
             console.log("here");
             if(sessionStorage.getItem("company_id")==='31'){
               window.location.replace("Administration.html");
