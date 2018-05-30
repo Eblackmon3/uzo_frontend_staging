@@ -161,12 +161,11 @@ $("#logoutButton").click(function(){
         }
  //check to see if the jobsInfo[i][j].job_id=jobsInfo[i-1 ][j].job_id
  //if they are the same just add the student[i][j] in the list if they are different create new job tab and add the student[i][j]
- var addGigList = function(jobsInfo,prevNode){
+ var addGigList = function(jobsInfo,prevNode,currentJob){
   console.log("prevNode:"+prevNode.student_name);
   console.log("current node:"+jobsInfo.student_name);
   
   if((jobsInfo.job_id!=prevNode.job_id)&&jobsInfo.job_title ){
-    console.log("adding titles")
                 $("#open_jobs_list").append( "<div class='panel panel-default' id='panel"+jobsInfo.job_id+"'>");
 
                 $("#panel"+jobsInfo.job_id).append("<div class='panel-heading' id='panel-heading"+jobsInfo.job_id+"'>");
@@ -175,15 +174,58 @@ $("#logoutButton").click(function(){
                 $("#panel"+jobsInfo.job_id).append("<div id='collapse"+jobsInfo.job_id+"'class='panel-collapse collapse'>");
                 $("#collapse"+jobsInfo.job_id).append("<div class='panel-body' id='panel-body"+jobsInfo.job_id+"'>");
                 $("#panel-body"+jobsInfo.job_id).append("<table id='table"+jobsInfo.job_id+"'>");
+                 $("#panel-body"+jobsInfo.job_id).append("<button type='button'id='exportCSV"+jobsInfo.job_id+"' class='btn btn-primary'>Export CSV</button>");
+                 $("#exportCSV"+jobsInfo.job_id).click(
+                      function(){
+
+                        let csvContent = "data:text/csv;charset=utf-8,";
+                        let row= "Student Name, Clock-in, Clock-out, Rate, Total Pay";
+                        csvContent += row + "\r\n";
+                        currentJob.forEach(function(rowArray){
+                          if(rowArray.clock_out&&rowArray.clock_in){
+                          var duration = moment.duration(moment(rowArray.clock_out).diff(moment(rowArray.clock_in)));
+                            var hours = duration.asHours();
+                            totalPay= hours*jobsInfo.rate;
+                            totalPay= Math.round(totalPay*100)/100;
+                            totalPay = numeral(totalPay.toString()).format('0.00');
+                          }else{
+                            totalPay=0;
+                          }
+                         row = rowArray.student_name+","+rowArray.clock_in+","+rowArray.clock_out+",$"+rowArray.rate+",$"+totalPay;
+                         console.log(row);
+                         csvContent += row + "\r\n";
+                      }); 
+                        
+                        var encodedUri = encodeURI(csvContent);
+                        window.open(encodedUri);
+                        
+
+                      });
+
+
                 $("#table"+jobsInfo.job_id).append("<tr id='header"+jobsInfo.job_id+"'>");
                 $("#header"+jobsInfo.job_id).append("<th>Student Name</th>");
                 $("#header"+jobsInfo.job_id).append("<th>Clock-in</th>");
                 $("#header"+jobsInfo.job_id).append("<th>Clock-out</th>");
+                $("#header"+jobsInfo.job_id).append("<th>Rate</th>");
+                $("#header"+jobsInfo.job_id).append("<th>Total</th>");
+                /*
                 $("#header"+jobsInfo.job_id).append("<th>Pay Student</th>");
+                */
 
                }
 
                if((jobsInfo!=null)&&jobsInfo.job_title){
+                if(jobsInfo.clock_out&&jobsInfo.clock_in){
+                var duration = moment.duration(moment(jobsInfo.clock_out).diff(moment(jobsInfo.clock_in)));
+                  console.log(duration)
+                            var hours = duration.asHours();
+                            totalPay= hours*jobsInfo.rate;
+                            totalPay= Math.round(totalPay*100)/100;
+                            totalPay = numeral(totalPay.toString()).format('0.00');
+                          }else{
+                            totalPay=0;
+                          }
                 console.log("which student added:" +jobsInfo.student_name)
                 $("#table"+jobsInfo.job_id).append("<tr id='student"+jobsInfo.student_id+jobsInfo.job_id+"'>");
                 $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>" +jobsInfo.student_name+ "</th>");
@@ -197,13 +239,17 @@ $("#logoutButton").click(function(){
               }else{
                 $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>" +"N/A"+ "</th>");
               }
+               $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>$" +jobsInfo.rate+ "</th>");
+               $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>$" +totalPay+ "</th>");
+               /*
                 if(jobsInfo.completed){
                  $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<button type='button'id='selectStudent"+jobsInfo.student_id+jobsInfo.job_id+"' class='btn btn-primary done_button'>Pay Student</button>");
                }else{
                   $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<button type='button'id='selectStudent"+jobsInfo.student_id+jobsInfo.job_id+"' class='btn btn-primary'>Pay Student</button>");
                }
+               */
 
-                 $("#selectStudent"+jobsInfo.student_id+jobsInfo.job_id).click(function(){
+                 /*$("#selectStudent"+jobsInfo.student_id+jobsInfo.job_id).click(function(){
                   if(!jobsInfo.completed){
                   if (confirm("Are you sure you would like to pay the student?")) {
                   var duration = moment.duration(moment(jobsInfo.clock_out).diff(moment(jobsInfo.clock_in)));
@@ -245,7 +291,8 @@ $("#logoutButton").click(function(){
                         alert(" Student already paid");
                       }
 
-                        });
+
+                        });*/
                }
           }
                  
@@ -258,8 +305,9 @@ $("#logoutButton").click(function(){
                 for(var i=0;i<jobsInfo.length;i++){
                   var jobsArray = jobsInfo[i];
                   for(var j=0;j<jobsArray.length;j++){
-                  addGigList(jobsInfo[i][j],lastVisited);
+                  addGigList(jobsInfo[i][j],lastVisited,jobsInfo[i]);
                   lastVisited=jobsInfo[i][j];
+
                   
                 }
                }
