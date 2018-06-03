@@ -726,8 +726,6 @@ public class CompanyManager {
                 companyObj.put("description",description);
                 companyObj.put("company_id", rs.getInt("company_id"));
 
-
-
             }else{
                 companyObj.put("company_login","Does not exist");
 
