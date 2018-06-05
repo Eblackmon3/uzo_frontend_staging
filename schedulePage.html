@@ -81,7 +81,7 @@
   background-color:#ff0000;
 }
 .done_button{
-  background-color: #008000;
+  background-color: #008000
 }
 
 @media screen and (min-width: 600px) {
@@ -98,6 +98,8 @@
     display: inline-block;
     margin-right: -4px;
   }
+
+
 
 .modal-body .form-horizontal .col-sm-2,
 .modal-body .form-horizontal .col-sm-10 {
@@ -498,59 +500,6 @@ $("#deleteJobButton").click(function(){
         }
         
 
- $("#CompleteJob").click(function(){
-  if (!currJobComp){
-  var totalPay=0;
-
-  
-                    if (confirm("Are you sure you would like to complete the job?")) {
-                      $(this).css("background-color", "green");
-                      for(var i=0; i<currJob.length;i++){
-                        totalPay= totalPay+ completeJob(i,currJob,currRate);
-                      }
-                      totalPay = numeral(totalPay.toString()).format('0.00');
-
-                      console.log("job total pay:"+totalPay);
-                      console.log();
-                      jobInfo= {
-                        "job_id":currJobID,
-                        "completed":true
-                      }
-                      $.ajax({
-                            type: 'POST',
-                            contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/complete_job',
-                           data:JSON.stringify(jobInfo)
-                           
-                        }).done(function(data) { 
-                            var result = JSON.parse(data);
-                            console.log(result);
-                             
-                        });
-                    }
-                  }else{
-                    alert("Job already been completed");
-                  }
-
-                  });
-
- var completeJob = function(i,studentJobsBasicInfo,currRate){
-  result=studentJobsBasicInfo[i];
-  totalPay=0;
-  if(result.clock_out && result.clock_in){
-  var duration = moment.duration(moment(result.clock_out).diff(moment(result.clock_in)));
-                            var hours = duration.asHours();
-                            totalPay= hours*currRate
-                            totalPay= Math.round(totalPay*100)/100;
-                             if(totalPay>20){
-                                console.log("Student ID:"+result.student_id)
-                              }
-                            console.log("students pay:"+totalPay)
-                      }
-                            
-  return totalPay
-
- };
 
 
         //this method is to pull the original information for each job modal
@@ -846,44 +795,41 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                       "completed" :true,
                       "amount_to_pay": calendarEvent.rate
                     };
-              
-                console.log(calendarEvent.completed);
-                if(calendarEvent.completed){
-                  $("#CompleteJob").css("background-color", "green");
-                }
-                $("#studentsOnJob").append( "<div class='panel panel-default' id='jobMpanel"+i+"'>");
-                $("#jobMpanel"+i).append("<div class='panel-heading' id='jobMpanel-heading"+i+"'>");
-                $("#jobMpanel-heading"+i).append("<h4 class='panel-title' id='jobMpanel-title"+i+"'>");
-                $("#jobMpanel-title"+i).append("<a data-toggle='collapse' href='#jobMcollapse"+i+"'>"+studentJobBasicInfo[i].first_name+ " "+ studentJobBasicInfo[i].last_name+"</a>");
-                $("#jobMpanel"+i).append("<div id='jobMcollapse"+i+"'class='panel-collapse collapse'>");
-                $("#jobMcollapse"+i).append("<div class='panel-body' id='jobMpanel-body"+i+"'>");
-                $("#jobMpanel-body"+i).append("<div class='btn-group' id='jobManagerGroup"+i+"'>");
-                if(studentJobBasicInfo[i].clock_in){
-                $("#jobManagerGroup"+i).append("<button type='button'id='clockinBtn"+i+"' class='btn btn-primary done_button'>clock-in</button>");
-                  }else{
-                    $("#jobManagerGroup"+i).append("<button type='button'id='clockinBtn"+i+"' class='btn btn-primary'>clock-in</button>");
-                  }
-                  if(studentJobBasicInfo[i].clock_out){
-                $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary done_button'>clock-out</button>");
-                  }else{
-                    $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary'>clock-out</button>");
-                  }
-                $("#jobManagerGroup"+i).append("<button type='button'id='deleteButton"+i+"' class='btn btn-primary delete_button'>Delete Student</button>");
 
-                  $("#clockinBtn"+i).click(function(){
+                $("#jobTable").append("<tr id='student"+studentJobBasicInfo[i].student_id+"'>");
+                $("#student"+studentJobBasicInfo[i].student_id).append("<th>" +studentJobBasicInfo[i].first_name+ " "+ studentJobBasicInfo[i].last_name+ "</th>");
+                if(studentJobBasicInfo[i].clock_in){
+                $("#student"+studentJobBasicInfo[i].student_id).append("<th>" +studentJobBasicInfo[i].clock_in+"</th>");
+              }else{
+                $("#student"+studentJobBasicInfo[i].student_id).append("<th>"+"N/A"+"</th>");
+              }
+              if(studentJobBasicInfo[i].clock_out){
+                $("#student"+studentJobBasicInfo[i].student_id).append("<th>" +studentJobBasicInfo[i].clock_out+ "</th>");
+              }else{
+                $("#student"+studentJobBasicInfo[i].student_id).append("<th>" +"N/A"+ "</th>");
+              }
+
+               if(studentJobBasicInfo[i].completed){
+                 $("#student"+studentJobBasicInfo[i].student_id).append("<th> <button type='button'id='completeStudentButton"+studentJobBasicInfo[i].completed+"' class='btn btn-primary done_button'>Complete Job</button> </th>");
+               }else{
+                  $("#student"+studentJobBasicInfo[i].student_id).append("<th><button type='button'id='completeStudentButton"+studentJobBasicInfo[i].completed+"' class='btn btn-primary'>Complete Job</button></th>");
+               }
+               $("#student"+studentJobBasicInfo[i].student_id).append("<th><button type='button'id='deleteButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary delete_button'>Delete Student</button></th");
+            
+                  $("#completeStudentButton"+studentJobBasicInfo[i].completed).click(function(){
                     var clockinInfo={
                       "job_id": calendarEvent.job_id,
                       "student_id":studentIDInfo.student_id,
                       "clock_in" :moment().format()
                     };
-                    console.log(clockinInfo)
-                    if (confirm("Are you sure you would like to clock-in the job?")) {
+       
+                    if (confirm("Are you sure you would like to complete?")) {
                       $(this).css("background-color", "green");
                         $.ajax({
                             type: 'POST',
                             contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/clockin_student',
-                            data:JSON.stringify(clockinInfo)
+                            url: 'https://uzo-web-app.herokuapp.com/set_completed_job',
+                            data:JSON.stringify(completedInfo)
                           }).done(function(data) {
                             var result= JSON.parse(data);
                              console.log(result);
@@ -891,29 +837,8 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
                           });
                         }
-                    });$("#clockoutBtn"+i).click(function(){
-                      if (confirm("Are you sure you would like to clock-out the job?")) {
-                        $(this).css("background-color", "green");
-                        var clockoutInfo={
-                          "job_id":calendarEvent.job_id,
-                          "student_id":studentIDInfo.student_id,
-                          "clock_out" :moment().format()
-                        };
-                        console.log(clockoutInfo);
-                        $.ajax({
-                            type: 'POST',
-                            contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/clockout_student',
-                            data:JSON.stringify(clockoutInfo)
-                          }).done(function(data) {
-                            var result= JSON.parse(data);
-                             console.log(result);
-
-
-                          });
-                        }
-                    });
-                    $("#deleteButton"+i).click(function(){
+                      });
+                    $("#deleteButton"+studentJobBasicInfo[i].student_id).click(function(){
                       if (confirm("Are you sure you would like to delete student from Job")) {
                         $.ajax({
                             type: 'POST',
@@ -928,19 +853,10 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                           });
                         }
                     });
+                  }
+                });
+
                 
-
-
-        
-              
-          }
-
-
-
-
-
-
-});
 
 
 
@@ -952,8 +868,6 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
     <div class="menu">
       <ul id="myTab">
         <li class="schedule"><a class="active" href="#first" data-toggle="tab" id="shedule">My Schedule</a></li>
-        <li class="payment_info"><a  href="#fifth" data-toggle="tab" id="payment_info">Payment Info</a></li>
-      </ul>
         
 </div>
     </div>
@@ -1159,17 +1073,31 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                       </div>
                       <div role="tabpanel" class="tab-pane" id="interestedStudentTab">
                         <div class="container">
+  
+
+
                          
                         </div>
                       </div>
 
                       <!--Other tabs -->
                       <div role="tabpanel" class="tab-pane" id="jobManagerTab">
-                        <button type="button" id="CompleteJob" class="btn btn-primary">Complete Job</button>
-                        <div id="studentsOnJob">
                         
+                       
+
+                          <table id="jobTable" style="width:100%">
+                            <tr>
+                              <th>Student Name</th>
+                              <th>Clock-in</th> 
+                              <th>Clock-out</th>
+                              <th>Complete Job</th>
+                              <th>Delete Student</th>
+
+                            </tr>
+
+                          </table>
+                         
                   
-                        </div>
                       </div>
 
                       <div role="tabpanel" class="tab-pane" id="updateJob">
