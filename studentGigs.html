@@ -36,10 +36,10 @@
 
 
 
-	<style>
-	@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+  <style>
+  @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-	body {
+  body {
   margin: 0;
   padding: 0;
   background: #ccc;
@@ -115,19 +115,19 @@ textarea {
 
 
 
-	body {
-	}
-	</style>
+  body {
+  }
+  </style>
 
-	<meta charset="utf-8">
+  <meta charset="utf-8">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<script>
+  <script>
 $(document).ready(function () {
      //Log out button
 $("#logoutButton").click(function(){
-  sessionStorage.setItem("student_id",0)
+  sessionStorage.removeItem('student_id');
  window.location.replace("studentIndex.html");
      
   });
@@ -205,6 +205,56 @@ $("#logoutButton").click(function(){
                   "Address: "+jobsInfo[i].address
                   +"</li>");
                  $("#panel-body"+i).append("<div class='btn-group' id='jobManagerGroup"+i+"'>");
+        
+                    $("#jobManagerGroup"+i).append("<button type='button'id='clockinBtn"+i+"' class='btn btn-primary'>clock-in</button>");
+            
+               
+                    $("#jobManagerGroup"+i).append("<button type='button'id='clockoutBtn"+i+"' class='btn btn-primary'>clock-out</button>");
+
+                     $("#clockinBtn"+i).click(function(){
+                    var clockinInfo={
+                      "job_id": jobsInfo[i].job_id,
+                      "student_id":sessionStorage.getItem("student_id"),
+                      "clock_in" :moment().format()
+                    };
+                    console.log(clockinInfo)
+                    if (confirm("Are you sure you would like to clock-in the job?")) {
+                    
+                        $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/clockin_student',
+                            data:JSON.stringify(clockinInfo)
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                             console.log(result);
+
+
+                          });
+                        }
+                    });$("#clockoutBtn"+i).click(function(){
+                      if (confirm("Are you sure you would like to clock-out the job?")) {
+                        
+                        var clockoutInfo={
+                          "job_id":jobsInfo[i].job_id,
+                          "student_id":sessionStorage.getItem("student_id"),
+                          "clock_out" :moment().format()
+                        };
+                        console.log(clockoutInfo);
+                        $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/clockout_student',
+                            data:JSON.stringify(clockoutInfo)
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                             console.log(result);
+
+
+                          });
+                        }
+                    });
+                  
 
 
  }
@@ -225,7 +275,7 @@ $("#logoutButton").click(function(){
   
  });             
 
-	</script>
+  </script>
 </head>
 
 <body class="student">
@@ -234,8 +284,7 @@ $("#logoutButton").click(function(){
       <ul id="myTab">
         <li class="open_gigs"><a  href="#first" data-toggle="tab" id="open_gigs">Open Gigs</a></li>
         <li class="my_gigs"><a class="active" href="#second" data-toggle="tab" id="my_gigs">My Gigs</a></li>
-        <li class="payment_info"><a  href="#third" data-toggle="tab" id="payment_info">payment_info</a></li>
-      </ul>
+      
 
     </div>
       <div class="container" id= "open_jobs_list">

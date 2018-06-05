@@ -207,6 +207,7 @@ $("#logoutButton").click(function(){
                 $("#header"+jobsInfo.job_id).append("<th>Student Name</th>");
                 $("#header"+jobsInfo.job_id).append("<th>Clock-in</th>");
                 $("#header"+jobsInfo.job_id).append("<th>Clock-out</th>");
+                $("#header"+jobsInfo.job_id).append("<th> Confirmed </th>");
                 $("#header"+jobsInfo.job_id).append("<th>Rate</th>");
                 $("#header"+jobsInfo.job_id).append("<th>Total</th>");
                 /*
@@ -239,6 +240,7 @@ $("#logoutButton").click(function(){
               }else{
                 $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>" +"N/A"+ "</th>");
               }
+              $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>" +jobsInfo.completed+ "</th>");
                $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>$" +jobsInfo.rate+ "</th>");
                $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>$" +totalPay+ "</th>");
                /*
