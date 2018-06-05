@@ -810,13 +810,13 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
               }
 
                if(studentJobBasicInfo[i].completed){
-                 $("#student"+studentJobBasicInfo[i].student_id).append("<th> <button type='button'id='completeStudentButton"+studentJobBasicInfo[i].completed+"' class='btn btn-primary done_button'>Complete Job</button> </th>");
+                 $("#student"+studentJobBasicInfo[i].student_id).append("<th> <button type='button'id='completeStudentButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary done_button'>Complete Job</button> </th>");
                }else{
-                  $("#student"+studentJobBasicInfo[i].student_id).append("<th><button type='button'id='completeStudentButton"+studentJobBasicInfo[i].completed+"' class='btn btn-primary'>Complete Job</button></th>");
+                  $("#student"+studentJobBasicInfo[i].student_id).append("<th><button type='button'id='completeStudentButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary'>Complete Job</button></th>");
                }
                $("#student"+studentJobBasicInfo[i].student_id).append("<th><button type='button'id='deleteButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary delete_button'>Delete Student</button></th");
             
-                  $("#completeStudentButton"+studentJobBasicInfo[i].completed).click(function(){
+                  $("#completeStudentButton"+studentJobBasicInfo[i].student_id).click(function(){
                     var clockinInfo={
                       "job_id": calendarEvent.job_id,
                       "student_id":studentIDInfo.student_id,
