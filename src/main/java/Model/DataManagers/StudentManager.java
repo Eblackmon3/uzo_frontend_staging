@@ -1240,6 +1240,71 @@ public class StudentManager {
         return updateUniversity;
     }
 
+
+
+    public JSONObject updateStudentAccepted(Student student ){
+        JSONObject updateUniversity= new JSONObject();
+        ResultSet rsObj = null;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql="update t_student_info set student_accepted=? where student_id=?";
+        DbConn jdbcObj = new DbConn();
+        int affectedRows=0;
+        try{
+
+            if(student.getStudent_id()==0 ||student.getUniversity()==null){
+                throw new Exception("Missing Parameter");
+            }
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setBoolean(1, student.isStudent_accepted());
+            pstmt.setInt(2,student.getStudent_id());
+            affectedRows = pstmt.executeUpdate();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+            updateUniversity.put("affected_rows",affectedRows);
+
+        }catch(Exception e){
+            e.printStackTrace();
+            try{
+                updateUniversity.put("error", e.toString());
+
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+
+        }finally{
+
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+        return updateUniversity;
+    }
+
     public JSONObject addRating(Student student){
         JSONObject updateUniversity= new JSONObject();
         Connection conn = null;
@@ -1874,7 +1939,7 @@ public class StudentManager {
             pstmt.setInt(1, interestedStudent.getStudent_id());
             rsObj = pstmt.executeQuery();
             if(rsObj.next()){
-                if(rsObj.getBoolean("student_accepted")) {
+                if(!rsObj.getBoolean("student_accepted")) {
                     return insertedStudent.put("result", "student not accepted");
                 }
             }

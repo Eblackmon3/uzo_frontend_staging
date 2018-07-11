@@ -19,7 +19,16 @@ public class Student {
     private int year;
     private String description;
     private String zipcode;
+    private boolean student_accepted;
 
+
+    public boolean isStudent_accepted() {
+        return student_accepted;
+    }
+
+    public void setStudent_accepted(boolean student_accepted) {
+        this.student_accepted = student_accepted;
+    }
 
     public String getEmail() {
         return email;
