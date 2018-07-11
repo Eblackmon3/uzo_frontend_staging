@@ -1848,10 +1848,8 @@ public class StudentManager {
         Connection conn = null;
         PreparedStatement pstmt = null;
         String sql="insert into t_interested_students_jobs(student_id, job_id) Values(?,?);";
-        String sql2= "select student_accepted from t_student_info" +
-                "inner join t_interested_students_jobs" +
-                "on t_student_info.student_id=t_interested_students_jobs.student_id" +
-                "where t_interested_students_jobs.student_id=360 and t_interested_students_jobs.job_id=241;";
+        String sql2= "select * from t_interested_students_jobs where student_id= ? and job_id= ?;";
+        String sql3="select accepted from t_student_info where student_id=?";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
@@ -1871,9 +1869,13 @@ public class StudentManager {
             rsObj = pstmt.executeQuery();
             if(rsObj.next()){
                 return  insertedStudent.put("result", "student already inserted");
-            }else if(rsObj.next()){
-                if(rsObj.getBoolean("student_accepted")){
-                    return  insertedStudent.put("result", "student not accepted");
+            }
+            pstmt = conn.prepareStatement(sql3);
+            pstmt.setInt(1, interestedStudent.getStudent_id());
+            rsObj = pstmt.executeQuery();
+            if(rsObj.next()){
+                if(rsObj.getBoolean("student_accepted")) {
+                    return insertedStudent.put("result", "student not accepted");
                 }
             }
 
