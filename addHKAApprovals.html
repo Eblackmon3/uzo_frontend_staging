@@ -173,6 +173,11 @@ var student_to_update = {
             }).done(function(data) {
                         var result= JSON.parse(data);
                         console.log(result)
+                        if(result.affected_rows>0){
+                          alert("Student confirmed!")
+                        }else{
+                          alert("oops! something when wrong!")
+                        }
 
             });
         
