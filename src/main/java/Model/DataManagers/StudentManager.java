@@ -1252,7 +1252,7 @@ public class StudentManager {
         int affectedRows=0;
         try{
 
-            if(student.getStudent_id()==0 ||student.getUniversity()==null){
+            if(student.getStudent_id()==0){
                 throw new Exception("Missing Parameter");
             }
             //Connect to the database
