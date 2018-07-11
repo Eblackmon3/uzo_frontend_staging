@@ -151,176 +151,6 @@ $("#all_jobs").click(function(){
      
   });
 
-   //this method is to pull the original information for each job modal
- var jobInfoResponse= function (){
-        return $.ajax({
-              type: 'GET',
-              contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/populate_student_job_list'
-             
-          }).done(function(data) { 
-              var result = JSON.parse(data);
-              console.log(result);
-                  
-          });
-        }
- //check to see if the jobsInfo[i][j].job_id=jobsInfo[i-1 ][j].job_id
- //if they are the same just add the student[i][j] in the list if they are different create new job tab and add the student[i][j]
- var addGigList = function(jobsInfo,prevNode,currentJob){
-  console.log("prevNode:"+prevNode.student_name);
-  console.log("current node:"+jobsInfo.student_name);
-  
-  if((jobsInfo.job_id!=prevNode.job_id)&&jobsInfo.job_title ){
-                $("#open_jobs_list").append( "<div class='panel panel-default' id='panel"+jobsInfo.job_id+"'>");
-
-                $("#panel"+jobsInfo.job_id).append("<div class='panel-heading' id='panel-heading"+jobsInfo.job_id+"'>");
-                $("#panel-heading"+jobsInfo.job_id).append("<h4 class='panel-title' id='panel-title"+jobsInfo.job_id+"'>");
-                $("#panel-title"+jobsInfo.job_id).append("<a data-toggle='collapse' href='#collapse"+jobsInfo.job_id+"'>"+jobsInfo.job_title+"</a>");
-                $("#panel"+jobsInfo.job_id).append("<div id='collapse"+jobsInfo.job_id+"'class='panel-collapse collapse'>");
-                $("#collapse"+jobsInfo.job_id).append("<div class='panel-body' id='panel-body"+jobsInfo.job_id+"'>");
-                $("#panel-body"+jobsInfo.job_id).append("<table id='table"+jobsInfo.job_id+"'>");
-                 $("#panel-body"+jobsInfo.job_id).append("<button type='button'id='exportCSV"+jobsInfo.job_id+"' class='btn btn-primary'>Export CSV</button>");
-                 $("#exportCSV"+jobsInfo.job_id).click(
-                      function(){
-
-                        let csvContent = "data:text/csv;charset=utf-8,";
-                        let row= "Student Name, Clock-in, Clock-out, Rate, Total Pay";
-                        csvContent += row + "\r\n";
-                        currentJob.forEach(function(rowArray){
-                          if(rowArray.clock_out&&rowArray.clock_in){
-                          var duration = moment.duration(moment(rowArray.clock_out).diff(moment(rowArray.clock_in)));
-                            var hours = duration.asHours();
-                            totalPay= hours*jobsInfo.rate;
-                            totalPay= Math.round(totalPay*100)/100;
-                            totalPay = numeral(totalPay.toString()).format('0.00');
-                          }else{
-                            totalPay=0;
-                          }
-                         row = rowArray.student_name+","+rowArray.clock_in+","+rowArray.clock_out+",$"+rowArray.rate+",$"+totalPay;
-                         console.log(row);
-                         csvContent += row + "\r\n";
-                      }); 
-                        
-                        var encodedUri = encodeURI(csvContent);
-                        window.open(encodedUri);
-                        
-
-                      });
-
-
-                $("#table"+jobsInfo.job_id).append("<tr id='header"+jobsInfo.job_id+"'>");
-                $("#header"+jobsInfo.job_id).append("<th>Student Name</th>");
-                $("#header"+jobsInfo.job_id).append("<th>Clock-in</th>");
-                $("#header"+jobsInfo.job_id).append("<th>Clock-out</th>");
-                $("#header"+jobsInfo.job_id).append("<th> Confirmed </th>");
-                $("#header"+jobsInfo.job_id).append("<th>Rate</th>");
-                $("#header"+jobsInfo.job_id).append("<th>Total</th>");
-                /*
-                $("#header"+jobsInfo.job_id).append("<th>Pay Student</th>");
-                */
-
-               }
-
-               if((jobsInfo!=null)&&jobsInfo.job_title){
-                if(jobsInfo.clock_out&&jobsInfo.clock_in){
-                var duration = moment.duration(moment(jobsInfo.clock_out).diff(moment(jobsInfo.clock_in)));
-                  console.log(duration)
-                            var hours = duration.asHours();
-                            totalPay= hours*jobsInfo.rate;
-                            totalPay= Math.round(totalPay*100)/100;
-                            totalPay = numeral(totalPay.toString()).format('0.00');
-                          }else{
-                            totalPay=0;
-                          }
-                console.log("which student added:" +jobsInfo.student_name)
-                $("#table"+jobsInfo.job_id).append("<tr id='student"+jobsInfo.student_id+jobsInfo.job_id+"'>");
-                $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>" +jobsInfo.student_name+ "</th>");
-                if(jobsInfo.clock_in){
-                $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>" +jobsInfo.clock_in+"</th>");
-              }else{
-                $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>"+"N/A"+"</th>");
-              }
-              if(jobsInfo.clock_out){
-                $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>" +jobsInfo.clock_out+ "</th>");
-              }else{
-                $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>" +"N/A"+ "</th>");
-              }
-              $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>" +jobsInfo.completed+ "</th>");
-               $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>$" +jobsInfo.rate+ "</th>");
-               $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>$" +totalPay+ "</th>");
-               /*
-                if(jobsInfo.completed){
-                 $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<button type='button'id='selectStudent"+jobsInfo.student_id+jobsInfo.job_id+"' class='btn btn-primary done_button'>Pay Student</button>");
-               }else{
-                  $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<button type='button'id='selectStudent"+jobsInfo.student_id+jobsInfo.job_id+"' class='btn btn-primary'>Pay Student</button>");
-               }
-               */
-
-                 /*$("#selectStudent"+jobsInfo.student_id+jobsInfo.job_id).click(function(){
-                  if(!jobsInfo.completed){
-                  if (confirm("Are you sure you would like to pay the student?")) {
-                  var duration = moment.duration(moment(jobsInfo.clock_out).diff(moment(jobsInfo.clock_in)));
-                  console.log(duration)
-                            var hours = duration.asHours();
-                            totalPay= hours*jobsInfo.rate;
-                            totalPay= Math.round(totalPay*100)/100;
-                            totalPay = numeral(totalPay.toString()).format('0.00');
-
-                            var payStudent={
-                            "student_id":jobsInfo.student_id,
-                            "amount":totalPay
-                          };
-                          console.log(payStudent);
-                          
-                 $.ajax({
-                            type: 'POST',
-                            contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/transfer_funds_to_student',
-                            data:JSON.stringify(payStudent)
-                          }).done(function(data) {
-                            var result= JSON.parse(data);
-                             console.log(result);
-                             $.ajax({
-                            type: 'POST',
-                            contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/set_completed_job',
-                            data:JSON.stringify(jobsInfo)
-                          }).done(function(data) {
-                            var result= JSON.parse(data);
-                             console.log(result);
-
-                              });
-
-                              });
-                              
-                        }
-                      }else{
-                        alert(" Student already paid");
-                      }
-
-
-                        });*/
-               }
-          }
-                 
-
-
-            $.when(j=jobInfoResponse()).done(function(jobs){
-              var jobsInfo= JSON.parse(jobs);
-              if(jobsInfo!=null&&jobsInfo[0]!=null){
-              var lastVisited=jobs[0][0];
-                for(var i=0;i<jobsInfo.length;i++){
-                  var jobsArray = jobsInfo[i];
-                  for(var j=0;j<jobsArray.length;j++){
-                  addGigList(jobsInfo[i][j],lastVisited,jobsInfo[i]);
-                  lastVisited=jobsInfo[i][j];
-
-                  
-                }
-               }
-             }
-               
-             });
 
   
  });             
@@ -336,9 +166,17 @@ $("#all_jobs").click(function(){
         <li class="new_student"><a class="active" href="#second" data-toggle="tab" id="new_student">Approve Student</a></li>
 
     </div>
-      <div class="container" id= "open_jobs_list">
-                         
-      </div>
+       <form class="form-inline">
+          <div class="form-group mb-2">
+            <label for="staticEmail2" class="sr-only">Email</label>
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="inputPassword2" class="sr-only">Password</label>
+            <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+      </form>
     
     
 
