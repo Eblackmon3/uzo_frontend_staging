@@ -453,6 +453,23 @@ public class  AppController {
         //return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    /*
+       example url: https://uzo-web-app.herokuapp.com/update_student_accepted
+       header:
+           {
+            "student_id": 2,
+            "student_accepter":true
+           }
+
+    */
+    @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
+    @PostMapping(value = "/update_student_accepted")
+    public String updateStudentAccepted(@RequestBody Student student){
+        StudentManager manager= new StudentManager();
+        return manager.updateStudentAccepted(student).toString();
+        //return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
 
      /*
         example url: https://uzo-web-app.herokuapp.com/update_student_rating

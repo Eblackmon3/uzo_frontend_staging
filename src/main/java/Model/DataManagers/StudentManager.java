@@ -1914,7 +1914,7 @@ public class StudentManager {
         PreparedStatement pstmt = null;
         String sql="insert into t_interested_students_jobs(student_id, job_id) Values(?,?);";
         String sql2= "select * from t_interested_students_jobs where student_id= ? and job_id= ?;";
-        String sql3="select accepted from t_student_info where student_id=?";
+        String sql3="select student_accepted from t_student_info where student_id=?";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
