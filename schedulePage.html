@@ -146,6 +146,12 @@ textarea {
     var currJobID;
     var currJobComp;
     $('#rate').mask('000,000,000,000,000.00', {reverse: true});
+    $('#startTime').inputmask({
+          mask: "h:s t\\m",
+          placeholder: "hh:mm xm - hh:mm xm",
+          alias: "datetime",
+          hourFormat: "12"
+      });
 
 
      $("#dismissShowJob").click(function(){
