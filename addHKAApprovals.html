@@ -141,8 +141,13 @@ $(document).ready(function () {
 
      //Log out button
 $("#logoutButton").click(function(){
-  sessionStorage.setItem("company_id",0)
+  sessionStorage.removeItem('company_id');
  window.location.replace("businessIndex.html");
+     
+  });
+
+$("#all_jobs").click(function(){
+ window.location.replace("Administration.html");
      
   });
 

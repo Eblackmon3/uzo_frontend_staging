@@ -141,8 +141,13 @@ $(document).ready(function () {
 
      //Log out button
 $("#logoutButton").click(function(){
-  sessionStorage.setItem("company_id",0)
+  sessionStorage.removeItem('company_id');
  window.location.replace("businessIndex.html");
+     
+  });
+
+$("#new_student").click(function(){
+ window.location.replace("addHKAApprovals.html");
      
   });
 
@@ -327,8 +332,8 @@ $("#logoutButton").click(function(){
   <header>
     <div class="menu">
       <ul id="myTab">
-        <li class="open_gigs"><a  href="#first" data-toggle="tab" id="all_jobs">All Jobs</a></li>
-        <li class="new_student"><a class="active" href="#second" data-toggle="tab" id="new_student">Approve Student</a></li>
+        <li class="open_gigs"><a  class="active" href="#first" data-toggle="tab" id="all_jobs">All Jobs</a></li>
+        <li class="new_student"><a  href="#second" data-toggle="tab" id="new_student">Approve Student</a></li>
 
     </div>
       <div class="container" id= "open_jobs_list">
