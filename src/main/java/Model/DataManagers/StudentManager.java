@@ -1938,7 +1938,9 @@ public class StudentManager {
             pstmt = conn.prepareStatement(sql3);
             pstmt.setInt(1, interestedStudent.getStudent_id());
             rsObj = pstmt.executeQuery();
+            System.out.println("Is something returned:"+rsObj.next());
             if(rsObj.next()){
+                System.out.println("Is student accepted:"+rsObj.getBoolean("student_accepted"));
                 if(!rsObj.getBoolean("student_accepted")) {
                     return insertedStudent.put("result", "student not accepted");
                 }
