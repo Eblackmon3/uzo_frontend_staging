@@ -154,8 +154,8 @@ $("#all_jobs").click(function(){
   });
 $("#submit").click(function(){
   console.log("clicked");
-var fname = $("#student_first_name").val().toLowerCase();
-var lname = $("#student_last_name").val().toLowerCase();
+var fname = $("#student_first_name").val();
+var lname = $("#student_last_name").val();
 var email = $("#student_email").val().toLowerCase();
 
 var student_to_update = {
