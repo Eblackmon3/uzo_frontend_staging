@@ -150,6 +150,30 @@ $("#all_jobs").click(function(){
  window.location.replace("Administration.html");
      
   });
+$("#next").click(function(){
+var fname = $("#student_first_name").val().toLowerCase();
+var lname = $("#student_last_name").val().toLowerCase();
+var email = $("#student_email").val().toLowerCase();
+
+var student_to_add = {
+           first_name: fname,
+           last_name: lname,
+           "student_accepted":false,
+           email: email     
+         }
+
+      $.ajax({
+              type: 'GET',
+              contentType: "application/json",
+              url: 'https://uzo-web-app.herokuapp.com/update_student_accepted'
+             
+          }).done(function(data) { 
+              var result = JSON.parse(data);
+              console.log(result);
+                  
+          });
+        
+ });
 
 
   
@@ -166,7 +190,7 @@ $("#all_jobs").click(function(){
         <li class="new_student"><a class="active" href="#second" data-toggle="tab" id="new_student">Approve Student</a></li>
 
     </div>
-     <
+     
   
   </header>
 
@@ -185,6 +209,7 @@ $("#all_jobs").click(function(){
           <label for="exampleInputEmail1">Student Email </label>
           <input type="email" class="form-control" id="student_email"  placeholder="Enter Student Email">
         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
 
     </br>
 
