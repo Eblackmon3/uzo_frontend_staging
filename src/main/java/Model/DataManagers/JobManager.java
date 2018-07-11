@@ -70,7 +70,7 @@ public class JobManager {
             conn.close();
             jdbcObj.closePool();
             StudentManager studManager= new StudentManager();
-            ArrayList<String> studentNumbers=studManager.getAllStudentsNumbers();
+            //ArrayList<String> studentNumbers=studManager.getAllStudentsNumbers();
             System.out.println(studentNumbers);
 
         }catch(Exception e){
