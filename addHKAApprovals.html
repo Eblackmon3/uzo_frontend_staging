@@ -158,7 +158,7 @@ var fname = $("#student_first_name").val().toLowerCase();
 var lname = $("#student_last_name").val().toLowerCase();
 var email = $("#student_email").val().toLowerCase();
 
-var student_to_add = {
+var student_to_update = {
            first_name: fname,
            last_name: lname,
            "student_accepted":true,
@@ -166,15 +166,14 @@ var student_to_add = {
          }
 
       $.ajax({
-              type: 'GET',
-              contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/update_student_accepted'
-             
-          }).done(function(data) { 
-              var result = JSON.parse(data);
-              console.log(result);
-                  
-          });
+              type: 'POST',
+            contentType: "application/json",
+            url: 'https://uzo-web-app.herokuapp.com/update_student_accepted',
+             data:JSON.stringify(student_to_update)
+            }).done(function(data) {
+                        var result= JSON.parse(data);
+
+            });
         
  });
 
