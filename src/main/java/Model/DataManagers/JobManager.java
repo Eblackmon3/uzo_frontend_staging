@@ -71,7 +71,7 @@ public class JobManager {
             jdbcObj.closePool();
             StudentManager studManager= new StudentManager();
             //ArrayList<String> studentNumbers=studManager.getAllStudentsNumbers();
-            System.out.println(studentNumbers);
+            //System.out.println(studentNumbers);
 
         }catch(Exception e){
             e.printStackTrace();
