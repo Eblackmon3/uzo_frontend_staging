@@ -1247,12 +1247,12 @@ public class StudentManager {
         ResultSet rsObj = null;
         Connection conn = null;
         PreparedStatement pstmt = null;
-        String sql="update t_student_info set student_accepted=? where student_id=?";
+        String sql="update t_student_info set student_accepted=? where email=? and first_name=? and last_name=?";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
 
-            if(student.getStudent_id()==0){
+            if(student.getFirst_name()==null||student.getLast_name()==null||student.getEmail()==null){
                 throw new Exception("Missing Parameter");
             }
             //Connect to the database
@@ -1264,7 +1264,9 @@ public class StudentManager {
             //can do normal DB operations here
             pstmt = conn.prepareStatement(sql);
             pstmt.setBoolean(1, student.isStudent_accepted());
-            pstmt.setInt(2,student.getStudent_id());
+            pstmt.setString(2,student.getEmail());
+            pstmt.setString(3,student.getFirst_name());
+            pstmt.setString(4,student.getLast_name());
             affectedRows = pstmt.executeUpdate();
             pstmt.close();
             conn.close();

@@ -458,7 +458,7 @@ public class  AppController {
        header:
            {
             "student_id": 2,
-            "student_accepter":true
+            "student_accepted":true
            }
 
     */
