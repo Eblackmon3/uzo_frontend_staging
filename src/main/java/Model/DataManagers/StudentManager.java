@@ -210,6 +210,101 @@ public class StudentManager {
     }
 
 
+    public String getStudentsNumber(int student, String forWhat){
+        Twilio.init(System.getenv("TWILIO_ACCOUNT"),System.getenv("TWILIO_TOKEN"));
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql="select * from t_student_info where student_id=?";
+        DbConn jdbcObj = new DbConn();
+        ArrayList<String> phoneNumbers= new ArrayList<>();
+        String phone_number="";
+        ResultSet rs=null;
+        try {
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt.setInt(1,student);
+            pstmt = conn.prepareStatement(sql);
+            rs= pstmt.executeQuery();
+            while(rs.next()){
+                phone_number= rs.getString("phone_number");
+                if(phone_number!=null &&phone_number!="" &&phone_number!=" "){
+                    phone_number = phone_number.replaceAll("\\D+","");
+                    if(phone_number.length()==10){
+                        try {
+                            if (forWhat.equals("HKA")){
+                                Message.creator(new PhoneNumber(phone_number),
+                                        new PhoneNumber("6787265534"),
+                                        "You have been accepted as an UZO Student! logon to the app to start searching for jobs!").create();
+                        }else if(forWhat.equals("job")){
+                                Message.creator(new PhoneNumber(phone_number),
+                                        new PhoneNumber("6787265534"),
+                                        "You have been accepted for a new job! logon to UZO now to see what it is!").create();
+
+                            }
+                        }catch(Exception e ){
+                            continue;
+                        }
+
+                    }
+
+                }else{
+                    return "student number not in DB";
+                }
+
+            }
+            rs.close();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+        }finally{
+            if(rs!=null){
+                try {
+                    rs.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+
+        return phone_number;
+    }
+
+
 
     public JSONObject getLastInsertedStudent(){
         ResultSet rsObj = null;
@@ -561,6 +656,9 @@ public class StudentManager {
             conn.close();
             jdbcObj.closePool();
             insertedStudentJob.put("affected_rows",affectedRows);
+            if(affectedRows>0){
+                System.out.println("Texting Student "+getStudentsNumber(studJob.getStudent_id(),"job"));
+            }
 
         }catch(Exception e){
             e.printStackTrace();
