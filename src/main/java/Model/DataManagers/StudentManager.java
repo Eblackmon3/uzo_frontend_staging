@@ -1368,7 +1368,8 @@ public class StudentManager {
             pstmt.execute();
             rsObj = pstmt.getResultSet();
             if(rsObj.next()) {
-                updateUniversity.put("affectd_rows",1);
+                updateUniversity.put("affected_rows",1);
+                affectedRows=1;
                 if (affectedRows > 0) {
                     System.out.println("Texting Student " + getStudentsNumber(rsObj.getInt("student_id"), "HKA"));
                 }
