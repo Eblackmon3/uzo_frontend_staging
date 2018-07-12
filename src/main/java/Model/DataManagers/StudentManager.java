@@ -657,6 +657,7 @@ public class StudentManager {
             jdbcObj.closePool();
             insertedStudentJob.put("affected_rows",affectedRows);
             if(affectedRows>0){
+                System.out.println("Student Id:"+studJob.getStudent_id());
                 System.out.println("Texting Student "+getStudentsNumber(studJob.getStudent_id(),"job"));
             }
 
