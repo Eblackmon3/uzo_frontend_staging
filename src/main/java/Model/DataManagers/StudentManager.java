@@ -1470,11 +1470,10 @@ public class StudentManager {
             rsObj=pstmt.getResultSet();
             if(rsObj.next()) {
                 pstmt = conn.prepareStatement(sql3);
-                pstmt.setString(1, student.getEmail());
-                pstmt.setString(2,student.getFirst_name());
-                pstmt.setString(3,student.getLast_name());
-                pstmt.setInt(4,student.getStudent_id());
-                pstmt.setString(5,UUID.randomUUID().toString());
+                pstmt.setString(2, student.getEmail());
+                pstmt.setString(3,student.getFirst_name());
+                pstmt.setString(4,student.getLast_name());
+                pstmt.setString(1,UUID.randomUUID().toString());
                 affectedRows= pstmt.executeUpdate();
                 updateUniversity.put("affected_rows",affectedRows);
 
