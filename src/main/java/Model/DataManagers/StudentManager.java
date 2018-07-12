@@ -1433,6 +1433,7 @@ public class StudentManager {
         String sql2="select student_id from t_student_info where email=? and first_name=? and last_name=?";
         String sql="insert into t_student_lost_password(email, first_name, last_name, student_id, uuid)" +
                 " Values(?,?,?,?,?)";
+        String sql3="update t_student_lost_password set uuid=? where email=? and first_name=? and last_name=?";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
@@ -1481,6 +1482,23 @@ public class StudentManager {
             e.printStackTrace();
             try{
                 updateUniversity.put("error", e.toString());
+                if(e.toString().contains("ERROR: duplicate key value violates unique constraint")){
+                    pstmt = conn.prepareStatement(sql);
+                    pstmt.setString(1, student.getEmail());
+                    pstmt.setString(2,student.getFirst_name());
+                    pstmt.setString(3,student.getLast_name());
+                    pstmt.setString(4,UUID.randomUUID().toString());
+                    affectedRows= pstmt.executeUpdate();
+                    updateUniversity.put("affected_rows",affectedRows);
+
+                    rsObj.close();
+                    pstmt.close();
+                    conn.close();
+                    jdbcObj.closePool();
+
+                }else{
+                    updateUniversity.put("error", e.toString());
+                }
 
             }catch(Exception f){
                 f.printStackTrace();
