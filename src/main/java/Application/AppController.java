@@ -470,8 +470,27 @@ public class  AppController {
         //return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    /*
+      example url: https://uzo-web-app.herokuapp.com/lost_password_request
+      header:
+          {
+           "email": "email,
+           "first_name":"eric",
+           "last_name":"blackmon"
+          }
 
-     /*
+   */
+    @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
+    @PostMapping(value = "/lost_password_request")
+    public String studentLostPasswordRequest(@RequestBody Student student){
+        StudentManager manager= new StudentManager();
+        return manager.insertStudentLostNumberRecord(student).toString();
+        //return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+
+
+    /*
         example url: https://uzo-web-app.herokuapp.com/update_student_rating
         header:
             {

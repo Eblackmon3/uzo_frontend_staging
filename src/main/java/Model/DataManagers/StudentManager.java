@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class StudentManager {
 
@@ -1376,6 +1377,100 @@ public class StudentManager {
             }else{
                 System.err.print("Something went wront ");
             }
+            rsObj.close();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+            try{
+                updateUniversity.put("error", e.toString());
+
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+
+        }finally{
+            if(rsObj!=null){
+                try {
+                    rsObj.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+        return updateUniversity;
+    }
+
+
+    public JSONObject insertStudentLostNumberRecord(Student student ){
+        JSONObject updateUniversity= new JSONObject();
+        ResultSet rsObj = null;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql2="select student_id from t_student_info where where email=? and first_name=? and last_name=?";
+        String sql="insert into t_student_lost_password(email, first_name, last_name, student_id, uuid)" +
+                " Values(?,?,?,?,?)";
+        DbConn jdbcObj = new DbConn();
+        int affectedRows=0;
+        try{
+
+            if(student.getFirst_name()==null||student.getLast_name()==null||student.getEmail()==null){
+                throw new Exception("Missing Parameter");
+            }
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt= conn.prepareStatement(sql2);
+            pstmt.setString(1, student.getEmail());
+            pstmt.setString(2,student.getFirst_name());
+            pstmt.setString(3,student.getLast_name());
+            pstmt.executeQuery();
+            rsObj=pstmt.getResultSet();
+            if(rsObj.next()){
+                student.setStudent_id(rsObj.getInt("student_id"));
+
+            }else{
+                updateUniversity.put("result","information incorrect");
+                return updateUniversity;
+            }
+
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, student.getEmail());
+            pstmt.setString(2,student.getFirst_name());
+            pstmt.setString(3,student.getLast_name());
+            pstmt.setInt(4,student.getStudent_id());
+            pstmt.setString(5,UUID.randomUUID().toString());
+            affectedRows= pstmt.executeUpdate();
+            updateUniversity.put("affected_rows",affectedRows);
+
             rsObj.close();
             pstmt.close();
             conn.close();
