@@ -1370,6 +1370,10 @@ public class StudentManager {
             conn.close();
             jdbcObj.closePool();
             updateUniversity.put("affected_rows",affectedRows);
+            if(affectedRows>0){
+                System.out.println("Texting Student "+getStudentsNumber(student.getStudent_id(),"HKA"));
+            }
+
 
         }catch(Exception e){
             e.printStackTrace();
