@@ -416,7 +416,7 @@ public class StudentManager {
             pstmt.setString(14,student.getApt());
             pstmt.setString(15,student.getZipcode());
             boolean didItWork;
-            didItWork = pstmt.execute();
+             pstmt.execute();
             lastStudent= pstmt.getResultSet();
             int student_id=0;
             while(lastStudent.next()){
@@ -1365,6 +1365,7 @@ public class StudentManager {
             pstmt.setString(2,student.getEmail());
             pstmt.setString(3,student.getFirst_name());
             pstmt.setString(4,student.getLast_name());
+            pstmt.execute();
             rsObj = pstmt.getResultSet();
             if(rsObj.next()) {
                 updateUniversity.put("affectd_rows",1);
