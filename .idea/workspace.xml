@@ -24,8 +24,8 @@
       <file leaf-file-name="JobManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="38" />
+            <state relative-caret-position="150">
+              <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -34,8 +34,8 @@
       <file leaf-file-name="StudentManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="530">
-              <caret line="1474" column="33" lean-forward="false" selection-start-line="1474" selection-start-column="33" selection-end-line="1474" selection-end-column="33" />
+            <state relative-caret-position="-648">
+              <caret line="1432" column="39" lean-forward="false" selection-start-line="1432" selection-start-column="35" selection-end-line="1432" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -119,8 +119,8 @@
       <find>acc</find>
       <find>lost</find>
       <find>Accepted</find>
-      <find>Lost</find>
       <find>update_student_uni</find>
+      <find>Lost</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -1392,14 +1392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="38" lean-forward="false" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
@@ -1425,10 +1417,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="530">
-          <caret line="1474" column="33" lean-forward="false" selection-start-line="1474" selection-start-column="33" selection-end-line="1474" selection-end-column="33" />
+        <state relative-caret-position="-648">
+          <caret line="1432" column="39" lean-forward="false" selection-start-line="1432" selection-start-column="35" selection-end-line="1432" selection-end-column="39" />
           <folding />
         </state>
       </provider>
