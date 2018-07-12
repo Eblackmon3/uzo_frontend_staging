@@ -1434,6 +1434,7 @@ public class StudentManager {
         String sql="insert into t_student_lost_password(email, first_name, last_name, student_id, uuid)" +
                 " Values(?,?,?,?,?)";
         String sql3="update t_student_lost_password set uuid=? where email=? and first_name=? and last_name=?";
+        String sql4="select student_id from t_student_lost_password where student_id=?";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
@@ -1454,6 +1455,7 @@ public class StudentManager {
             pstmt.setString(3,student.getLast_name());
             pstmt.executeQuery();
             rsObj=pstmt.getResultSet();
+
             if(rsObj.next()){
                 student.setStudent_id(rsObj.getInt("student_id"));
 
@@ -1462,15 +1464,35 @@ public class StudentManager {
                 return updateUniversity;
             }
 
+            pstmt = conn.prepareStatement(sql4);
+            pstmt.setInt(1,student.getStudent_id());
+            pstmt.executeQuery();
+            rsObj=pstmt.getResultSet();
+            if(rsObj.next()) {
+                pstmt = conn.prepareStatement(sql3);
+                pstmt.setString(1, student.getEmail());
+                pstmt.setString(2,student.getFirst_name());
+                pstmt.setString(3,student.getLast_name());
+                pstmt.setInt(4,student.getStudent_id());
+                pstmt.setString(5,UUID.randomUUID().toString());
+                affectedRows= pstmt.executeUpdate();
+                updateUniversity.put("affected_rows",affectedRows);
 
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, student.getEmail());
-            pstmt.setString(2,student.getFirst_name());
-            pstmt.setString(3,student.getLast_name());
-            pstmt.setInt(4,student.getStudent_id());
-            pstmt.setString(5,UUID.randomUUID().toString());
-            affectedRows= pstmt.executeUpdate();
-            updateUniversity.put("affected_rows",affectedRows);
+                rsObj.close();
+                pstmt.close();
+                conn.close();
+                jdbcObj.closePool();
+
+            }else {
+
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, student.getEmail());
+                pstmt.setString(2, student.getFirst_name());
+                pstmt.setString(3, student.getLast_name());
+                pstmt.setString(4, UUID.randomUUID().toString());
+                affectedRows = pstmt.executeUpdate();
+                updateUniversity.put("affected_rows", affectedRows);
+            }
 
             rsObj.close();
             pstmt.close();
@@ -1478,27 +1500,16 @@ public class StudentManager {
             jdbcObj.closePool();
 
 
+
+
+
         }catch(Exception e){
             e.printStackTrace();
             try{
-                updateUniversity.put("error", e.toString());
-                if(e.toString().contains("ERROR: duplicate key value violates unique constraint")){
-                    pstmt = conn.prepareStatement(sql);
-                    pstmt.setString(1, student.getEmail());
-                    pstmt.setString(2,student.getFirst_name());
-                    pstmt.setString(3,student.getLast_name());
-                    pstmt.setString(4,UUID.randomUUID().toString());
-                    affectedRows= pstmt.executeUpdate();
-                    updateUniversity.put("affected_rows",affectedRows);
 
-                    rsObj.close();
-                    pstmt.close();
-                    conn.close();
-                    jdbcObj.closePool();
 
-                }else{
                     updateUniversity.put("error", e.toString());
-                }
+
 
             }catch(Exception f){
                 f.printStackTrace();
