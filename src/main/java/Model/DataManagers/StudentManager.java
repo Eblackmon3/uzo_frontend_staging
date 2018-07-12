@@ -1345,7 +1345,7 @@ public class StudentManager {
         ResultSet rsObj = null;
         Connection conn = null;
         PreparedStatement pstmt = null;
-        String sql="update t_student_info set student_accepted=? where email=? and first_name=? and last_name=?";
+        String sql="update t_student_info set student_accepted=? where email=? and first_name=? and last_name=? RETURNING student_id; ";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
@@ -1365,14 +1365,19 @@ public class StudentManager {
             pstmt.setString(2,student.getEmail());
             pstmt.setString(3,student.getFirst_name());
             pstmt.setString(4,student.getLast_name());
-            affectedRows = pstmt.executeUpdate();
+            rsObj = pstmt.getResultSet();
+            if(rsObj.next()) {
+                updateUniversity.put("affectd_rows",1);
+                if (affectedRows > 0) {
+                    System.out.println("Texting Student " + getStudentsNumber(rsObj.getInt("student_id"), "HKA"));
+                }
+            }else{
+                System.err.print("Something went wront ");
+            }
+            rsObj.close();
             pstmt.close();
             conn.close();
             jdbcObj.closePool();
-            updateUniversity.put("affected_rows",affectedRows);
-            if(affectedRows>0){
-                System.out.println("Texting Student "+getStudentsNumber(student.getStudent_id(),"HKA"));
-            }
 
 
         }catch(Exception e){
@@ -1385,6 +1390,13 @@ public class StudentManager {
             }
 
         }finally{
+            if(rsObj!=null){
+                try {
+                    rsObj.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
 
             if(pstmt!=null){
                 try {
