@@ -1518,6 +1518,90 @@ public class StudentManager {
         return updateUniversity;
     }
 
+
+    public JSONObject getStudentLostPasswordHash(Student student ){
+        JSONObject updateUniversity= new JSONObject();
+        ResultSet rsObj = null;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql2="select uuid from t_student_lost_password where uuid=? and email=? and first_name=? and last_name=?";
+        DbConn jdbcObj = new DbConn();
+        int affectedRows=0;
+        try{
+
+            if(student.getEmail()==null||student.getFirst_name()==null ||student.getLast_name()==null||
+                    student.getUUID()==null){
+                throw new Exception("Missing Parameter");
+            }
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt= conn.prepareStatement(sql2);
+            pstmt.setString(1, student.getUUID());
+            pstmt.setString(2, student.getEmail());
+            pstmt.setString(3, student.getFirst_name());
+            pstmt.setString(4, student.getLast_name());
+
+            pstmt.executeQuery();
+            rsObj=pstmt.getResultSet();
+            if(rsObj.next()){
+                updateUniversity.put("result", "correct");
+
+            }else{
+                updateUniversity.put("result","information incorrect");
+
+            }
+            rsObj.close();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+            try{
+                updateUniversity.put("error", e.toString());
+
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+
+        }finally{
+            if(rsObj!=null){
+                try {
+                    rsObj.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+        return updateUniversity;
+    }
+
     public JSONObject addRating(Student student){
         JSONObject updateUniversity= new JSONObject();
         Connection conn = null;

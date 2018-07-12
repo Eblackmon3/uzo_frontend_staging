@@ -20,7 +20,16 @@ public class Student {
     private String description;
     private String zipcode;
     private boolean student_accepted;
+    private String UUID;
 
+
+    public String getUUID() {
+        return UUID;
+    }
+
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
+    }
 
     public boolean isStudent_accepted() {
         return student_accepted;
