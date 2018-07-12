@@ -1430,7 +1430,7 @@ public class StudentManager {
         ResultSet rsObj = null;
         Connection conn = null;
         PreparedStatement pstmt = null;
-        String sql2="select student_id from t_student_info where where email=? and first_name=? and last_name=?";
+        String sql2="select student_id from t_student_info where email=? and first_name=? and last_name=?";
         String sql="insert into t_student_lost_password(email, first_name, last_name, student_id, uuid)" +
                 " Values(?,?,?,?,?)";
         DbConn jdbcObj = new DbConn();
