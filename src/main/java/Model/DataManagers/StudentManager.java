@@ -227,8 +227,8 @@ public class StudentManager {
             //check how many connections we have
             System.out.println(jdbcObj.printDbStatus());
             //can do normal DB operations here
-            pstmt.setInt(1,student);
             pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,student);
             rs= pstmt.executeQuery();
             while(rs.next()){
                 phone_number= rs.getString("phone_number");
@@ -657,7 +657,6 @@ public class StudentManager {
             jdbcObj.closePool();
             insertedStudentJob.put("affected_rows",affectedRows);
             if(affectedRows>0){
-                System.out.println("Student Id:"+studJob.getStudent_id());
                 System.out.println("Texting Student "+getStudentsNumber(studJob.getStudent_id(),"job"));
             }
 
