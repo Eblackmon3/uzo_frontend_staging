@@ -1479,7 +1479,7 @@ public class StudentManager {
                 pstmt.setString(2, student.getEmail());
                 pstmt.setString(3,student.getFirst_name());
                 pstmt.setString(4,student.getLast_name());
-                pstmt.setString(1,uuid);
+                pstmt.setString(1,uuid.substring(0,8));
                 affectedRows= pstmt.executeUpdate();
                 updateUniversity.put("affected_rows",affectedRows);
 
@@ -1494,7 +1494,7 @@ public class StudentManager {
                 pstmt.setString(1, student.getEmail());
                 pstmt.setString(2, student.getFirst_name());
                 pstmt.setString(3, student.getLast_name());
-                pstmt.setString(4, uuid);
+                pstmt.setString(4, uuid.substring(0,8));
                 affectedRows = pstmt.executeUpdate();
                 updateUniversity.put("affected_rows", affectedRows);
             }
@@ -1504,7 +1504,9 @@ public class StudentManager {
             conn.close();
             jdbcObj.closePool();
 
-        getStudentsNumber(student.getStudent_id(),uuid);
+            if(affectedRows>0) {
+                getStudentsNumber(student.getStudent_id(), uuid);
+            }
 
 
 
