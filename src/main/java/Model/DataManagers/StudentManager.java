@@ -1435,7 +1435,7 @@ public class StudentManager {
         ResultSet rsObj = null;
         Connection conn = null;
         PreparedStatement pstmt = null;
-        String uuid=UUID.randomUUID().toString();
+        String uuid=UUID.randomUUID().toString().substring(0,4);
         String sql2="select student_id from t_student_info where email=? and first_name=? and last_name=?";
         String sql="insert into t_student_lost_password(email, first_name, last_name, student_id, uuid)" +
                 " Values(?,?,?,?,?)";
@@ -1479,7 +1479,7 @@ public class StudentManager {
                 pstmt.setString(2, student.getEmail());
                 pstmt.setString(3,student.getFirst_name());
                 pstmt.setString(4,student.getLast_name());
-                pstmt.setString(1,uuid.substring(0,4));
+                pstmt.setString(1,uuid);
                 affectedRows= pstmt.executeUpdate();
                 updateUniversity.put("affected_rows",affectedRows);
 
@@ -1494,7 +1494,7 @@ public class StudentManager {
                 pstmt.setString(1, student.getEmail());
                 pstmt.setString(2, student.getFirst_name());
                 pstmt.setString(3, student.getLast_name());
-                pstmt.setString(4, uuid.substring(0,4));
+                pstmt.setString(4, uuid);
                 affectedRows = pstmt.executeUpdate();
                 updateUniversity.put("affected_rows", affectedRows);
             }
