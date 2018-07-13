@@ -249,7 +249,7 @@ public class StudentManager {
                             } else{
                                 Message.creator(new PhoneNumber(phone_number),
                                         new PhoneNumber("6787265534"),
-                                        "your UUID is: "+forWhat).create();
+                                        "Your verification code  is: "+forWhat).create();
 
                             }
                         }catch(Exception e ){
@@ -1586,6 +1586,7 @@ public class StudentManager {
             rsObj=pstmt.getResultSet();
             if(rsObj.next()){
                 updateUniversity.put("result", "correct");
+                updateUniversity.put("student_id",rsObj.getInt("student_id"));
 
             }else{
                 updateUniversity.put("result","information incorrect");

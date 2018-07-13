@@ -34,8 +34,8 @@
       <file leaf-file-name="StudentManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-641">
-              <caret line="1437" column="63" lean-forward="false" selection-start-line="1437" selection-start-column="63" selection-end-line="1437" selection-end-column="63" />
+            <state relative-caret-position="56">
+              <caret line="1562" column="119" lean-forward="false" selection-start-line="1562" selection-start-column="119" selection-end-line="1562" selection-end-column="119" />
               <folding />
             </state>
           </provider>
@@ -73,7 +73,7 @@
       <file leaf-file-name="AppController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
+            <state relative-caret-position="6301">
               <caret line="505" column="49" lean-forward="false" selection-start-line="505" selection-start-column="23" selection-end-line="505" selection-end-column="49" />
               <folding />
             </state>
@@ -91,7 +91,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Numbers</find>
       <find>https://uzo-frontend.herokuapp.com</find>
       <find>Login</find>
       <find>pay</find>
@@ -120,6 +119,7 @@
       <find>Lost</find>
       <find>insertLo</find>
       <find>insertStudentLostNumberRecord</find>
+      <find>getStudentsNumber</find>
       <find>update_student_uni</find>
     </findStrings>
     <replaceStrings>
@@ -1419,7 +1419,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
+        <state relative-caret-position="6301">
           <caret line="505" column="49" lean-forward="false" selection-start-line="505" selection-start-column="23" selection-end-line="505" selection-end-column="49" />
           <folding />
         </state>
@@ -1427,8 +1427,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-641">
-          <caret line="1437" column="63" lean-forward="false" selection-start-line="1437" selection-start-column="63" selection-end-line="1437" selection-end-column="63" />
+        <state relative-caret-position="56">
+          <caret line="1562" column="119" lean-forward="false" selection-start-line="1562" selection-start-column="119" selection-end-line="1562" selection-end-column="119" />
           <folding />
         </state>
       </provider>
