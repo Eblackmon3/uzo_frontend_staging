@@ -1560,7 +1560,7 @@ public class StudentManager {
         ResultSet rsObj = null;
         Connection conn = null;
         PreparedStatement pstmt = null;
-        String sql2="select uuid from t_student_lost_password where uuid=? and email=? and first_name=? and last_name=?";
+        String sql2="select * from t_student_lost_password where uuid=? and email=? and first_name=? and last_name=?";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
