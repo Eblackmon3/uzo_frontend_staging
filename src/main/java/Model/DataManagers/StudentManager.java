@@ -251,7 +251,7 @@ public class StudentManager {
                                         new PhoneNumber("6787265534"),
                                         "Please complete application at " +
                                                 "https://docs.google.com/forms/d/e/1FAIpQLSdAu_fSAjY7KS4S8ZNtQu1N2dfsGoHcA_et5ZEq4mJ917mP2g/viewform?usp=sf_link" +
-                                                "in order to finish registration process").create();
+                                                " in order to finish registration process").create();
 
 
                             }else{

@@ -34,8 +34,8 @@
       <file leaf-file-name="StudentManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-365">
-              <caret line="213" column="35" lean-forward="false" selection-start-line="213" selection-start-column="18" selection-end-line="213" selection-end-column="35" />
+            <state relative-caret-position="221">
+              <caret line="253" column="50" lean-forward="false" selection-start-line="253" selection-start-column="50" selection-end-line="253" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -1427,8 +1427,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-365">
-          <caret line="213" column="35" lean-forward="false" selection-start-line="213" selection-start-column="18" selection-end-line="213" selection-end-column="35" />
+        <state relative-caret-position="221">
+          <caret line="253" column="50" lean-forward="false" selection-start-line="253" selection-start-column="50" selection-end-line="253" selection-end-column="50" />
           <folding />
         </state>
       </provider>
