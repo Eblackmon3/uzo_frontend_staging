@@ -246,7 +246,15 @@ public class StudentManager {
                                         new PhoneNumber("6787265534"),
                                         "You have been accepted for a new job! logon to UZO now to see what it is!").create();
 
-                            } else{
+                            }else if(forWhat.equals("app")){
+                                Message.creator(new PhoneNumber(phone_number),
+                                        new PhoneNumber("6787265534"),
+                                        "Please complete application at " +
+                                                "https://docs.google.com/forms/d/e/1FAIpQLSdAu_fSAjY7KS4S8ZNtQu1N2dfsGoHcA_et5ZEq4mJ917mP2g/viewform?usp=sf_link" +
+                                                "in order to finish registration process").create();
+
+
+                            }else{
                                 Message.creator(new PhoneNumber(phone_number),
                                         new PhoneNumber("6787265534"),
                                         "Your verification code  is: "+forWhat).create();
@@ -1831,6 +1839,9 @@ public class StudentManager {
             conn.close();
             jdbcObj.closePool();
             uploadeResume.put("affected_rows",affectedRows);
+            if(affectedRows>0){
+                System.out.println("Texting Student "+getStudentsNumber(student_id,"app"));
+            }
 
         }catch(Exception e){
             e.printStackTrace();
