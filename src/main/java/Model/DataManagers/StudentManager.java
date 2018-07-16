@@ -1586,6 +1586,7 @@ public class StudentManager {
             rsObj=pstmt.getResultSet();
             if(rsObj.next()){
                 updateUniversity.put("result", "correct");
+                System.out.println("Student ID "+rsObj.getInt("student_id") );
                 updateUniversity.put("student_id",rsObj.getInt("student_id"));
 
             }else{
