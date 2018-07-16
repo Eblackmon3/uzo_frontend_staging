@@ -74,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="471">
-              <caret line="180" column="80" lean-forward="false" selection-start-line="180" selection-start-column="80" selection-end-line="180" selection-end-column="80" />
+              <caret line="180" column="24" lean-forward="false" selection-start-line="180" selection-start-column="24" selection-end-line="180" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -1428,7 +1428,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="471">
-          <caret line="180" column="80" lean-forward="false" selection-start-line="180" selection-start-column="80" selection-end-line="180" selection-end-column="80" />
+          <caret line="180" column="24" lean-forward="false" selection-start-line="180" selection-start-column="24" selection-end-line="180" selection-end-column="24" />
           <folding />
         </state>
       </provider>

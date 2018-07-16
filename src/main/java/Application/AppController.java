@@ -178,7 +178,7 @@ public class  AppController {
         }if(everythingNull==1) {
             return "{ \"Error\":\"No student detail specified\"}";
         }else{
-            return "{ \"" + insertStudent.getStudent_id()+" Updated\":\"affected_rows:1\"}";
+            return "{ \"affected_rows\":\"1\"}";
         }
 
         //return ResponseEntity.status(HttpStatus.CREATED).build();
