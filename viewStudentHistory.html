@@ -181,6 +181,7 @@ var email = $("#email").val().toLowerCase();
 var student_to_update = {
            first_name: fname,
            last_name: lname,
+           "student_accepted":true,
            email: email     
          }
 
@@ -193,10 +194,7 @@ var student_to_update = {
                         var result= JSON.parse(data);
                         console.log(result)
                         if(result.student_id){
-                          sessionStorage.setItem("email",email);
-                          sessionStorage.setItem("first_name",fname);
-                          sessionStorage.setItem("last_name",lname);
-                          window.location.replace("viewStudentHistory.html");
+                          alert("Student confirmed!")
                         }else{
                           alert("Student Not in System!")
                         }
@@ -224,74 +222,15 @@ var student_to_update = {
      
   
   </header>
-  <div class="container">
-      <div class="row main">
-        <div class="main-login main-center">
-        <h5>Enter Students Information</h5>
-          <form class="" method="post" action="#">
-            
-            <div class="form-group">
-              <label for="name" class="cols-sm-2 control-label">Student's First Name</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="name" id="first_name"  placeholder="Enter Student's First Name"/>
-                </div>
-              </div>
-            </div>
-
-             <div class="form-group">
-              <label for="name" class="cols-sm-2 control-label">Student's Last Name</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="name" id="last_name"  placeholder="Enter Student's Last Name"/>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="form-group">
-              <label for="email" class="cols-sm-2 control-label">Student's Email</label>
-              <div class="cols-sm-10">
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                  <input type="text" class="form-control" name="email" id="email"  placeholder="Enter Student's Email"/>
-                </div>
-              </div>
-            </div>
-              <button type="button" id="search" class="btn btn-primary btn-lg btn-block login-button">Search For Student</button>
-            
-          
-            
-          </form>
-        </div>
-      </div>
-    </div>
+  
 
 
 
     <button type="button" class="btn btn-primary btn-lg" id="logoutButton">Logout</button>
 
-<div id="deleteJobModal" class="modal fade" tabindex="-1" data-focus-on="input:first" style="display: none;">
-   <div class="modal-content">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 class="modal-title">Delete Job</h4>
-  </div>
-  <div class="modal-body">
-    <h4 >Are you sure you want to delete this job?</h4>
-  </div>
-  <div class="modal-footer">
-    <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-    <button type="button" data-dismiss="modal" class="btn btn-primary" id="deleteJobButton">Ok</button>
-  </div>
-</div>
-</div>
+
 
 
 </body>
-
-
 
 </html>
