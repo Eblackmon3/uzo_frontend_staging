@@ -135,7 +135,7 @@ public class StudentManager {
         ResultSet rs=null;
         try {
 
-            if(student.getStudent_id()==0){
+            if(student.getFirst_name()==null ||student.getLast_name()==null|| student.getEmail()==null){
                 throw new Exception("Missing Parameter");
             }
             //Connect to the database
