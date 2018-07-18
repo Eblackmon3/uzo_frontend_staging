@@ -201,6 +201,7 @@ var student_to_update = {
                                   }).done(function(data) {
                                               var result= JSON.parse(data);
                                               console.log(result)
+                                              $('#showStudentModal').appendTo("body").modal('show');
                                               
 
                                   });
