@@ -172,11 +172,11 @@ $("#new_student").click(function(){
      
   });
 
-$("#submit").click(function(){
+$("#search").click(function(){
   console.log("clicked");
-var fname = $("#student_first_name").val();
-var lname = $("#student_last_name").val();
-var email = $("#student_email").val().toLowerCase();
+var fname = $("#first_name").val().toLowerCase();
+var lname = $("#last_name").val().toLowerCase();
+var email = $("#email").val().toLowerCase();
 
 var student_to_update = {
            first_name: fname,
@@ -257,6 +257,10 @@ var student_to_update = {
                   <input type="text" class="form-control" name="email" id="email"  placeholder="Enter Student's Email"/>
                 </div>
               </div>
+            </div>
+
+              <div class="form-group ">
+              <a href="https://ccp.cloudaccess.net/aff.php?aff=5188" target="_blank" type="button" id="search" class="btn btn-primary btn-lg btn-block login-button">Search For Student</a>
             </div>
           
             

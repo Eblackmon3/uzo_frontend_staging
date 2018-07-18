@@ -170,8 +170,8 @@ $("#student_list").click(function(){
 
 $("#submit").click(function(){
   console.log("clicked");
-var fname = $("#student_first_name").val();
-var lname = $("#student_last_name").val();
+var fname = $("#student_first_name").val().toLowerCase();
+var lname = $("#student_last_name").val().toLowerCase();
 var email = $("#student_email").val().toLowerCase();
 
 var student_to_update = {
@@ -184,15 +184,15 @@ var student_to_update = {
       $.ajax({
               type: 'POST',
             contentType: "application/json",
-            url: 'https://uzo-web-app.herokuapp.com/update_student_accepted',
+            url: 'https://uzo-web-app.herokuapp.com/get_student_id',
              data:JSON.stringify(student_to_update)
             }).done(function(data) {
                         var result= JSON.parse(data);
                         console.log(result)
-                        if(result.affected_rows>0){
+                        if(result.student_id){
                           alert("Student confirmed!")
                         }else{
-                          alert("oops! something when wrong!")
+                          alert("Student Not in System!")
                         }
 
             });
