@@ -203,7 +203,6 @@ $("#logoutButton").click(function(){
 
                  $("#studentGroup"+i).append("<button type='button'id='setInterest"+i+"' class='btn btn-primary'>Interested</button>");
                  $("#setInterest"+i).click(function(){
-                  alert("Company has been notified of your interest");
                   var interestedArray={
                  "student_id":sessionStorage.getItem("student_id"),
                  "job_id": jobsInfo[i].job_id
@@ -219,6 +218,8 @@ $("#logoutButton").click(function(){
                       console.log(result)
                       if(result.result=="student not accepted"){
                         alert("You have not been accepted by HKA, please wait to select jobs");
+                      }else{
+                        alert("Company has been notified of your interest");
                       }
                           
                   });
