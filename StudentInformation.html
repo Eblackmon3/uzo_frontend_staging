@@ -193,7 +193,7 @@ var student_to_update = {
                                "student_id": result.student_id,
                                  
                              }
-                            .ajax({
+                            $.ajax({
                                     type: 'POST',
                                   contentType: "application/json",
                                   url: 'https://uzo-web-app.herokuapp.com/get_student_history',
@@ -301,7 +301,7 @@ var student_to_update = {
         <li class="list-group-item" id="reference1">Work Reference 1: </li>
         <li class="list-group-item" id="reference2">Work Reference 2: </li>
         <li class="list-group-item" id="reference3">Work Reference 3: </li>
-        
+
       </ul>
   
 
