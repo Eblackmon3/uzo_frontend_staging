@@ -943,6 +943,20 @@ api call example https://uzo-web-app.herokuapp.com/get_job_resources
     }
 
     /*
+   * api call example https://uzo-web-app.herokuapp.com/get_student_history
+    {
+     "student_id" :50
+    }
+   */
+    @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
+    @PostMapping(value="/get_student_history")
+    public String getAllStudentHistory(@RequestBody StudentWorkHistory student){
+        StudentManager manager= new StudentManager();
+        JSONObject result= manager.getAllStudentHistory(student);
+        return result.toString();
+    }
+
+    /*
   * api call example https://uzo-web-app.herokuapp.com/insert_student_work_history
   * headers
   * {

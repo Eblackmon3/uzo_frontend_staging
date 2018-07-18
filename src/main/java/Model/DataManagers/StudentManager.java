@@ -2663,7 +2663,7 @@ public class StudentManager {
                 event_security=rs.getBoolean("event_security");
                 setup_breakdown=rs.getBoolean("setup_breakdown");
                 food_service= rs.getBoolean("food_service");
-                food_service= rs.getBoolean("moving");
+                moving= rs.getBoolean("moving");
             }
             rs.close();
             pstmt.close();
@@ -2828,6 +2828,121 @@ public class StudentManager {
             studentObj.put("crime",crime);
             studentObj.put("hear_uzo",hear_uzo);
             studentObj.put("resume_location",resume_location);
+
+            rs.close();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                studentObj.put("error", e.toString());
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+        }finally{
+            if(rs!=null){
+                try {
+                    rs.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                if(jdbcObj!=null) {
+                    jdbcObj.closePool();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+
+        return studentObj;
+    }
+
+
+    public JSONObject getAllStudentHistory(StudentWorkHistory studentWorkHistory) {
+        ResultSet rsObj = null;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql="select * from t_student_work_ability inner join t_student_work_history on " +
+                "t_student_work_ability.student_id=t_student_work_history.student_id where " +
+                "t_student_work_ability.student_id=?";
+        DbConn jdbcObj = new DbConn();
+        String work_reference_1= ""; String work_reference_2=""; String work_reference_3= "";
+        boolean crime=false; String hear_uzo=""; String resume_location="";
+        boolean bar= false; boolean cashier=false; boolean cleaning=false;
+        boolean data_entry=false; boolean desk_assistant=false; boolean driving_delivery=false;
+        boolean event_security=false; boolean setup_breakdown=false; boolean food_service=false;
+        boolean moving=false;
+        ResultSet rs= null;
+
+        JSONObject studentObj= new JSONObject();
+        try {
+            if(studentWorkHistory.getStudent_id()==0){
+                throw new Exception("Missing Parameter");
+            }
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,studentWorkHistory.getStudent_id());
+            rs= pstmt.executeQuery();
+            while(rs.next()){
+                work_reference_1=rs.getString("work_reference_1");
+                work_reference_2=rs.getString("work_reference_2");
+                work_reference_3=rs.getString("work_reference_3");
+                crime=rs.getBoolean("crime");
+                hear_uzo=rs.getString("hear_uzo");
+                resume_location=rs.getString("resume_location");
+                bar=rs.getBoolean("bar");
+                cashier=rs.getBoolean("cashier");
+                cleaning=rs.getBoolean("cleaning");
+                data_entry=rs.getBoolean("data_entry");
+                desk_assistant= rs.getBoolean("desk_assistant");
+                driving_delivery=rs.getBoolean("driving_delivery");
+                event_security=rs.getBoolean("event_security");
+                setup_breakdown=rs.getBoolean("setup_breakdown");
+                food_service= rs.getBoolean("food_service");
+                moving= rs.getBoolean("moving");
+            }
+            studentObj.put("work_reference_1",work_reference_1);
+            studentObj.put("work_reference_2",work_reference_2);
+            studentObj.put("work_reference_3", work_reference_3);
+            studentObj.put("crime",crime);
+            studentObj.put("hear_uzo",hear_uzo);
+            studentObj.put("resume_location",resume_location);
+            studentObj.put("bar",bar);
+            studentObj.put("cashier",cashier);
+            studentObj.put("cleaning", cleaning);
+            studentObj.put("data_entry",data_entry);
+            studentObj.put("desk_assistant",desk_assistant);
+            studentObj.put("driving_delivery",driving_delivery);
+            studentObj.put("event_security", event_security);
+            studentObj.put("setup_breakdown",setup_breakdown);
+            studentObj.put("moving",moving);
+            studentObj.put("food_service",food_service);
+
             rs.close();
             pstmt.close();
             conn.close();
