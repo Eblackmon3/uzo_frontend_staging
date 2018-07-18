@@ -184,7 +184,7 @@ var student_to_update = {
       $.ajax({
               type: 'POST',
             contentType: "application/json",
-            url: 'https://uzo-web-app.herokuapp.com/get_student_id',
+            url: 'https://uzo-web-app.herokuapp.com/update_student_accepted',
              data:JSON.stringify(student_to_update)
             }).done(function(data) {
                         var result= JSON.parse(data);
