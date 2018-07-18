@@ -1,12 +1,144 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <!DOCTYPE html>
 <html lang="en">
-    <head> 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+
+  <script
+  src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
+  integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+  crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css"/>
+
+    <link rel="stylesheet" type="text/css" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css"/>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+  <script type="text/javascript" src="fullcalendar-rightclick.js"></script>
+
+
+
+
+  <style>
+  @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+  .done_button{
+  background-color: #008000;
+}
+
+  body {
+
+  background: #ccc;
+}
+
+table{
+    width:100%;
+    border-collapse: separate;
+    border-spacing: 0 1em;
+
+}
+
+.menu ul {
+  list-style: none;
+  background-color: #80ced6;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  line-height: 40px;
+  height: 40px;
+  border-bottom: 1px solid #888;
+}
+.menu a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  transition: .3s background-color;
+}
+
+.menu a:hover {
+  background-color: #005f5f;
+}
+
+.menu a.active {
+  background-color: #fff;
+  color: #444;
+  cursor: default;
+}
+
+@media screen and (min-width: 600px) {
+  .menu li {
+    width: 150px;
+    border-bottom: none;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4em;
+  }
+
+  /* Option 1 - Display Inline */
+  .menu li {
+    display: inline-block;
+    margin-right: -4px;
+  }
+
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%;
+}
+
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
+
+textarea {
+  resize: none;
+}
+.timepicker{z-index:1151;}
+.timepicker.dropdown-menu {z-index:1151;}
+
+.approveStudent{
+    float: right;
+}
+
+
+
+
+  body {
+  }
+  </style>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
     <!-- Website CSS style -->
@@ -14,15 +146,84 @@
 
     <!-- Website Font style -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet" href="SearchStudentStyle.css">
+    <link rel="stylesheet" href="style.css">
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
-    <title>Admin</title>
-  </head>
-  <body>
-    <div class="container">
+  <script>
+$(document).ready(function () {
+  console.log(sessionStorage.getItem("company_id"));
+   
+
+     //Log out button
+$("#logoutButton").click(function(){
+  sessionStorage.removeItem('company_id');
+ window.location.replace("businessIndex.html");
+     
+  });
+
+$("#all_jobs").click(function(){
+ window.location.replace("Administration.html");
+     
+  });
+
+$("#new_student").click(function(){
+ window.location.replace("addHKAApprovals.html");
+     
+  });
+
+$("#submit").click(function(){
+  console.log("clicked");
+var fname = $("#student_first_name").val();
+var lname = $("#student_last_name").val();
+var email = $("#student_email").val().toLowerCase();
+
+var student_to_update = {
+           first_name: fname,
+           last_name: lname,
+           "student_accepted":true,
+           email: email     
+         }
+
+      $.ajax({
+              type: 'POST',
+            contentType: "application/json",
+            url: 'https://uzo-web-app.herokuapp.com/update_student_accepted',
+             data:JSON.stringify(student_to_update)
+            }).done(function(data) {
+                        var result= JSON.parse(data);
+                        console.log(result)
+                        if(result.affected_rows>0){
+                          alert("Student confirmed!")
+                        }else{
+                          alert("oops! something when wrong!")
+                        }
+
+            });
+        
+ });
+
+
+  
+ });             
+
+  </script>
+</head>
+
+<body class="student">
+  <header>
+    <div class="menu">
+      <ul id="myTab">
+        <li class="open_gigs"><a  href="#first" data-toggle="tab" id="all_jobs">All Jobs</a></li>
+        <li class="new_student"><a href="#second" data-toggle="tab" id="new_student">Approve Student</a></li>
+        <li class="student_list"><a class="active" href="#third" data-toggle="tab" id="student_list">Students History</a></li>
+
+    </div>
+     
+  
+  </header>
+  <div class="container">
       <div class="row main">
         <div class="main-login main-center">
         <h5>Sign up once and watch any of our free demos.</h5>
@@ -87,9 +288,13 @@
       </div>
     </div>
 
-     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+
+
+    <button type="button" class="btn btn-primary btn-lg" id="logoutButton">Logout</button>
+
+
+
+
+</body>
+
 </html>
