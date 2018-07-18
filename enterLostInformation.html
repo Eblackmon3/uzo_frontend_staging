@@ -54,7 +54,6 @@ $(document).ready(function(){
         }).done(function(data) {
           var result= JSON.parse(data);
           console.log(result);
-          console.log(result.student_id)
           if(result.affected_rows>0){
             sessionStorage.setItem("email",email);
             sessionStorage.setItem("first_name",first_name);
