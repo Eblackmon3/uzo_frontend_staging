@@ -260,46 +260,41 @@ $(document).ready(function(){
 
 
 <body>
-  <div class="login-page">
-  <div class="form">
-    <form class="form-group">
-
-      <div id="emailCheck">
-      <div class="input-group">
-      <input id="email" type="text" class="form-control" name="email" placeholder="Email"/>
-      <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-    </div>
-    </div>
-    <br>
-    <div id="passwordCheck">
-    <div class="input-group">
-      <input id="password" type="password" class="form-control" name="password" placeholder="Password"/>
-      <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-    </div>
-    </div>
-  </br>
-  <p align="center" id="errorMessage" div class="passError"></p>
-</br>
-
-      <button type="button" id="loginBtn">login</button>
-      <p class="message">Not registered? <a href="https://uzo-frontend.herokuapp.com/registrationPage.html">Create an account</a></p>
-    </br>
-      <p class="message">Forgot Password?<a href="https://uzo-frontend.herokuapp.com/enterLostInformation.html">Forgot Password</a></p>
-    </form>
+  
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+ <div class="form-gap"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="text-center">
+                  <h3><i class="fa fa-lock fa-4x"></i></h3>
+                  <h2 class="text-center">Forgot Password?</h2>
+                  <p>You can reset your password here.</p>
+                  <div class="panel-body">
+    
+                    <form id="register-form" role="form" autocomplete="off" class="form" method="post">
+    
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                          <input id="email" name="email" placeholder="email address" class="form-control"  type="email">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
+                      </div>
+                      
+                      <input type="hidden" class="hide" name="token" id="token" value=""> 
+                    </form>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
   </div>
 </div>
-  <!--
-  <div class="container">
-
-    <div class="jumbotron">
-
-      <button type="button" class="tn btn-primary btn-lg btn-block" id="studentRegister">Student Registration</button>
-      <button type="button" class="tn btn-primary btn-lg btn-block" id="clientRegister">Client Registration</button>
-
-    </div>
-
-
-  </div>-->
-
 </body>
 </html>
