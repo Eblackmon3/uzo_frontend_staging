@@ -201,19 +201,19 @@ var student_to_update = {
                                   }).done(function(data) {
                                               var result= JSON.parse(data);
                                               console.log(result)
-                                                $("#cleaning").text($("#cleaning").val()+ result.cleaning)
-                                                $("#desk").text($("#desk").val()+ result.desk_assistant)
-                                                $("#food").text($("#food").val()+ result.food_service)
-                                                $("#bar").text($("#bar").val()+ result.bar)
-                                                $("#cashier").text($("#cashier").val()+ result.cashier)
-                                                $("#moving").text($("#moving").val()+ result.moving)
-                                                $("#data").text($("#data").val()+ result.data_entry)
+                                                $("#cleaning").text("Cleaning: " + result.cleaning)
+                                                $("#desk").text("Desk Assistant: "+ result.desk_assistant)
+                                                $("#food").text($("Food Service: "+ result.food_service)
+                                                $("#bar").text($("Bar Work: "+ result.bar)
+                                                $("#cashier").text("Cashier: "+ result.cashier)
+                                                $("#moving").text("Moving Assistance: "+ result.moving)
+                                                $("#data").text("Data Entry: "+ result.data_entry)
 
-                                                $("#delivery").text($("#delivery").val()+ result.driving_delivery)
-                                                $("#event_security").text($("#event_security").val()+ result.event_security)
-                                                $("#reference1").text($("#reference1").val()+ result.work_reference_1)
-                                                $("#reference2").text($("#reference2").val()+ result.work_reference_2)
-                                                $("#reference3").text($("#reference3").val()+ result.work_reference_3)
+                                                $("#delivery").text($("Delivery Driving : "+ result.driving_delivery)
+                                                $("#event_security").text("Event Security: "+ result.event_security)
+                                                $("#reference1").text("Work Reference 1: "+ result.work_reference_1)
+                                                $("#reference2").text("Work Reference 2: "+ result.work_reference_2)
+                                                $("#reference3").text($("Work Reference 3: "+ result.work_reference_3)
                                               $('#showStudentModal').appendTo("body").modal('show');
 
                                               
