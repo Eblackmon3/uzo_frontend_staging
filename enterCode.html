@@ -101,16 +101,17 @@ n
             sessionStorage.setItem("email",email);
             sessionStorage.setItem("first_name",first_name);
             sessionStorage.setItem("last_name",last_name);
-            window.location.replace("enterCode.html")
+
+            
           }else{
-            alert("Information is incorrect please try again");
+            alert("Information is incorrect");
           }
 
         });
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-          
+            window.location.replace("enterCode.html")
         });
 
 
