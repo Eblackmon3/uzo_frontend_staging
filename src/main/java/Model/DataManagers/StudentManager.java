@@ -125,6 +125,80 @@ public class StudentManager {
         return studentObj;
     }
 
+    public JSONObject getStudentId(Student student){
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql="select student_id from t_student_info where first_name=? and last_name=? and email=?";
+        DbConn jdbcObj = new DbConn();
+        int student_id=0;
+        JSONObject studentObj= new JSONObject();
+        ResultSet rs=null;
+        try {
+
+            if(student.getStudent_id()==0){
+                throw new Exception("Missing Parameter");
+            }
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,student.getFirst_name());
+            pstmt.setString(2,student.getLast_name());
+            pstmt.setString(3,student.getEmail());
+            rs= pstmt.executeQuery();
+            while(rs.next()){
+                student_id=rs.getInt("student_id");
+
+            }
+            rs.close();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+            studentObj.put("student_id",student_id);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                studentObj.put("error", e.toString());
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+        }finally{
+            if(rs!=null){
+                try {
+                    rs.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+
+        return studentObj;
+    }
+
     public ArrayList<String> getAllStudentsNumbers(){
         Twilio.init(System.getenv("TWILIO_ACCOUNT"),System.getenv("TWILIO_TOKEN"));
         Connection conn = null;

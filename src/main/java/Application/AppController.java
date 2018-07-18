@@ -44,6 +44,22 @@ public class  AppController {
         JSONObject result= manager.getStudentById(student);
         return result.toString();
     }
+
+    /*
+   * api call example https://uzo-web-app.herokuapp.com/get_student_id
+    {
+     "first_name" :"eric,
+     "last_name": "blackmon",
+     email:"ericblackmon38@gmail.com"
+    }
+   */
+    @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
+    @PostMapping(value="/get_student_id")
+    public String getStudentId(@RequestBody Student student){
+        StudentManager manager= new StudentManager();
+        JSONObject result= manager.getStudentId(student);
+        return result.toString();
+    }
     /*
      * api call example https://uzo-web-app.herokuapp.com/get_last_inserted_student
 
