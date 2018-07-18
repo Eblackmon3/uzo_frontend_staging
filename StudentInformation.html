@@ -193,10 +193,10 @@ var student_to_update = {
             }).done(function(data) {
                         var result= JSON.parse(data);
                         console.log(result)
-                        if(result.affected_rows>0){
+                        if(result.student_id){
                           alert("Student confirmed!")
                         }else{
-                          alert("oops! something when wrong!")
+                          alert("Student Not in System!")
                         }
 
             });
