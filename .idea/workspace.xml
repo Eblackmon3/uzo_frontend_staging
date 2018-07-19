@@ -24,8 +24,8 @@
       <file leaf-file-name="StudentManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="2119" column="109" lean-forward="false" selection-start-line="2119" selection-start-column="109" selection-end-line="2119" selection-end-column="109" />
+            <state relative-caret-position="424">
+              <caret line="2120" column="119" lean-forward="false" selection-start-line="2120" selection-start-column="119" selection-end-line="2120" selection-end-column="119" />
               <folding />
             </state>
           </provider>
@@ -52,7 +52,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getStudentJobList</find>
       <find>getJobStudentList</find>
       <find>https://uzo-frontend-dev.herokuapp.com</find>
       <find>getAllStudentsNumbers</find>
@@ -82,6 +81,7 @@
       <find>Work</find>
       <find>insertS</find>
       <find>InsertS</find>
+      <find>Login</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -1352,8 +1352,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="2119" column="109" lean-forward="false" selection-start-line="2119" selection-start-column="109" selection-end-line="2119" selection-end-column="109" />
+        <state relative-caret-position="424">
+          <caret line="2120" column="119" lean-forward="false" selection-start-line="2120" selection-start-column="119" selection-end-line="2120" selection-end-column="119" />
           <folding />
         </state>
       </provider>
