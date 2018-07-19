@@ -2117,7 +2117,7 @@ public class StudentManager {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,student.getEmail());
             pstmt.setString(2,BCrypt.hashpw(student.getPassword(),BCrypt.gensalt(12)));
-            System.out.println("Password showing :"+BCrypt.hashpw(student.getPassword(),BCrypt.gensalt(12)))
+            System.out.println("Password showing :"+BCrypt.hashpw(student.getPassword(),BCrypt.gensalt(12)));
             rs= pstmt.executeQuery();
             if(rs.next()){
                 studentObj.put("student_id",rs.getInt("student_id"));
