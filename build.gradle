@@ -87,6 +87,9 @@ dependencies {
     // https://mvnrepository.com/artifact/com.stripe/stripe-java
     compile group: 'com.stripe', name: 'stripe-java', version: '5.31.0'
 
+    // https://mvnrepository.com/artifact/org.mindrot/jbcrypt
+    compile group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
+
 
 
 

@@ -10,6 +10,7 @@ import com.twilio.type.PhoneNumber;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -480,6 +481,7 @@ public class StudentManager {
                     ||student.getCity()==null || student.getStreet()==null || student.getZipcode()==null){
                 throw new Exception("Missing Parameter");
             }
+            student.setPassword(BCrypt.hashpw(student.getPassword(),BCrypt.gensalt(12)));
             //Connect to the database
             DataSource dataSource = jdbcObj.setUpPool();
             System.out.println(jdbcObj.printDbStatus());
@@ -2114,7 +2116,7 @@ public class StudentManager {
             //can do normal DB operations here
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,student.getEmail());
-            pstmt.setString(2,student.getPassword());
+            pstmt.setString(2,BCrypt.hashpw(student.getPassword(),BCrypt.gensalt(12)));
             rs= pstmt.executeQuery();
             if(rs.next()){
                 studentObj.put("student_id",rs.getInt("student_id"));
