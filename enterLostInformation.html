@@ -90,7 +90,7 @@ n
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/lost_password_request',
+          url: 'https://uzo-web-app.herokuapp.com/get_student_id',
           data:JSON.stringify(studentInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
