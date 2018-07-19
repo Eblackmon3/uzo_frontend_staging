@@ -8,6 +8,7 @@ import Model.DbConn;
 import StripeController.StripeController;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.sql.DataSource;
@@ -108,6 +109,7 @@ public class CompanyManager {
                 "RETURNING company_id;";
         DbConn jdbcObj = new DbConn();
         boolean did_it_work=false;
+        company.setPassword(BCrypt.hashpw(company.getPassword(),BCrypt.gensalt(12)));
         try{
 
             if(company.getEmail()==null|| company.getCity()==null||company.getWebsite_link()==null
@@ -707,7 +709,7 @@ public class CompanyManager {
             pstmt.setString(1,company.getEmail());
             pstmt.setString(2,company.getPassword());
             rs= pstmt.executeQuery();
-            if(rs.next()){
+            if(rs.next()&& BCrypt.checkpw(company.getPassword(),BCrypt.hashpw(company.getPassword(),BCrypt.gensalt(12)))){
                 email=rs.getString("email");
                 state=rs.getString("state");
                 street=rs.getString("street");

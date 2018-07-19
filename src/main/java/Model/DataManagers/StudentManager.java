@@ -1578,7 +1578,8 @@ public class StudentManager {
                 pstmt.setString(1, student.getEmail());
                 pstmt.setString(2, student.getFirst_name());
                 pstmt.setString(3, student.getLast_name());
-                pstmt.setString(4, uuid);
+                pstmt.setInt(4, student.getStudent_id());
+                pstmt.setString(5, uuid);
                 affectedRows = pstmt.executeUpdate();
                 updateUniversity.put("affected_rows", affectedRows);
             }
