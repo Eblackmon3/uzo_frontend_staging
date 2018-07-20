@@ -496,10 +496,9 @@ function()
 					}
 				else{
 					$.when(ajaxFunction()).done(function(a1){
-						console.log(sessionStorage.getItem("student_id"));
 						
 						if(sessionStorage.getItem("student_id")){
-						 // window.location.replace("registrationPage2.html")
+						  window.location.replace("registrationPage2.html")
 						}else{
 							alert("Email Already being used!")
 						}
