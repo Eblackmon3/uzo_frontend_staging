@@ -127,7 +127,7 @@ textarea {
 $(document).ready(function () {
      //Log out button
 $("#logoutButton").click(function(){
-  sessionStorage.setItem("student_id",0)
+  sessionStorage.removeItem('student_id');
  window.location.replace("studentIndex.html");
      
   });
