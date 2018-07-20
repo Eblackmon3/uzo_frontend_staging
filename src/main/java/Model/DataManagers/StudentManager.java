@@ -2126,7 +2126,7 @@ public class StudentManager {
 
 
             pstmt = conn.prepareStatement(sql);
-            if(BCrypt.checkpw(student.getPassword(),password)) {
+            if(password!=null&&BCrypt.checkpw(student.getPassword(),password)) {
                 pstmt.setString(1, student.getEmail());
                 pstmt.setString(2, student.getPassword());
                 rs = pstmt.executeQuery();
