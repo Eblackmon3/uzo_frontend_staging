@@ -141,8 +141,8 @@ public class  AppController {
             everythingNull=0;
 
         }if(insertStudent.getPassword()!=null){
-            manager.updateStudent(insertStudent.getPassword(),"password", insertStudent.getStudent_id()).toString();
             insertStudent.setPassword(BCrypt.hashpw(insertStudent.getPassword(),BCrypt.gensalt(12)));
+            manager.updateStudent(insertStudent.getPassword(),"password", insertStudent.getStudent_id()).toString();
             everythingNull=0;
 
         }if(insertStudent.getFirst_name()!=null){
