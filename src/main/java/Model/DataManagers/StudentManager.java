@@ -2101,6 +2101,7 @@ public class StudentManager {
         PreparedStatement pstmt = null;
         ResultSet rs=null;
         String sql="select * from t_student_info where email=? and password=?;";
+        String sql2="select password from t_student_info where email=?";
         DbConn jdbcObj = new DbConn();
 
         JSONObject studentObj= new JSONObject();
@@ -2115,32 +2116,45 @@ public class StudentManager {
             //check how many connections we have
             System.out.println(jdbcObj.printDbStatus());
             //can do normal DB operations here
-            pstmt = conn.prepareStatement(sql);
+            pstmt = conn.prepareStatement(sql2);
+            String password=null;
             pstmt.setString(1,student.getEmail());
-            pstmt.setString(2, student.getPassword());
             rs= pstmt.executeQuery();
-            if(rs.next() && BCrypt.checkpw(student.getPassword(),BCrypt.hashpw(student.getPassword(),BCrypt.gensalt(12)))){
-                studentObj.put("student_id",rs.getInt("student_id"));
-                studentObj.put("email",rs.getString("email"));
-                studentObj.put("first_name",rs.getString("first_name"));
-                studentObj.put("last_name", rs.getString("last_name"));
-                studentObj.put("university",rs.getString("university"));
-                studentObj.put("phone_number",rs.getString("phone_number"));
-                studentObj.put("state",rs.getString("state"));
-                studentObj.put("street",rs.getString("street"));
-                studentObj.put("city", rs.getString("city"));
-                studentObj.put("apt",rs.getString("apt"));
-                studentObj.put("date_of_birth", rs.getString("date_of_birth"));
-
-                studentObj.put("major",rs.getString("major"));
-                studentObj.put("year",rs.getString("year"));
-                studentObj.put("description",rs.getString("description"));
-                studentObj.put("zipcode",rs.getString("zipcode"));
+            if(rs.next()){
+                password= rs.getString("password");
+            }
 
 
+            pstmt = conn.prepareStatement(sql);
+            if(BCrypt.checkpw(student.getPassword(),password)) {
+                pstmt.setString(1, student.getEmail());
+                pstmt.setString(2, student.getPassword());
+                rs = pstmt.executeQuery();
+                if (rs.next()) {
+                    studentObj.put("student_id", rs.getInt("student_id"));
+                    studentObj.put("email", rs.getString("email"));
+                    studentObj.put("first_name", rs.getString("first_name"));
+                    studentObj.put("last_name", rs.getString("last_name"));
+                    studentObj.put("university", rs.getString("university"));
+                    studentObj.put("phone_number", rs.getString("phone_number"));
+                    studentObj.put("state", rs.getString("state"));
+                    studentObj.put("street", rs.getString("street"));
+                    studentObj.put("city", rs.getString("city"));
+                    studentObj.put("apt", rs.getString("apt"));
+                    studentObj.put("date_of_birth", rs.getString("date_of_birth"));
+
+                    studentObj.put("major", rs.getString("major"));
+                    studentObj.put("year", rs.getString("year"));
+                    studentObj.put("description", rs.getString("description"));
+                    studentObj.put("zipcode", rs.getString("zipcode"));
+
+
+                } else {
+                    studentObj.put("student_login", "Does not exist");
+
+                }
             }else{
-                studentObj.put("student_login","Does not exist");
-
+                studentObj.put("student_login", "Does not exist");
             }
             rs.close();
             pstmt.close();
