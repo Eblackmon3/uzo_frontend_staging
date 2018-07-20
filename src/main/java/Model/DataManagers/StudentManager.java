@@ -2123,6 +2123,7 @@ public class StudentManager {
             if(rs.next()){
                 password= rs.getString("password");
             }
+            System.out.println("Password from email: "+password);
 
 
             pstmt = conn.prepareStatement(sql);
