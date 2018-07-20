@@ -325,7 +325,7 @@ public class StudentManager {
                                 Message.creator(new PhoneNumber(phone_number),
                                         new PhoneNumber("6787265534"),
                                         "Please complete application at " +
-                                                "https://docs.google.com/forms/d/e/1FAIpQLSdAu_fSAjY7KS4S8ZNtQu1N2dfsGoHcA_et5ZEq4mJ917mP2g/viewform?usp=sf_link" +
+                                                "https://docs.google.com/forms/d/e/1FAIpQLSf0X5HfPh9T3WlCm-WmyB6HWnEg86nsI2NV610MkFaU9176OQ/viewform" +
                                                 " in order to finish registration process").create();
 
 
