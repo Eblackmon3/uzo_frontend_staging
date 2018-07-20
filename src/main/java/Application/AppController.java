@@ -9,6 +9,7 @@ import Model.DataManagers.StudentManager;
 import Model.DataObjects.*;
 import StripeController.StripeController;
 import org.json.JSONObject;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -141,6 +142,7 @@ public class  AppController {
 
         }if(insertStudent.getPassword()!=null){
             manager.updateStudent(insertStudent.getPassword(),"password", insertStudent.getStudent_id()).toString();
+            insertStudent.setPassword(BCrypt.hashpw(insertStudent.getPassword(),BCrypt.gensalt(12)));
             everythingNull=0;
 
         }if(insertStudent.getFirst_name()!=null){
