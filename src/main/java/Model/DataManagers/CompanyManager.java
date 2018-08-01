@@ -689,7 +689,7 @@ public class CompanyManager {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs=null;
-        String sql="select * from t_company_info where email=? and password=?;";
+        String sql="select * from t_company_info where email=? ;";
         DbConn jdbcObj = new DbConn();
         String password=null;
         String email="";String state="";String website_link=""; String description="";
@@ -708,7 +708,6 @@ public class CompanyManager {
             //can do normal DB operations here
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,company.getEmail());
-            pstmt.setString(2,company.getPassword());
             rs= pstmt.executeQuery();
             if(rs.next()){
                 password= rs.getString("password");

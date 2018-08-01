@@ -21,10 +21,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StudentManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StudentManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
+            <state relative-caret-position="858">
               <caret line="2140" column="80" lean-forward="false" selection-start-line="2140" selection-start-column="30" selection-end-line="2140" selection-end-column="80" />
               <folding />
             </state>
@@ -51,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CompanyManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CompanyManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="733" column="44" lean-forward="false" selection-start-line="733" selection-start-column="44" selection-end-line="733" selection-end-column="44" />
+            <state relative-caret-position="421">
+              <caret line="712" column="26" lean-forward="false" selection-start-line="712" selection-start-column="26" selection-end-line="712" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,8 +112,8 @@
       <find>insertCompany</find>
       <find>insertSt</find>
       <find>check_company_login</find>
-      <find>checkStudentL</find>
       <find>checkCompanyLogin</find>
+      <find>checkStudentL</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -1382,21 +1382,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="733" column="44" lean-forward="false" selection-start-line="733" selection-start-column="44" selection-end-line="733" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="858">
+          <caret line="2140" column="80" lean-forward="false" selection-start-line="2140" selection-start-column="30" selection-end-line="2140" selection-end-column="80" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="2140" column="80" lean-forward="false" selection-start-line="2140" selection-start-column="30" selection-end-line="2140" selection-end-column="80" />
-          <folding />
+        <state relative-caret-position="421">
+          <caret line="712" column="26" lean-forward="false" selection-start-line="712" selection-start-column="26" selection-end-line="712" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
