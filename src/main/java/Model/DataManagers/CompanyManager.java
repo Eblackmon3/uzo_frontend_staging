@@ -691,6 +691,7 @@ public class CompanyManager {
         ResultSet rs=null;
         String sql="select * from t_company_info where email=? and password=?;";
         DbConn jdbcObj = new DbConn();
+        String password=null;
         String email="";String state="";String website_link=""; String description="";
         String company_name=""; String street=""; String city=""; String zip_code="";
         JSONObject companyObj= new JSONObject();
@@ -709,7 +710,8 @@ public class CompanyManager {
             pstmt.setString(1,company.getEmail());
             pstmt.setString(2,company.getPassword());
             rs= pstmt.executeQuery();
-            if(rs.next()&& BCrypt.checkpw(company.getPassword(),BCrypt.hashpw(company.getPassword(),BCrypt.gensalt(12)))){
+            if(rs.next()){
+                password= rs.getString("password");
                 email=rs.getString("email");
                 state=rs.getString("state");
                 street=rs.getString("street");
@@ -728,7 +730,8 @@ public class CompanyManager {
                 companyObj.put("description",description);
                 companyObj.put("company_id", rs.getInt("company_id"));
 
-            }else{
+            }if(password!=null&&BCrypt.checkpw(company.getPassword(),password)){
+                companyObj=new JSONObject();
                 companyObj.put("company_login","Does not exist");
 
             }
