@@ -507,7 +507,7 @@ public class  AppController {
     }
 
     /*
-      example url: https://uzo-web-app.herokuapp.com/lost_password_request
+      example url: https://uzo-web-app.herokuapp.com/company_lost_password_request
       header:
           {
            "email": "email,
