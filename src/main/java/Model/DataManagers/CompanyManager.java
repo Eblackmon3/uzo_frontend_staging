@@ -820,7 +820,7 @@ public class CompanyManager {
         return updateUniversity;
     }
 
-    public static void generateAndSendEmail(String to, String uuid) throws AddressException, MessagingException {
+    public static void generateAndSendEmail(String to, String uuid) {
         Properties mailServerProperties;
         MimeMessage generateMailMessage;
         Session getMailSession;
