@@ -507,6 +507,23 @@ public class  AppController {
     }
 
     /*
+      example url: https://uzo-web-app.herokuapp.com/lost_password_request
+      header:
+          {
+           "email": "email,
+           "company_name":"eric",
+          }
+
+   */
+    @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
+    @PostMapping(value = "/company_lost_password_request")
+    public String companyLostPasswordRequest(@RequestBody Company company){
+        CompanyManager manager= new CompanyManager();
+        return manager.insertCompanyLostNumberRecord(company).toString();
+        //return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    /*
      example url: https://uzo-web-app.herokuapp.com/lost_password_request
      header:
          {

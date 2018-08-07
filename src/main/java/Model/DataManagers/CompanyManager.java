@@ -4,18 +4,31 @@ import AmazonController.s3Operations;
 import Model.DataObjects.Company;
 import Model.DataObjects.CompanyPaymentCard;
 import Model.DataObjects.CompanyRep;
+import Model.DataObjects.Student;
 import Model.DbConn;
 import StripeController.StripeController;
+import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
+import org.apache.commons.codec.binary.Base64;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.sql.DataSource;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Properties;
+import java.util.UUID;
 
 import static StripeController.StripeController.createCustomer;
 
@@ -683,6 +696,170 @@ public class CompanyManager {
         }
         return company_resources;
     }
+
+
+    public JSONObject insertCompanyLostNumberRecord(Company company ){
+        JSONObject updateUniversity= new JSONObject();
+        ResultSet rsObj = null;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String uuid= UUID.randomUUID().toString().substring(0,4);
+        String sql2="select company_id from t_company_info where email=? and company_name=? ";
+        String sql="insert into t_company_lost_password(email, company_name, company_id, uuid)" +
+                " Values(?,?,?,?)";
+        String sql3="update t_company_lost_password set uuid=? where email=? and company_name=?";
+        String sql4="select company_id from t_company_lost_password where company_id=?";
+        DbConn jdbcObj = new DbConn();
+        int affectedRows=0;
+        try{
+
+            if(company.getCompany_name()==null||company.getEmail()==null){
+                throw new Exception("Missing Parameter");
+            }
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt= conn.prepareStatement(sql2);
+            pstmt.setString(1, company.getEmail());
+            pstmt.setString(2,company.getCompany_name());
+            pstmt.executeQuery();
+            rsObj=pstmt.getResultSet();
+
+            if(rsObj.next()){
+                company.setCompany_id(rsObj.getInt("company_id"));
+
+            }else{
+                updateUniversity.put("result","information incorrect");
+                return updateUniversity;
+            }
+
+            pstmt = conn.prepareStatement(sql4);
+            pstmt.setInt(1,company.getCompany_id());
+            pstmt.executeQuery();
+            rsObj=pstmt.getResultSet();
+            if(rsObj.next()) {
+                pstmt = conn.prepareStatement(sql3);
+                pstmt.setString(2, company.getEmail());
+                pstmt.setString(3,company.getCompany_name());
+                pstmt.setString(1,uuid);
+                affectedRows= pstmt.executeUpdate();
+                updateUniversity.put("affected_rows",affectedRows);
+
+                rsObj.close();
+                pstmt.close();
+                conn.close();
+                jdbcObj.closePool();
+
+            }else {
+
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setString(1, company.getEmail());
+                pstmt.setString(2, company.getCompany_name());
+                pstmt.setInt(3, company.getCompany_id());
+                pstmt.setString(4, uuid);
+                affectedRows = pstmt.executeUpdate();
+                updateUniversity.put("affected_rows", affectedRows);
+            }
+
+            rsObj.close();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+
+            if(affectedRows>0) {
+                generateAndSendEmail(company.getEmail(), uuid);
+            }
+
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+            try{
+
+
+                updateUniversity.put("error", e.toString());
+
+
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+
+        }finally{
+            if(rsObj!=null){
+                try {
+                    rsObj.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+        return updateUniversity;
+    }
+
+    public static void generateAndSendEmail(String to, String uuid) throws AddressException, MessagingException {
+        Properties mailServerProperties;
+        MimeMessage generateMailMessage;
+        Session getMailSession;
+
+        try {
+
+            // Step1
+            System.out.println("\n 1st ===> setup Mail Server Properties..");
+            mailServerProperties = System.getProperties();
+            mailServerProperties.put("mail.smtp.port", "587");
+            mailServerProperties.put("mail.smtp.auth", "true");
+            mailServerProperties.put("mail.smtp.starttls.enable", "true");
+            System.out.println("Mail Server Properties have been setup successfully..");
+
+            // Step2
+            System.out.println("\n\n 2nd ===> get Mail Session..");
+            getMailSession = Session.getDefaultInstance(mailServerProperties, null);
+            generateMailMessage = new MimeMessage(getMailSession);
+            generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            generateMailMessage.setSubject("checking mail");
+            String emailBody = "Here is you verficiation code: "+ uuid;
+            generateMailMessage.setContent(emailBody, "text/html");
+            System.out.println("Mail Session has been created successfully..");
+
+            // Step3
+            System.out.println("\n\n 3rd ===> Get Session and Send mail");
+            Transport transport = getMailSession.getTransport("smtp");
+
+            // Enter your correct gmail UserID and Password
+            // if you have 2FA enabled then provide App Specific Password
+            transport.connect("smtp.gmail.com", "eric@getuzo.com", "281330800fB#");
+            transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
+            transport.close();
+        }catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }
+
+
 
     public JSONObject checkCompanyLogin( Company company){
         ResultSet rsObj = null;
