@@ -36,54 +36,11 @@ $(document).ready(function(){
 
    $(document).keypress(function(e) {
     if(e.which == 13) {
-          var last_name = $("#last_name").val().toLowerCase();
-    var first_name = $("#first_name").val().toLowerCase();
-    var email = $("#email").val().toLowerCase();
-    var studentInfo = {
-        email:email,
-        first_name: first_name,
-        last_name:last_name
-      }
-
-    var ajaxFunction= function (){
-        return $.ajax({
-          type: 'POST',
-          contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/lost_password_request',
-          data:JSON.stringify(studentInfo)
-        }).done(function(data) {
-          var result= JSON.parse(data);
-          console.log(result);
-          console.log(result.student_id)
-          if(result.affected_rows>0){
-            sessionStorage.setItem("email",email);
-            sessionStorage.setItem("first_name",first_name);
-            sessionStorage.setItem("last_name",last_name);
-
-            
-          }else{
-            alert("Information is incorrect");
-          }
-
-        });
-      }
-      console.log("here");
-        $.when(ajaxFunction()).done(function(response){
-            window.location.replace("enterCode.html")
-        });
-
-n
+     var uuid = $("#verification_code").val();
     
-    }
-});
-
-  $("#sumbit").click(function(){
-   var uuid = $("#verification_code").val();
-    
-    var studentInfo = {
+    var companyInfo = {
         email:sessionStorage.getItem("email"),
-        first_name: sessionStorage.getItem("first_name"),
-        last_name:sessionStorage.getItem("last_name"),
+        company_name: sessionStorage.getItem("company_name"),
         uuid:uuid
       }
 
@@ -91,14 +48,15 @@ n
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/allow_password_reset',
-          data:JSON.stringify(studentInfo)
+          url: 'https://uzo-web-app.herokuapp.com/allow_password_reset_business',
+          data:JSON.stringify(companyInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
           console.log(result);
-          console.log(result.student_id)
+          console.log(result.company_id)
           if(result.result=="correct"){
-            sessionStorage.setItem("student_id",result.student_id);
+            sessionStorage.setItem("company_id",result.company_id);
+            window.location.replace("resetPasswordBusiness.html")
             
           }else{
             alert("Verification code incorrect");
@@ -108,7 +66,45 @@ n
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-            window.location.replace("resetPassword.html")
+            
+        });
+
+    
+    }
+});
+
+  $("#sumbit").click(function(){
+  var uuid = $("#verification_code").val();
+    
+    var companyInfo = {
+        email:sessionStorage.getItem("email"),
+        company_name: sessionStorage.getItem("company_name"),
+        uuid:uuid
+      }
+
+    var ajaxFunction= function (){
+        return $.ajax({
+          type: 'POST',
+          contentType: "application/json",
+          url: 'https://uzo-web-app.herokuapp.com/allow_password_reset_business',
+          data:JSON.stringify(companyInfo)
+        }).done(function(data) {
+          var result= JSON.parse(data);
+          console.log(result);
+          console.log(result.company_id)
+          if(result.result=="correct"){
+            sessionStorage.setItem("company_id",result.company_id);
+            window.location.replace("resetPasswordBusiness.html")
+            
+          }else{
+            alert("Verification code incorrect");
+          }
+
+        });
+      }
+      console.log("here");
+        $.when(ajaxFunction()).done(function(response){
+            
         });
 
 

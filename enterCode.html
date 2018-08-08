@@ -36,43 +36,40 @@ $(document).ready(function(){
 
    $(document).keypress(function(e) {
     if(e.which == 13) {
-          var last_name = $("#last_name").val().toLowerCase();
-    var first_name = $("#first_name").val().toLowerCase();
-    var email = $("#email").val().toLowerCase();
+    var uuid = $("#verification_code").val();
+    
     var studentInfo = {
-        email:email,
-        first_name: first_name,
-        last_name:last_name
+        email:sessionStorage.getItem("email"),
+        first_name: sessionStorage.getItem("first_name"),
+        last_name:sessionStorage.getItem("last_name"),
+        uuid:uuid
       }
 
     var ajaxFunction= function (){
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/lost_password_request',
+          url: 'https://uzo-web-app.herokuapp.com/allow_password_reset',
           data:JSON.stringify(studentInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
           console.log(result);
           console.log(result.student_id)
-          if(result.affected_rows>0){
-            sessionStorage.setItem("email",email);
-            sessionStorage.setItem("first_name",first_name);
-            sessionStorage.setItem("last_name",last_name);
-
+          if(result.result=="correct"){
+            sessionStorage.setItem("student_id",result.student_id);
+            window.location.replace("resetPassword.html")
             
           }else{
-            alert("Information is incorrect");
+            alert("Verification code incorrect");
           }
 
         });
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-            window.location.replace("enterCode.html")
+          
         });
 
-n
     
     }
 });
@@ -99,6 +96,7 @@ n
           console.log(result.student_id)
           if(result.result=="correct"){
             sessionStorage.setItem("student_id",result.student_id);
+            window.location.replace("resetPassword.html")
             
           }else{
             alert("Verification code incorrect");
@@ -108,7 +106,7 @@ n
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-            window.location.replace("resetPassword.html")
+          
         });
 
 
