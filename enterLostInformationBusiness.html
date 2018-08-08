@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+  <title>Forgot Password</title>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+
+  <script
+  src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
+  integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+  crossorigin="anonymous"></script>
+
+  <style>
+
+</style>
+
+<script>
+
+
+
+$(document).ready(function(){
+
+   $(document).keypress(function(e) {
+    if(e.which == 13) {
+          var last_name = $("#last_name").val().toLowerCase();
+    var first_name = $("#first_name").val().toLowerCase();
+    var email = $("#email").val().toLowerCase();
+    var studentInfo = {
+        email:email,
+        first_name: first_name,
+        last_name:last_name
+      }
+
+    var ajaxFunction= function (){
+        return $.ajax({
+          type: 'POST',
+          contentType: "application/json",
+          url: 'https://uzo-web-app.herokuapp.com/lost_password_request',
+          data:JSON.stringify(studentInfo)
+        }).done(function(data) {
+          var result= JSON.parse(data);
+          console.log(result);
+          if(result.affected_rows>0){
+            sessionStorage.setItem("email",email);
+            sessionStorage.setItem("first_name",first_name);
+            sessionStorage.setItem("last_name",last_name);
+
+            
+          }else{
+            alert("Information is incorrect");
+          }
+
+        });
+      }
+      console.log("here");
+        $.when(ajaxFunction()).done(function(response){
+            window.location.replace("enterCode.html")
+        });
+
+n
+    
+    }
+});
+
+  $("#sumbit").click(function(){
+     var last_name = $("#last_name").val().toLowerCase();
+    var first_name = $("#first_name").val().toLowerCase();
+    var email = $("#email").val().toLowerCase();
+    var studentInfo = {
+        email:email,
+        first_name: first_name,
+        last_name:last_name
+      }
+
+    var ajaxFunction= function (){
+        return $.ajax({
+          type: 'POST',
+          contentType: "application/json",
+          url: 'https://uzo-web-app.herokuapp.com/lost_password_request',
+          data:JSON.stringify(studentInfo)
+        }).done(function(data) {
+          var result= JSON.parse(data);
+          console.log(result);
+          console.log(result.student_id)
+          if(result.affected_rows>0){
+            sessionStorage.setItem("email",email);
+            sessionStorage.setItem("first_name",first_name);
+            sessionStorage.setItem("last_name",last_name);
+            window.location.replace("enterCode.html")
+          }else{
+            alert("Information is incorrect please try again");
+          }
+
+        });
+      }
+      console.log("here");
+        $.when(ajaxFunction()).done(function(response){
+          
+        });
+
+
+
+  });
+
+});
+</script>
+
+</head>
+
+
+<body>
+  
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+ <div class="form-gap"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="text-center">
+                  <h3><i class="fa fa-lock fa-4x"></i></h3>
+                  <h2 class="text-center">Forgot Password?</h2>
+                  <p>Please enter Information Below</p>
+                  <div class="panel-body">
+    
+                    <form id="register-form" role="form" autocomplete="off" class="form" method="post">
+    
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                          <input id="email" name="email" placeholder="Email Address" class="form-control"  type="email">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-info-sign"></i></span>
+                          <input id="first_name" name="first_name" placeholder="First Name" class="form-control"  type="text">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-info-sign"></i></span>
+                          <input id="last_name" name="last_name" placeholder="Last Name" class="form-control"  type="text">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Send Verification Code" id="sumbit">
+                      </div>
+                      
+                      <input type="hidden" class="hide" name="token" id="token" value=""> 
+                    </form>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  </div>
+</div>
+</body>
+</html>
