@@ -43,7 +43,7 @@ $(document).ready(function(){
         company_name: company_name
       }
 
-    var ajaxFunction= function (){
+    var ajaxFunction1= function (){
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
@@ -64,7 +64,7 @@ $(document).ready(function(){
         });
       }
       console.log("here");
-        $.when(ajaxFunction()).done(function(response){
+        $.when(ajaxFunction1()).done(function(response){
             
         });
 
