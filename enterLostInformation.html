@@ -58,6 +58,7 @@ $(document).ready(function(){
             sessionStorage.setItem("email",email);
             sessionStorage.setItem("first_name",first_name);
             sessionStorage.setItem("last_name",last_name);
+            window.location.replace("enterCode.html")
 
             
           }else{
@@ -68,7 +69,7 @@ $(document).ready(function(){
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-            window.location.replace("enterCode.html")
+            
         });
 
 n
