@@ -55,6 +55,7 @@ $(document).ready(function(){
           if(result.affected_rows>0){
             sessionStorage.setItem("email",email);
             sessionStorage.setItem("company_name",company_name);
+            window.location.replace("enterCodeBusiness.html")
             
           }else{
             alert("Information is incorrect");
@@ -64,7 +65,7 @@ $(document).ready(function(){
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-            window.location.replace("enterCode.html")
+            
         });
 
 
