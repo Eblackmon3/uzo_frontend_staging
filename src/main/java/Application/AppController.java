@@ -543,6 +543,25 @@ public class  AppController {
     }
 
 
+    /*
+ example url: https://uzo-web-app.herokuapp.com/company_allow_password_reset
+ header:
+     {
+      "email": "email,
+      "company_name":"eric",
+      "uuid"= "asdfa-adfa-adfa"
+     }
+
+*/
+    @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
+    @PostMapping(value = "/company_allow_password_reset")
+    public String allowPasswordResetCompany(@RequestBody Company company){
+        CompanyManager manager= new CompanyManager();
+        return manager.getStudentLostPasswordHash(company).toString();
+        //return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+
 
     /*
         example url: https://uzo-web-app.herokuapp.com/update_student_rating

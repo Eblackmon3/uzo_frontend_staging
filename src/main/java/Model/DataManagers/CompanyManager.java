@@ -479,6 +479,90 @@ public class CompanyManager {
     }
 
 
+    public JSONObject getStudentLostPasswordHash(Company company ){
+        JSONObject updateUniversity= new JSONObject();
+        ResultSet rsObj = null;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql2="select * from t_company_lost_password where uuid=? and email=? and company_name=?";
+        DbConn jdbcObj = new DbConn();
+        int affectedRows=0;
+        try{
+
+            if(company.getEmail()==null||company.getCompany_name()==null ||
+                    company.getUUID()==null){
+                throw new Exception("Missing Parameter");
+            }
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt= conn.prepareStatement(sql2);
+            pstmt.setString(1, company.getUUID());
+            pstmt.setString(2, company.getEmail());
+            pstmt.setString(3, company.getCompany_name());
+
+            pstmt.executeQuery();
+            rsObj=pstmt.getResultSet();
+            if(rsObj.next()){
+                updateUniversity.put("result", "correct");
+                updateUniversity.put("company_id",rsObj.getInt("company_id"));
+
+            }else{
+                updateUniversity.put("result","information incorrect");
+
+            }
+            rsObj.close();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+            try{
+                updateUniversity.put("error", e.toString());
+
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+
+        }finally{
+            if(rsObj!=null){
+                try {
+                    rsObj.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+        return updateUniversity;
+    }
+
+
     public JSONObject updateCompanyRep(CompanyRep rep){
         JSONObject updateUniversity= new JSONObject();
         ResultSet rsObj = null;

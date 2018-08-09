@@ -13,6 +13,7 @@ public class Company {
     private String company_name;
     private String password;
     private String description;
+    private String UUID;
 
     public void setEmail(String email) {
         this.email = email;
@@ -92,6 +93,14 @@ public class Company {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
+    }
+
+    public String getUUID() {
+        return UUID;
     }
 
     @Override
