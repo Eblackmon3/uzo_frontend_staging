@@ -472,23 +472,6 @@ function()
 						});
 				}
 
-				var documentUpload= function (){
-						 return $.ajax({
-						type: 'POST',
-				        enctype: 'multipart/form-data',
-				        crossDomain: true,
-				        processData: false,  // Important!
-				        contentType: false,
-				        cache: false,
-						url: 'https://uzo-web-app.herokuapp.com/upload_student_resource',
-					   data:form_data,
-						}).done(function(data) {
-		                    var result= JSON.parse(data);
-
-
-
-						});
-				}
 
         		//Need to change this when the other adress stuff is put in
 				if(!fname || !lname  ||!number  || !dob  || !email  || !major || !grade|| !state || !city || !street || !zipcode ||!student_id|| !password || !cpassword){
