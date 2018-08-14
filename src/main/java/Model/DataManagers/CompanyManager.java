@@ -479,7 +479,7 @@ public class CompanyManager {
     }
 
 
-    public JSONObject getStudentLostPasswordHash(Company company ){
+    public JSONObject getCompanyLostPasswordHash(Company company ){
         JSONObject updateUniversity= new JSONObject();
         ResultSet rsObj = null;
         Connection conn = null;
@@ -1422,6 +1422,74 @@ public class CompanyManager {
 
         return companyObj;
     }
+
+
+
+
+    public JSONObject updateCompanyPassword(Company company ){
+        JSONObject updateUniversity= new JSONObject();
+        ResultSet rsObj = null;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql="update t_company_info set password=? where company_id=?";
+        DbConn jdbcObj = new DbConn();
+        int affectedRows=0;
+        try{
+
+            if(company.getCompany_id()==0 ||company.getCompany_name()==null){
+                throw new Exception("Missing Parameter");
+            }
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            company.setPassword(BCrypt.hashpw(company.getPassword(),BCrypt.gensalt(12)));
+            //can do normal DB operations here
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, company.getPassword());
+            pstmt.setInt(2,company.getCompany_id());
+            affectedRows = pstmt.executeUpdate();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+            updateUniversity.put("affected_rows",affectedRows);
+
+        }catch(Exception e){
+            e.printStackTrace();
+            try{
+                updateUniversity.put("error", e.toString());
+
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+
+        }finally{
+
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+        return updateUniversity;
+    }
+
 
 
 

@@ -481,7 +481,6 @@ public class StudentManager {
                     ||student.getCity()==null || student.getStreet()==null || student.getZipcode()==null){
                 throw new Exception("Missing Parameter");
             }
-            student.setPassword(BCrypt.hashpw(student.getPassword(),BCrypt.gensalt(12)));
             //Connect to the database
             DataSource dataSource = jdbcObj.setUpPool();
             System.out.println(jdbcObj.printDbStatus());
@@ -491,7 +490,7 @@ public class StudentManager {
             //can do normal DB operations here
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, student.getEmail());
-            pstmt.setString(2,student.getPassword());
+            pstmt.setString(2,BCrypt.hashpw(student.getPassword(),BCrypt.gensalt(12)));
             pstmt.setString(3,student.getFirst_name());
             pstmt.setString(4,student.getLast_name());
             pstmt.setString(5,student.getUniversity());
@@ -1888,6 +1887,10 @@ public class StudentManager {
 
 
     public JSONObject uploadStudentResume(MultipartFile file, int student_id){
+        if(file==null||student_id==0|| file.isEmpty()){
+             return null;
+
+        }
         String resume_location= s3Operations.uploadStudentFile(student_id,file);
         JSONObject uploadeResume= new JSONObject();
         ResultSet rsObj = null;
@@ -1897,10 +1900,6 @@ public class StudentManager {
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
-            if(file==null||student_id==0|| file.isEmpty()){
-                throw new Exception("Missing Parameter");
-
-            }
             //Connect to the database
             DataSource dataSource = jdbcObj.setUpPool();
             System.out.println(jdbcObj.printDbStatus());

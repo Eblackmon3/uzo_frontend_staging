@@ -9,7 +9,6 @@ import Model.DataManagers.StudentManager;
 import Model.DataObjects.*;
 import StripeController.StripeController;
 import org.json.JSONObject;
-import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -141,7 +140,6 @@ public class  AppController {
             everythingNull=0;
 
         }if(insertStudent.getPassword()!=null){
-            insertStudent.setPassword(BCrypt.hashpw(insertStudent.getPassword(),BCrypt.gensalt(12)));
             manager.updateStudent(insertStudent.getPassword(),"password", insertStudent.getStudent_id()).toString();
             everythingNull=0;
 
@@ -507,23 +505,6 @@ public class  AppController {
     }
 
     /*
-      example url: https://uzo-web-app.herokuapp.com/company_lost_password_request
-      header:
-          {
-           "email": "email,
-           "company_name":"eric"f,
-          }
-
-   */
-    @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
-    @PostMapping(value = "/company_lost_password_request")
-    public String companyLostPasswordRequest(@RequestBody Company company){
-        CompanyManager manager= new CompanyManager();
-        return manager.insertCompanyLostNumberRecord(company).toString();
-        //return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
-    /*
      example url: https://uzo-web-app.herokuapp.com/lost_password_request
      header:
          {
@@ -542,22 +523,21 @@ public class  AppController {
         //return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-
     /*
- example url: https://uzo-web-app.herokuapp.com/company_allow_password_reset
- header:
-     {
-      "email": "email,
-      "company_name":"eric",
-      "uuid"= "asdfa-adfa-adfa"
-     }
+    example url: https://uzo-web-app.herokuapp.com/lost_password_request
+    header:
+        {
+         "email": "email,
+         "company_name":"eric",
+         "uuid"= "asdfa-adfa-adfa"
+        }
 
-*/
+ */
     @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
-    @PostMapping(value = "/company_allow_password_reset")
+    @PostMapping(value = "/allow_password_reset_company")
     public String allowPasswordResetCompany(@RequestBody Company company){
         CompanyManager manager= new CompanyManager();
-        return manager.getStudentLostPasswordHash(company).toString();
+        return manager.getCompanyLostPasswordHash(company).toString();
         //return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
