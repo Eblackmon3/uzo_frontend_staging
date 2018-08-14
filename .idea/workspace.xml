@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="629d3e88-3c46-4a87-8eb9-4b9e62a72580" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application/AppController.java" afterPath="$PROJECT_DIR$/src/main/java/Application/AppController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java" afterPath="$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java" afterPath="$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -37,8 +34,8 @@
       <file leaf-file-name="StudentManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="482" column="13" lean-forward="false" selection-start-line="482" selection-start-column="13" selection-end-line="482" selection-end-column="13" />
+            <state relative-caret-position="469">
+              <caret line="518" column="29" lean-forward="false" selection-start-line="518" selection-start-column="29" selection-end-line="518" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -1419,8 +1416,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="482" column="13" lean-forward="false" selection-start-line="482" selection-start-column="13" selection-end-line="482" selection-end-column="13" />
+        <state relative-caret-position="469">
+          <caret line="518" column="29" lean-forward="false" selection-start-line="518" selection-start-column="29" selection-end-line="518" selection-end-column="29" />
           <folding />
         </state>
       </provider>

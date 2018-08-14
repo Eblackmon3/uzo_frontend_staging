@@ -507,7 +507,7 @@ public class StudentManager {
             boolean didItWork;
              pstmt.execute();
             lastStudent= pstmt.getResultSet();
-            int student_id=0;
+            int student_id=-1;
             while(lastStudent.next()){
                 student_id= lastStudent.getInt("student_id");
             }
@@ -516,6 +516,9 @@ public class StudentManager {
             conn.close();
             jdbcObj.closePool();
             insertedStudent.put("student_id",student_id);
+            if(student_id!=-1){
+                System.out.println("Texting Student "+getStudentsNumber(student_id,"app"));
+            }
 
         }catch(Exception e){
             e.printStackTrace();
@@ -1915,9 +1918,7 @@ public class StudentManager {
             conn.close();
             jdbcObj.closePool();
             uploadeResume.put("affected_rows",affectedRows);
-            if(affectedRows>0){
-                System.out.println("Texting Student "+getStudentsNumber(student_id,"app"));
-            }
+
 
         }catch(Exception e){
             e.printStackTrace();
