@@ -87,9 +87,7 @@
 
 
 
-				if(!customFile[0].files[0]){
-					alert("Resume must be upload ");
-				}else if(ValidateSize(customFile[0].files[0])){
+				if(ValidateSize(customFile[0].files[0])){
 
 				}else{
 					$.when(ajaxFunction()).done(function(a1){
@@ -147,19 +145,19 @@
 							<form id="registerForm" method="POST">
 								<div class="form-group">
 									<div class="col-md-12">
-										<label for="grade">Work Reference 1</label>
+										<label for="grade">Work Reference 1 (Optional) </label>
 										<input type="text" class="form-control" name="wr1" id="wr1"  placeholder="Company Name, Supervisor Name & Supervisor Email"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-md-12">
-										<label for="grade">Work Reference 2</label>
+										<label for="grade">Work Reference 2 (Optional) </label>
 										<input type="text" class="form-control" name="wr2" id="wr2"  placeholder="Company Name, Supervisor Name & Supervisor Email"/>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-md-12">
-										<label for="grade">Work Reference 3</label>
+										<label for="grade">Work Reference 3 (Optional) </label>
 										<input type="text" class="form-control" name="wr3" id="wr3"  placeholder="Company Name, Supervisor Name & Supervisor Email"/>
 									</div>
 								</div>
@@ -168,7 +166,7 @@
 
 								<div class="custom-file">
 									<div class="col-md-12">
-										<h5 align="left">Upload Resume (Please do not exceed 1MB)</h5>
+										<h5 align="left"> Optional Resume Upload (Please do not exceed 1MB)</h5>
 										<input type="file" class="custom-file-input" id="customFile">
 
 									</div>
