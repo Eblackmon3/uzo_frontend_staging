@@ -88,9 +88,7 @@
 
 
 				if(customFile[0].files[0]&&ValidateSize(customFile[0].files[0])){
-						console.log("checking if this stupid condition is here");
-				}else{
-					$.when(ajaxFunction()).done(function(a1){
+						$.when(ajaxFunction()).done(function(a1){
 						console.log(sessionStorage.getItem("student_id"));
 
 						var settings = {
@@ -117,6 +115,9 @@
 						});
 
 				$("#next").prop("disabled",false);
+				}else{
+					window.location.replace("studentPage.html")
+				
 				}
 
 			});
