@@ -28,11 +28,13 @@
 
   @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+/*
   .login-page {
     width: 360px;
     padding: 8% 0 0;
     margin: auto;
   }
+
   .form {
     position: relative;
     z-index: 1;
@@ -84,27 +86,7 @@
     display: none;
   }
 
-img {
-  border-radius: 25%;
-  width:  250px;
-  height: 400px;
-  min-width:100px;
-}
-/*
-#student{
-  position: fixed;
-  top: 50%;
-  left: 30%;
-  margin-top: -50px;
-  margin-left: -100px;
-}
-#business{
-  position: fixed;
-  top: 50%;
-  left: 70%;
-  margin-top: -50px;
-  margin-left: -100px;
-}*/
+
 div {
   min-height: 300px;
   display:block;
@@ -129,7 +111,7 @@ div {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-}
+}*/
 h3{
   font-weight: normal;
   line-height: 1;
@@ -138,67 +120,47 @@ h3{
   padding-top: 0px;
   padding-bottom: 0px;
  }
+ /* CSS Reset */
+ * { margin: 0; padding: 0; }
+ /* Responsive Images in Columns */
+ img {
+   width: 100%;
+   height: auto;
+ }
+ .two-columns {
+   width: 48%;
+   display: inline-block;
+ }
+ div.container {
+   width: 96%;
+   max-width: 960px;
+   margin: 0 auto;
+   text-align: center;
+}
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
 
-  /*
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  .container:before, .container:after {
+/* Clear floats after the columns */
+.row:after {
     content: "";
-    display: block;
+    display: table;
     clear: both;
-  }
-  .container .info {
-    margin: 50px auto;
-    text-align: center;
-  }
-  .container .info h1 {
-    margin: 0 0 15px;
-    padding: 0;
-    font-size: 36px;
-    font-weight: 300;
-    color: #1a1a1a;
-  }
-  .container .info span {
-    color: #4d4d4d;
-    font-size: 12px;
-  }
-  .container .info span a {
-    color: #000000;
-    text-decoration: none;
-  }
-  .container .info span .fa {
-    color: #EF3B3A;
-  }*/
+}
 
-  .passError{
-    color: red;
-  }
-  /*
-  body {
-    /*background: #76b852; /* fallback for old browsers */
-    /*background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-    background: -moz-linear-gradient(right, #76b852, #8DC26F);
-    background: -o-linear-gradient(right, #76b852, #8DC26F);
-    background: linear-gradient(to left, #76b852, #8DC26F);*/
-    /*background-image: url(whiteting.jpg);
-    font-family: "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }*/
-  /*
-  .container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  /*min-height: 100vh;
-  opacity: 0.9;
-  padding: 5em inherit;
-}*/
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+
+
 
 
 
@@ -231,37 +193,36 @@ $(document).ready(function(){
 
 <body >
   <div class="jumbotron">
-		<h1 align="center">UZO</h1>
-		<p align="center">Connecting students to low commitment jobs in businesses and events around campus.</p>
-	</div>
-    <div class="container">
+    <h1 align="center">UZO</h1>
+    <p align="center">Connecting students to low commitment jobs in businesses and events around campus.</p>
+  </div>
+  <div class="container">
+    <div class="column">
+      <img id= "student" class="two-columns" src="https://image.flaticon.com/icons/svg/326/326832.svg" width="960" height="640" />
+      <h2>Student Login</h2>
+    </div>
+    <div class="column">
+      <img id= "business" class="two-columns" src="https://image.flaticon.com/icons/svg/912/912265.svg" width="960" height="640"/>
+      <h2>Business Login</h2>
+    </div>
+  </div>
+    <!-- <div class="container">
       <div>
         <h3>Student Login</h3>
         <br>
-	       <img id= "student" class="img-responsive" src="https://images.unsplash.com/photo-1506205146167-e60bb7368b94?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&dl=gabriel-lopez-389225-unsplash.jpg&s=9a718053e77d48e637ebe5c1ee248536"
+         <img id= "student" class="img-responsive" src="https://images.unsplash.com/photo-1506205146167-e60bb7368b94?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&dl=gabriel-lopez-389225-unsplash.jpg&s=9a718053e77d48e637ebe5c1ee248536"
          style=border-radius:25%;width:250px;height:350px;>
        </div>
        <div>
          <h3>Business Login</h3>
          <br>
-	       <img id= "business" class="img-responsive"  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&dl=ali-morshedlou-566510-unsplash.jpg&s=bfc428602a5f0a50b8e8a419cdf73647"
+         <img id= "business" class="img-responsive"  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&dl=ali-morshedlou-566510-unsplash.jpg&s=bfc428602a5f0a50b8e8a419cdf73647"
          style=border-radius:25%;width:250px;height:350px;>
     </div>
-  </div>
+  </div> -->
 
 
-  <!--
-  <div class="container">
 
-    <div class="jumbotron">
-
-      <button type="button" class="tn btn-primary btn-lg btn-block" id="studentRegister">Student Registration</button>
-      <button type="button" class="tn btn-primary btn-lg btn-block" id="clientRegister">Client Registration</button>
-
-    </div>
-
-
-  </div>-->
 
 </body>
 </html>
