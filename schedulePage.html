@@ -350,6 +350,7 @@ $("#deleteJobButton").click(function(){
             $("#showJobModal").modal("hide");
              $('body').removeClass().removeAttr('style');$('.modal-backdrop').remove();
              $("#jtitleUp").val("");
+             $("#jobTable").val("");
              $("#jdescriptionUp").val("");
             $("#startTimeUp").val("");
            $("#endTimeUp").val("");
@@ -798,8 +799,24 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                       "completed" :true,
                       "amount_to_pay": calendarEvent.rate
                     };
+                    /*
+                            <tr>
+                              <th>Student Name</th>
+                              <th>Clock-in</th> 
+                              <th>Clock-out</th>
+                              <th>Complete Job</th>
+                              <th>Delete Student</th>
+
+                            </tr>
+                    */
 
                 $("#jobTable").append("<tr id='student"+studentJobBasicInfo[i].student_id+"'>");
+                $("#jobTable").append("<tr id='header'>");
+                $("#header").append("<th> Student Name </th>");
+                $("#header").append("<th> Clock-in </th>");
+                $("#header").append("<th> Clock-out </th>");
+                $("#header").append("<th> Delete Student</th>");
+
                 $("#student"+studentJobBasicInfo[i].student_id).append("<th>" +studentJobBasicInfo[i].first_name+ " "+ studentJobBasicInfo[i].last_name+ "</th>");
                 if(studentJobBasicInfo[i].clock_in){
                 $("#student"+studentJobBasicInfo[i].student_id).append("<th>" +studentJobBasicInfo[i].clock_in+"</th>");
@@ -1089,14 +1106,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                        
 
                           <table id="jobTable" style="width:100%">
-                            <tr>
-                              <th>Student Name</th>
-                              <th>Clock-in</th> 
-                              <th>Clock-out</th>
-                              <th>Complete Job</th>
-                              <th>Delete Student</th>
-
-                            </tr>
+                           
 
                           </table>
                          
