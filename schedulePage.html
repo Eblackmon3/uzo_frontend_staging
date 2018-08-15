@@ -819,24 +819,24 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
                 $("#jobTable").append("<tr id='student"+studentJobBasicInfo[i].student_id+"'>");
 
-                $("#student"+studentJobBasicInfo[i].student_id).append("<th>" +studentJobBasicInfo[i].first_name+ " "+ studentJobBasicInfo[i].last_name+ "</th>");
+                $("#student"+studentJobBasicInfo[i].student_id).append("<td>" +studentJobBasicInfo[i].first_name+ " "+ studentJobBasicInfo[i].last_name+ "</td>");
                 if(studentJobBasicInfo[i].clock_in){
-                $("#student"+studentJobBasicInfo[i].student_id).append("<th>" +studentJobBasicInfo[i].clock_in+"</th>");
+                $("#student"+studentJobBasicInfo[i].student_id).append("<td>" +studentJobBasicInfo[i].clock_in+"</td>");
               }else{
-                $("#student"+studentJobBasicInfo[i].student_id).append("<th>"+"N/A"+"</th>");
+                $("#student"+studentJobBasicInfo[i].student_id).append("<td>"+"N/A"+"</td>");
               }
               if(studentJobBasicInfo[i].clock_out){
-                $("#student"+studentJobBasicInfo[i].student_id).append("<th>" +studentJobBasicInfo[i].clock_out+ "</th>");
+                $("#student"+studentJobBasicInfo[i].student_id).append("<td>" +studentJobBasicInfo[i].clock_out+ "</td>");
               }else{
-                $("#student"+studentJobBasicInfo[i].student_id).append("<th>" +"N/A"+ "</th>");
+                $("#student"+studentJobBasicInfo[i].student_id).append("<td>" +"N/A"+ "</td>");
               }
 
                if(studentJobBasicInfo[i].completed){
-                 $("#student"+studentJobBasicInfo[i].student_id).append("<th> <button type='button'id='completeStudentButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary done_button'>Complete Job</button> </th>");
+                 $("#student"+studentJobBasicInfo[i].student_id).append("<td> <button type='button'id='completeStudentButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary done_button'>Complete Job</button> </td>");
                }else{
-                  $("#student"+studentJobBasicInfo[i].student_id).append("<th><button type='button'id='completeStudentButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary'>Complete Job</button></th>");
+                  $("#student"+studentJobBasicInfo[i].student_id).append("<td><button type='button'id='completeStudentButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary'>Complete Job</button></td>");
                }
-               $("#student"+studentJobBasicInfo[i].student_id).append("<th><button type='button'id='deleteButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary delete_button'>Delete Student</button></th");
+               $("#student"+studentJobBasicInfo[i].student_id).append("<td><button type='button'id='deleteButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary delete_button'>Delete Student</button></td");
             
                   $("#completeStudentButton"+studentJobBasicInfo[i].student_id).click(function(){
                     var clockinInfo={
