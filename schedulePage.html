@@ -810,12 +810,13 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                             </tr>
                     */
 
-                $("#jobTable").append("<tr id='student"+studentJobBasicInfo[i].student_id+"'>");
-                $("#jobTable").append("<tr id='header'>");
+                    $("#jobTable").append("<tr id='header'>");
                 $("#header").append("<th> Student Name </th>");
                 $("#header").append("<th> Clock-in </th>");
                 $("#header").append("<th> Clock-out </th>");
                 $("#header").append("<th> Delete Student</th>");
+
+                $("#jobTable").append("<tr id='student"+studentJobBasicInfo[i].student_id+"'>");
 
                 $("#student"+studentJobBasicInfo[i].student_id).append("<th>" +studentJobBasicInfo[i].first_name+ " "+ studentJobBasicInfo[i].last_name+ "</th>");
                 if(studentJobBasicInfo[i].clock_in){
