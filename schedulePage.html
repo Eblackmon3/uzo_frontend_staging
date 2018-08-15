@@ -350,7 +350,6 @@ $("#deleteJobButton").click(function(){
             $("#showJobModal").modal("hide");
              $('body').removeClass().removeAttr('style');$('.modal-backdrop').remove();
              $("#jtitleUp").val("");
-             $("#studentsOnJob").empty();
              $("#jdescriptionUp").val("");
             $("#startTimeUp").val("");
            $("#endTimeUp").val("");
@@ -636,7 +635,6 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
   $("#showJobModal").on('hidden.bs.modal', function () {
     $("#interestedStudentTab").empty();
       $("#studentsOnJob").empty();
-      $("#jobManagerTab").empty();
       $("#CompleteJob").css("background-color", "blue");
 
 
