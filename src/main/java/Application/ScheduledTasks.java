@@ -14,6 +14,8 @@ public class ScheduledTasks {
 
     @Scheduled(cron = "0/20 * * * * ?")
     public void sendTheBoystheEmail() {
+        manager=new CompanyManager();
+        studManager=new StudentManager();
         JSONArray array= studManager.getAllStudentsEmails();
         manager.generateAndSendEmailVariable(array);
 
