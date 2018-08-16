@@ -1419,6 +1419,20 @@ api call example https://uzo-web-app.herokuapp.com/get_job_resources
         //return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    /*
+       example url: https://uzo-web-app.herokuapp.com/get_student_emails
+       header:
+
+
+    */
+    @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
+    @GetMapping(value = "/get_student_emails")
+    public String getStudentEmailList(){
+        StudentManager manager= new StudentManager();
+        return manager.getAllStudentsEmails().toString();
+        //return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
 
     /*
       example url: https://uzo-web-app.herokuapp.com/transfer_funds_to_student

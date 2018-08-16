@@ -4,6 +4,8 @@ import AmazonController.s3Operations;
 import Model.DataObjects.*;
 import Model.DbConn;
 import StripeController.StripeController;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
@@ -283,6 +285,75 @@ public class StudentManager {
         }
 
         return phoneNumbers;
+    }
+
+    public JSONArray getAllStudentsEmails(){
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql="select email from t_student_info";
+        DbConn jdbcObj = new DbConn();
+        JSONArray emails= new JSONArray();
+        ResultSet rs=null;
+        try {
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt = conn.prepareStatement(sql);
+            rs= pstmt.executeQuery();
+            while(rs.next()){
+                emails.put(rs.getString("email"));
+
+
+            }
+            rs.close();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+        }finally{
+            if(rs!=null){
+                try {
+                    rs.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+
+        return emails;
     }
 
 
