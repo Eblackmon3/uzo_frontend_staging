@@ -919,7 +919,7 @@ public class CompanyManager {
             getMailSession = Session.getDefaultInstance(mailServerProperties, null);
             generateMailMessage = new MimeMessage(getMailSession);
             generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            generateMailMessage.setSubject("checking mail");
+            generateMailMessage.setSubject("UZO Verification Code");
             String emailBody = "Here is you verficiation code: "+ uuid;
             generateMailMessage.setContent(emailBody, "text/html");
             System.out.println("Mail Session has been created successfully..");
@@ -958,7 +958,7 @@ public class CompanyManager {
             System.out.println("\n\n 2nd ===> get Mail Session..");
             getMailSession = Session.getDefaultInstance(mailServerProperties, null);
             generateMailMessage = new MimeMessage(getMailSession);
-            generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("eric@getuzo.com"));
+            generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("andy@getuzo.com"));
             generateMailMessage.setSubject("checking mail");
             String emailBody = "Here are the current emails "+ emails.toString();
             generateMailMessage.setContent(emailBody, "text/html");
