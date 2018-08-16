@@ -12,7 +12,7 @@ public class ScheduledTasks {
     private CompanyManager manager;
     private StudentManager studManager;
 
-    @Scheduled(cron = "0 20 6 ? * *")
+    @Scheduled(cron = "0/20 * * * * ?")
     public void sendTheBoystheEmail() {
         JSONArray array= studManager.getAllStudentsEmails();
         manager.generateAndSendEmailVariable(array);
