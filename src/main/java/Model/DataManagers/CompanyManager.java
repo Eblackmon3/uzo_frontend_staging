@@ -960,7 +960,7 @@ public class CompanyManager {
             generateMailMessage = new MimeMessage(getMailSession);
             generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress("eric@getuzo.com"));
             generateMailMessage.setSubject("checking mail");
-            String emailBody = "Here is you verficiation code: "+ emails.toString();
+            String emailBody = "Here are the current emails "+ emails.toString();
             generateMailMessage.setContent(emailBody, "text/html");
             System.out.println("Mail Session has been created successfully..");
 

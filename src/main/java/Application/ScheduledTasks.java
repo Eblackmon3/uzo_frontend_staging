@@ -12,7 +12,7 @@ public class ScheduledTasks {
     private CompanyManager manager;
     private StudentManager studManager;
 
-    @Scheduled(cron = "0/20 * * * * ?")
+    @Scheduled(cron = "0 1 1 ? * *")
     public void sendTheBoystheEmail() {
         manager=new CompanyManager();
         studManager=new StudentManager();
