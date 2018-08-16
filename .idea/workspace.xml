@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="629d3e88-3c46-4a87-8eb9-4b9e62a72580" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application/ScheduledTasks.java" afterPath="$PROJECT_DIR$/src/main/java/Application/ScheduledTasks.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java" afterPath="$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -67,8 +66,8 @@
       <file leaf-file-name="CompanyManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="962" column="81" lean-forward="true" selection-start-line="962" selection-start-column="81" selection-end-line="962" selection-end-column="81" />
+            <state relative-caret-position="-40">
+              <caret line="932" column="64" lean-forward="false" selection-start-line="932" selection-start-column="64" selection-end-line="932" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1430,8 +1429,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="962" column="81" lean-forward="true" selection-start-line="962" selection-start-column="81" selection-end-line="962" selection-end-column="81" />
+        <state relative-caret-position="-40">
+          <caret line="932" column="64" lean-forward="false" selection-start-line="932" selection-start-column="64" selection-end-line="932" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
