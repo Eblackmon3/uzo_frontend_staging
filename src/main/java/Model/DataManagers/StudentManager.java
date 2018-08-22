@@ -395,9 +395,20 @@ public class StudentManager {
                             }else if(forWhat.equals("app")){
                                 Message.creator(new PhoneNumber(phone_number),
                                         new PhoneNumber("6787265534"),
-                                        "Please complete application at " +
-                                                "https://docs.google.com/forms/d/e/1FAIpQLSf0X5HfPh9T3WlCm-WmyB6HWnEg86nsI2NV610MkFaU9176OQ/viewform" +
-                                                " in order to finish registration process").create();
+                                        "Step 1: Register for the UZO Platform.\n" +
+                                                "Status: COMPLETE \n" +
+                                                "\n" +
+                                                "Step 2: Complete Application.\n" +
+                                                "Status: Pending... \n" +
+                                                "\n" +
+                                                "VISIT: https://goo.gl/forms/nl1Dm5owOGqu8Ssz1 \n" +
+                                                "TO COMPLETE YOUR APPLICATION  \n" +
+                                                "\n" +
+                                                "Step 3: Complete Employment Documents.\n" +
+                                                "Status: Pending....\n" +
+                                                "\n" +
+                                                "Step 4: Complete User Guide Assesment.\n" +
+                                                "Status: Pending....").create();
 
 
                             }else{
