@@ -404,9 +404,7 @@ $("#deleteJobButton").click(function(){
          var rate = rate.replace(/,/g, ''),
     asANumber = +rate;
 
-         if(!jtitle){
-
-         }
+    
 
 
 
@@ -424,7 +422,7 @@ $("#deleteJobButton").click(function(){
          "important_quality": important_quality,
          "preferred_skills": preferred_skills,
           "num_employees": employeeCount,
-          "contact":number
+          "contact":contact
 
           };
           if(moment(moment(endDate).format()+"T"+endTime)>moment(moment(startDate).format()+"T"+startTime)){
