@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="629d3e88-3c46-4a87-8eb9-4b9e62a72580" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Application/AppController.java" afterPath="$PROJECT_DIR$/src/main/java/Application/AppController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java" afterPath="$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -21,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AppController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AppController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="549" column="32" lean-forward="false" selection-start-line="549" selection-start-column="32" selection-end-line="549" selection-end-column="32" />
+            <state relative-caret-position="311">
+              <caret line="557" column="44" lean-forward="false" selection-start-line="557" selection-start-column="23" selection-end-line="557" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -63,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CompanyManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CompanyManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="1481" column="36" lean-forward="false" selection-start-line="1481" selection-start-column="36" selection-end-line="1481" selection-end-column="42" />
+            <state relative-caret-position="268">
+              <caret line="1492" column="85" lean-forward="false" selection-start-line="1492" selection-start-column="85" selection-end-line="1492" selection-end-column="85" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,7 +86,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>allow</find>
       <find>update</find>
       <find>company_al</find>
       <find>getStudentLostPasswordHash</find>
@@ -116,6 +115,7 @@
       <find>insertStudent</find>
       <find>company_lost_password_request</find>
       <find>updateCompanyPassword</find>
+      <find>update_company_info</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -628,8 +628,8 @@
         <option value="$PROJECT_DIR$/src/main/java/scheduler/ScheduledTasks.java" />
         <option value="$PROJECT_DIR$/src/main/java/Application/ScheduledTasks.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/Application/AppController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java" />
       </list>
     </option>
   </component>
@@ -1396,21 +1396,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="1481" column="36" lean-forward="false" selection-start-line="1481" selection-start-column="36" selection-end-line="1481" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="311">
+          <caret line="557" column="44" lean-forward="false" selection-start-line="557" selection-start-column="23" selection-end-line="557" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="549" column="32" lean-forward="false" selection-start-line="549" selection-start-column="32" selection-end-line="549" selection-end-column="32" />
-          <folding />
+        <state relative-caret-position="268">
+          <caret line="1492" column="85" lean-forward="false" selection-start-line="1492" selection-start-column="85" selection-end-line="1492" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

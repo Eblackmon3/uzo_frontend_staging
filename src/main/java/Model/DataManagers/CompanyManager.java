@@ -1479,7 +1479,7 @@ public class CompanyManager {
         int affectedRows=0;
         try{
 
-            if(company.getCompany_id()==0 ||company.getCompany_name()==null){
+            if(company.getCompany_id()==0 ||company.getPassword()==null){
                 throw new Exception("Missing Parameter");
             }
             //Connect to the database
@@ -1488,10 +1488,9 @@ public class CompanyManager {
             conn = dataSource.getConnection();
             //check how many connections we have
             System.out.println(jdbcObj.printDbStatus());
-            company.setPassword(BCrypt.hashpw(company.getPassword(),BCrypt.gensalt(12)));
             //can do normal DB operations here
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, company.getPassword());
+            pstmt.setString(1,BCrypt.hashpw(company.getPassword(),BCrypt.gensalt(12)));
             pstmt.setInt(2,company.getCompany_id());
             affectedRows = pstmt.executeUpdate();
             pstmt.close();
