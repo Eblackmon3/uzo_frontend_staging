@@ -518,7 +518,7 @@ public class  AppController {
     @PostMapping(value = "/company_lost_password_request")
     public String companyLostPasswordRequest(@RequestBody Company company){
         CompanyManager manager= new CompanyManager();
-        return manager.updateCompanyPassword(company).toString();
+        return manager.insertCompanyLostNumberRecord(company).toString();
         //return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -539,6 +539,23 @@ public class  AppController {
     public String allowPasswordReset(@RequestBody Student student){
         StudentManager manager= new StudentManager();
         return manager.getStudentLostPasswordHash(student).toString();
+        //return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    /*
+     example url: https://uzo-web-app.herokuapp.com/update_company_password
+     header:
+         {
+          "company_id": email,
+          "password":"baldfasdf"
+         }
+
+  */
+    @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
+    @PostMapping(value = "/update_company_password")
+    public String allowPasswordReset(@RequestBody Company company){
+        CompanyManager manager= new CompanyManager();
+        return manager.updateCompanyPassword(company).toString();
         //return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
