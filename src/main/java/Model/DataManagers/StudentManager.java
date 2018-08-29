@@ -1017,6 +1017,7 @@ public class StudentManager {
         String start_time;
         String end_time;
         int company_id;
+        String contact;
         String description;
         String sql2= "select * from t_job_info inner join t_company_info on t_job_info.company_id=t_company_info.company_id where job_id=?";
         String sql="select * from t_student_job_map where student_id =?";
@@ -1061,6 +1062,7 @@ public class StudentManager {
                     state=rs.getString("state");
                     city=rs.getString("city");
                     street=rs.getString("street");
+                    contact=rs.getString("contact");
                     selectedStudentJob.put("job_id",job_id);
                     selectedStudentJob.put("date",date);
                     selectedStudentJob.put("rate",rate);
@@ -1074,6 +1076,7 @@ public class StudentManager {
                     selectedStudentJob.put("description", description);
                     selectedStudentJob.put("company_name",company_name);
                     selectedStudentJob.put("address", street+ " "+ city+ " "+ state);
+                    selectedStudentJob.put("contact",contact);
                     selectedJobs.put(selectedStudentJob);
                     selectedStudentJob=new JSONObject();
                 }

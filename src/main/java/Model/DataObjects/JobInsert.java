@@ -18,9 +18,18 @@ public class JobInsert {
     private String preferred_skills;
     private String important_quality;
     private int num_employees;
+    private String contact;
 
     public int getCompany_id() {
         return company_id;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public void setCompany_id(int company_id) {

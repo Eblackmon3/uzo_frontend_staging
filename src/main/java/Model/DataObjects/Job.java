@@ -23,10 +23,19 @@ public class Job {
     private String important_quality;
     private int num_employees;
     private boolean completed;
+    private String contact;
 
 
     public boolean isCompleted() {
         return completed;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public void setCompleted(boolean completed) {
