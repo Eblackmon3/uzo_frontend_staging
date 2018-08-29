@@ -9,6 +9,7 @@ import Model.DataManagers.StudentManager;
 import Model.DataObjects.*;
 import StripeController.StripeController;
 import org.json.JSONObject;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -140,7 +141,7 @@ public class  AppController {
             everythingNull=0;
 
         }if(insertStudent.getPassword()!=null){
-            manager.updateStudent(insertStudent.getPassword(),"password", insertStudent.getStudent_id()).toString();
+            manager.updateStudent(BCrypt.hashpw(insertStudent.getPassword(),BCrypt.gensalt(12)),"password", insertStudent.getStudent_id()).toString();
             everythingNull=0;
 
         }if(insertStudent.getFirst_name()!=null){
@@ -517,7 +518,7 @@ public class  AppController {
     @PostMapping(value = "/company_lost_password_request")
     public String companyLostPasswordRequest(@RequestBody Company company){
         CompanyManager manager= new CompanyManager();
-        return manager.insertStudentLostNumberRecord(company).toString();
+        return manager.updateCompanyPassword(company).toString();
         //return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
