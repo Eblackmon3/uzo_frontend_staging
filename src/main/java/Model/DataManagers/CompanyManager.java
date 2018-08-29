@@ -1029,7 +1029,7 @@ public class CompanyManager {
             }
             if(!(password!=null&&BCrypt.checkpw(company.getPassword(),password))) {
                 companyObj= new JSONObject();
-                companyObj.put("student_login", "Does not exist");
+                companyObj.put("company_login", "Does not exist");
 
             }
             rs.close();
