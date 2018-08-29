@@ -204,6 +204,12 @@ $("#logoutButton").click(function(){
 
                   "Address: "+jobsInfo[i].address
                   +"</li>");
+
+                  $("#list-group"+i).append("<li class='list-group-item'>"+ 
+
+                  "Contact Information: "+jobsInfo[i].contact
+                  +"</li>");
+                  
                  $("#panel-body"+i).append("<div class='btn-group' id='jobManagerGroup"+i+"'>");
         
                     $("#jobManagerGroup"+i).append("<button type='button'id='clockinBtn"+i+"' class='btn btn-primary'>clock-in</button>");
