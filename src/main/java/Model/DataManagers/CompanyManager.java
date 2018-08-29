@@ -1026,9 +1026,10 @@ public class CompanyManager {
                 companyObj.put("description",description);
                 companyObj.put("company_id", rs.getInt("company_id"));
 
-            }if(password!=null&&BCrypt.checkpw(company.getPassword(),password)){
-                companyObj=new JSONObject();
-                companyObj.put("company_login","Does not exist");
+            }
+            if(!(password!=null&&BCrypt.checkpw(company.getPassword(),password))) {
+                companyObj= new JSONObject();
+                companyObj.put("student_login", "Does not exist");
 
             }
             rs.close();
