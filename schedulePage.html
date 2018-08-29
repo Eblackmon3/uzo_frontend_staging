@@ -385,6 +385,7 @@ $("#deleteJobButton").click(function(){
          startTime=convertTime(startTime);
          var endTime = $("#endTime").val();
          endTime= convertTime(endTime);
+         var contact=$("#number").val();
 
 
          var employeeCount = $("#employeeCount").val();
@@ -422,7 +423,8 @@ $("#deleteJobButton").click(function(){
          "description":jdescription,
          "important_quality": important_quality,
          "preferred_skills": preferred_skills,
-          "num_employees": employeeCount
+          "num_employees": employeeCount,
+          "contact":number
 
           };
           if(moment(moment(endDate).format()+"T"+endTime)>moment(moment(startDate).format()+"T"+startTime)){
