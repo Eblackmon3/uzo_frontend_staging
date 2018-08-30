@@ -232,9 +232,8 @@ $("#student_list").click(function(){
                 $("#header"+jobsInfo.job_id).append("<th> Confirmed </th>");
                 $("#header"+jobsInfo.job_id).append("<th>Rate</th>");
                 $("#header"+jobsInfo.job_id).append("<th>Total</th>");
-                /*
-                $("#header"+jobsInfo.job_id).append("<th>Pay Student</th>");
-                */
+                $("#header").append("<th> Delete Student</th>");
+                
 
                }
 
@@ -265,6 +264,22 @@ $("#student_list").click(function(){
               $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>" +jobsInfo.completed+ "</th>");
                $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>$" +jobsInfo.rate+ "</th>");
                $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>$" +totalPay+ "</th>");
+               $("#student"+studentJobBasicInfo[i].student_id).append("<td><button type='button'id='deleteButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary delete_button'>Delete Student</button></td");
+               $("#deleteButton"+studentJobBasicInfo[i].student_id).click(function(){
+                      if (confirm("Are you sure you would like to delete student from Job")) {
+                        $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/delete_student_job',
+                            data:JSON.stringify(completedInfo)
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                             console.log(result);
+
+
+                          });
+                        }
+                    });
                /*
                 if(jobsInfo.completed){
                  $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<button type='button'id='selectStudent"+jobsInfo.student_id+jobsInfo.job_id+"' class='btn btn-primary done_button'>Pay Student</button>");
