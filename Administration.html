@@ -232,7 +232,7 @@ $("#student_list").click(function(){
                 $("#header"+jobsInfo.job_id).append("<th> Confirmed </th>");
                 $("#header"+jobsInfo.job_id).append("<th>Rate</th>");
                 $("#header"+jobsInfo.job_id).append("<th>Total</th>");
-                $("#header").append("<th> Delete Student</th>");
+                $("#header"+jobsInfo.job_id).append("<th> Delete Student</th>");
                 
 
                }
@@ -248,7 +248,11 @@ $("#student_list").click(function(){
                           }else{
                             totalPay=0;
                           }
-                console.log("which student added:" +jobsInfo.student_name)
+                  var completedInfo={
+                      "job_id":jobsInfo.job_id,
+                      "student_id":jobsInfo.student_id,
+                    };
+                
                 $("#table"+jobsInfo.job_id).append("<tr id='student"+jobsInfo.student_id+jobsInfo.job_id+"'>");
                 $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>" +jobsInfo.student_name+ "</th>");
                 if(jobsInfo.clock_in){
@@ -265,7 +269,7 @@ $("#student_list").click(function(){
                $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>$" +jobsInfo.rate+ "</th>");
                $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<th>$" +totalPay+ "</th>");
                $("#student"+studentJobBasicInfo[i].student_id).append("<td><button type='button'id='deleteButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary delete_button'>Delete Student</button></td");
-               $("#deleteButton"+studentJobBasicInfo[i].student_id).click(function(){
+               $("#deleteButton"+jobsInfo.student_id+jobsInfo.job_id).click(function(){
                       if (confirm("Are you sure you would like to delete student from Job")) {
                         $.ajax({
                             type: 'POST',
@@ -280,58 +284,7 @@ $("#student_list").click(function(){
                           });
                         }
                     });
-               /*
-                if(jobsInfo.completed){
-                 $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<button type='button'id='selectStudent"+jobsInfo.student_id+jobsInfo.job_id+"' class='btn btn-primary done_button'>Pay Student</button>");
-               }else{
-                  $("#student"+jobsInfo.student_id+jobsInfo.job_id).append("<button type='button'id='selectStudent"+jobsInfo.student_id+jobsInfo.job_id+"' class='btn btn-primary'>Pay Student</button>");
-               }
-               */
-
-                 /*$("#selectStudent"+jobsInfo.student_id+jobsInfo.job_id).click(function(){
-                  if(!jobsInfo.completed){
-                  if (confirm("Are you sure you would like to pay the student?")) {
-                  var duration = moment.duration(moment(jobsInfo.clock_out).diff(moment(jobsInfo.clock_in)));
-                  console.log(duration)
-                            var hours = duration.asHours();
-                            totalPay= hours*jobsInfo.rate;
-                            totalPay= Math.round(totalPay*100)/100;
-                            totalPay = numeral(totalPay.toString()).format('0.00');
-
-                            var payStudent={
-                            "student_id":jobsInfo.student_id,
-                            "amount":totalPay
-                          };
-                          console.log(payStudent);
-                          
-                 $.ajax({
-                            type: 'POST',
-                            contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/transfer_funds_to_student',
-                            data:JSON.stringify(payStudent)
-                          }).done(function(data) {
-                            var result= JSON.parse(data);
-                             console.log(result);
-                             $.ajax({
-                            type: 'POST',
-                            contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/set_completed_job',
-                            data:JSON.stringify(jobsInfo)
-                          }).done(function(data) {
-                            var result= JSON.parse(data);
-                             console.log(result);
-
-                              });
-
-                              });
-                              
-                        }
-                      }else{
-                        alert(" Student already paid");
-                      }
-
-
-                        });*/
+              
                }
           }
                  
