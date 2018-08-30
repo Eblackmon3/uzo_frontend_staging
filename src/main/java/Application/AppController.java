@@ -10,6 +10,7 @@ import Model.DataObjects.*;
 import StripeController.StripeController;
 import org.json.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -38,6 +39,7 @@ public class  AppController {
        "student_id" :1
       }
      */
+    @PreAuthorize("hasIpAddress('192.168.1.0/24')")
     @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
     @PostMapping(value="/get_student_by_id")
     public String getStudentById(@RequestBody Student student){
@@ -319,7 +321,7 @@ public class  AppController {
          "important_quality": "idk",
          "preferred_quality": "idk",
          "num_employees": 7,
-         "number":571-3449998
+         "contact":571-3449998
 
 }
      */
@@ -356,7 +358,7 @@ public class  AppController {
      */
     @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
     @PostMapping(value = "/delete_student_job")
-    public String deleteStudentJob(@RequestBody StudentJob studentJob){
+    public String deleteStudentJob(@RequestBody StudentJob studentJob,@RequestHeader(value="Authorization") String authorization){
         StudentManager manager= new StudentManager();
         return manager.removeStudentJob(studentJob).toString();
         //return ResponseEntity.status(HttpStatus.CREATED).build();
