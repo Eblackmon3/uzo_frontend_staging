@@ -820,7 +820,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                 $("#header").append("<th> Clock-in </th>");
                 $("#header").append("<th> Clock-out </th>");
                 $("#header").append("<th> Complete Job </th>");
-                $("#header").append("<th> Delete Student</th>");
+                
 
                 $("#jobTable").append("<tr id='student"+studentJobBasicInfo[i].student_id+"'>");
 
@@ -841,7 +841,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                }else{
                   $("#student"+studentJobBasicInfo[i].student_id).append("<td><button type='button'id='completeStudentButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary'>Complete Job</button></td>");
                }
-               $("#student"+studentJobBasicInfo[i].student_id).append("<td><button type='button'id='deleteButton"+studentJobBasicInfo[i].student_id+"' class='btn btn-primary delete_button'>Delete Student</button></td");
+               
             
                   $("#completeStudentButton"+studentJobBasicInfo[i].student_id).click(function(){
                     var clockinInfo={
@@ -865,21 +865,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                           });
                         }
                       });
-                    $("#deleteButton"+studentJobBasicInfo[i].student_id).click(function(){
-                      if (confirm("Are you sure you would like to delete student from Job")) {
-                        $.ajax({
-                            type: 'POST',
-                            contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/delete_student_job',
-                            data:JSON.stringify(completedInfo)
-                          }).done(function(data) {
-                            var result= JSON.parse(data);
-                             console.log(result);
-
-
-                          });
-                        }
-                    });
+                    
                   }
                 });
 
