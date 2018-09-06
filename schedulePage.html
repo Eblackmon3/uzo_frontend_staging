@@ -667,6 +667,9 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
               $("#qualityP").text(result.preferred_skills);
               $("#rateP").text(result.rate);
+              $("#contactP").text(result.contact);
+              $("#addressP").text(result.address);
+
               
               
 
@@ -959,6 +962,12 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                 </select>
               </form>
               </div>
+              <br>
+              <label for="Address" >Job Address</label>
+                    <div class="input-group">
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+                      <input type="text" class="form-control" name="address" id="address" placeholder="Enter Address"/>
+                    </div>
             </div>
 
             <div class="col-md-6">
@@ -987,11 +996,13 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
               </div>
 
               <br>
-                 <label for="number" > Contact Phone Numnber</label>
+                 <label for="number" >Contact Phone Number</label>
                     <div class="input-group">
                       <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
                       <input type="text" class="form-control" name="number" id="number" placeholder="Enter Phone Number"/>
                     </div>
+
+                  
 
           </div>
         </form>
@@ -1066,6 +1077,16 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                             <label for="ecount">How many employees do you need per shift?</label>
                             <br>
                             <p id="ecountP"></p>
+                          </div>
+                          <div>
+                            <label for="address">What is the Address</label>
+                            <br>
+                            <p id="addressP"></p>
+                          </div>
+                          <div>
+                            <label for="contact">How many employees do you need per shift?</label>
+                            <br>
+                            <p id="contactP"></p>
                           </div>
                       </div>
                       <div class="col-md-6">
