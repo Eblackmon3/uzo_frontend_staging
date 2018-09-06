@@ -385,7 +385,8 @@ $("#deleteJobButton").click(function(){
          startTime=convertTime(startTime);
          var endTime = $("#endTime").val();
          endTime= convertTime(endTime);
-         var contact=$("#number").val();
+         var contact=$("#contact").val();
+         var address=$("#address").val();
 
 
          var employeeCount = $("#employeeCount").val();
@@ -402,7 +403,7 @@ $("#deleteJobButton").click(function(){
          }
          var rate = numeral($("#rate").val()).format('0.00');
          var rate = rate.replace(/,/g, ''),
-    asANumber = +rate;
+          asANumber = +rate;
 
     
 
@@ -423,6 +424,7 @@ $("#deleteJobButton").click(function(){
          "preferred_skills": preferred_skills,
           "num_employees": employeeCount,
           "contact":contact
+          "job_address":address
 
           };
           if(moment(moment(endDate).format()+"T"+endTime)>moment(moment(startDate).format()+"T"+startTime)){
@@ -1084,7 +1086,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                             <p id="addressP"></p>
                           </div>
                           <div>
-                            <label for="contact">How many employees do you need per shift?</label>
+                            <label for="contact">Jobs Contact</label>
                             <br>
                             <p id="contactP"></p>
                           </div>
