@@ -195,15 +195,7 @@ $("#logoutButton").click(function(){
                   "End : "+moment(moment(jobsInfo[i].date+"T"+jobsInfo[i].end_time)).format("MM-DD-YY hh:mm A")
                   +"</li>");
 
-                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
-
-                  "Address: "+jobsInfo[i].street+ " "+jobsInfo[i].city+ " "+jobsInfo[i].state
-                  +"</li>");
-
-                 $("#list-group"+i).append("<li class='list-group-item'>"+ 
-
-                  "Contact Information: "+jobsInfo[i].contact
-                  +"</li>");
+                
                  
 
                  $("#studentGroup"+i).append("<button type='button'id='setInterest"+i+"' class='btn btn-primary'>Interested</button>");
