@@ -31,12 +31,12 @@ public class Job {
         return completed;
     }
 
-    public void setAddress(String job_address) {
-        this.job_address = job_address;
+    public String getJob_address() {
+        return job_address;
     }
 
-    public String getAddress() {
-        return job_address;
+    public void setJob_address(String job_address) {
+        this.job_address = job_address;
     }
 
     public String getContact() {

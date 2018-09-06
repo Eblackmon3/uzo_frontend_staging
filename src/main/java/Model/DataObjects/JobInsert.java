@@ -25,11 +25,11 @@ public class JobInsert {
         return company_id;
     }
 
-    public String getAddress() {
+    public String getJob_address() {
         return job_address;
     }
 
-    public void setAddress(String job_address) {
+    public void setJob_address(String job_address) {
         this.job_address = job_address;
     }
 
