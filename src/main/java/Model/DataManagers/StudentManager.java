@@ -1064,7 +1064,7 @@ public class StudentManager {
                     city=rs.getString("city");
                     street=rs.getString("street");
                     contact=rs.getString("contact");
-                    address=rs.getString("address");
+                    address=rs.getString("job_address");
                     selectedStudentJob.put("job_id",job_id);
                     selectedStudentJob.put("date",date);
                     selectedStudentJob.put("rate",rate);

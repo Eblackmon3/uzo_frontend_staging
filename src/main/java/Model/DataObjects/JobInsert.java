@@ -19,18 +19,18 @@ public class JobInsert {
     private String important_quality;
     private int num_employees;
     private String contact;
-    private String address;
+    private String job_address;
 
     public int getCompany_id() {
         return company_id;
     }
 
     public String getAddress() {
-        return address;
+        return job_address;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.job_address = address;
     }
 
     public String getContact() {

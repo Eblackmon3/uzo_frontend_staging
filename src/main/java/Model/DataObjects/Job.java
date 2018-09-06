@@ -24,7 +24,7 @@ public class Job {
     private int num_employees;
     private boolean completed;
     private String contact;
-    private String address;
+    private String job_address;
 
 
     public boolean isCompleted() {
@@ -32,11 +32,11 @@ public class Job {
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.job_address = address;
     }
 
     public String getAddress() {
-        return address;
+        return job_address;
     }
 
     public String getContact() {
