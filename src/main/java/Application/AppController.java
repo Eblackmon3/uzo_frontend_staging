@@ -322,6 +322,7 @@ public class  AppController {
          "preferred_quality": "idk",
          "num_employees": 7,
          "contact":571-3449998
+         "address":"bla bla bla  st"
 
 }
      */

@@ -26,8 +26,8 @@ public class JobManager {
         ResultSet lastJob = null;
         Connection conn = null;
         PreparedStatement pstmt = null;
-        String sql="insert into t_job_info(date,rate,dress_code,duration,open,job_title, start_time, company_id, description, important_quality, preferred_skills, num_employees, end_time,contact ) " +
-                "Values(?, ?, ?,?,?,?,?,?,?,?,?,?,?, ?) RETURNING job_id;";
+        String sql="insert into t_job_info(date,rate,dress_code,duration,open,job_title, start_time, company_id, description, important_quality, preferred_skills, num_employees, end_time,contact, address ) " +
+                "Values(?, ?, ?,?,?,?,?,?,?,?,?,?,?, ?, ?) RETURNING job_id;";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
@@ -58,6 +58,7 @@ public class JobManager {
             pstmt.setInt(12,jobInsert.getNum_employees());
             pstmt.setString(13, jobInsert.getEnd_time());
             pstmt.setString(14, jobInsert.getContact());
+            pstmt.setString(15, jobInsert.getAddress());
             boolean didItWork;
             didItWork = pstmt.execute();
             lastJob= pstmt.getResultSet();
@@ -624,6 +625,8 @@ public class JobManager {
         int captain;
         int co_captain;
         String description;
+        String contact;
+        String address;
         DbConn jdbcObj = new DbConn();
         String sql= "select * from t_job_info where job_id=?";
         try {
@@ -655,6 +658,8 @@ public class JobManager {
                 captain=rs.getInt("captain");
                 co_captain=rs.getInt("co_captain");
                 description= rs.getString("description");
+                address= rs.getString("address");
+                contact= rs.getString("contact");
                 selectedStudentJob.put("job_id",job_id);
                 selectedStudentJob.put("date",date);
                 selectedStudentJob.put("rate",rate);
@@ -672,6 +677,8 @@ public class JobManager {
                 selectedStudentJob.put("preferred_skills",rs.getString("preferred_skills"));
                 selectedStudentJob.put("num_employees",rs.getInt("num_employees"));
                 selectedStudentJob.put("completed", rs.getBoolean("completed"));
+                selectedStudentJob.put("address",rs.getInt("address"));
+                selectedStudentJob.put("contact", rs.getBoolean("contact"));
             }
             pstmt.close();
             conn.close();

@@ -24,10 +24,19 @@ public class Job {
     private int num_employees;
     private boolean completed;
     private String contact;
+    private String address;
 
 
     public boolean isCompleted() {
         return completed;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public String getContact() {
