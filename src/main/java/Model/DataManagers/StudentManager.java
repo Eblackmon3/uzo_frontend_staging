@@ -1079,7 +1079,7 @@ public class StudentManager {
                     selectedStudentJob.put("company_name",company_name);
                     selectedStudentJob.put("address", street+ " "+ city+ " "+ state);
                     selectedStudentJob.put("contact",contact);
-                    selectedStudentJob.put("address",address);
+                    selectedStudentJob.put("job_address",address);
                     selectedJobs.put(selectedStudentJob);
                     selectedStudentJob=new JSONObject();
                 }

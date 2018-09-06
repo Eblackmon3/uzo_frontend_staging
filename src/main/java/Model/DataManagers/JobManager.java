@@ -58,7 +58,7 @@ public class JobManager {
             pstmt.setInt(12,jobInsert.getNum_employees());
             pstmt.setString(13, jobInsert.getEnd_time());
             pstmt.setString(14, jobInsert.getContact());
-            pstmt.setString(15, jobInsert.getAddress());
+            pstmt.setString(15, jobInsert.getJob_address());
             boolean didItWork;
             didItWork = pstmt.execute();
             lastJob= pstmt.getResultSet();
