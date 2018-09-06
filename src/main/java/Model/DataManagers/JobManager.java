@@ -673,7 +673,7 @@ public class JobManager {
                 selectedStudentJob.put("preferred_skills",rs.getString("preferred_skills"));
                 selectedStudentJob.put("num_employees",rs.getInt("num_employees"));
                 selectedStudentJob.put("completed", rs.getBoolean("completed"));
-                selectedStudentJob.put("address",rs.getString("job_address"));
+                selectedStudentJob.put("job_address",rs.getString("job_address"));
                 selectedStudentJob.put("contact", rs.getString("contact"));
             }
             pstmt.close();
