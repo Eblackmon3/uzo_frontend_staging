@@ -31,8 +31,8 @@ public class Job {
         return completed;
     }
 
-    public void setAddress(String address) {
-        this.job_address = address;
+    public void setAddress(String job_address) {
+        this.job_address = job_address;
     }
 
     public String getAddress() {
