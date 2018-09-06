@@ -26,7 +26,7 @@ public class JobManager {
         ResultSet lastJob = null;
         Connection conn = null;
         PreparedStatement pstmt = null;
-        String sql="insert into t_job_info(date,rate,dress_code,duration,open,job_title, start_time, company_id, description, important_quality, preferred_skills, num_employees, end_time,contact, address ) " +
+        String sql="insert into t_job_info(date,rate,dress_code,duration,open,job_title, start_time, company_id, description, important_quality, preferred_skills, num_employees, end_time,contact, job_address ) " +
                 "Values(?, ?, ?,?,?,?,?,?,?,?,?,?,?, ?, ?) RETURNING job_id;";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
