@@ -148,7 +148,7 @@ textarea {
     var currJobID;
     var currJobComp;
     $('#rate').mask('000,000,000,000,000.00', {reverse: true});
-    $("#number").mask('(000) 000-0000');
+    $("#contact").mask('(000) 000-0000');
     
 
 
@@ -656,6 +656,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
              $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo),getJobStudents(jobInfo) ).done(function(jobResponse, studentResponse,jobsStudents){
               result= JSON.parse(jobResponse[0]);
+              console.log()
 
               
               $("#jobTitleP").text(result.job_title);
