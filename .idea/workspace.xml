@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="629d3e88-3c46-4a87-8eb9-4b9e62a72580" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java" afterPath="$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java" afterPath="$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -24,7 +26,7 @@
       <file leaf-file-name="AppController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="15">
               <caret line="680" column="33" lean-forward="false" selection-start-line="680" selection-start-column="23" selection-end-line="680" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -33,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JobManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JobManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="677" column="86" lean-forward="true" selection-start-line="677" selection-start-column="86" selection-end-line="677" selection-end-column="86" />
+            <state relative-caret-position="178">
+              <caret line="74" column="68" lean-forward="false" selection-start-line="74" selection-start-column="68" selection-end-line="74" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -45,11 +47,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="CompanyManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="1492" column="85" lean-forward="false" selection-start-line="1492" selection-start-column="85" selection-end-line="1492" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="JobInsert.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataObjects/JobInsert.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="390">
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
                 <element signature="e#698#699#0" expanded="true" />
                 <element signature="e#732#733#0" expanded="true" />
@@ -63,8 +75,8 @@
       <file leaf-file-name="Job.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataObjects/Job.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state relative-caret-position="495">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="e#762#763#0" expanded="true" />
                 <element signature="e#796#797#0" expanded="true" />
@@ -75,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StudentManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StudentManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="1083" column="56" lean-forward="true" selection-start-line="1083" selection-start-column="56" selection-end-line="1083" selection-end-column="56" />
+            <state relative-caret-position="178">
+              <caret line="232" column="71" lean-forward="false" selection-start-line="232" selection-start-column="45" selection-end-line="232" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -88,7 +100,7 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
+            <state relative-caret-position="1305">
               <caret line="87" column="8" lean-forward="false" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
               <folding />
             </state>
@@ -106,8 +118,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getM</find>
-      <find>Numbers</find>
       <find>Login</find>
       <find>lost_password_request</find>
       <find>LostP</find>
@@ -127,15 +137,17 @@
       <find>insert_jobs</find>
       <find>delete</find>
       <find>update_jor4</find>
-      <find>insert</find>
       <find>insert_jo</find>
       <find>get_students_jobs_by_id</find>
-      <find>getJobById</find>
       <find>insertJo</find>
       <find>get_jobs_interested_students_by_id</find>
       <find>insertJob</find>
       <find>getStudentJobList</find>
       <find>get_job_by_id</find>
+      <find>getJobById</find>
+      <find>insert</find>
+      <find>dev</find>
+      <find>uzo-frontend.herokuapp.com</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -415,7 +427,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4576354582000" />
+        <entry key="$PROJECT_DIR$" value="4576354665000" />
         <entry key="$PROJECT_DIR$/build.gradle" value="1622969235" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="1909947883" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="2166421384" />
@@ -648,8 +660,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Application/AppController.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/DataObjects/JobInsert.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/DataObjects/Job.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java" />
       </list>
     </option>
   </component>
@@ -674,8 +686,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -754,6 +764,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -894,27 +906,27 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21570396" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3284553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22292419" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3284553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1038,9 +1050,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15675">
           <caret line="1045" column="48" lean-forward="false" selection-start-line="1045" selection-start-column="44" selection-end-line="1045" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1075,9 +1084,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10785">
           <caret line="719" column="48" lean-forward="true" selection-start-line="719" selection-start-column="48" selection-end-line="719" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1295,7 +1301,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="37" column="56" lean-forward="true" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1303,7 +1308,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-375">
           <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1311,12 +1315,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="492">
           <caret line="96" column="0" lean-forward="true" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-          <folding>
-            <element signature="e#1944#1945#0" expanded="false" />
-            <element signature="e#1976#1977#0" expanded="false" />
-            <element signature="e#2007#2008#0" expanded="false" />
-            <element signature="e#2034#2035#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1324,9 +1322,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1334,17 +1329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="1492" column="85" lean-forward="false" selection-start-line="1492" selection-start-column="85" selection-end-line="1492" selection-end-column="85" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1352,22 +1336,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="45" column="13" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="87" column="8" lean-forward="false" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataObjects/JobInsert.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="390">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
             <element signature="e#698#699#0" expanded="true" />
             <element signature="e#732#733#0" expanded="true" />
@@ -1379,8 +1354,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataObjects/Job.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="495">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="e#762#763#0" expanded="true" />
             <element signature="e#796#797#0" expanded="true" />
@@ -1390,17 +1365,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="1083" column="56" lean-forward="true" selection-start-line="1083" selection-start-column="56" selection-end-line="1083" selection-end-column="56" />
+        <state relative-caret-position="1305">
+          <caret line="87" column="8" lean-forward="false" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="74" column="68" lean-forward="false" selection-start-line="74" selection-start-column="68" selection-end-line="74" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/CompanyManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="1492" column="85" lean-forward="false" selection-start-line="1492" selection-start-column="85" selection-end-line="1492" selection-end-column="85" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Application/AppController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="15">
           <caret line="680" column="33" lean-forward="false" selection-start-line="680" selection-start-column="23" selection-end-line="680" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1408,13 +1401,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/JobManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/DataManagers/StudentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="677" column="86" lean-forward="true" selection-start-line="677" selection-start-column="86" selection-end-line="677" selection-end-column="86" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="178">
+          <caret line="232" column="71" lean-forward="false" selection-start-line="232" selection-start-column="45" selection-end-line="232" selection-end-column="71" />
+          <folding />
         </state>
       </provider>
     </entry>
