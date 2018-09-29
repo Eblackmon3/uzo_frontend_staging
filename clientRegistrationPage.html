@@ -252,7 +252,7 @@ function()
 					data:JSON.stringify(registrationInfo)
 				}).done(function(data) {
 					var result= JSON.parse(data);
-					console.log(result);
+
 					sessionStorage.setItem("company_id",result.company_id);
 
 				});
@@ -268,13 +268,11 @@ function()
 				console.log("here");
 				$.when(ajaxFunction()).done(function(response){
 					console.log(response);
-					if(!response.error){
+					if(sessionStorage.getItem("company_id")){
 						window.location.replace("clientRegistrationPage2.html");
 					}else{
-						alert("The email seems to already be in the system, please use forgot password to create a new one");
+						alert("Email seems to already be in the system, please use forgot password if you can not remember the password")
 					}
-					
-
 				});
 
 			}
