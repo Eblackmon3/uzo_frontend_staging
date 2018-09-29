@@ -267,9 +267,9 @@ function()
 			else{
 				console.log("here");
 				$.when(ajaxFunction()).done(function(response){
-					console.log(response);
-					if(sessionStorage.getItem("company_id")!=undefined ||sessionStorage.getItem("company_id")!=null){
-						window.location.replace("clientRegistrationPage2.html");
+					console.log(sessionStorage.getItem("company_id"));
+					if(sessionStorage.getItem("company_id")!=undefined &&sessionStorage.getItem("company_id")!=null){
+						//window.location.replace("clientRegistrationPage2.html");
 					}else{
 						alert("Email seems to already be in the system, please use forgot password if you can not remember the password")
 					}
