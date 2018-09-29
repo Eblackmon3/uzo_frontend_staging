@@ -270,10 +270,10 @@ function()
 					console.log(sessionStorage.getItem("company_id"));
 					if(sessionStorage.getItem("company_id")!=undefined &&sessionStorage.getItem("company_id")!=null&&
 						sessionStorage.getItem("company_id")!="undefined"){
-						//window.location.replace("clientRegistrationPage2.html");
+						window.location.replace("clientRegistrationPage2.html");
 					alert("still wrong")
 					}else{
-						alert("This Email seems to already be in the system, please use forgot password if you can not remember the password")
+						alert("There is already and account associated with this email, please use forgot password on previous page if you can not remember it")
 					}
 				});
 
