@@ -252,6 +252,7 @@ function()
 					data:JSON.stringify(registrationInfo)
 				}).done(function(data) {
 					var result= JSON.parse(data);
+					console.log(result);
 					sessionStorage.setItem("company_id",result.company_id);
 
 				});
