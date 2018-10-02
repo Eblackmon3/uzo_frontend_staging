@@ -378,6 +378,7 @@ $("#deleteJobButton").click(function(){
 
 //The function that controls he jobsumbit action, outside as to not add multiple click functions to the dev
          $("#jobSubmit").click(function(){
+          $("#jobSubmit").attr(“disabled”, true);
           if($("#jtitle").val()&&$("#jdescription").val()&&$("#startTime").val()&&$("#endTime").val()&&$("#rate").val()){
           var jtitle = $("#jtitle").val();
          var jdescription = $("#jdescription").val();
@@ -455,7 +456,7 @@ $("#deleteJobButton").click(function(){
       }
 
         $.when(ajaxFunction()).done(function(response){
-            //alert("Job Added");
+            $("#jobSubmit").attr(“disabled”, false);
         });
 
        
