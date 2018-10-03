@@ -2232,7 +2232,7 @@ public class StudentManager {
             e.printStackTrace();
             try{
                 studentObj= new JSONObject();
-                studentObj.put("error", e.toString());
+                studentObj.put("student_login", "Does not exist");
 
             }catch(Exception f){
                 f.printStackTrace();

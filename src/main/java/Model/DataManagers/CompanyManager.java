@@ -1045,7 +1045,7 @@ public class CompanyManager {
             e.printStackTrace();
             try{
                 companyObj= new JSONObject();
-                companyObj.put("Result", e.toString());
+                companyObj.put("company_login", "Does not exist");
 
             }catch(Exception f){
                 f.printStackTrace();
