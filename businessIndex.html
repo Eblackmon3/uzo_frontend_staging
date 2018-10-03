@@ -158,7 +158,7 @@ $(document).ready(function(){
 
    $(document).keypress(function(e) {
     if(e.which == 13) {
-         var passwordVal = $("#password").val();
+    var passwordVal = $("#password").val();
     var emailVal = $("#email").val().toLowerCase();
     var password = $("#password");
     var registrationInfo = {
@@ -195,7 +195,7 @@ $(document).ready(function(){
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-          if(sessionStorage.getItem("company_id")){
+          if(sessionStorage.getItem("company_id")&&sessionStorage.getItem("company_id")!="undefined"){
             if(sessionStorage.getItem("company_id")==='31'){
               window.location.replace("Administration.html");
             }
