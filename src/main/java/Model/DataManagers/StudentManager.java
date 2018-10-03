@@ -230,7 +230,7 @@ public class StudentManager {
                         try {
                             Message.creator(new PhoneNumber(phone_number),
                                     new PhoneNumber("6787265534"),
-                                    "https://uzo-frontend.herokuapp.com").create();
+                                    " A new job has been posted! please check the https://uzo-frontend.herokuapp.com").create();
                         }catch(Exception e ){
                             System.out.println("Someone had a fake number");
                             continue;
@@ -2231,6 +2231,7 @@ public class StudentManager {
         } catch (Exception e) {
             e.printStackTrace();
             try{
+                studentObj= new JSONObject();
                 studentObj.put("error", e.toString());
 
             }catch(Exception f){

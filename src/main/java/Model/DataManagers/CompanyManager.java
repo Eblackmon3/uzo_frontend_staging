@@ -1044,6 +1044,7 @@ public class CompanyManager {
         } catch (Exception e) {
             e.printStackTrace();
             try{
+                companyObj= new JSONObject();
                 companyObj.put("Result", e.toString());
 
             }catch(Exception f){
