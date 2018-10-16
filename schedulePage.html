@@ -549,6 +549,7 @@ $("#deleteJobButton").click(function(){
                   }).done(function(data) { 
                       var result = JSON.parse(data);
                       //Delete the event
+                      $('#calendar').fullCalendar( 'refetchEvents' );
                      
                       console.log(result);
                        
@@ -629,6 +630,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                 console.log(event);
                 jobIDInfo=event.job_id;
                  $('#deleteJobModal').appendTo("body").modal('show');
+
                 
             }
         });
@@ -760,7 +762,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                           }).done(function(data) {
                             var result= JSON.parse(data);
                              console.log(result);
-                             if(result.result!="Already assigned to this job"){
+                             if(result.result!="Already assigned to this job" || result.result!="job_full"){
                              $.ajax({
                             type: 'POST',
                             contentType: "application/json",
@@ -774,6 +776,8 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
                           });
 
+                        }else{
+                           alert("Student already assigned or job is full")
                         }
 
 
