@@ -1136,6 +1136,22 @@ api call example https://uzo-web-app.herokuapp.com/get_job_resources
         //return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    /*
+     * Example url: https://uzo-web-app.herokuapp.com/student_event_completion_status
+     * example json
+     * {
+         "student_id": 1,
+         "company_id": 19
+        }
+     */
+    @CrossOrigin(origins = "https://uzo-frontend.herokuapp.com")
+    @PostMapping(value = "/student_event_completion_status")
+    public String checkStudentCompletedEvent(@RequestBody StudentEvent studentEvent){
+        EventManager manager= new EventManager();
+        return manager.DetermineStudentCompleteEvent(studentEvent).toString();
+        //return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
     /* example url: https://uzo-web-app.herokuapp.com/unregister_student_from_event
      * example json:
      * {

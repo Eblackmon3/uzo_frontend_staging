@@ -21,6 +21,9 @@ public class JobInsert {
     private String contact;
     private String job_address;
 
+
+
+
     public int getCompany_id() {
         return company_id;
     }

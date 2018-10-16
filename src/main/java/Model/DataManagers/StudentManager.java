@@ -206,7 +206,7 @@ public class StudentManager {
         Twilio.init(System.getenv("TWILIO_ACCOUNT"),System.getenv("TWILIO_TOKEN"));
         Connection conn = null;
         PreparedStatement pstmt = null;
-        String sql="select * from t_student_info";
+        String sql="select * from t_student_info where student_accepted=true";
         DbConn jdbcObj = new DbConn();
         ArrayList<String> phoneNumbers= new ArrayList<>();
         String phone_number="";
@@ -786,6 +786,7 @@ public class StudentManager {
         String sql="select * from t_student_job_map where student_id=? and company_id=? and job_id= ?";
         String sql2="insert into t_student_job_map(student_id,company_id, job_id) " +
                 "Values(?,?,?);";
+        String sql3= "select students_on, num_employees from t_job_info where job_id=?";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
@@ -806,6 +807,13 @@ public class StudentManager {
             rs= pstmt.executeQuery();
             if(rs.next()) {
                 insertedStudentJob.put("result", "Already assigned to this job");
+                return insertedStudentJob;
+            }
+            pstmt=conn.prepareStatement(sql3);
+            pstmt.setInt(1,studJob.getJob_id());
+            rs= pstmt.executeQuery();
+            if(rs.next()&& (rs.getInt("num_employees")-rs.getInt("students_on")<1)) {
+                insertedStudentJob.put("result", "job_full");
                 return insertedStudentJob;
             }
             pstmt = conn.prepareStatement(sql2);

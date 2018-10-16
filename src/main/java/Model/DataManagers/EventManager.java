@@ -3,6 +3,7 @@ package Model.DataManagers;
 import Model.DataObjects.Event;
 import Model.DataObjects.Job;
 import Model.DataObjects.JobInsert;
+import Model.DataObjects.StudentEvent;
 import Model.DbConn;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -313,6 +314,87 @@ public class EventManager {
 
 
         return  selectedStudentJob;
+    }
+
+    /*
+
+    TODO: Add a call using student_id and company_id to determine if the student has actually been to an event
+     */
+
+
+    public JSONObject DetermineStudentCompleteEvent(StudentEvent studentEvent){
+        JSONObject selectedStudentEvents= new JSONObject();
+        JSONArray selectedEvents= new JSONArray();
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs=null;
+        boolean completed;
+        JSONObject studentsComplete= new JSONObject();
+        String sql="select completed from t_student_event_map where student_id =? and company_id=?";
+        DbConn jdbcObj = new DbConn();
+        try{
+            if(studentEvent.getStudent_id()==0 ||studentEvent.getCompany_id()==0){
+                throw new Exception("Missing Parameter");
+            }
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, studentEvent.getStudent_id());
+            pstmt.setInt(2, studentEvent.getCompany_id());
+            rs= pstmt.executeQuery();
+            while(rs.next()){
+                completed=rs.getBoolean("completed");
+                studentsComplete.put("completed",completed);
+            }
+            rs.close();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+
+        }catch(Exception e){
+            e.printStackTrace();
+            try{
+                studentsComplete.put("completed",false);
+                return studentsComplete;
+
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+
+        }finally{
+            if(rs!=null){
+                try {
+                    rs.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+        return studentsComplete;
     }
 
 }

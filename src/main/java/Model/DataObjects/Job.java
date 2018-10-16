@@ -27,6 +27,10 @@ public class Job {
     private String job_address;
 
 
+
+
+
+
     public boolean isCompleted() {
         return completed;
     }
