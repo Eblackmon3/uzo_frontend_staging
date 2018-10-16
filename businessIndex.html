@@ -196,7 +196,7 @@ $(document).ready(function(){
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
           if(sessionStorage.getItem("company_id")&&sessionStorage.getItem("company_id")!="undefined"){
-            if(sessionStorage.getItem("company_id")==='31'){
+            if(sessionStorage.getItem("company_id")==='31'||sessionStorage.getItem("company_id")===31){
               window.location.replace("Administration.html");
             }
             window.location.replace("schedulePage.html");
@@ -245,12 +245,12 @@ $(document).ready(function(){
       }
       console.log("here");
         $.when(ajaxFunction()).done(function(response){
-          if(sessionStorage.getItem("company_id")){
+          if(sessionStorage.getItem("company_id")&&sessionStorage.getItem("company_id")!="undefined"){
             console.log("here");
-            if(sessionStorage.getItem("company_id")==='31'){
-              //window.location.replace("Administration.html");
+            if(sessionStorage.getItem("company_id")==='31'||sessionStorage.getItem("company_id")===31){
+              window.location.replace("Administration.html");
             }else{
-            //window.location.replace("schedulePage.html");
+            window.location.replace("schedulePage.html");
           }
           }
 
