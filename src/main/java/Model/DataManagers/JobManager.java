@@ -797,10 +797,51 @@ public class JobManager {
         String first_name;
         String last_name;
         String university;
+        boolean captain_eligible;
         String phone_number=""; String state=""; String street=""; String city=""; String apt="";
         String date_of_birth= ""; String major=""; int year=0; String zipcode="";
         String description="";
-        String sql2= "select * from t_student_info where student_id=?";
+        String sql2= "select" +
+                "students.student_id," +
+                "students.email," +
+                "students.first_name," +
+                "students.last_name," +
+                "students.university," +
+                "students.phone_number," +
+                "students.state," +
+                "students.street," +
+                "students.city," +
+                "students.apt," +
+                "students.date_of_birth," +
+                "students.major," +
+                "students.year," +
+                "students.description," +
+                "students.zipcode," +
+                "events.completed" +
+                "from" +
+                "(select" +
+                " student_id," +
+                "email," +
+                "first_name," +
+                "last_name," +
+                "university," +
+                "phone_number," +
+                "state," +
+                "street," +
+                "city," +
+                "apt," +
+                "date_of_birth," +
+                "major," +
+                "year," +
+                "description," +
+                "zipcode" +
+                "from t_student_info) as students" +
+                "left join" +
+                "(select student_id, company_id, completed from t_student_event_map " +
+                " where company_id=?" +
+                "and student_id=?)as events" +
+                "on events.student_id=students.student_id" +
+                "where students.student_id=?";
         String sql="select * from t_interested_students_jobs where job_id =?";
         DbConn jdbcObj = new DbConn();
         try{
@@ -826,7 +867,9 @@ public class JobManager {
             pstmt = conn.prepareStatement(sql2);
             System.out.println(jobsStudents.size());
             for(int i=0;i<jobsStudents.size();i++){
-                pstmt.setInt(1, jobsStudents.get(i));
+                pstmt.setInt(1, job.getCompany_id());
+                pstmt.setInt(2, jobsStudents.get(i));
+                pstmt.setInt(3, jobsStudents.get(i));
                 rs= pstmt.executeQuery();
                 while(rs.next()){
                     student_id=rs.getInt("student_id");
@@ -843,6 +886,7 @@ public class JobManager {
                     major=rs.getString("major");
                     year= rs.getInt("year");
                     zipcode=rs.getString("zipcode");
+                    captain_eligible=rs.getBoolean("completed");
                     description=rs.getString("description");
                     selectedJobsStudent.put("student_id",student_id);
                     selectedJobsStudent.put("email",email);
@@ -859,6 +903,7 @@ public class JobManager {
                     selectedJobsStudent.put("year",year);
                     selectedJobsStudent.put("description",description);
                     selectedJobsStudent.put("zipcode",zipcode);
+                    selectedJobsStudent.put("captain_eligible",captain_eligible);
                     selectedStudents.put(selectedJobsStudent);
                     selectedJobsStudent=new JSONObject();
 
