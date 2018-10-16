@@ -158,7 +158,7 @@ $(document).ready(function(){
 
    $(document).keypress(function(e) {
     if(e.which == 13) {
-    var passwordVal = $("#password").val();
+         var passwordVal = $("#password").val();
     var emailVal = $("#email").val().toLowerCase();
     var password = $("#password");
     var registrationInfo = {
@@ -187,6 +187,25 @@ $(document).ready(function(){
             $( "#passwordCheck" ).removeClass( "has-error" ).addClass( "has-success" );
             $("#errorMessage").text("");
             console.log("")
+
+
+          }
+
+        });
+      }
+      console.log("here");
+        $.when(ajaxFunction()).done(function(response){
+          if(sessionStorage.getItem("company_id")&&sessionStorage.getItem("company_id")!="undefined"){
+            console.log("here");
+            if(sessionStorage.getItem("company_id")==='31'||sessionStorage.getItem("company_id")===31){
+              window.location.replace("Administration.html");
+            }else{
+            window.location.replace("schedulePage.html");
+          }
+          }
+
+
+        });
 
 
           }
