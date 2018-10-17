@@ -441,9 +441,6 @@ $("#deleteJobButton").click(function(){
           var result= JSON.parse(data);
            var eventData= [{ title  : jtitle,start: moment(startDate).format()+"T"+startTime, end:moment(endDate).format()+"T"+endTime, allDay: false, job_id:result.inserted_job}];
            $("#calendar").fullCalendar('addEventSource', eventData);
-            $("#calendar").fullCalendar("unselect");
-            //need both of these too kill modals
-
             $("#createJobModal").modal("hide");
              $('body').removeClass().removeAttr('style');$('.modal-backdrop').remove();
              $("#jtitle").val("");
@@ -654,7 +651,8 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
  $("#showJobModal").on('shown.bs.modal', function () {
             var jobInfo={
-               "job_id":calendarEvent.job_id
+               "job_id":calendarEvent.job_id,
+               "company_id":sessionStorage.getItem("company_id")
                 };
 
              $.when(jobInfoResponse(jobInfo,calendarEvent), interestedStudentResponse(jobInfo),getJobStudents(jobInfo) ).done(function(jobResponse, studentResponse,jobsStudents){
@@ -752,6 +750,43 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                  $("#list-group"+i).append("<a href='"+workHistoryInfo.resume_location +"' class='list-group-item'>Resume</a>");
 
                  $("#studentGroup"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Select</button>");
+                 if(studentBasicInfo[i].captain_eligible){
+                    $("#studentGroup"+i).append("<button type='button'id='selectStudentCaptain"+i+"' class='btn btn-primary'>Select As Captain</button>");
+
+                    $("#selectStudentCaptain"+i).click(function(){
+                  if (confirm("Are you sure you would  like to add student to job")) {
+                 $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/assign_student_job',
+                            data:JSON.stringify(studentJob)
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                             console.log(result);
+                             if(result.result!="Already assigned to this job" || result.result!="job_full"){
+                             $.ajax({
+                            type: 'POST',
+                            contentType: "application/json",
+                            url: 'https://uzo-web-app.herokuapp.com/add_one_student_to_job',
+                            data:JSON.stringify(studentJob)
+                          }).done(function(data) {
+                            var result= JSON.parse(data);
+                             console.log(result);
+                             
+
+
+                          });
+
+                        }else{
+                           alert("Student already assigned or job is full")
+                        }
+
+                          });
+                        }
+                        });
+
+                 }
+                 //if student is captain eligible add a button to insert them as captain
                  $("#selectStudent"+i).click(function(){
                   if (confirm("Are you sure you would  like to add student to job")) {
                  $.ajax({
@@ -780,11 +815,11 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                            alert("Student already assigned or job is full")
                         }
 
-
-
                           });
                         }
                         });
+
+
 
 
 
