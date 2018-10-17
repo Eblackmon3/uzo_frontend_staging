@@ -83,8 +83,8 @@
 .delete_button{
   background-color:#ff0000;
 }
-.done_button{
-  background-color: #008000
+.captain_button{
+  background-color: #FFD700
 }
 
 @media screen and (min-width: 600px) {
@@ -751,7 +751,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
 
                  $("#studentGroup"+i).append("<button type='button'id='selectStudent"+i+"' class='btn btn-primary'>Select</button>");
                  if(studentBasicInfo[i].captain_eligible){
-                    $("#studentGroup"+i).append("<button type='button'id='selectStudentCaptain"+i+"' class='btn btn-primary'>Select As Captain</button>");
+                    $("#studentGroup"+i).append("<button type='button'id='selectStudentCaptain"+i+"' class='btn btn-primary captain_button'>Select As Captain</button>");
 
                     $("#selectStudentCaptain"+i).click(function(){
                   if (confirm("CAPTAIN JOB: Are you sure you would like to add student to job as the captain")) {
