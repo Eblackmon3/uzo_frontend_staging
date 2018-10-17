@@ -801,48 +801,48 @@ public class JobManager {
         String phone_number=""; String state=""; String street=""; String city=""; String apt="";
         String date_of_birth= ""; String major=""; int year=0; String zipcode="";
         String description="";
-        String sql2= "select" +
-                "students.student_id," +
-                "students.email," +
-                "students.first_name," +
-                "students.last_name," +
-                "students.university," +
-                "students.phone_number," +
-                "students.state," +
-                "students.street," +
-                "students.city," +
-                "students.apt," +
-                "students.date_of_birth," +
-                "students.major," +
-                "students.year," +
-                "students.description," +
-                "students.zipcode," +
-                "events.completed" +
-                "from" +
-                "(select" +
-                " student_id," +
-                "email," +
-                "first_name," +
-                "last_name," +
-                "university," +
-                "phone_number," +
-                "state," +
-                "street," +
-                "city," +
-                "apt," +
-                "date_of_birth," +
-                "major," +
-                "year," +
-                "description," +
-                "zipcode" +
-                "from t_student_info) as students" +
-                "left join" +
+        String sql2= "select " +
+                "students.student_id, " +
+                "students.email, " +
+                "students.first_name, " +
+                "students.last_name, " +
+                "students.university, " +
+                "students.phone_number, " +
+                "students.state, " +
+                "students.street, " +
+                "students.city, " +
+                "students.apt, " +
+                "students.date_of_birth, " +
+                "students.major, " +
+                "students.year, " +
+                "students.description, " +
+                "students.zipcode, " +
+                "events.completed " +
+                "from " +
+                "(select " +
+                " student_id, " +
+                "email, " +
+                "first_name, " +
+                "last_name, " +
+                "university, " +
+                "phone_number, "  +
+                "state, " +
+                "street, " +
+                "city, " +
+                "apt, " +
+                "date_of_birth, " +
+                "major, " +
+                "year, " +
+                "description, " +
+                "zipcode " +
+                "from t_student_info) as students " +
+                "left join " +
                 "(select student_id, company_id, completed from t_student_event_map " +
-                " where company_id=?" +
-                "and student_id=?)as events" +
-                "on events.student_id=students.student_id" +
-                "where students.student_id=?";
-        String sql="select * from t_interested_students_jobs where job_id =?";
+                " where company_id=? " +
+                "and student_id=?)as events " +
+                "on events.student_id=students.student_id " +
+                "where students.student_id=? ";
+        String sql="select * from t_interested_students_jobs where job_id =? ";
         DbConn jdbcObj = new DbConn();
         try{
             if(job.getJob_id()==0){
