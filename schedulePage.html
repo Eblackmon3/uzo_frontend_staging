@@ -806,6 +806,18 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                           }).done(function(data) {
                             var result= JSON.parse(data);
                              console.log(result);
+                                  $.ajax({
+                                type: 'POST',
+                                contentType: "application/json",
+                                url: 'https://uzo-web-app.herokuapp.com/insert_job_captain',
+                                data:JSON.stringify(studentJob)
+                              }).done(function(data) {
+                                var result= JSON.parse(data);
+                                 console.log(result);
+                                 
+
+
+                              });
                              
 
 
