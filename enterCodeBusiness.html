@@ -48,7 +48,7 @@ $(document).ready(function(){
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/allow_password_reset_company',
+          url: 'https://uzo-web-dev.herokuapp.com/allow_password_reset_company',
           data:JSON.stringify(companyInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
@@ -86,7 +86,7 @@ $(document).ready(function(){
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/allow_password_reset_company',
+          url: 'https://uzo-web-dev.herokuapp.com/allow_password_reset_company',
           data:JSON.stringify(companyInfo)
         }).done(function(data) {
           var result= JSON.parse(data);

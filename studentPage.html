@@ -154,7 +154,7 @@ $("#logoutButton").click(function(){
         return $.ajax({
               type: 'POST',
               contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_open_jobs'
+              url: 'https://uzo-web-dev.herokuapp.com/get_open_jobs'
              
           }).done(function(data) { 
               var result = JSON.parse(data);
@@ -207,7 +207,7 @@ $("#logoutButton").click(function(){
                           $.ajax({
                       type: 'POST',
                       contentType: "application/json",
-                      url: 'https://uzo-web-app.herokuapp.com/insert_interested_student',
+                      url: 'https://uzo-web-dev.herokuapp.com/insert_interested_student',
                       data:JSON.stringify(interestedArray)
                      
                   }).done(function(data) { 

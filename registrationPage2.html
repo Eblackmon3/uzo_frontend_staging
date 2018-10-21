@@ -139,7 +139,7 @@
 			return $.ajax({
 				type: 'POST',
 				contentType: "application/json",
-				url: 'https://uzo-web-app.herokuapp.com/insert_student_work_ability',
+				url: 'https://uzo-web-dev.herokuapp.com/insert_student_work_ability',
 				data:JSON.stringify(workAbility)
 			}).done(function(data) {
 				var result= JSON.parse(data);
@@ -150,7 +150,7 @@
 			return $.ajax({
 				type: 'POST',
 				contentType: "application/json",
-				url: 'https://uzo-web-app.herokuapp.com/insert_student_preferences',
+				url: 'https://uzo-web-dev.herokuapp.com/insert_student_preferences',
 				data:JSON.stringify(studPref)
 			}).done(function(data) {
 				var result= JSON.parse(data);

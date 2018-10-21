@@ -156,7 +156,7 @@ $("#logoutButton").click(function(){
        $.ajax({
               type: 'POST',
               contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/insert_student_account',
+              url: 'https://uzo-web-dev.herokuapp.com/insert_student_account',
               data:JSON.stringify(studentID)
              
           }).done(function(data) { 

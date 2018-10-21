@@ -463,7 +463,7 @@ function()
 						 return $.ajax({
 						type: 'POST',
 						contentType: "application/json",
-						url: 'https://uzo-web-app.herokuapp.com/insert_student',
+						url: 'https://uzo-web-dev.herokuapp.com/insert_student',
 					   data:JSON.stringify(registrationInfo)
 						}).done(function(data) {
 		                    var result= JSON.parse(data);

@@ -147,7 +147,7 @@ $("#logoutButton").click(function(){
         return $.ajax({
           type: 'GET',
           contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/get_stripe_key'
+          url: 'https://uzo-web-dev.herokuapp.com/get_stripe_key'
         }).done(function(data) {
           var result= JSON.parse(data).key;
             var api_key= result;
@@ -203,7 +203,7 @@ $("#logoutButton").click(function(){
              $.ajax({
                 type: 'POST',
                 contentType: "application/json",
-                url: 'https://uzo-web-app.herokuapp.com/insert_company_card',
+                url: 'https://uzo-web-dev.herokuapp.com/insert_company_card',
                 data:JSON.stringify(companyInfo)
               }).done(function(data) {
                 var result= JSON.parse(data);

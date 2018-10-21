@@ -157,7 +157,7 @@ $("#logoutButton").click(function(){
         return $.ajax({
               type: 'POST',
               contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_students_jobs_by_id',
+              url: 'https://uzo-web-dev.herokuapp.com/get_students_jobs_by_id',
                data:JSON.stringify(studentID)
              
           }).done(function(data) { 
@@ -229,7 +229,7 @@ $("#logoutButton").click(function(){
                         $.ajax({
                             type: 'POST',
                             contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/clockin_student',
+                            url: 'https://uzo-web-dev.herokuapp.com/clockin_student',
                             data:JSON.stringify(clockinInfo)
                           }).done(function(data) {
                             var result= JSON.parse(data);
@@ -250,7 +250,7 @@ $("#logoutButton").click(function(){
                         $.ajax({
                             type: 'POST',
                             contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/clockout_student',
+                            url: 'https://uzo-web-dev.herokuapp.com/clockout_student',
                             data:JSON.stringify(clockoutInfo)
                           }).done(function(data) {
                             var result= JSON.parse(data);

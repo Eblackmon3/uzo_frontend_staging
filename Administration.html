@@ -173,7 +173,7 @@ $("#student_list").click(function(){
         return $.ajax({
               type: 'GET',
               contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/populate_student_job_list'
+              url: 'https://uzo-web-dev.herokuapp.com/populate_student_job_list'
              
           }).done(function(data) { 
               var result = JSON.parse(data);
@@ -274,7 +274,7 @@ $("#student_list").click(function(){
                         $.ajax({
                             type: 'POST',
                             contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/delete_student_job',
+                            url: 'https://uzo-web-dev.herokuapp.com/delete_student_job',
                             data:JSON.stringify(completedInfo)
                           }).done(function(data) {
                             var result= JSON.parse(data);

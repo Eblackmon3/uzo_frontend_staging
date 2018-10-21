@@ -75,7 +75,7 @@
 						 return $.ajax({
 						type: 'POST',
 						contentType: "application/json",
-						url: 'https://uzo-web-app.herokuapp.com/insert_student_work_history',
+						url: 'https://uzo-web-dev.herokuapp.com/insert_student_work_history',
 					   data:JSON.stringify(registrationInfo)
 						}).done(function(data) {
 		                    var result= JSON.parse(data);
@@ -92,7 +92,7 @@
 						console.log(sessionStorage.getItem("student_id"));
 
 						var settings = {
-						  "url": "https://uzo-web-app.herokuapp.com/upload_student_resume",
+						  "url": "https://uzo-web-dev.herokuapp.com/upload_student_resume",
 						  "method": "POST",
 						  "processData": false,
 						  "contentType": false,

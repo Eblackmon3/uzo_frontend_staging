@@ -170,7 +170,7 @@ $(document).ready(function(){
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/check_company_login',
+          url: 'https://uzo-web-dev.herokuapp.com/check_company_login',
           data:JSON.stringify(registrationInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
@@ -224,7 +224,7 @@ $(document).ready(function(){
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/check_company_login',
+          url: 'https://uzo-web-dev.herokuapp.com/check_company_login',
           data:JSON.stringify(registrationInfo)
         }).done(function(data) {
           var result= JSON.parse(data);

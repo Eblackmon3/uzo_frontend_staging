@@ -235,7 +235,7 @@ textarea {
         return $.ajax({
               type: 'POST',
               contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_student_work_history',
+              url: 'https://uzo-web-dev.herokuapp.com/get_student_work_history',
              data:JSON.stringify(studentid)
              
           }).done(function(data) { 
@@ -252,7 +252,7 @@ textarea {
         return $.ajax({
               type: 'POST',
               contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_jobs_students_by_id',
+              url: 'https://uzo-web-dev.herokuapp.com/get_jobs_students_by_id',
              data:JSON.stringify(jobId)
              
           }).done(function(data) { 
@@ -271,7 +271,7 @@ textarea {
         return $.ajax({
               type: 'POST',
               contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_jobs_interested_students_by_id',
+              url: 'https://uzo-web-dev.herokuapp.com/get_jobs_interested_students_by_id',
              data:JSON.stringify(jobInfo)
              
           }).done(function(data) { 
@@ -337,7 +337,7 @@ $("#deleteJobButton").click(function(){
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/update_job_info',
+          url: 'https://uzo-web-dev.herokuapp.com/update_job_info',
           data:JSON.stringify(jobInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
@@ -435,7 +435,7 @@ $("#deleteJobButton").click(function(){
         return $.ajax({
           type: 'POST',
           contentType: "application/json",
-          url: 'https://uzo-web-app.herokuapp.com/insert_job',
+          url: 'https://uzo-web-dev.herokuapp.com/insert_job',
           data:JSON.stringify(jobInfo)
         }).done(function(data) {
           var result= JSON.parse(data);
@@ -495,7 +495,7 @@ $("#deleteJobButton").click(function(){
         return $.ajax({
               type: 'POST',
               contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/get_job_by_id',
+              url: 'https://uzo-web-dev.herokuapp.com/get_job_by_id',
              data:JSON.stringify(jobInfo)
              
           }).done(function(data) { 
@@ -515,7 +515,7 @@ $("#deleteJobButton").click(function(){
         return $.ajax({
               type: 'POST',
               contentType: "application/json",
-              url: 'https://uzo-web-app.herokuapp.com/assign_student_job',
+              url: 'https://uzo-web-dev.herokuapp.com/assign_student_job',
              data:JSON.stringify(studentJob)
              
           }).done(function(data) { 
@@ -540,7 +540,7 @@ $("#deleteJobButton").click(function(){
                 return $.ajax({
                       type: 'POST',
                       contentType: "application/json",
-                      url: 'https://uzo-web-app.herokuapp.com/delete_job_by_id',
+                      url: 'https://uzo-web-dev.herokuapp.com/delete_job_by_id',
                      data:JSON.stringify(jobInfo)
                      
                   }).done(function(data) { 
@@ -568,7 +568,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                 $.ajax({
                         type: 'POST',
                         contentType: "application/json",
-                        url: 'https://uzo-web-app.herokuapp.com/get_company_job_list',
+                        url: 'https://uzo-web-dev.herokuapp.com/get_company_job_list',
                         data:JSON.stringify(companyInfo)
                       }).done(function(data) {
                         var result= JSON.parse(data);
@@ -758,7 +758,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                  $.ajax({
                             type: 'POST',
                             contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/assign_student_job',
+                            url: 'https://uzo-web-dev.herokuapp.com/assign_student_job',
                             data:JSON.stringify(studentJob)
                           }).done(function(data) {
                             var result= JSON.parse(data);
@@ -767,7 +767,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                              $.ajax({
                             type: 'POST',
                             contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/add_one_student_to_job',
+                            url: 'https://uzo-web-dev.herokuapp.com/add_one_student_to_job',
                             data:JSON.stringify(studentJob)
                           }).done(function(data) {
                             var result= JSON.parse(data);
@@ -792,7 +792,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                  $.ajax({
                             type: 'POST',
                             contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/assign_student_job',
+                            url: 'https://uzo-web-dev.herokuapp.com/assign_student_job',
                             data:JSON.stringify(studentJob)
                           }).done(function(data) {
                             var result= JSON.parse(data);
@@ -801,7 +801,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                              $.ajax({
                             type: 'POST',
                             contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/add_one_student_to_job',
+                            url: 'https://uzo-web-dev.herokuapp.com/add_one_student_to_job',
                             data:JSON.stringify(studentJob)
                           }).done(function(data) {
                             var result= JSON.parse(data);
@@ -809,7 +809,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                                   $.ajax({
                                 type: 'POST',
                                 contentType: "application/json",
-                                url: 'https://uzo-web-app.herokuapp.com/insert_job_captain',
+                                url: 'https://uzo-web-dev.herokuapp.com/insert_job_captain',
                                 data:JSON.stringify(studentJob)
                               }).done(function(data) {
                                 var result= JSON.parse(data);
@@ -913,7 +913,7 @@ $('#calendar:not(".fc-event")').on('contextmenu', function (e) {
                         $.ajax({
                             type: 'POST',
                             contentType: "application/json",
-                            url: 'https://uzo-web-app.herokuapp.com/set_completed_job',
+                            url: 'https://uzo-web-dev.herokuapp.com/set_completed_job',
                             data:JSON.stringify(completedInfo)
                           }).done(function(data) {
                             var result= JSON.parse(data);

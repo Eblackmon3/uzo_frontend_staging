@@ -186,7 +186,7 @@
 				return $.ajax({
 					type: 'POST',
 					contentType: "application/json",
-					url: 'https://uzo-web-app.herokuapp.com/insert_company_rep',
+					url: 'https://uzo-web-dev.herokuapp.com/insert_company_rep',
 					data:JSON.stringify(registrationInfo)
 				}).done(function(data) {
 					var result= JSON.parse(data);
