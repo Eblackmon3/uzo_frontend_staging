@@ -60,7 +60,7 @@ public class JobManager {
             pstmt.setString(14, jobInsert.getContact());
             pstmt.setString(15, jobInsert.getJob_address());
             boolean didItWork;
-            didItWork = pstmt.execute();
+            //didItWork = pstmt.execute();
             lastJob= pstmt.getResultSet();
             int job_id=0;
             while(lastJob.next()){
