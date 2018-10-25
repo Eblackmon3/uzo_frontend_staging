@@ -230,7 +230,7 @@ public class StudentManager {
                         try {
                             Message.creator(new PhoneNumber(phone_number),
                                     new PhoneNumber("6787265534"),
-                                    " A new job has been posted! please check the https://uzo-frontend.herokuapp.com").create();
+                                    " A new job has been posted! please check the https://uzo-frontend-dev.herokuapp.com").create();
                         }catch(Exception e ){
                             System.out.println("Someone had a fake number");
                             continue;
@@ -387,11 +387,11 @@ public class StudentManager {
                             if (forWhat.equals("HKA")){
                                 Message.creator(new PhoneNumber(phone_number),
                                         new PhoneNumber("6787265534"),
-                                        "You have been accepted as an UZO Student! logon to the app https://uzo-frontend.herokuapp.com to start searching for jobs!").create();
+                                        "You have been accepted as an UZO Student! logon to the app https://uzo-frontend-dev.herokuapp.com to start searching for jobs!").create();
                         }else if(forWhat.equals("job")){
                                 Message.creator(new PhoneNumber(phone_number),
                                         new PhoneNumber("6787265534"),
-                                        "You have been accepted for a new job! logon to UZO now to see what it is https://uzo-frontend.herokuapp.com/!").create();
+                                        "You have been accepted for a new job! logon to UZO now to see what it is https://uzo-frontend-dev.herokuapp.com/!").create();
 
                             }else if(forWhat.equals("app")){
                                 Message.creator(new PhoneNumber(phone_number),
