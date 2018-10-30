@@ -1676,12 +1676,18 @@ public class JobManager {
         ResultSet rs=null;
         int job_id;
         int student_id;
+        String job_address;
+        String company_name;
+        String job
         String rate;
         String clock_in;
         String clock_out;
         DbConn jdbcObj = new DbConn();
         String preSql="select * from t_job_info";
-        String sql= "select * from t_student_job_map inner join t_job_info on t_student_job_map.job_id=t_job_info.job_id inner join t_student_info on t_student_job_map.student_id=t_student_info.student_id where t_job_info.job_id=?;";
+        String sql= "select * from t_student_job_map" +
+                " inner join t_job_info on t_student_job_map.job_id=t_job_info.job_id " +
+                " inner join t_student_info on t_student_job_map.student_id=t_student_info.student_id " +
+                "inner join t_company_info on t_student_job_map.company_id=t_company_info.company_id where t_job_info.job_id=?;";
         try {
 
             //Connect to the database
@@ -1708,12 +1714,16 @@ public class JobManager {
                         clock_in = rs.getString("clock_in");
                         clock_out = rs.getString("clock_out");
                         student_id = rs.getInt("student_id");
+                        job_address=rs.getString("job_address");
+                        company_name=rs.getString("company_name");
                         selectedStudentJob.put("rate", rate);
                         selectedStudentJob.put("clock_in", clock_in);
                         selectedStudentJob.put("clock_out", clock_out);
                         selectedStudentJob.put("student_id", student_id);
                         selectedStudentJob.put("job_title", rs.getString("job_title"));
                         selectedStudentJob.put("job_id", rs.getInt("job_id"));
+                        selectedStudentJob.put("job_address", job_address);
+                        selectedStudentJob.put("company_name", company_name);
                         selectedStudentJob.put("completed", rs.getBoolean("completed"));
                         selectedStudentJob.put("student_name", rs.getString("first_name") + " " + rs.getString("last_name"));
                         selectStudents.put(selectedStudentJob);
