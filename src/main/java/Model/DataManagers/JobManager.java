@@ -1678,7 +1678,6 @@ public class JobManager {
         int student_id;
         String job_address;
         String company_name;
-        String job
         String rate;
         String clock_in;
         String clock_out;
