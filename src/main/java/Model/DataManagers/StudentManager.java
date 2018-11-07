@@ -393,12 +393,6 @@ public class StudentManager {
                                         new PhoneNumber("6787265534"),
                                         "You have been accepted for a new job! logon to UZO now to see what it is https://uzo-frontend-dev.herokuapp.com/!").create();
 
-                            }else if(forWhat.equals("app")){
-                                Message.creator(new PhoneNumber(phone_number),
-                                        new PhoneNumber("6787265534"),
-                                        "Please complete application at https://docs.google.com/forms/d/e/1FAIpQLSf0X5HfPh9T3WlCm-WmyB6HWnEg86nsI2NV610MkFaU9176OQ/viewform in order to finish the UZO registration process").create();
-
-
                             }else{
                                 Message.creator(new PhoneNumber(phone_number),
                                         new PhoneNumber("6787265534"),
@@ -586,9 +580,6 @@ public class StudentManager {
             conn.close();
             jdbcObj.closePool();
             insertedStudent.put("student_id",student_id);
-            if(student_id!=-1){
-                System.out.println("Texting Student "+getStudentsNumber(student_id,"app"));
-            }
 
         }catch(Exception e){
             e.printStackTrace();
