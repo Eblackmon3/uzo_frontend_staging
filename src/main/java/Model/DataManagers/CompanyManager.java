@@ -114,7 +114,7 @@ public class CompanyManager {
         Connection conn = null;
         int company_id=0;
         PreparedStatement pstmt = null;
-        String sql="insert into t_company_info(email,website_link,company_name, password, description, state, street, city, zip_code) Values(?,?,?,  ?, ?,?,  ?,?,?)" +
+        String sql="insert into t_company_info(email,website_link,company_name, password, description, state, street, city, zip_code, date_insert) Values(?,?,?,  ?, ?,?,  ?,?,?,?)" +
                 "RETURNING company_id;";
         DbConn jdbcObj = new DbConn();
         boolean did_it_work=false;
@@ -143,6 +143,7 @@ public class CompanyManager {
             pstmt.setString(7,company.getStreet());
             pstmt.setString(8,company.getCity());
             pstmt.setString(9, company.getZip_code());
+            pstmt.setString(10, LocalDateTime.now().toString());
             did_it_work = pstmt.execute();
             rs=pstmt.getResultSet();
             while(rs.next()){
@@ -280,7 +281,7 @@ public class CompanyManager {
         Connection conn = null;
         PreparedStatement pstmt = null;
         String sql="insert into t_company_reps(company_id,\"position\", position_details,found_uzo,uzo_help, first_name" +
-                ",last_name, phone_number, date_insert) Values(?,?,?,?,?,?,?,?,?);";
+                ",last_name, phone_number) Values(?,?,?,?,?,?,?,?);";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
@@ -305,7 +306,6 @@ public class CompanyManager {
             pstmt.setString(6,rep.getFirst_name());
             pstmt.setString(7,rep.getLast_name());
             pstmt.setString(8,rep.getPhone_number());
-            pstmt.setString(9, LocalDateTime.now().toString());
             affectedRows = pstmt.executeUpdate();
             pstmt.close();
             conn.close();
