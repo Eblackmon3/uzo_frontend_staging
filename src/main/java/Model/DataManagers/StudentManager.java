@@ -10,6 +10,7 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 import org.apache.commons.lang3.StringEscapeUtils;
+import org.joda.time.LocalDateTime;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 public class StudentManager {
@@ -86,6 +88,83 @@ public class StudentManager {
             studentObj.put("year",year);
             studentObj.put("description",description);
             studentObj.put("zipcode",zipcode);
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                studentObj.put("error", e.toString());
+            }catch(Exception f){
+                f.printStackTrace();
+            }
+        }finally{
+            if(rs!=null){
+                try {
+                    rs.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(pstmt!=null){
+                try {
+                    pstmt.close();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            if(conn!=null){
+                try{
+                    conn.close();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }try {
+                jdbcObj.closePool();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+
+        return studentObj;
+    }
+
+
+    public JSONObject getStudentPercentage(){
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        String sql="select " +
+                "sum(case when student_accepted  = true then 1 else 0 end) as accepted," +
+                "sum(case when student_accepted  = false then 1 else 0 end) as not_accepted" +
+                "from t_student_info;";
+        DbConn jdbcObj = new DbConn();
+        int accepted=1;
+        int not_accepted=1;
+        JSONObject studentObj= new JSONObject();
+        ResultSet rs=null;
+        try {
+
+            //Connect to the database
+            DataSource dataSource = jdbcObj.setUpPool();
+            System.out.println(jdbcObj.printDbStatus());
+            conn = dataSource.getConnection();
+            //check how many connections we have
+            System.out.println(jdbcObj.printDbStatus());
+            //can do normal DB operations here
+            pstmt = conn.prepareStatement(sql);
+            rs= pstmt.executeQuery();
+            while(rs.next()){
+                accepted= rs.getInt("accepted");
+                not_accepted= rs.getInt("not_accepted");
+
+            }
+            rs.close();
+            pstmt.close();
+            conn.close();
+            jdbcObj.closePool();
+            studentObj.put("accepted_percentage",(accepted/not_accepted)*100);
+
 
 
 
@@ -535,7 +614,7 @@ public class StudentManager {
         ResultSet lastStudent=null;
         PreparedStatement pstmt = null;
         String sql="insert into t_student_info(email, password, first_name, last_name, university," +
-                "phone_number, date_of_birth, major, year, description, state, street, city, apt, zipcode) Values(?,?,?, ?,?,?, ?,?,?, ?,?, ?,  ? ,?, ?) RETURNING student_id;";
+                "phone_number, date_of_birth, major, year, description, state, street, city, apt, zipcode, date_insert) Values(?,?,?, ?,?,?, ?,?,?, ?,?, ?,  ? ,?, ?, ?) RETURNING student_id;";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
@@ -568,6 +647,7 @@ public class StudentManager {
             pstmt.setString(13,student.getCity());
             pstmt.setString(14,student.getApt());
             pstmt.setString(15,student.getZipcode());
+            pstmt.setString(16, LocalDateTime.now().toString());
             boolean didItWork;
              pstmt.execute();
             lastStudent= pstmt.getResultSet();

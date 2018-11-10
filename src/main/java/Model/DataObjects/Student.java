@@ -22,6 +22,17 @@ public class Student {
     private boolean student_accepted;
     private String UUID;
 
+    private String date_insert;
+
+
+    public String getDate_insert() {
+        return date_insert;
+    }
+
+    public void setDate_insert(String date_insert) {
+        this.date_insert = date_insert;
+    }
+
 
     public String getUUID() {
         return UUID;

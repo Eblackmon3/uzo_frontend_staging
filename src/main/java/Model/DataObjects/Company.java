@@ -1,5 +1,7 @@
 package Model.DataObjects;
 
+import java.util.Date;
+
 public class Company {
     private int company_id;
     private String email;
@@ -14,6 +16,17 @@ public class Company {
     private String password;
     private String description;
     private String UUID;
+
+    private String date_insert;
+
+
+    public String getDate_insert() {
+        return date_insert;
+    }
+
+    public void setDate_insert(String date_insert) {
+        this.date_insert = date_insert;
+    }
 
     public void setEmail(String email) {
         this.email = email;

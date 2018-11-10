@@ -1476,6 +1476,20 @@ api call example https://uzo-web-app.herokuapp.com/get_job_resources
     }
 
     /*
+        example url: https://uzo-web-app.herokuapp.com/get_student_accepted_percentage
+        header:
+
+
+     */
+    @CrossOrigin(origins = "https://uzo-frontend-dev.herokuapp.com")
+    @GetMapping(value = "/get_student_accepted_percentage")
+    public String getStudentAcceptedPercentage(){
+        StudentManager manager= new StudentManager();
+        return manager.getStudentPercentage().toString();
+        //return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    /*
        example url: https://uzo-web-app.herokuapp.com/get_student_emails
        header:
 

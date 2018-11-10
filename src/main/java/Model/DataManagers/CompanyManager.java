@@ -6,6 +6,7 @@ import Model.DataObjects.CompanyPaymentCard;
 import Model.DataObjects.CompanyRep;
 import Model.DbConn;
 import StripeController.StripeController;
+import org.joda.time.LocalDateTime;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.mindrot.jbcrypt.BCrypt;
@@ -279,7 +280,7 @@ public class CompanyManager {
         Connection conn = null;
         PreparedStatement pstmt = null;
         String sql="insert into t_company_reps(company_id,\"position\", position_details,found_uzo,uzo_help, first_name" +
-                ",last_name, phone_number) Values(?,?,?,?,?,?,?,?);";
+                ",last_name, phone_number, date_insert) Values(?,?,?,?,?,?,?,?,?);";
         DbConn jdbcObj = new DbConn();
         int affectedRows=0;
         try{
@@ -304,6 +305,7 @@ public class CompanyManager {
             pstmt.setString(6,rep.getFirst_name());
             pstmt.setString(7,rep.getLast_name());
             pstmt.setString(8,rep.getPhone_number());
+            pstmt.setString(9, LocalDateTime.now().toString());
             affectedRows = pstmt.executeUpdate();
             pstmt.close();
             conn.close();
