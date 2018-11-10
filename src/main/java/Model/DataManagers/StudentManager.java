@@ -143,6 +143,7 @@ public class StudentManager {
         String street=""; String city=""; String apt=""; String zipcode="";
         String date_of_birth= ""; String major=""; int year=0;
         String description="";
+        int student_id=0;
         boolean student_accepted=false;
         JSONObject studentObj= new JSONObject();
         ResultSet rs=null;
@@ -173,6 +174,7 @@ public class StudentManager {
                 description=rs.getString("description");
                 zipcode= rs.getString("zipcode");
                 student_accepted=rs.getBoolean("student_accepted");
+                student_id=rs.getInt("student_id");
                 studentObj.put("email",email);
                 studentObj.put("first_name",first);
                 studentObj.put("last_name", last);
@@ -188,6 +190,7 @@ public class StudentManager {
                 studentObj.put("description",description);
                 studentObj.put("zipcode",zipcode);
                 studentObj.put("student_accepted",student_accepted);
+                studentObj.put("student_id",student_id);
                 studentList.put(studentObj);
                 studentObj=new JSONObject();
             }
