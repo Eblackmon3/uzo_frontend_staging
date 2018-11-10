@@ -139,8 +139,8 @@ public class StudentManager {
                 "sum(case when student_accepted  = false then 1 else 0 end) as not_accepted " +
                 " from t_student_info;";
         DbConn jdbcObj = new DbConn();
-        int accepted=1;
-        int not_accepted=1;
+        double accepted=1;
+        double not_accepted=1;
         JSONObject studentObj= new JSONObject();
         ResultSet rs=null;
         try {
