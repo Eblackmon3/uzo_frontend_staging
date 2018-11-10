@@ -135,7 +135,7 @@ public class StudentManager {
     public JSONObject getAllStudents(){
         Connection conn = null;
         PreparedStatement pstmt = null;
-        String sql="select * from t_student_info where student_id";
+        String sql="select * from t_student_info";
         DbConn jdbcObj = new DbConn();
         String email="";String first="";String last="";
         String university=""; String phone_number=""; String state="";
