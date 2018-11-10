@@ -136,8 +136,8 @@ public class StudentManager {
         PreparedStatement pstmt = null;
         String sql="select " +
                 "sum(case when student_accepted  = true then 1 else 0 end) as accepted," +
-                "sum(case when student_accepted  = false then 1 else 0 end) as not_accepted" +
-                "from t_student_info;";
+                "sum(case when student_accepted  = false then 1 else 0 end) as not_accepted " +
+                " from t_student_info;";
         DbConn jdbcObj = new DbConn();
         int accepted=1;
         int not_accepted=1;
