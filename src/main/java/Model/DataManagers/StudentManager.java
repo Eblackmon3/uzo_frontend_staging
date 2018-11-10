@@ -132,11 +132,12 @@ public class StudentManager {
 
 
 
-    public JSONObject getAllStudents(){
+    public JSONArray getAllStudents(){
         Connection conn = null;
         PreparedStatement pstmt = null;
         String sql="select * from t_student_info";
         DbConn jdbcObj = new DbConn();
+        JSONArray studentList= new JSONArray();
         String email="";String first="";String last="";
         String university=""; String phone_number=""; String state="";
         String street=""; String city=""; String apt=""; String zipcode="";
@@ -172,26 +173,29 @@ public class StudentManager {
                 description=rs.getString("description");
                 zipcode= rs.getString("zipcode");
                 student_accepted=rs.getBoolean("student_accepted");
+                studentObj.put("email",email);
+                studentObj.put("first_name",first);
+                studentObj.put("last_name", last);
+                studentObj.put("university",university);
+                studentObj.put("phone_number",phone_number);
+                studentObj.put("state",state);
+                studentObj.put("street",street);
+                studentObj.put("city",city);
+                studentObj.put("apt",apt);
+                studentObj.put("date_of_birth", date_of_birth);
+                studentObj.put("major",major);
+                studentObj.put("year",year);
+                studentObj.put("description",description);
+                studentObj.put("zipcode",zipcode);
+                studentObj.put("student_accepted",student_accepted);
+                studentList.put(studentObj);
+                studentObj=new JSONObject();
             }
             rs.close();
             pstmt.close();
             conn.close();
             jdbcObj.closePool();
-            studentObj.put("email",email);
-            studentObj.put("first_name",first);
-            studentObj.put("last_name", last);
-            studentObj.put("university",university);
-            studentObj.put("phone_number",phone_number);
-            studentObj.put("state",state);
-            studentObj.put("street",street);
-            studentObj.put("city",city);
-            studentObj.put("apt",apt);
-            studentObj.put("date_of_birth", date_of_birth);
-            studentObj.put("major",major);
-            studentObj.put("year",year);
-            studentObj.put("description",description);
-            studentObj.put("zipcode",zipcode);
-            studentObj.put("student_accepted",student_accepted);
+
 
 
 
@@ -231,7 +235,7 @@ public class StudentManager {
 
         }
 
-        return studentObj;
+        return studentList;
     }
 
     public JSONObject getStudentPercentage(){
